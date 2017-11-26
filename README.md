@@ -19,7 +19,7 @@ ng generate app school --routing
 
 This will configure the root NgModule to wire up routing, as well as add a <router-outlet> to the AppComponent template to help get us started.
 
-[Create Lib]()
+[Create Lib](https://github.com/nrwl/nx-examples/tree/lib)
 Adding new libs to an Nx Workspace is done by using the AngularCLI generate command, just like adding a new app. 
 Nx has a schematic named lib that can be used to add a new Angular module lib to our workspace:
 
