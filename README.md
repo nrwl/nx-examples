@@ -19,6 +19,17 @@ ng generate app school --routing
 
 This will configure the root NgModule to wire up routing, as well as add a <router-outlet> to the AppComponent template to help get us started.
 
+[Create Lib]()
+
+[Create Lib with Routing]()
+```
+ng generate lib school-ui --routing
+```
+We can create an Angular module lib with routing and have it added as a child to routing in one of our apps like so:
+```
+ng generate lib school-ui --routing --parentModule=apps/school/src/app/app.module.ts
+```
+
 ## Nrwl Extensions for Angular (Nx)
 
 <a href="https://nrwl.io/nx"><img src="https://preview.ibb.co/mW6sdw/nx_logo.png"></a>
