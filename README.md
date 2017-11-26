@@ -21,10 +21,14 @@ This will configure the root NgModule to wire up routing, as well as add a <rout
 
 [Create Lib]()
 
-[Create Lib with Routing]()
+[Create Lib with Routing](https://github.com/nrwl/nx-examples/tree/ui-lib): generates a library with routing and adds the routes to the app module.
+
+We can create an Angular module lib with routing:
+
 ```
 ng generate lib school-ui --routing
 ```
+
 We can create an Angular module lib with routing and have it added as a child to routing in one of our apps like so:
 ```
 ng generate lib school-ui --routing --parentModule=apps/school/src/app/app.module.ts
