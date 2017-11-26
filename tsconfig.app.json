@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "module": "es2015",
+    "baseUrl": ".",
+    "paths": {
+      "@nx-examples/*": [
+        "libs/*"
+      ]
+    }
+  },
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.e2e-spec.ts",
+    "node_modules",
+    "tmp"
+  ]
+}
