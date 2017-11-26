@@ -9,7 +9,13 @@ import { schoolUiRoutes } from '@nx-examples/school-ui';
   imports: [
     BrowserModule,
     NxModule.forRoot(),
-    RouterModule.forRoot([{ path: 'school-ui', children: schoolUiRoutes }], { initialNavigation: 'enabled' })
+    RouterModule.forRoot(
+      [
+        { path: 'school-ui', children: schoolUiRoutes },
+        { path: 'slides', loadChildren: '@nx-examples/slides#SlidesModule' }
+      ],
+      { initialNavigation: 'enabled' }
+    )
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]
