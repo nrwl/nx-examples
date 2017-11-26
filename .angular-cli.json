@@ -29,6 +29,12 @@
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
+    },
+    {
+      "name": "school-ui",
+      "root": "libs/school-ui/src",
+      "test": "../../../test.js",
+      "appRoot": ""
     }
   ],
   "e2e": {
