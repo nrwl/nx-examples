@@ -2,12 +2,22 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0 using [Nrwl Nx](https://nrwl.io/nx).
 
-This is the step after running the install script
+[Install](https://github.com/nrwl/nx-examples/tree/workspace): project workspace after the first installation script is run.
+This is the step after running the install script. 
 
 ```
 curl -fsSL https://raw.githubusercontent.com/nrwl/nx/master/packages/install/install.sh | bash -s myprojectname
 ```
+
 Libs and apps folders created and node modules installed. 
+
+[Create App](https://github.com/nrwl/nx-examples/tree/app): creates the first empty application named school with routing option.
+
+```
+ng generate app school --routing
+```
+
+This will configure the root NgModule to wire up routing, as well as add a <router-outlet> to the AppComponent template to help get us started.
 
 ## Nrwl Extensions for Angular (Nx)
 
@@ -20,10 +30,6 @@ Nx is designed to help you create and build enterprise grade Angular application
 ## Quick Start & Documentation
 
 [Watch a 5-minute video on how to get started with Nx.](http://nrwl.io/nx)
-
-## Generate your first application
-
-Run `ng generate app myapp` to generate an application. When using Nx, you can create multiple applications and libraries in the same CLI workspace. Read more [here](http://nrwl.io/nx).
 
 ## Development server
 
