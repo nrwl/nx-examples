@@ -39,10 +39,27 @@ We can create an Angular module lib with routing:
 ng generate lib school-ui --routing
 ```
 
-We can create an Angular module lib with routing and have it added as a child to routing in one of our apps like so:
+We can create an Angular module lib with routing and have it added as a child to routing in one of our apps:
 ```
 ng generate lib school-ui --routing --parentModule=apps/school/src/app/app.module.ts
 ```
+
+[Create Lib lazy loaded]((https://github.com/nrwl/nx-examples/tree/lib-lazy-module)
+
+And we can create an Angular module lib with routing that we want to have lazy loaded:
+
+```
+ng generate lib slides --routing --lazy --parentModule=apps/school/src/app/app.module.ts
+```
+We just created a new library with module and added as a route to main school application. 
+```
+ RouterModule.forRoot(
+      [
+        ...,
+        { path: 'slides', loadChildren: '@nx-examples/slides#SlidesModule' }
+      ]
+```
+
 
 [Ngrx](https://github.com/nrwl/nx-examples/tree/ngrx): 
 
@@ -64,6 +81,7 @@ imports: {
     StoreRouterConnectingModule
 }
 ```
+
 
 ## Nrwl Extensions for Angular (Nx)
 

@@ -14,7 +14,12 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
   imports: [
     BrowserModule,
     NxModule.forRoot(),
-    RouterModule.forRoot([{ path: 'school-ui', children: schoolUiRoutes }], { initialNavigation: 'enabled' }),
+    RouterModule.forRoot([
+        { path: 'school-ui', children: schoolUiRoutes },
+        { path: 'slides', loadChildren: '@nx-examples/slides#SlidesModule' }
+      ],
+      { initialNavigation: 'enabled' }
+    ),
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
