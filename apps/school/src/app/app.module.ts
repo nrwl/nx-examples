@@ -22,7 +22,7 @@ import { appInitialState, appReducer } from '@nx-examples/model';
       ],
       { initialNavigation: 'enabled' }
     ),
-    StoreModule.forRoot(appReducer, {initialState: appInitialState}),
+    StoreModule.forRoot(appReducer, { initialState: appInitialState }),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule
