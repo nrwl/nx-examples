@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "format": "prettier --single-quote --print-width 120 --write \"{apps,libs}/**/*.ts\"",
-    "pages": "ng build --prod --output-path docs"
+    "pages": "ng build --prod --app=school --output-path docs"
   },
   "private": true,
   "dependencies": {
