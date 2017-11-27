@@ -9,6 +9,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { appInitialState, appReducer } from '@nx-examples/model';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
       ],
       { initialNavigation: 'enabled' }
     ),
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(appReducer, {initialState: appInitialState}),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule
