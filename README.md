@@ -88,6 +88,27 @@ We might also want to have state related to a particular part of the application
 ng generate ngrx slides --module=libs/slides/src/slides.module.ts
 ```
 
+[Model Module](https://github.com/nrwl/nx-examples/tree/model): 
+
+You can also have your state on a separate module:
+
+```
+ng generate lib model
+ng generate ngrx app --module=libs/model/src/model.module.ts
+ng generate ngrx app --module=apps/school/src/app/app.module.ts  --onlyEmptyRoot
+```
+
+This will create the model module that will have the app state and empty store configuration on the root app. 
+We have to manually add state configuration on the main app like so:
+
+```
+imports: {
+  ...
+  StoreModule.forRoot(appReducer, {initialState: appInitialState}),
+  ...
+}
+```
+
 ## Nrwl Extensions for Angular (Nx)
 
 <a href="https://nrwl.io/nx"><img src="https://preview.ibb.co/mW6sdw/nx_logo.png"></a>
