@@ -44,6 +44,27 @@ We can create an Angular module lib with routing and have it added as a child to
 ng generate lib school-ui --routing --parentModule=apps/school/src/app/app.module.ts
 ```
 
+[Ngrx](https://github.com/nrwl/nx-examples/tree/ngrx): 
+
+We can run the generate command for ngrx with the module and onlyEmptyRoot option to only add the StoreModule.forRoot and EffectsModule.forRoot calls without generating any new files.
+This can be useful in the cases where we don't have a need for any state at the root (or app) level.
+
+```
+ng generate ngrx app --module=apps/school/src/app/app.module.ts  --onlyEmptyRoot
+```
+
+This will set up AppModule imports to include:
+
+```
+imports: {
+    ...
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    StoreRouterConnectingModule
+}
+```
+
 ## Nrwl Extensions for Angular (Nx)
 
 <a href="https://nrwl.io/nx"><img src="https://preview.ibb.co/mW6sdw/nx_logo.png"></a>
