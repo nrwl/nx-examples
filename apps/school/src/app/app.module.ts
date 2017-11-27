@@ -14,7 +14,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
   imports: [
     BrowserModule,
     NxModule.forRoot(),
-    RouterModule.forRoot([
+    RouterModule.forRoot(
+      [
         { path: 'school-ui', children: schoolUiRoutes },
         { path: 'slides', loadChildren: '@nx-examples/slides#SlidesModule' }
       ],

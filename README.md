@@ -81,7 +81,12 @@ imports: {
     StoreRouterConnectingModule
 }
 ```
+[Ngrx for Feature](https://github.com/nrwl/nx-examples/tree/ngrx-feature): 
+We might also want to have state related to a particular part of the application or a library. 
 
+```
+ng generate ngrx slides --module=libs/slides/src/slides.module.ts
+```
 
 ## Nrwl Extensions for Angular (Nx)
 
