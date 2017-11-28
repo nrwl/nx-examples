@@ -8,7 +8,7 @@ import { ExamsComponent } from './exams/exams.component';
 export const schoolUiRoutes: Route[] = [
   { path: '', pathMatch: 'full', redirectTo: 'lessons' },
   { path: 'lessons', component: LessonsComponent },
-  { path: 'exams', component: ExamsComponent },
+  { path: 'exams', component: ExamsComponent }
 ];
 
 @NgModule({
