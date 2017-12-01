@@ -10,23 +10,22 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { appInitialState, appReducer } from '@nx-examples/model';
+import { ArModule } from '@nx-examples/ar';
 
 @NgModule({
   imports: [
     BrowserModule,
     NxModule.forRoot(),
     RouterModule.forRoot(
-      [
-        { path: '', children: schoolUiRoutes },
-        { path: 'slides', loadChildren: '@nx-examples/slides#SlidesModule' }
-      ],
+      [{ path: '', children: schoolUiRoutes }, { path: 'slides', loadChildren: '@nx-examples/slides#SlidesModule' }],
       { initialNavigation: 'enabled' }
     ),
     StoreModule.forRoot(appReducer, { initialState: appInitialState }),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule,
-    SchoolUiModule
+    SchoolUiModule,
+    ArModule
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-quiz',
@@ -6,6 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
+  @Input() name = 'Test 1';
+  @Input()
+  questions = [
+    {
+      name: 'Q1',
+      q: 'What is your name',
+      options: ['Victor', 'Jeff', 'Justin', 'Aysegul', 'Tor', 'Dan']
+    }
+  ];
+
   constructor() {}
 
   ngOnInit() {}
