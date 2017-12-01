@@ -4,7 +4,7 @@ import { Scene, WebGLRenderer, PCFSoftShadowMap,
   Mesh, ShadowMaterial, Matrix4, Vector3, Color } from 'three';
 import { ARUtils, ARPerspectiveCamera, ARView } from 'three.ar.js';
 import { VRControls } from '../VRControls';
-import { OBJLoader } from "../OBJLoader";
+// import { OBJLoader } from "../OBJLoader";
 // declare var VRControls;
 // Get these as input
 const OBJ_PATH = './assets/obj/narwhal/Mesh_Narwhal.obj';
@@ -117,7 +117,7 @@ export class ModelLoaderComponent implements OnInit {
     ARUtils.loadModel({
       objPath: OBJ_PATH,
       mtlPath: MTL_PATH,
-      OBJLoader: OBJLoader,
+      OBJLoader: undefined,
       MTLLoader: undefined, // uses window.THREE.MTLLoader by default
     }).then(function(group) {
       this.model = group;
@@ -150,7 +150,7 @@ export class ModelLoaderComponent implements OnInit {
     this.renderer.render(this.scene, this.camera);
     // Kick off the requestAnimationFrame to call this function
     // when a new VRDisplay frame is rendered
-    this.vrDisplay.requestAnimationFrame(this.update);
+    this.vrDisplay.requestAnimationFrame(this.update.bind(this));
   }
 
   onClick(e) {
@@ -200,7 +200,7 @@ export class ModelLoaderComponent implements OnInit {
     }
   }
 
-  onResize() {
+  onResize(e) {
 
   }
 
