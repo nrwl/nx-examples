@@ -1,13 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild, Input, NgZone } from '@angular/core';
 import {
-  AmbientLight, BoxGeometry, Color, DirectionalLight, Matrix4, Mesh, MeshBasicMaterial, PCFSoftShadowMap, PlaneGeometry,
-  Scene,
-  ShadowMaterial, Vector3,
+  BoxGeometry, Color, Mesh, MeshBasicMaterial, Scene,
   VertexColors, WebGLRenderer
 } from "three";
 import { ARUtils, ARPerspectiveCamera, ARView, ARDebug } from 'three.ar.js';
 import { VRControls } from "@nx-examples/ar/src/VRControls";
-
 
 @Component({
   selector: 'app-create-at-surface',
@@ -16,8 +13,8 @@ import { VRControls } from "@nx-examples/ar/src/VRControls";
 })
 export class CreateAtSurfaceComponent implements OnInit {
   @Input() boxSize = 0.2;
-  @ViewChild('canvas') private canvasRef: ElementRef;
 
+  @ViewChild('canvas') private canvasRef: ElementRef;
   private get canvas(): HTMLCanvasElement {
     return this.canvasRef.nativeElement;
   }
@@ -47,7 +44,7 @@ export class CreateAtSurfaceComponent implements OnInit {
   boxGeometry;
 
 
-  constructor() {}
+  constructor(private zone:NgZone) {}
 
   ngOnInit() {
     /**
@@ -118,15 +115,13 @@ export class CreateAtSurfaceComponent implements OnInit {
     // the cube is at it's base. When the cube is added to the scene,
     // this will help make it appear to be sitting on top of the real-
     // world surface.
-    // geometry.applyMatrix( new THREE.Matrix4().setTranslation( 0, BOX_SIZE / 2, 0 ) );
-    this.boxGeometry.translate( 0, 0.2 / 2, 0 );
+    this.boxGeometry.translate( 0, this.boxSize / 2, 0 );
     const material = new MeshBasicMaterial({ vertexColors: VertexColors });
     this.cube = new Mesh(this.boxGeometry, material);
     this.cube.position.set(10000, 10000, 10000);
 
     this.scene.add(this.cube);
-
-    this.update();
+    this.zone.runOutsideAngular(this.update.bind(this));
   }
 
   // TODO: move to a service
@@ -147,6 +142,7 @@ export class CreateAtSurfaceComponent implements OnInit {
     this.renderer.render(this.scene, this.camera);
     // Kick off the requestAnimationFrame to call this function
     // when a new VRDisplay frame is rendered
+
     this.vrDisplay.requestAnimationFrame(this.update.bind(this));
   }
 
