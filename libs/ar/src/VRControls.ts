@@ -1,7 +1,6 @@
-import { Matrix4 } from "three";
+import { Matrix4 } from 'three';
 
-export function VRControls( object, onError ) {
-
+export function VRControls(object, onError) {
   var scope = this;
 
   var vrDisplay, vrDisplays;
@@ -10,36 +9,27 @@ export function VRControls( object, onError ) {
 
   var frameData = null;
 
-  if ( 'VRFrameData' in window ) {
-
+  if ('VRFrameData' in window) {
     frameData = new VRFrameData();
-
   }
 
-  function gotVRDisplays( displays ) {
-
+  function gotVRDisplays(displays) {
     vrDisplays = displays;
 
-    if ( displays.length > 0 ) {
-
-      vrDisplay = displays[ 0 ];
-
+    if (displays.length > 0) {
+      vrDisplay = displays[0];
     } else {
-
-      if ( onError ) onError( 'VR input not available.' );
-
+      if (onError) onError('VR input not available.');
     }
-
   }
 
-  if ( navigator.getVRDisplays ) {
-
-    navigator.getVRDisplays().then( gotVRDisplays ).catch( function () {
-
-      console.warn( 'THREE.VRControls: Unable to get VR Displays' );
-
-    } );
-
+  if (navigator.getVRDisplays) {
+    navigator
+      .getVRDisplays()
+      .then(gotVRDisplays)
+      .catch(function() {
+        console.warn('THREE.VRControls: Unable to get VR Displays');
+      });
   }
 
   // the Rift SDK returns the position in meters
@@ -56,91 +46,60 @@ export function VRControls( object, onError ) {
   // standing=true but the VRDisplay doesn't provide stageParameters.
   this.userHeight = 1.6;
 
-  this.getVRDisplay = function () {
-
+  this.getVRDisplay = function() {
     return vrDisplay;
-
   };
 
-  this.setVRDisplay = function ( value ) {
-
+  this.setVRDisplay = function(value) {
     vrDisplay = value;
-
   };
 
-  this.getVRDisplays = function () {
-
-    console.warn( 'THREE.VRControls: getVRDisplays() is being deprecated.' );
+  this.getVRDisplays = function() {
+    console.warn('THREE.VRControls: getVRDisplays() is being deprecated.');
     return vrDisplays;
-
   };
 
-  this.getStandingMatrix = function () {
-
+  this.getStandingMatrix = function() {
     return standingMatrix;
-
   };
 
-  this.update = function () {
-
-    if ( vrDisplay ) {
-
+  this.update = function() {
+    if (vrDisplay) {
       var pose;
 
-      if ( vrDisplay.getFrameData ) {
-
-        vrDisplay.getFrameData( frameData );
+      if (vrDisplay.getFrameData) {
+        vrDisplay.getFrameData(frameData);
         pose = frameData.pose;
-
-      } else if ( vrDisplay.getPose ) {
-
+      } else if (vrDisplay.getPose) {
         pose = vrDisplay.getPose();
-
       }
 
-      if ( pose.orientation !== null ) {
-
-        object.quaternion.fromArray( pose.orientation );
-
+      if (pose.orientation !== null) {
+        object.quaternion.fromArray(pose.orientation);
       }
 
-      if ( pose.position !== null ) {
-
-        object.position.fromArray( pose.position );
-
+      if (pose.position !== null) {
+        object.position.fromArray(pose.position);
       } else {
-
-        object.position.set( 0, 0, 0 );
-
+        object.position.set(0, 0, 0);
       }
 
-      if ( this.standing ) {
-
-        if ( vrDisplay.stageParameters ) {
-
+      if (this.standing) {
+        if (vrDisplay.stageParameters) {
           object.updateMatrix();
 
-          standingMatrix.fromArray( vrDisplay.stageParameters.sittingToStandingTransform );
-          object.applyMatrix( standingMatrix );
-
+          standingMatrix.fromArray(vrDisplay.stageParameters.sittingToStandingTransform);
+          object.applyMatrix(standingMatrix);
         } else {
-
-          object.position.setY( object.position.y + this.userHeight );
-
+          object.position.setY(object.position.y + this.userHeight);
         }
-
       }
 
-      object.position.multiplyScalar( scope.scale );
-
+      object.position.multiplyScalar(scope.scale);
     }
-
   };
 
-  this.dispose = function () {
-
+  this.dispose = function() {
     vrDisplay = null;
-
   };
-
-};
+}
