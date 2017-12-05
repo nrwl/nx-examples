@@ -1,10 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild, Input, NgZone } from '@angular/core';
-import {
-  BoxGeometry, Color, Mesh, MeshBasicMaterial, Scene,
-  VertexColors, WebGLRenderer
-} from "three";
+import { BoxGeometry, Color, Mesh, MeshBasicMaterial, Scene, VertexColors, WebGLRenderer } from 'three';
 import { ARUtils, ARPerspectiveCamera, ARView, ARDebug } from 'three.ar.js';
-import { VRControls } from "@nx-examples/ar/src/VRControls";
+import { VRControls } from '@nx-examples/ar/src/VRControls';
+import { ArService } from "@nx-examples/ar/src/ar.service";
 
 @Component({
   selector: 'app-create-at-surface',
@@ -30,7 +28,6 @@ export class CreateAtSurfaceComponent implements OnInit {
     new Color(0x000000)
   ];
 
-
   vrDisplay;
   vrControls;
   arView;
@@ -43,8 +40,7 @@ export class CreateAtSurfaceComponent implements OnInit {
 
   boxGeometry;
 
-
-  constructor(private zone:NgZone) {}
+  constructor(private zone: NgZone, private arService: ArService) {}
 
   ngOnInit() {
     /**
@@ -66,9 +62,6 @@ export class CreateAtSurfaceComponent implements OnInit {
   }
 
   setUp() {
-
-    this.arDebug = new ARDebug(this.vrDisplay);
-    document.body.appendChild(this.arDebug.getElement());
 
     // Setup the js rendering environment
     this.renderer = new WebGLRenderer({ alpha: true, canvas: this.canvas });
@@ -101,26 +94,26 @@ export class CreateAtSurfaceComponent implements OnInit {
     this.vrControls = new VRControls(this.camera, this.onError);
 
     // TODO: move to service with create box method
-    this.boxGeometry = new BoxGeometry(this.boxSize, this.boxSize, this.boxSize);
-    var faceIndices = ['a', 'b', 'c'];
-    for (var i = 0; i < this.boxGeometry.faces.length; i++) {
-      var f = this.boxGeometry.faces[i];
-      for (var j = 0; j < 3; j++) {
-        var vertexIndex = f[faceIndices[j]];
-        f.vertexColors[j] = this.colors[vertexIndex];
-      }
-    }
+    // this.boxGeometry = new BoxGeometry(this.boxSize, this.boxSize, this.boxSize);
+    // var faceIndices = ['a', 'b', 'c'];
+    // for (var i = 0; i < this.boxGeometry.faces.length; i++) {
+    //   var f = this.boxGeometry.faces[i];
+    //   for (var j = 0; j < 3; j++) {
+    //     var vertexIndex = f[faceIndices[j]];
+    //     f.vertexColors[j] = this.colors[vertexIndex];
+    //   }
+    // }
 
     // Shift the cube geometry vertices upwards, so that the "pivot" of
     // the cube is at it's base. When the cube is added to the scene,
     // this will help make it appear to be sitting on top of the real-
     // world surface.
-    this.boxGeometry.translate( 0, this.boxSize / 2, 0 );
-    const material = new MeshBasicMaterial({ vertexColors: VertexColors });
-    this.cube = new Mesh(this.boxGeometry, material);
-    this.cube.position.set(10000, 10000, 10000);
-
-    this.scene.add(this.cube);
+    // this.boxGeometry.translate(0, this.boxSize / 2, 0);
+    // const material = new MeshBasicMaterial({ vertexColors: VertexColors });
+    // this.cube = new Mesh(this.boxGeometry, material);
+    // this.cube.position.set(10000, 10000, 10000);
+    let cube = this.arService.createCube();
+    this.scene.add(cube);
     this.zone.runOutsideAngular(this.update.bind(this));
   }
 
@@ -147,7 +140,6 @@ export class CreateAtSurfaceComponent implements OnInit {
   }
 
   onClick(e) {
-
     // Inspect the event object and generate normalize screen coordinates
     // (between 0 and 1) for the screen position.
     var x = e.touches[0].pageX / window.innerWidth;
@@ -168,18 +160,16 @@ export class CreateAtSurfaceComponent implements OnInit {
         // the cube directly to the hit position
         true
       );
-
     }
   }
 
   onWindowResize(e) {
-    console.log('setRenderer size', window.innerWidth, window.innerHeight);
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
   }
 
   onError(e) {
-    console.warn('VRControls error ',e);
+    console.warn('VRControls error ', e);
   }
 }

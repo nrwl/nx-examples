@@ -215,7 +215,7 @@ export class ModelLoaderComponent implements OnInit {
     }
   }
 
-  onResize(e) {}
+  onWindowResize(e) {}
 
   onError() {
     console.log('VRControls error');
