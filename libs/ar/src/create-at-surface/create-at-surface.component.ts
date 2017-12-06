@@ -112,7 +112,7 @@ export class CreateAtSurfaceComponent implements OnInit {
     // const material = new MeshBasicMaterial({ vertexColors: VertexColors });
     // this.cube = new Mesh(this.boxGeometry, material);
     // this.cube.position.set(10000, 10000, 10000);
-    let cube = this.arService.createCube();
+    let cube = this.arService.createCube({});
     this.scene.add(cube);
     this.zone.runOutsideAngular(this.update.bind(this));
   }

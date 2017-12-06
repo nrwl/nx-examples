@@ -75,7 +75,11 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../../../third_party/three.js/VRControls.js",
+        "../../../third_party/three.js/OBJLoader.js",
+        "../../../third_party/three.js/MTLLoader.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
