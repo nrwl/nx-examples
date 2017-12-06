@@ -173,55 +173,52 @@ export class ModelLoaderComponent implements OnInit {
   onClick(e) {
     // Inspect the event object and generate normalize screen coordinates
     // (between 0 and 1) for the screen position.
-    console.log('x, y', e);
-    if (e) {
-      var x = e.changedTouches[0].clientX / window.innerWidth;
-      var y =  e.changedTouches[0].clientY / window.innerHeight;
-      console.log('x, y', x,y, e);
-    }
+    console.log('e', e);
+    var x = e.changedTouches[0].clientX / window.innerWidth;
+    var y =  e.changedTouches[0].clientY / window.innerHeight;
 
     // Send a ray from the point of click to the real world surface
     // and attempt to find a hit. `hitTest` returns an array of potential
     // hits.
-    // var hits = this.vrDisplay.hitTest(x, y);
-    // if (!this.model) {
-    //   console.warn('Model not yet loaded');
-    //   return;
-    // }
-    // // If a hit is found, just use the first one
-    // if (hits && hits.length) {
-    //   var hit = hits[0];
-    //   // Turn the model matrix from the VRHit into a
-    //   // THREE.Matrix4 so we can extract the position
-    //   // elements out so we can position the shadow mesh
-    //   // to be directly under our model. This is a complicated
-    //   // way to go about it to illustrate the process, and could
-    //   // be done by manually extracting the "Y" value from the
-    //   // hit matrix via `hit.modelMatrix[13]`
-    //   const matrix = new Matrix4();
-    //   const position = new Vector3();
-    //   matrix.fromArray(hit.modelMatrix);
-    //   position.setFromMatrixPosition(matrix);
-    //   // Set our shadow mesh to be at the same Y value
-    //   // as our hit where we're placing our model
-    //   // @TODO use the rotation from hit.modelMatrix
-    //   this.shadowMesh.position.y = position.y;
-    //   // Use the `placeObjectAtHit` utility to position
-    //   // the cube where the hit occurred
-    //   ARUtils.placeObjectAtHit(
-    //     this.model, // The object to place
-    //     hit, // The VRHit object to move the cube to
-    //     1, // Easing value from 0 to 1; we want to move
-    //     // the cube directly to the hit position
-    //     true
-    //   ); // Whether or not we also apply orientation
-    //   // Rotate the model to be facing the user
-    //   const angle = Math.atan2(
-    //     this.camera.position.x - this.model.position.x,
-    //     this.camera.position.z - this.model.position.z
-    //   );
-    //   this.model.rotation.set(0, angle, 0);
-    // }
+    var hits = this.vrDisplay.hitTest(x, y);
+    if (!this.model) {
+      console.warn('Model not yet loaded');
+      return;
+    }
+    // If a hit is found, just use the first one
+    if (hits && hits.length) {
+      var hit = hits[0];
+      // Turn the model matrix from the VRHit into a
+      // THREE.Matrix4 so we can extract the position
+      // elements out so we can position the shadow mesh
+      // to be directly under our model. This is a complicated
+      // way to go about it to illustrate the process, and could
+      // be done by manually extracting the "Y" value from the
+      // hit matrix via `hit.modelMatrix[13]`
+      const matrix = new Matrix4();
+      const position = new Vector3();
+      matrix.fromArray(hit.modelMatrix);
+      position.setFromMatrixPosition(matrix);
+      // Set our shadow mesh to be at the same Y value
+      // as our hit where we're placing our model
+      // @TODO use the rotation from hit.modelMatrix
+      this.shadowMesh.position.y = position.y;
+      // Use the `placeObjectAtHit` utility to position
+      // the cube where the hit occurred
+      ARUtils.placeObjectAtHit(
+        this.model, // The object to place
+        hit, // The VRHit object to move the cube to
+        1, // Easing value from 0 to 1; we want to move
+        // the cube directly to the hit position
+        true
+      ); // Whether or not we also apply orientation
+      // Rotate the model to be facing the user
+      const angle = Math.atan2(
+        this.camera.position.x - this.model.position.x,
+        this.camera.position.z - this.model.position.z
+      );
+      this.model.rotation.set(0, angle, 0);
+    }
   }
 
   onWindowResize(e) {}
