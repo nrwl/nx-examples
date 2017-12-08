@@ -6,8 +6,8 @@ import "three/examples/js/loaders/MTLLoader";
 import { ARUtils, ARPerspectiveCamera, ARView } from 'three.ar.js';
 import { VRControls } from '../VRControls';
 // Get these as input
-const OBJ_PATH = 'assets/obj/nrwl/Narwhal.obj';//'assets/obj/rocket/Rocket_Ship_01.obj';//'assets/obj/fox/ArcticFox_Posed.obj'//'assets/obj/narwhal/Mesh_Narwhal.obj';
-const MTL_PATH = 'assets/obj/nrwl/Narwhal.mtl';//'assets/obj/fox/ArcticFox_Posed.mtl';
+const OBJ_PATH = 'assets/obj/nrwl/Narwhal.obj';
+const MTL_PATH = 'assets/obj/nrwl/Narwhal.mtl';
 const SCALE = 0.1;
 @Component({
   selector: 'app-model-loader',
