@@ -6,10 +6,9 @@ import "three/examples/js/loaders/MTLLoader";
 import { ARUtils, ARPerspectiveCamera, ARView } from 'three.ar.js';
 import { VRControls } from '../VRControls';
 // Get these as input
-const OBJ_PATH = './assets/obj/narwhal/Mesh_Narwhal.obj';
-const MTL_PATH = './assets/obj/narwhal/Mesh_Narwhal.mtl';
+const OBJ_PATH = 'assets/obj/rocket/Rocket_Ship_01.obj';//'assets/obj/fox/ArcticFox_Posed.obj'//'assets/obj/narwhal/Mesh_Narwhal.obj';
+const MTL_PATH = 'assets/obj/rocket/Rocket_Ship_01.mtl';//'assets/obj/fox/ArcticFox_Posed.mtl';
 const SCALE = 0.1;
-
 @Component({
   selector: 'app-model-loader',
   templateUrl: './model-loader.component.html',
@@ -140,6 +139,7 @@ export class ModelLoaderComponent implements OnInit {
     this.model.scale.set(SCALE, SCALE, SCALE);
     // Place the model very far to initialize
     this.model.position.set(10000, 10000, 10000);
+    console.log('Adding model ', this.model);
     this.scene.add(this.model);
   }
 
@@ -198,6 +198,7 @@ export class ModelLoaderComponent implements OnInit {
       this.shadowMesh.position.y = position.y;
       // Use the `placeObjectAtHit` utility to position
       // the cube where the hit occurred
+      console.log('model at hit ', this.model);
       ARUtils.placeObjectAtHit(
         this.model, // The object to place
         hit, // The VRHit object to move the cube to
