@@ -1,10 +1,21 @@
-import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
-import * as THREE from 'three';
-import "../js/EnableThreeExamples";
-import "three/examples/js/loaders/OBJLoader";
-import "three/examples/js/loaders/MTLLoader";
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {
+  Scene,
+  WebGLRenderer,
+  PCFSoftShadowMap,
+  DirectionalLight,
+  AmbientLight,
+  PlaneGeometry,
+  Mesh,
+  ShadowMaterial,
+  Matrix4,
+  Vector3,
+  Color
+} from 'three';
 import { ARUtils, ARPerspectiveCamera, ARView } from 'three.ar.js';
 import { VRControls } from '../VRControls';
+declare var OBJLoader: any;
+declare var MTLLoader: any;
 // Get these as input
 const OBJ_PATH = './assets/obj/narwhal/Mesh_Narwhal.obj';
 const MTL_PATH = './assets/obj/narwhal/Mesh_Narwhal.mtl';
@@ -22,7 +33,7 @@ export class ModelLoaderComponent implements OnInit {
     return this.canvasRef.nativeElement;
   }
 
-  scene = new THREE.Scene();
+  scene = new Scene();
   camera;
   renderer;
 
@@ -33,16 +44,16 @@ export class ModelLoaderComponent implements OnInit {
   model;
   // Make a large plane to receive our shadows
   shadowMesh;
-  planeGeometry = new THREE.PlaneGeometry(2000, 2000);
+  planeGeometry = new PlaneGeometry(2000, 2000);
 
-  light = new THREE.AmbientLight();
-  directionalLight = new THREE.DirectionalLight();
+  light = new AmbientLight();
+  directionalLight = new DirectionalLight();
 
   // raycaster = new Raycaster();
 
 
 
-  constructor(private zone:NgZone) {}
+  constructor() {}
 
   ngOnInit() {
     /**
@@ -57,8 +68,7 @@ export class ModelLoaderComponent implements OnInit {
   arCallback(display) {
     if (display) {
       this.vrDisplay = display;
-      this.zone.runOutsideAngular(this.setUp.bind(this));
-
+      this.setUp();
     } else {
       ARUtils.displayUnsupportedMessage();
     }
@@ -66,7 +76,7 @@ export class ModelLoaderComponent implements OnInit {
 
   setUp() {
     // Setup the three.js rendering environment
-    this.renderer = new THREE.WebGLRenderer({ alpha: true, canvas: this.canvas });
+    this.renderer = new WebGLRenderer({ alpha: true, canvas: this.canvas });
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(window.innerWidth, window.innerHeight); //this.canvas.width, this.canvas.height);
     this.renderer.autoClear = false;
@@ -97,7 +107,7 @@ export class ModelLoaderComponent implements OnInit {
 
     // For shadows to work
     this.renderer.shadowMap.enabled = true;
-    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    this.renderer.shadowMap.type = PCFSoftShadowMap;
 
     this.directionalLight.intensity = 0.3;
     this.directionalLight.position.set(10, 15, 10);
@@ -112,10 +122,10 @@ export class ModelLoaderComponent implements OnInit {
 
     // Create a mesh with a shadow material, resulting in a mesh
     // that only renders shadows once we flip the `receiveShadow` property
-    const clr = new THREE.Color(0x111111);
-    this.shadowMesh = new THREE.Mesh(
+    const clr = new Color(0x111111);
+    this.shadowMesh = new Mesh(
       this.planeGeometry,
-      new THREE.ShadowMaterial({
+      new ShadowMaterial({
         opacity: 0.15
       })
     );
@@ -125,22 +135,20 @@ export class ModelLoaderComponent implements OnInit {
     ARUtils.loadModel({
       objPath: OBJ_PATH,
       mtlPath: MTL_PATH,
-      OBJLoader: THREE.OBJLoader,//undefined, //THREE.OBJLoader,
-      MTLLoader: THREE.MTLLoader //undefined//THREE.MTLLoader //by default
-    }).then(this.loadModelCb.bind(this));
+      OBJLoader: OBJLoader,
+      MTLLoader: MTLLoader //by default
+    }).then(function(group) {
+      this.model = group;
+      // As OBJ models may contain a group with several meshes,
+      // we want all of them to cast shadow
+      this.model.children.forEach(function(mesh) { mesh.castShadow = true; });
+      this.model.scale.set(SCALE, SCALE, SCALE);
+      // Place the model very far to initialize
+      this.model.position.set(10000, 10000, 10000);
+      this.scene.add(this.model);
+    });
 
     this.update();
-  }
-
-  loadModelCb(group) {
-    this.model = group;
-    // As OBJ models may contain a group with several meshes,
-    // we want all of them to cast shadow
-    this.model.children.forEach(function(mesh) { mesh.castShadow = true; });
-    this.model.scale.set(SCALE, SCALE, SCALE);
-    // Place the model very far to initialize
-    this.model.position.set(10000, 10000, 10000);
-    this.scene.add(this.model);
   }
 
   update() {
@@ -188,8 +196,8 @@ export class ModelLoaderComponent implements OnInit {
       // way to go about it to illustrate the process, and could
       // be done by manually extracting the "Y" value from the
       // hit matrix via `hit.modelMatrix[13]`
-      const matrix = new THREE.Matrix4();
-      const position = new THREE.Vector3();
+      const matrix = new Matrix4();
+      const position = new Vector3();
       matrix.fromArray(hit.modelMatrix);
       position.setFromMatrixPosition(matrix);
       // Set our shadow mesh to be at the same Y value
