@@ -6,8 +6,8 @@ import "three/examples/js/loaders/MTLLoader";
 import { ARUtils, ARPerspectiveCamera, ARView } from 'three.ar.js';
 import { VRControls } from '../VRControls';
 // Get these as input
-const OBJ_PATH = 'assets/obj/rocket/Rocket_Ship_01.obj';//'assets/obj/fox/ArcticFox_Posed.obj'//'assets/obj/narwhal/Mesh_Narwhal.obj';
-const MTL_PATH = 'assets/obj/rocket/Rocket_Ship_01.mtl';//'assets/obj/fox/ArcticFox_Posed.mtl';
+const OBJ_PATH = 'assets/obj/nrwl/Narwhal.obj';//'assets/obj/rocket/Rocket_Ship_01.obj';//'assets/obj/fox/ArcticFox_Posed.obj'//'assets/obj/narwhal/Mesh_Narwhal.obj';
+const MTL_PATH = 'assets/obj/nrwl/Narwhal.mtl';//'assets/obj/fox/ArcticFox_Posed.mtl';
 const SCALE = 0.1;
 @Component({
   selector: 'app-model-loader',
@@ -144,6 +144,10 @@ export class ModelLoaderComponent implements OnInit {
   }
 
   update() {
+    // if(this.model){
+      // this.model.rotation.x += 0.1;
+      // this.model.rotation.y += 0.1;
+    // }
     // Clears color from the frame before rendering the camera (arView) or scene.
     this.renderer.clearColor();
     // Render the device's camera stream on screen first of all.
@@ -158,6 +162,7 @@ export class ModelLoaderComponent implements OnInit {
     // Render our three.js virtual scene
     this.renderer.clearDepth();
     this.renderer.render(this.scene, this.camera);
+
     // Kick off the requestAnimationFrame to call this function
     // when a new VRDisplay frame is rendered
     this.vrDisplay.requestAnimationFrame(this.update.bind(this));
@@ -166,7 +171,6 @@ export class ModelLoaderComponent implements OnInit {
   onClick(e) {
     // Inspect the event object and generate normalize screen coordinates
     // (between 0 and 1) for the screen position.
-    console.log('e', e);
     var x = e.changedTouches[0].clientX / window.innerWidth;
     var y =  e.changedTouches[0].clientY / window.innerHeight;
 
