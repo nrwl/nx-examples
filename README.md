@@ -44,7 +44,7 @@ We can create an Angular module lib with routing and have it added as a child to
 ng generate lib school-ui --routing --parentModule=apps/school/src/app/app.module.ts
 ```
 
-[Create Lib lazy loaded]((https://github.com/nrwl/nx-examples/tree/lib-lazy-module)
+[Create Lib lazy loaded](https://github.com/nrwl/nx-examples/tree/lib-lazy-module)
 
 And we can create an Angular module lib with routing that we want to have lazy loaded:
 
