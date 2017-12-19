@@ -7,6 +7,31 @@
   },
   "apps": [
     {
+      "name": "profile",
+      "root": "apps/profile/src",
+      "outDir": "dist/apps/profile",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "../../../test.js",
+      "tsconfig": "../../../tsconfig.app.json",
+      "testTsconfig": "../../../tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css"
+      ],
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    },
+    {
       "name": "school",
       "root": "apps/school/src",
       "outDir": "dist/apps/school",
@@ -24,7 +49,36 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    },
+    {
+      "name": "teach",
+      "root": "apps/teach/src",
+      "outDir": "dist/apps/teach",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "../../../test.js",
+      "tsconfig": "../../../tsconfig.app.json",
+      "testTsconfig": "../../../tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css"
+      ],
+      "scripts": [
+
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -39,6 +93,12 @@
       "tsconfig": "tsconfig.app.json"
     },
     {
+      "name": "login",
+      "root": "libs/login/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "model",
       "root": "libs/model/src",
       "test": "../../../test.js",
@@ -51,6 +111,12 @@
       "test": "../../../test.js",
       "appRoot": "",
       "tsconfig": "tsconfig.app.json"
+    },
+    {
+      "name": "shared-components",
+      "root": "libs/shared-components/src",
+      "test": "../../../test.js",
+      "appRoot": ""
     },
     {
       "name": "slides",
