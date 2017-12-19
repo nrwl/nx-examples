@@ -109,6 +109,14 @@ imports: {
 }
 ```
 
+[Model Module](https://github.com/nrwl/nx-examples/tree/nx-migrate): 
+
+You can migrate to the newest nx-module by updating nx on package.json and running yarn nx-migrate.
+
+```
+yarn nx-migrate
+```
+
 ## Nrwl Extensions for Angular (Nx)
 
 <a href="https://nrwl.io/nx"><img src="https://preview.ibb.co/mW6sdw/nx_logo.png"></a>

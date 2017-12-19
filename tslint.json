@@ -112,10 +112,10 @@
     "nx-enforce-module-boundaries": [
       true,
       {
-        "npmScope": "nx-examples",
         "lazyLoad": [
           "slides"
-        ]
+        ],
+        "allow": []
       }
     ]
   }
