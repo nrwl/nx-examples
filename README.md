@@ -109,7 +109,7 @@ imports: {
 }
 ```
 
-[Model Module](https://github.com/nrwl/nx-examples/tree/nx-migrate): 
+[Nx-migrate](https://github.com/nrwl/nx-examples/tree/nx-migrate): 
 
 You can migrate to the newest nx-module by updating nx on package.json and running yarn nx-migrate.
 
