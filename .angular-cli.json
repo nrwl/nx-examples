@@ -1,8 +1,9 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "$schema": "./node_modules/@nrwl/schematics/src/schema.json",
   "project": {
     "name": "nx-examples",
-    "npmScope": "nx-examples"
+    "npmScope": "nx-examples",
+    "latestMigration": "20171213-update-tsconfig-spec-to-exclude-e2e"
   },
   "apps": [
     {
@@ -17,7 +18,7 @@
       "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "../../../test.js",
-      "tsconfig": "../../../tsconfig.app.json",
+      "tsconfig": "tsconfig.app.json",
       "testTsconfig": "../../../tsconfig.spec.json",
       "prefix": "app",
       "styles": [
@@ -34,25 +35,29 @@
       "name": "ar",
       "root": "libs/ar/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tsconfig": "tsconfig.app.json"
     },
     {
       "name": "model",
       "root": "libs/model/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tsconfig": "tsconfig.app.json"
     },
     {
       "name": "school-ui",
       "root": "libs/school-ui/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tsconfig": "tsconfig.app.json"
     },
     {
       "name": "slides",
       "root": "libs/slides/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tsconfig": "tsconfig.app.json"
     }
   ],
   "e2e": {
@@ -62,13 +67,16 @@
   },
   "lint": [
     {
-      "project": "./tsconfig.app.json"
+      "project": "./tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
     },
     {
-      "project": "./tsconfig.spec.json"
+      "project": "./apps/school/src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
     },
     {
-      "project": "./tsconfig.e2e.json"
+      "project": "./apps/school/e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
     }
   ],
   "test": {
