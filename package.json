@@ -9,6 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "pages": "ng build --prod --app=school --output-path docs",
     "format": "node ./node_modules/@nrwl/schematics/src/command-line/format.js write",
     "nx-migrate": "node ./node_modules/@nrwl/schematics/src/command-line/nx-migrate.js",
     "apps:affected": "node ./node_modules/@nrwl/schematics/src/command-line/affected.js apps",
