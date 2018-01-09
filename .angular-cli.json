@@ -3,7 +3,7 @@
   "project": {
     "name": "nx-examples",
     "npmScope": "nx-examples",
-    "latestMigration": "20171213-update-tsconfig-spec-to-exclude-e2e"
+    "latestMigration": "20180103-update-command-line-scripts"
   },
   "apps": [
     {
@@ -49,9 +49,7 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": [
-
-      ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -76,9 +74,7 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": [
-
-      ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
