@@ -36,7 +36,7 @@
     "@ngrx/router-store": "^4.1.0",
     "@ngrx/store": "^4.1.0",
     "@ngrx/store-devtools": "^4.1.1",
-    "@nrwl/nx": "^0.6.19",
+    "@nrwl/nx": "^0.7.3",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.2",
     "three": "^0.88.0",
@@ -44,6 +44,7 @@
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
+    "@angular-devkit/core": "^0.0.28",
     "@angular/cli": "nrwl/fix-cli-build",
     "@angular/compiler-cli": "5.1.1",
     "@angular/language-service": "5.1.1",
@@ -65,7 +66,6 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.3.0",
     "tslint": "~5.8.0",
-    "typescript": "2.6.2",
-    "@angular-devkit/core": "^0.0.28"
+    "typescript": "2.6.2"
   }
 }
