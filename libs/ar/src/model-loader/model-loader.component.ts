@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import * as THREE from 'three';
-import "../js/EnableThreeExamples";
-import "three/examples/js/loaders/OBJLoader";
-import "three/examples/js/loaders/MTLLoader";
+import '../js/EnableThreeExamples';
+import 'three/examples/js/loaders/OBJLoader';
+import 'three/examples/js/loaders/MTLLoader';
 import { ARUtils, ARPerspectiveCamera, ARView } from 'three.ar.js';
 import { VRControls } from '../VRControls';
 // Get these as input
@@ -15,7 +15,6 @@ const SCALE = 0.1;
   styleUrls: ['./model-loader.component.css']
 })
 export class ModelLoaderComponent implements OnInit {
-
   @ViewChild('canvas') private canvasRef: ElementRef;
   private get canvas(): HTMLCanvasElement {
     return this.canvasRef.nativeElement;
@@ -39,9 +38,7 @@ export class ModelLoaderComponent implements OnInit {
 
   // raycaster = new Raycaster();
 
-
-
-  constructor(private zone:NgZone) {}
+  constructor(private zone: NgZone) {}
 
   ngOnInit() {
     /**
@@ -57,7 +54,6 @@ export class ModelLoaderComponent implements OnInit {
     if (display) {
       this.vrDisplay = display;
       this.zone.runOutsideAngular(this.setUp.bind(this));
-
     } else {
       ARUtils.displayUnsupportedMessage();
     }
@@ -124,7 +120,7 @@ export class ModelLoaderComponent implements OnInit {
     ARUtils.loadModel({
       objPath: OBJ_PATH,
       mtlPath: MTL_PATH,
-      OBJLoader: THREE.OBJLoader,//undefined, //THREE.OBJLoader,
+      OBJLoader: THREE.OBJLoader, //undefined, //THREE.OBJLoader,
       MTLLoader: THREE.MTLLoader //undefined//THREE.MTLLoader //by default
     }).then(this.loadModelCb.bind(this));
 
@@ -135,7 +131,9 @@ export class ModelLoaderComponent implements OnInit {
     this.model = group;
     // As OBJ models may contain a group with several meshes,
     // we want all of them to cast shadow
-    this.model.children.forEach(function(mesh) { mesh.castShadow = true; });
+    this.model.children.forEach(function(mesh) {
+      mesh.castShadow = true;
+    });
     this.model.scale.set(SCALE, SCALE, SCALE);
     // Place the model very far to initialize
     this.model.position.set(10000, 10000, 10000);
@@ -145,8 +143,8 @@ export class ModelLoaderComponent implements OnInit {
 
   update() {
     // if(this.model){
-      // this.model.rotation.x += 0.1;
-      // this.model.rotation.y += 0.1;
+    // this.model.rotation.x += 0.1;
+    // this.model.rotation.y += 0.1;
     // }
     // Clears color from the frame before rendering the camera (arView) or scene.
     this.renderer.clearColor();
@@ -172,7 +170,7 @@ export class ModelLoaderComponent implements OnInit {
     // Inspect the event object and generate normalize screen coordinates
     // (between 0 and 1) for the screen position.
     var x = e.changedTouches[0].clientX / window.innerWidth;
-    var y =  e.changedTouches[0].clientY / window.innerHeight;
+    var y = e.changedTouches[0].clientY / window.innerHeight;
 
     // Send a ray from the point of click to the real world surface
     // and attempt to find a hit. `hitTest` returns an array of potential

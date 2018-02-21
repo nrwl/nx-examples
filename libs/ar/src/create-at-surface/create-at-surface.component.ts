@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild, Input, NgZone } from '@angula
 import { BoxGeometry, Color, Mesh, MeshBasicMaterial, Scene, VertexColors, WebGLRenderer } from 'three';
 import { ARUtils, ARPerspectiveCamera, ARView, ARDebug } from 'three.ar.js';
 import { VRControls } from '@nx-examples/ar/src/VRControls';
-import { ArService } from "@nx-examples/ar/src/ar.service";
+import { ArService } from '@nx-examples/ar/src/ar.service';
 
 @Component({
   selector: 'app-create-at-surface',
@@ -62,7 +62,6 @@ export class CreateAtSurfaceComponent implements OnInit {
   }
 
   setUp() {
-
     // Setup the js rendering environment
     this.renderer = new WebGLRenderer({ alpha: true, canvas: this.canvas });
     this.renderer.setPixelRatio(window.devicePixelRatio);
