@@ -2,11 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0 using [Nrwl Nx](https://nrwl.io/nx).
 
-[Install](https://github.com/nrwl/nx-examples/tree/workspace): project workspace after the first installation script is run.
-This is the step after running the install script. 
+[Install](https://github.com/nrwl/nx-examples/tree/workspace): project workspace after the dependencies are installed and the generation script is run. 
 
 ```
-curl -fsSL https://raw.githubusercontent.com/nrwl/nx/master/packages/install/install.sh | bash -s myprojectname
+npm i -g @nrwl/schematics
+npm i -g @angular/cli
+create-nx-workspace my-project-name --directory=my-project-directory --npm-scope=@my-organisation-name 
 ```
 
 Libs and apps folders created and node modules installed. 
