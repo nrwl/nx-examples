@@ -109,12 +109,18 @@ imports: {
 }
 ```
 
-[Nx-migrate](https://github.com/nrwl/nx-examples/tree/nx-migrate): 
+[Nx Update](https://github.com/nrwl/nx-examples/tree/nx-migrate): 
 
-You can migrate to the newest nx-module by updating nx on package.json and running yarn nx-migrate.
+You can check for the updates (nx version > 0.8.0).
 
 ```
-yarn nx-migrate
+yarn update:check
+```
+
+You can migrate to the newest nx-module by updating nx on package.json and running yarn update.
+
+```
+yarn update
 ```
 
 ## Nrwl Extensions for Angular (Nx)

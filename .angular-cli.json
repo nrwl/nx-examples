@@ -3,7 +3,7 @@
   "project": {
     "name": "nx-examples",
     "npmScope": "nx-examples",
-    "latestMigration": "20180227-cleanup-scripts"
+    "latestMigration": "20180313-add-tags"
   },
   "apps": [
     {
@@ -29,7 +29,8 @@
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
-      }
+      },
+      "tags": []
     },
     {
       "name": "school",
@@ -54,7 +55,8 @@
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
-      }
+      },
+      "tags": []
     },
     {
       "name": "teach",
@@ -79,47 +81,54 @@
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
-      }
+      },
+      "tags": []
     },
     {
       "name": "ar",
       "root": "libs/ar/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tsconfig": "tsconfig.app.json"
+      "tsconfig": "tsconfig.app.json",
+      "tags": []
     },
     {
       "name": "login",
       "root": "libs/login/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "model",
       "root": "libs/model/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tsconfig": "tsconfig.app.json"
+      "tsconfig": "tsconfig.app.json",
+      "tags": []
     },
     {
       "name": "school-ui",
       "root": "libs/school-ui/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tsconfig": "tsconfig.app.json"
+      "tsconfig": "tsconfig.app.json",
+      "tags": []
     },
     {
       "name": "shared-components",
       "root": "libs/shared-components/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "slides",
       "root": "libs/slides/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tsconfig": "tsconfig.app.json"
+      "tsconfig": "tsconfig.app.json",
+      "tags": []
     }
   ],
   "e2e": {

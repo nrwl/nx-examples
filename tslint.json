@@ -112,10 +112,15 @@
     "nx-enforce-module-boundaries": [
       true,
       {
-        "lazyLoad": [
-          "slides"
-        ],
-        "allow": []
+        "allow": [],
+        "depConstraints": [
+          {
+            "sourceTag": "*",
+            "onlyDependOnLibsWithTags": [
+              "*"
+            ]
+          }
+        ]
       }
     ]
   }
