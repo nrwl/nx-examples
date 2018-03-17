@@ -2,6 +2,22 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) using [Nrwl Nx](https://nrwl.io/nx).
 
+## Table of Contents
+
+* [Install Nx](#install-nx)
+* [Creating an Application](#creating-an-application)
+* [Creating a Library](#creating-a-library)
+* [Creating Libraries with Tags](#creating-libraries-with-tags)
+* [Ngrx Store Generation](#ngrx-store-generation)
+* [Updating Nx](#updating-nx)
+* [Development server](#development-server)
+* [Build](#build)
+* [Running unit tests](#running-unit-tests)
+* [Running end-to-end tests](#running-end-to-end-tests)
+* [Further Help](#further-help)
+
+### Install Nx:
+
 [Install](https://github.com/nrwl/nx-examples/tree/workspace): project workspace after the first installation script is run.
 This is the step after running the install script. 
 
@@ -11,6 +27,8 @@ curl -fsSL https://raw.githubusercontent.com/nrwl/nx/master/packages/install/ins
 
 Libs and apps folders created and node modules installed. 
 
+### Creating an Application: 
+
 [Create App](https://github.com/nrwl/nx-examples/tree/app): creates the first empty application named school with routing option.
 
 ```
@@ -18,6 +36,8 @@ ng generate app school --routing
 ```
 
 This will configure the root NgModule to wire up routing, as well as add a <router-outlet> to the AppComponent template to help get us started.
+
+### Creating a Library: 
 
 [Create Lib](https://github.com/nrwl/nx-examples/tree/lib)
 Adding new libs to an Nx Workspace is done by using the AngularCLI generate command, just like adding a new app. 
@@ -60,6 +80,83 @@ We just created a new library with module and added as a route to main school ap
       ]
 ```
 
+### Creating Libraries with Tags: 
+
+A large workspace contains a lot of apps and libs. Because it is so easy to share code, create new libs and depend on libs, the dependencies between the apps and libs can quickly get out of hand.
+
+We need a way to impose constraints on the dependency graph. This PR add this capability.
+
+When creating an app or a lib, you can tag them:
+
+```
+ng g lib apilib --tags=api
+ng g lib utilslib --tags=utils
+ng g lib impllib --tags=impl
+ng g lib untagged
+```
+
+(you can also pass multiple tags ng g lib apilib --tags=one,two or modify .angular-cli.json)
+
+You can then define a constraint in tslint.json, like this:
+
+```
+{
+ ...
+ "nx-enforce-module-boundaries": [
+      true,
+      {
+        "allow": [],
+        "depConstraints": [
+          { "sourceTag": "utils", "onlyDependOnLibsWithTags": ["utils"] },
+          { "sourceTag": "api", "onlyDependOnLibsWithTags": ["api", "utils"] },
+          { "sourceTag": "impl", "onlyDependOnLibsWithTags": ["api", "utils", "impl"] },
+        ]
+      }
+    ]
+}
+```
+With this configuration in place:
+
+  * utilslib cannot depend on apilib or impllib
+  * apilib can depend on utilslib
+  * implib can depend on both utilslib and apilib
+  * untagged lib cannot depend on anything
+  * You can also use wildcards, like this:
+
+```
+{ "sourceTag": "impl", "onlyDependOnLibsWithTags": ["*"] } // impl can depend on anything
+```
+
+```
+{ "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] } // anything can depend on anything
+```
+The system goes through the constrains until it finds the first one matching the source file it's analyzing.
+
+If we change the configuration to the following:
+
+```
+ "nx-enforce-module-boundaries": [
+      true,
+      {
+        "allow": [],
+        "depConstraints": [
+          { "sourceTag": "utils", "onlyDependOnLibsWithTags": ["utils"] },
+          { "sourceTag": "api", "onlyDependOnLibsWithTags": ["api", "utils"] },
+          { "sourceTag": "impl", "onlyDependOnLibsWithTags": ["api", "utils", "impl"] },
+          { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] },
+        ]
+      }
+    ]
+ ```
+ 
+ the following will be true:
+ 
+  * utilslib cannot depend on apilib or impllib
+  * apilib can depend on utilslib
+  * implib can depend on both utilslib and apilib
+  * untagged lib can depend on anything
+
+### Ngrx Store Generation: 
 
 [Ngrx](https://github.com/nrwl/nx-examples/tree/ngrx): 
 
@@ -109,6 +206,8 @@ imports: {
 }
 ```
 
+# Updating Nx:
+
 [Nx Update](https://github.com/nrwl/nx-examples/tree/nx-migrate): 
 
 You can check for the updates (nx version > 0.8.0).
@@ -135,7 +234,7 @@ Nx is designed to help you create and build enterprise grade Angular application
 
 [Watch a 5-minute video on how to get started with Nx.](http://nrwl.io/nx)
 
-## Development server
+### Development server: 
 
 Run `ng serve --app=myapp` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
