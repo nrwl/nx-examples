@@ -59,7 +59,7 @@ export class BarComponent implements OnInit, OnChanges {
     this.onResize();
   }
 
-  onResize() {
+  onResize(e?) {
     //TODO: Get the parent container size and subtract margins to calculate width/scale. Check for input size
     this.size = [this.el.nativeElement.offsetWidth, this.el.nativeElement.offsetHeight];
     this.width = this.size[0] - (this.options.margin.left + this.options.margin.right);
