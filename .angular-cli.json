@@ -7,6 +7,32 @@
   },
   "apps": [
     {
+      "name": "demo",
+      "root": "apps/demo/src",
+      "outDir": "dist/apps/demo",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "../../../test.js",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "../../../tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css"
+      ],
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      },
+      "tags": []
+    },
+    {
       "name": "profile",
       "root": "apps/profile/src",
       "outDir": "dist/apps/profile",
@@ -108,6 +134,13 @@
       "tags": []
     },
     {
+      "name": "nx-d3",
+      "root": "libs/nx-d3/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": []
+    },
+    {
       "name": "school-ui",
       "root": "libs/school-ui/src",
       "test": "../../../test.js",
@@ -148,6 +181,14 @@
     {
       "project": "./apps/school/e2e/tsconfig.e2e.json",
       "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/demo/src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/demo/e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
     }
   ],
   "test": {
@@ -164,7 +205,7 @@
         "lib"
       ]
     },
-    "styleExt": "css",
+    "styleExt": "scss",
     "component": {}
   }
 }
