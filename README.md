@@ -18,11 +18,21 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ### Install Nx:
 
-[Install](https://github.com/nrwl/nx-examples/tree/workspace): project workspace after the first installation script is run.
-This is the step after running the install script. 
+[Install](https://github.com/nrwl/nx-examples/tree/workspace):
+
+The @nrwl/schematics scoped package comes with a binary, create-nx-workspace, for running the schematic for generating a new workspace. You can use this to create new Nx workspaces on your local machine. 
+To get started with it you need to install it globally. This can be done via npm or yarn.
+```
+npm install -g @nrwl/schematics
+```
+or
+```
+yarn global add @nrwl/schematics
+```
+This makes the create-nx-workspace binary available at the terminal. So from anywhere on your local machine you can run the following to create a new Nx workspace:
 
 ```
-curl -fsSL https://raw.githubusercontent.com/nrwl/nx/master/packages/install/install.sh | bash -s myprojectname
+create-nx-workspace myworkspace
 ```
 
 Libs and apps folders created and node modules installed. 
