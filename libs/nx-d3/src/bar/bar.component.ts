@@ -14,7 +14,7 @@ export class BarComponent implements OnInit, OnChanges {
 
   @Input()
   options: any = {
-    margin: { top: 20, right: 20, bottom: 30, left: 40 },
+    margin: { top: 20, right: 50, bottom: 30, left: 50 },
     x: scaleBand().padding(0.1),
     y: scaleLinear(),
     xAccessor: (d) => d.id,
