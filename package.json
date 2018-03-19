@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "pages": "ng build --prod --app=demo --output-path docs",
+    "pages": "ng build --prod --app=demo --output-path docs --base-href nx-examples",
     "format": "./node_modules/.bin/nx format write",
     "affected:apps": "./node_modules/.bin/nx affected apps",
     "affected:build": "./node_modules/.bin/nx affected build",
