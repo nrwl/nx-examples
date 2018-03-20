@@ -75,7 +75,7 @@ export class CreateAtCameraComponent implements OnInit {
 
   arDisplayCallback(display) {
     if (display) {
-      this.vrFrameData = new VRFrameData();
+      this.vrFrameData = new VRFrameData() || {};
       this.vrDisplay = display;
       this.setUp();
     } else {
