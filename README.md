@@ -35,9 +35,13 @@ This makes the create-nx-workspace binary available at the terminal. So from any
 create-nx-workspace myworkspace
 ```
 
-Libs and apps folders created and node modules installed. 
+Libs and apps folders created and node modules installed. Be sure to change directory to the new folder before the next step:
 
-### Creating an Application: 
+```
+cd myworkspace/
+```
+
+### Creating an Application:
 
 [Create App](https://github.com/nrwl/nx-examples/tree/app): creates the first empty application named school with routing option.
 
