@@ -79,7 +79,6 @@ export class BarComponent implements OnInit, OnChanges {
 
   render() {
     //TODO: calculate domain from max(this.data, this.options.yAccessor)
-    debugger;
     this.options.y.domain([0, 5565]);
     this.options.x.domain(this.data.map(d => this.options.xAccessor(d)));
 

@@ -4,7 +4,9 @@
   "license": "MIT",
   "scripts": {
     "ng": "./node_modules/.bin/ng",
-    "start": "ng serve --app=demo",
+    "start": "ng serve",
+    "demo":  "ng serve --app=demo",
+    "school":  "ng serve --app=school",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
