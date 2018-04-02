@@ -7,6 +7,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
+  links = [
+    {label: "Students", path: "/students"},
+    {label: "Exams", path: "/exams"}
+    ];
   constructor() {}
 
   ngOnInit() {}
