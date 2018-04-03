@@ -6,12 +6,13 @@ describe('D3ExampleComponent', () => {
   let component: D3ExampleComponent;
   let fixture: ComponentFixture<D3ExampleComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ D3ExampleComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [D3ExampleComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(D3ExampleComponent);

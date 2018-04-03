@@ -10,7 +10,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { appInitialState, appReducer } from '@nx-examples/model';
-import { SharedComponentsModule} from '@nx-examples/shared-components';
+import { SharedComponentsModule } from '@nx-examples/shared-components';
 import { SchoolUiModule, schoolUiRoutes } from '@nx-examples/school-ui';
 
 @NgModule({
@@ -18,11 +18,8 @@ import { SchoolUiModule, schoolUiRoutes } from '@nx-examples/school-ui';
     BrowserModule,
     NxModule.forRoot(),
     RouterModule.forRoot(
-      [
-        { path: '', children: schoolUiRoutes },
-        { path: 'slides', loadChildren: '@nx-examples/slides#SlidesModule' }
-        ],
-      { initialNavigation: 'enabled',  enableTracing: true  }
+      [{ path: '', children: schoolUiRoutes }, { path: 'slides', loadChildren: '@nx-examples/slides#SlidesModule' }],
+      { initialNavigation: 'enabled', enableTracing: true }
     ),
     StoreModule.forRoot(appReducer, { initialState: appInitialState }),
     EffectsModule.forRoot([]),

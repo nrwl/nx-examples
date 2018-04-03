@@ -11,14 +11,13 @@ import { select } from 'd3-selection';
   styleUrls: ['./bar.component.scss']
 })
 export class BarComponent implements OnInit, OnChanges {
-
   @Input()
   options: any = {
     margin: { top: 20, right: 50, bottom: 30, left: 50 },
     x: scaleBand().padding(0.1),
     y: scaleLinear(),
-    xAccessor: (d) => d.id,
-    yAccessor: (d) => d.duration,
+    xAccessor: d => d.id,
+    yAccessor: d => d.duration,
     size: []
   };
   @Input() data = [];
@@ -74,7 +73,6 @@ export class BarComponent implements OnInit, OnChanges {
     this.options.y.range([yRange, 0]);
 
     this.xAxis.attr('transform', `translate(0, ${this.height - this.options.margin.bottom})`);
-
   }
 
   render() {
@@ -104,10 +102,8 @@ export class BarComponent implements OnInit, OnChanges {
       .attr('x', d => this.options.x(this.options.xAccessor(d)))
       .attr('y', d => this.options.y(this.options.yAccessor(d)))
       .attr('width', () => this.options.x.bandwidth())
-      .attr('height', d => this.height - this.options.margin.bottom - this.options.y(d.duration))
-
+      .attr('height', d => this.height - this.options.margin.bottom - this.options.y(d.duration));
   }
 
   constructor(private el: ElementRef) {}
-
 }

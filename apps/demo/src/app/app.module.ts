@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NxModule } from '@nrwl/nx';
 
-import { SharedComponentsModule} from '@nx-examples/shared-components';
-import { NxD3Module} from "@nx-examples/nx-d3";
+import { SharedComponentsModule } from '@nx-examples/shared-components';
+import { NxD3Module } from '@nx-examples/nx-d3';
 import { D3ExampleComponent } from './d3-example/d3-example.component';
 
 const routes = [

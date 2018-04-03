@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'nx-header',
@@ -9,9 +9,7 @@ import {RouterModule} from '@angular/router';
 export class HeaderComponent implements OnInit {
   @Input() links = [];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -8,15 +8,16 @@ import { SchoolComponent } from './school/school.component';
 import { StudentsComponent } from './students/students.component';
 
 export const schoolUiRoutes: Route[] = [
-  { path: '', component: SchoolComponent,
+  {
+    path: '',
+    component: SchoolComponent,
     children: [
       { path: 'lessons', component: LessonsComponent },
       { path: 'exams', component: ExamsComponent },
       { path: 'quiz', component: QuizComponent },
-      { path: 'students', component: StudentsComponent},
-
+      { path: 'students', component: StudentsComponent }
     ]
-  },
+  }
 ];
 
 @NgModule({

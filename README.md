@@ -14,6 +14,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * [Build](#build)
 * [Running unit tests](#running-unit-tests)
 * [Running end-to-end tests](#running-end-to-end-tests)
+* [Affected Apps](#affected-apps)
 * [Further Help](#further-help)
 
 ### Install Nx:
@@ -169,51 +170,208 @@ If we change the configuration to the following:
 ### Ngrx Store Generation: 
 
 [Ngrx](https://github.com/nrwl/nx-examples/tree/ngrx): 
+# ngrx
+--------
 
-We can run the generate command for ngrx with the module and onlyEmptyRoot option to only add the StoreModule.forRoot and EffectsModule.forRoot calls without generating any new files.
-This can be useful in the cases where we don't have a need for any state at the root (or app) level.
+## Overview
 
+Generates a ngrx feature set containing an `init`, `interfaces`, `actions`, `reducer` and `effects` files. 
+
+You use this schematic to build out a new ngrx feature area that provides a new piece of state.
+
+## Command
+
+```sh
+ng generate ngrx FeatureName [options]
 ```
-ng generate ngrx app --module=apps/school/src/app/app.module.ts  --onlyEmptyRoot
+
+##### OR
+
+```sh
+ng generate f FeatureName [options]
 ```
 
-This will set up AppModule imports to include:
+### Options
 
+Specifies the name of the ngrx feature (e.g., Products, User, etc.)
+
+- `name`
+  - Type: `string`
+  - Required: true
+
+Path to Angular Module. Also used to determine the parent directory for the new **+state** 
+directory; unless the `--directory` option is used to override the dir name.
+
+>  e.g. --module=apps/myapp/src/app/app.module.ts
+
+- `--module`
+  - Type: `string`
+  - Required: true
+
+Specifies the directory name used to nest the **ngrx** files within a folder.
+
+- `--directory`
+  - Type: `string`
+  - Default: `+state`
+
+#### Examples
+
+Generate a `User` feature set and register it within an `Angular Module`.
+
+```sh
+ng generate ngrx User -m apps/myapp/src/app/app.module.ts
+ng g ngrx Producrts -m libs/mylib/src/mylib.module.ts
 ```
-imports: {
-    ...
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
+
+
+Generate a `User` feature set within a `user` folder and register it with the `user.module.ts` file in the same `user` folder.
+
+```sh
+ng g ngrx User -m apps/myapp/src/app/app.module.ts -directory user
+```
+
+## Generated Files
+
+The files generated are shown below and include placeholders for the *feature* name specified.
+
+> The &lt;Feature&gt; notation used be below indicates a placeholder for the actual *feature* name.
+
+*  [&lt;feature&gt;.actions.ts](#featureactionsts)
+*  [&lt;feature&gt;.reducer.ts](#featurereducerts)
+*  [&lt;feature&gt;.effects.ts](#featureeffectsts)
+*  [&lt;feature&gt;.selectors.ts](#featureselectorsts)
+*  [&lt;feature&gt;.facade.ts](#featurefacadests)
+
+*  [../app.module.ts](#appmodulets)
+  
+#### &lt;feature&gt;.actions.ts
+  
+```ts
+import {Action} from "@ngrx/store";
+
+export enum <Feature>ActionTypes {
+ <Feature>       = "[<Feature>] Action",
+ Load<Feature>   = "[<Feature>] Load Data",
+ <Feature>Loaded = "[<Feature>] Data Loaded"
+}
+
+export class <Feature> implements Action {
+ readonly type = <Feature>ActionTypes.<Feature>;
+}
+
+export class Load<Feature> implements Action {
+ readonly type = <Feature>ActionTypes.Load<Feature>;
+ constructor(public payload: any) { }
+}
+
+export class DataLoaded implements Action {
+ readonly type = <Feature>ActionTypes.<Feature>Loaded;
+ constructor(public payload: any) { }
+}
+
+export type <Feature>Actions = <Feature> | Load<Feature> | <Feature>Loaded;
+```
+
+#### &lt;feature&gt;.reducer.ts
+```ts
+import { <Feature> } from './<feature>.interfaces';
+import { <Feature>Action, <Feature>ActionTypes } from './<feature>.actions';
+
+/**
+ * Interface for the '<Feature>' data used in
+ *  - <Feature>State, and
+ *  - <feature>Reducer
+ */
+export interface <Feature>Data {
+
+}
+
+/**
+ * Interface to the part of the Store containing <Feature>State
+ * and other information related to <Feature>Data.
+ */
+export interface <Feature>State {
+  readonly <feature>: <Feature>Data;
+}
+
+export const initialState: <Feature>Data = {  };
+
+export function <feature>Reducer(state: <Feature>Data = initialState, action: <Feature>Actions): <Feature>Data {
+ switch (action.type) {
+   case <Feature>ActionTypes.<Feature>Loaded: {
+     return { ...state, ...action.payload };
+   }
+   default: {
+     return state;
+   }
+ }
+}
+```
+
+#### &lt;feature&gt;.effects.ts
+```ts
+import { Injectable } from '@angular/core';
+import { Effect, Actions } from '@ngrx/effects';
+import { DataPersistence } from '@nrwl/nx';
+
+import { <Feature> } from './<feature>.interfaces';
+import { Load<Feature>, <Feature>Loaded, <Feature>ActionTypes } from './<feature>.actions';
+
+@Injectable()
+export class <Feature>Effects {
+ @Effect() load<Feature>$ = this.dataPersistence.fetch(<Feature>ActionTypes.Load<Feature>, {
+   run: (action: Load<Feature>, state: <Feature>) => {
+     return new <Feature>Loaded({});
+   },
+
+   onError: (action: Load<Feature>, error) => {
+     console.error('Error', error);
+   }
+ });
+
+ constructor(
+   private actions: Actions, 
+   private dataPersistence: DataPersistence<Feature>) { }
+}
+```
+
+
+#### ../app.module.ts
+```ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import {
+  <feature>Reducer,
+  <Feature>State,
+  <Feature>Data,
+  initialState as <feature>InitialState
+} from './+state/<Feature>.reducer';
+import { <Feature>Effects } from './+state/<Feature>.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { storeFreeze } from 'ngrx-store-freeze';
+
+@NgModule({
+  imports: [BrowserModule, RouterModule.forRoot([]),
+    StoreModule.forRoot({ <feature>: <feature>Reducer }, {
+      initialState: { <feature>: <feature>InitialState },
+      metaReducers: !environment.production ? [storeFreeze] : []
+    }),
+    EffectsModule.forRoot([<Feature>Effects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreRouterConnectingModule
+    StoreRouterConnectingModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+  providers: [<Feature>Effects]
+})
+export class AppModule {
 }
-```
-[Ngrx for Feature](https://github.com/nrwl/nx-examples/tree/ngrx-feature): 
-We might also want to have state related to a particular part of the application or a library. 
 
-```
-ng generate ngrx slides --module=libs/slides/src/slides.module.ts
-```
-
-[Model Module](https://github.com/nrwl/nx-examples/tree/model): 
-
-You can also have your state on a separate module:
-
-```
-ng generate lib model
-ng generate ngrx app --module=libs/model/src/model.module.ts
-ng generate ngrx app --module=apps/school/src/app/app.module.ts  --onlyEmptyRoot
-```
-
-This will create the model module that will have the app state and empty store configuration on the root app. 
-We have to manually add state configuration on the main app like so:
-
-```
-imports: {
-  ...
-  StoreModule.forRoot(appReducer, {initialState: appInitialState}),
-  ...
-}
 ```
 
 # Updating Nx:
@@ -264,6 +422,42 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
+
+## Affected Apps
+
+```bash
+npm run affected:apps -- SHA1 SHA2
+npm run affected: builds -- SHA1 SHA2
+npm run affected:e2e -- SHA1 SHA2
+npm run format:write -- SHA1 SHA2 --libs-and-apps
+npm run format:check -- SHA1 SHA2 --libs-and-apps
+```
+
+OR
+
+```bash
+yarn affected:apps -- SHA1 SHA2
+yarn affected: builds -- SHA1 SHA2
+yarn affected:e2e -- SHA1 SHA2
+```
+
+
+
+The apps:affected prints the apps that are affected by the commits between the given SHAs. The build:affected builds them, and e2e:affected runs their e2e tests.
+
+To be able to do that, Nx analyzes your monorepo to figure out the dependency graph or your libs and apps. Next, it looks at the files touched by the commits to figure out what apps and libs they belong to. Finally, it uses all this information to generate the list of apps that can be affected by the commits.
+
+Instead of passing the two SHAs, you can also pass the list of files, like this:
+
+```bash
+npm run affected:apps -- --files="libs/mylib/index.ts,libs/mylib2/index.ts"
+npm run affected:builds ----files="libs/mylib/index.ts,libs/mylib2/index.ts"
+npm run affected:e2e ----files="libs/mylib/index.ts,libs/mylib2/index.ts"
+npm run format:write -- --files="libs/mylib/index.ts,libs/mylib2/index.ts"
+npm run format:check -- --files="libs/mylib/index.ts,libs/mylib2/index.ts"
+```
+
+
 
 ## Further help
 

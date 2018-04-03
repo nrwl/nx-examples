@@ -7,8 +7,16 @@ import { MatButtonModule, MatCheckboxModule, MatToolbarModule, MatTabsModule } f
 import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, MatButtonModule, MatCheckboxModule, MatToolbarModule,MatTabsModule, NoopAnimationsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatToolbarModule,
+    MatTabsModule,
+    NoopAnimationsModule
+  ],
   declarations: [HeaderComponent],
-  exports: [HeaderComponent, MatButtonModule, MatCheckboxModule, MatToolbarModule,MatTabsModule, NoopAnimationsModule],
+  exports: [HeaderComponent, MatButtonModule, MatCheckboxModule, MatToolbarModule, MatTabsModule, NoopAnimationsModule]
 })
 export class SharedComponentsModule {}
