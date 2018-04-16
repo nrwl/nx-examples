@@ -220,7 +220,7 @@ Generate a `User` feature set and register it within an `Angular Module`.
 
 ```sh
 ng generate ngrx User -m apps/myapp/src/app/app.module.ts
-ng g ngrx Producrts -m libs/mylib/src/mylib.module.ts
+ng g ngrx Products -m libs/mylib/src/mylib.module.ts
 ```
 
 
