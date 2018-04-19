@@ -414,6 +414,14 @@ Run `ng generate component component-name --app=myapp` to generate a new compone
 
 Run `ng build --app=myapp` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
+To build only the changed files since the last build run:
+
+```bash
+npm run affected: builds -- SHA1 SHA2
+//OR
+npm run affected:builds ----files="libs/mylib/index.ts,libs/mylib2/index.ts"
+```
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
