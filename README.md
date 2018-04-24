@@ -30,7 +30,7 @@ or
 ```
 yarn global add @nrwl/schematics
 ```
-This makes the create-nx-workspace binary available at the terminal. So from anywhere on your local machine you can run the following to create a new Nx workspace:
+This makes the create-nx-workspace binary available at the terminal. So from anywhere on your local machine, you can run the following to create a new Nx workspace:
 
 ```
 create-nx-workspace myworkspace
@@ -40,7 +40,7 @@ Libs and apps folders created and node modules installed.
 
 ### Creating an Application: 
 
-[Create App](https://github.com/nrwl/nx-examples/tree/app): creates the first empty application named school with routing option.
+[Create App](https://github.com/nrwl/nx-examples/tree/app): creates the first empty application named school with a routing option.
 
 ```
 ng generate app school --routing
@@ -58,8 +58,8 @@ Nx has a schematic named lib that can be used to add a new Angular module lib to
 ng generate lib ar
 ```
 
-This library currently exist as an empty module and not added to be used in any other module. 
-Library name is registered in .angular-cli.json file. If you need to delete it for any reason, remember to remove it from the .angular-cli.json apps list as well.
+This library currently exists as an empty module and not added to be used in any other module. 
+The library name is registered in .angular-cli.json file. If you need to delete it for any reason, remember to remove it from the .angular-cli.json apps list as well.
 
 
 [Create Lib with Routing](https://github.com/nrwl/nx-examples/tree/ui-lib): generates a library with routing and adds the routes to the app module.
@@ -82,7 +82,7 @@ And we can create an Angular module lib with routing that we want to have lazy l
 ```
 ng generate lib slides --routing --lazy --parentModule=apps/school/src/app/app.module.ts
 ```
-We just created a new library with module and added as a route to main school application. 
+We just created a new library with a module and added it as a route to the main school application. 
 ```
  RouterModule.forRoot(
       [
@@ -95,7 +95,7 @@ We just created a new library with module and added as a route to main school ap
 
 A large workspace contains a lot of apps and libs. Because it is so easy to share code, create new libs and depend on libs, the dependencies between the apps and libs can quickly get out of hand.
 
-We need a way to impose constraints on the dependency graph. This PR add this capability.
+We need a way to impose constraints on the dependency graph.
 
 When creating an app or a lib, you can tag them:
 
@@ -220,7 +220,7 @@ Generate a `User` feature set and register it within an `Angular Module`.
 
 ```sh
 ng generate ngrx User -m apps/myapp/src/app/app.module.ts
-ng g ngrx Producrts -m libs/mylib/src/mylib.module.ts
+ng g ngrx Products -m libs/mylib/src/mylib.module.ts
 ```
 
 
@@ -234,7 +234,7 @@ ng g ngrx User -m apps/myapp/src/app/app.module.ts -directory user
 
 The files generated are shown below and include placeholders for the *feature* name specified.
 
-> The &lt;Feature&gt; notation used be below indicates a placeholder for the actual *feature* name.
+> The &lt;Feature&gt; notation used below indicates a placeholder for the actual *feature* name.
 
 *  [&lt;feature&gt;.actions.ts](#featureactionsts)
 *  [&lt;feature&gt;.reducer.ts](#featurereducerts)
@@ -396,7 +396,7 @@ yarn update
 
 Nx is an open source toolkit for enterprise Angular applications.
 
-Nx is designed to help you create and build enterprise grade Angular applications. It provides an opinionated approach to application project structure and patterns.
+Nx is designed to help you create and build enterprise-grade Angular applications. It provides an opinionated approach to application project structure and patterns.
 
 ## Quick Start & Documentation
 
