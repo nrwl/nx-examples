@@ -417,9 +417,9 @@ Run `ng build --app=myapp` to build the project. The build artifacts will be sto
 To build only the changed files since the last build run:
 
 ```bash
-npm run affected: builds -- SHA1 SHA2
+npm run affected:build -- SHA1 SHA2
 //OR
-npm run affected:builds ----files="libs/mylib/index.ts,libs/mylib2/index.ts"
+npm run affected:build -- --files="libs/mylib/index.ts,libs/mylib2/index.ts"
 ```
 
 ## Running unit tests
