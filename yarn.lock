@@ -20,12 +20,28 @@
     rxjs "^5.5.6"
     source-map "^0.5.6"
 
+"@angular-devkit/core@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-0.6.0.tgz#d1a7275ff0f93de5cf007c4a549d1ebd00776fd0"
+  dependencies:
+    ajv "~6.4.0"
+    chokidar "^2.0.3"
+    rxjs "^6.0.0"
+    source-map "^0.5.6"
+
 "@angular-devkit/schematics@0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-0.3.2.tgz#09a2268fad61f4f956f42db87913b8748c512a78"
   dependencies:
     "@ngtools/json-schema" "^1.1.0"
     rxjs "^5.5.6"
+
+"@angular-devkit/schematics@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-0.6.0.tgz#0117dc7d5905b053df4f2918e2e073efd1091f5c"
+  dependencies:
+    "@angular-devkit/core" "0.6.0"
+    rxjs "^6.0.0"
 
 "@angular/animations@^5.2.9":
   version "5.2.9"
@@ -173,9 +189,9 @@
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-5.0.1.tgz#db872327bb958a2ebf296734c97de68672ec628a"
 
-"@ngrx/schematics@5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/schematics/-/schematics-5.2.0.tgz#ab7180d79f0ec68bd4ac3ef4ec83b9348d18d26c"
+"@ngrx/schematics@6.0.0-beta.0":
+  version "6.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/schematics/-/schematics-6.0.0-beta.0.tgz#71b9faf114bd924a0532dae13811ef738dc3c30f"
 
 "@ngrx/store-devtools@5.1.0":
   version "5.1.0"
@@ -206,18 +222,16 @@
     tree-kill "^1.0.0"
     webpack-sources "^1.1.0"
 
-"@nrwl/nx@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@nrwl/nx/-/nx-1.0.0.tgz#5f1365e68c0b2c1414c401b5e70fe83e62a8d331"
-  dependencies:
-    jasmine-marbles "0.2.0"
+"@nrwl/nx@^2.0.0-alpha.2":
+  version "2.0.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@nrwl/nx/-/nx-2.0.0-alpha.2.tgz#fd890d995f0e9f977915f51ea22db41354b5d99c"
 
-"@nrwl/schematics@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@nrwl/schematics/-/schematics-1.0.0.tgz#9026f17f31e0cd1d1a6ea450f22de65a95d57c8d"
+"@nrwl/schematics@^2.0.0-alpha.2":
+  version "2.0.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@nrwl/schematics/-/schematics-2.0.0-alpha.2.tgz#bb8ebd62dfd14bf11471b380d331d33f79a63e3c"
   dependencies:
-    "@ngrx/schematics" "5.2.0"
-    "@schematics/angular" "0.4.6"
+    "@ngrx/schematics" "6.0.0-beta.0"
+    "@schematics/angular" "0.6.0"
     "@types/yargs" "^11.0.0"
     app-root-path "^2.0.1"
     graphviz "0.0.8"
@@ -235,11 +249,13 @@
   dependencies:
     typescript "~2.6.2"
 
-"@schematics/angular@0.4.6":
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-0.4.6.tgz#a0dc2768b623fab1bf074d5193cce1a2686d719d"
+"@schematics/angular@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-0.6.0.tgz#d7589c50f80ef089f7fba526ed9becefb187b6a2"
   dependencies:
-    typescript "~2.6.2"
+    "@angular-devkit/core" "0.6.0"
+    "@angular-devkit/schematics" "0.6.0"
+    typescript ">=2.6.2 <2.8"
 
 "@schematics/package-update@0.3.2":
   version "0.3.2"
@@ -379,7 +395,7 @@ ajv@^5.0.0, ajv@^5.1.0, ajv@~5.5.1:
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.3.0"
 
-ajv@^6.1.0, ajv@^6.1.1:
+ajv@^6.1.0, ajv@^6.1.1, ajv@~6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.4.0.tgz#d3aff78e9277549771daf0164cff48482b754fc6"
   dependencies:
@@ -1236,7 +1252,7 @@ chokidar@^1.4.1, chokidar@^1.4.2, chokidar@^1.7.0:
   optionalDependencies:
     fsevents "^1.0.0"
 
-chokidar@^2.0.0, chokidar@^2.0.2:
+chokidar@^2.0.0, chokidar@^2.0.2, chokidar@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-2.0.3.tgz#dcbd4f6cbb2a55b4799ba8a840ac527e5f4b1176"
   dependencies:
@@ -3772,12 +3788,6 @@ jasmine-core@~2.99.0:
   version "2.99.1"
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-2.99.1.tgz#e6400df1e6b56e130b61c4bcd093daa7f6e8ca15"
 
-jasmine-marbles@0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/jasmine-marbles/-/jasmine-marbles-0.2.0.tgz#b893d8508b75790b634876d3a1bea1345d65c156"
-  dependencies:
-    lodash "^4.5.0"
-
 jasmine-spec-reporter@~4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/jasmine-spec-reporter/-/jasmine-spec-reporter-4.2.1.tgz#1d632aec0341670ad324f92ba84b4b32b35e9e22"
@@ -5876,6 +5886,12 @@ rxjs@^5.5.6:
   dependencies:
     symbol-observable "1.0.1"
 
+rxjs@^6.0.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.1.0.tgz#833447de4e4f6427b9cec3e5eb9f56415cd28315"
+  dependencies:
+    tslib "^1.9.0"
+
 safe-buffer@5.1.1, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
@@ -6830,7 +6846,7 @@ tsickle@^0.27.2:
     source-map "^0.6.0"
     source-map-support "^0.5.0"
 
-tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1:
+tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.0.tgz#e37a86fda8cbbaf23a057f473c9f4dc64e5fc2e8"
 
@@ -6903,6 +6919,10 @@ typedarray@^0.0.6, typedarray@~0.0.5:
 typescript@2.6.2, typescript@~2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.6.2.tgz#3c5b6fd7f6de0914269027f03c0946758f7673a4"
+
+"typescript@>=2.6.2 <2.8":
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.7.2.tgz#2d615a1ef4aee4f574425cdff7026edf81919836"
 
 uglify-es@^3.3.4:
   version "3.3.9"
