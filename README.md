@@ -168,7 +168,7 @@ If we change the configuration to the following:
   * implib can depend on both utilslib and apilib
   * untagged lib can depend on anything
   
-###Creating Components:
+### Creating Components:
 
 To generate a component/directive/service/module... in a specific app or library you can use --app:
 
