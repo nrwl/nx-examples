@@ -8,6 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * [Creating an Application](#creating-an-application)
 * [Creating a Library](#creating-a-library)
 * [Creating Libraries with Tags](#creating-libraries-with-tags)
+* [Creating components in a library or app](#creating-components)
 * [Ngrx Store Generation](#ngrx-store-generation)
 * [Updating Nx](#updating-nx)
 * [Development server](#development-server)
@@ -166,6 +167,28 @@ If we change the configuration to the following:
   * apilib can depend on utilslib
   * implib can depend on both utilslib and apilib
   * untagged lib can depend on anything
+  
+###Creating Components:
+
+To generate a component/directive/service/module... in a specific app or library you can use --app:
+
+```sh
+ng generate component toolbar --app=shared-ui
+```
+
+To generate a new module in shared-ui library and add components to the module:
+
+```sh
+ng generate lib shared-ui
+ng generate module toolbar --app=shared-ui
+ng generate component toolbar/profile --app=shared-ui
+```
+
+After running these commands, you will have a new library called shared-ui, a toolbar folder with toolbar.module.ts file.
+Profile component folder will be created under shared-ui/src/toolbar/profile directory and included in toolbar.module declarations.
+
+Note that if you want to use profile directive in an app, you need to also add ProfileComponent to exports list on toolbar.module.ts
+
 
 ### Ngrx Store Generation: 
 
