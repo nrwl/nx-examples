@@ -5,6 +5,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Table of Contents
 
 * [Install Nx](#install-nx)
+* [Creating an nx workspace](#creating-an-nx-workspace)
+* [Angular-cli to nx workspace](#angular-cli-to-nx-workspace)
 * [Creating an Application](#creating-an-application)
 * [Creating a Library](#creating-a-library)
 * [Creating Libraries with Tags](#creating-libraries-with-tags)
@@ -31,13 +33,24 @@ or
 ```
 yarn global add @nrwl/schematics
 ```
-This makes the create-nx-workspace binary available at the terminal. So from anywhere on your local machine, you can run the following to create a new Nx workspace:
+This makes the create-nx-workspace binary available at the terminal. 
+
+### Creating an nx workspace:
+
+After having installed @nrwl/schematics globally, from anywhere on your local machine, you can run the following to create a new Nx workspace:
 
 ```
-create-nx-workspace myworkspace
+ng new myworkspacename --@collection=@nrwl/schematics
 ```
 
 Libs and apps folders created and node modules installed. 
+
+### Angular-cli to nx workspace:
+
+You can also add Nx capabilities to an existing CLI project by running:
+```sh
+ng add @nrwl/schematics
+```
 
 ### Creating an Application: 
 
@@ -48,6 +61,7 @@ ng generate app school --routing
 ```
 
 This will configure the root NgModule to wire up routing, as well as add a <router-outlet> to the AppComponent template to help get us started.
+
 
 ### Creating a Library: 
 
