@@ -40,7 +40,7 @@ This makes the create-nx-workspace binary available at the terminal.
 After having installed @nrwl/schematics globally, from anywhere on your local machine, you can run the following to create a new Nx workspace:
 
 ```
-ng new myworkspacename --@collection=@nrwl/schematics
+create-nx-workspace myworkspacename
 ```
 
 Libs and apps folders created and node modules installed. 
