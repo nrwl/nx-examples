@@ -81,8 +81,14 @@ The library name is registered in .angular-cli.json file. If you need to delete 
 
 We can create an Angular module lib with routing:
 
-```
+```sh
 ng generate lib school-ui --routing
+```
+
+Create library groupings by defining a directory:
+
+```sh
+ng generate lib ui --directory=school
 ```
 
 We can create an Angular module lib with routing and have it added as a child to routing in one of our apps:
@@ -90,7 +96,7 @@ We can create an Angular module lib with routing and have it added as a child to
 ng generate lib school-ui --routing --parentModule=apps/school/src/app/app.module.ts
 ```
 
-[Create Lib lazy loaded]((https://github.com/nrwl/nx-examples/tree/lib-lazy-module)
+[Create Lib lazy loaded](https://github.com/nrwl/nx-examples/tree/lib-lazy-module)
 
 And we can create an Angular module lib with routing that we want to have lazy loaded:
 
