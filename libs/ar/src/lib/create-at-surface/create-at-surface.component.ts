@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild, Input, NgZone } from '@angular/core';
-import { BoxGeometry, Color, Mesh, MeshBasicMaterial, Scene, VertexColors, WebGLRenderer } from 'three';
-import { ARUtils, ARPerspectiveCamera, ARView, ARDebug } from 'three.ar.js';
-import { VRControls } from '@nx-examples/ar/src/VRControls';
-import { ArService } from '@nx-examples/ar/src/ar.service';
+import { Color, Scene, WebGLRenderer } from 'three';
+import { ARUtils, ARPerspectiveCamera, ARView } from 'three.ar.js';
+import { VRControls } from '@nx-examples/ar/src/lib/VRControls';
+import { ArService } from '@nx-examples/ar/src/lib/ar.service';
 
 @Component({
   selector: 'app-create-at-surface',
@@ -162,7 +162,7 @@ export class CreateAtSurfaceComponent implements OnInit {
     }
   }
 
-  onWindowResize(e) {
+  onWindowResize() {
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(window.innerWidth, window.innerHeight);

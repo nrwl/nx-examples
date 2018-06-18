@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BoxGeometry, Color, Mesh, MeshBasicMaterial, Scene, VertexColors, WebGLRenderer } from 'three';
-import { ARUtils, ARPerspectiveCamera, ARView, ARDebug } from 'three.ar.js';
-import { VRControls } from '@nx-examples/ar/src/VRControls';
+import { BoxGeometry, Color, Mesh, MeshBasicMaterial, Scene, VertexColors } from 'three';
+import { ARUtils, ARDebug } from 'three.ar.js';
 
 const colors = [
   new Color(0xffffff),
@@ -31,7 +30,7 @@ export class ArService {
 
   constructor() {}
 
-  initAR(options, cb) {
+  initAR(options) {
     ARUtils.getARDisplay().then(this.arDisplayCallback.bind(this));
     if (options.debug) {
       this.arDebug = new ARDebug(this.vrDisplay);
@@ -131,13 +130,13 @@ export class ArService {
     this.vrDisplay.requestAnimationFrame(this.update.bind(this));
   }
 
-  onWindowResize(e) {
+  onWindowResize() {
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
   }
 
-  createCube(options) {
+  createCube() {
     let boxGeometry = new BoxGeometry(this.boxSize, this.boxSize, this.boxSize);
     var faceIndices = ['a', 'b', 'c'];
     for (var i = 0; i < boxGeometry.faces.length; i++) {
