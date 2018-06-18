@@ -1,11 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { StoreModule } from '@ngrx/store';
-import { Actions } from '@ngrx/effects';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { DataPersistence } from '@nrwl/nx';
 import { readAll, hot } from '@nrwl/nx/testing';
 import { AppEffects } from './app.effects';
-import { of } from 'rxjs/observable/of';
 
 describe('AppEffects', () => {
   let actions;
