@@ -35,12 +35,12 @@ yarn global add @nrwl/schematics
 ```
 This makes the create-nx-workspace binary available at the terminal. 
 
-### Creating an nx workspace:
-
-After having installed @nrwl/schematics globally, from anywhere on your local machine, you can run the following to create a new Nx workspace:
+[Install](https://github.com/nrwl/nx-examples/tree/workspace): project workspace after the dependencies are installed and the generation script is run. 
 
 ```
-create-nx-workspace myworkspacename
+npm i -g @nrwl/schematics
+npm i -g @angular/cli
+create-nx-workspace my-project-name --directory=my-project-directory --npm-scope=@my-organisation-name 
 ```
 
 Libs and apps folders created and node modules installed. 
