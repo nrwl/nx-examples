@@ -190,18 +190,18 @@ If we change the configuration to the following:
   
 ### Creating Components:
 
-To generate a component/directive/service/module... in a specific app or library you can use --app:
+To generate a component/directive/service/module... in a specific app or library you can use --project:
 
 ```sh
-ng generate component toolbar --app=shared-ui
+ng generate component toolbar --project=shared-ui
 ```
 
 To generate a new module in shared-ui library and add components to the module:
 
 ```sh
 ng generate lib shared-ui
-ng generate module toolbar --app=shared-ui
-ng generate component toolbar/profile --app=shared-ui
+ng generate module toolbar --project=shared-ui
+ng generate component toolbar/profile --project=shared-ui
 ```
 
 After running these commands, you will have a new library called shared-ui, a toolbar folder with toolbar.module.ts file.
@@ -447,15 +447,15 @@ Nx is designed to help you create and build enterprise-grade Angular application
 
 ### Development server: 
 
-Run `ng serve --app=myapp` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve --project=myapp` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
-Run `ng generate component component-name --app=myapp` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component component-name --project=myapp` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
-Run `ng build --app=myapp` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `ng build --project=myapp` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
 To build only the changed files since the last build run:
 
