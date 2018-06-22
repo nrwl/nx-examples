@@ -502,8 +502,8 @@ Instead of passing the two SHAs, you can also pass the list of files, like this:
 
 ```bash
 npm run affected:apps -- --files="libs/mylib/index.ts,libs/mylib2/index.ts"
-npm run affected:builds ----files="libs/mylib/index.ts,libs/mylib2/index.ts"
-npm run affected:e2e ----files="libs/mylib/index.ts,libs/mylib2/index.ts"
+npm run affected:builds -- --files="libs/mylib/index.ts,libs/mylib2/index.ts"
+npm run affected:e2e -- --files="libs/mylib/index.ts,libs/mylib2/index.ts"
 npm run format:write -- --files="libs/mylib/index.ts,libs/mylib2/index.ts"
 npm run format:check -- --files="libs/mylib/index.ts,libs/mylib2/index.ts"
 ```
