@@ -12,7 +12,7 @@ const SCALE = 0.1;
 @Component({
   selector: 'app-model-loader',
   templateUrl: './model-loader.component.html',
-  styleUrls: ['./model-loader.component.css']
+  styleUrls: ['./model-loader.component.scss']
 })
 export class ModelLoaderComponent implements OnInit {
   @ViewChild('canvas') private canvasRef: ElementRef;

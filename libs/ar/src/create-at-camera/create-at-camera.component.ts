@@ -22,7 +22,7 @@ import { VRControls } from '../VRControls';
 @Component({
   selector: 'app-create-at-camera',
   templateUrl: './create-at-camera.component.html',
-  styleUrls: ['./create-at-camera.component.css']
+  styleUrls: ['./create-at-camera.component.scss']
 })
 export class CreateAtCameraComponent implements OnInit {
   colors = [
@@ -76,7 +76,6 @@ export class CreateAtCameraComponent implements OnInit {
   arDisplayCallback(display) {
     if (display) {
       this.vrFrameData = new VRFrameData();
-      console.log('vrFrameData initialized ', this.vrFrameData);
       this.vrDisplay = display;
       this.setUp();
     } else {
@@ -87,8 +86,6 @@ export class CreateAtCameraComponent implements OnInit {
   onClick(e) {
     // // Fetch the pose data from the current frame
     var pose = this.vrFrameData && this.vrFrameData.pose && this.vrFrameData.pose;
-    console.log('touchstart pose', pose);
-    // console.log('touchend debug pose', this.arDebug.vrDisplay.getFrameData());
 
     // // Convert the pose orientation and position into
     // // Quaternion and Vector3 respectively

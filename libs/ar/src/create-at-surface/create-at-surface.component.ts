@@ -7,7 +7,7 @@ import { ArService } from '@nx-examples/ar/src/ar.service';
 @Component({
   selector: 'app-create-at-surface',
   templateUrl: './create-at-surface.component.html',
-  styleUrls: ['./create-at-surface.component.css']
+  styleUrls: ['./create-at-surface.component.scss']
 })
 export class CreateAtSurfaceComponent implements OnInit {
   @Input() boxSize = 0.2;

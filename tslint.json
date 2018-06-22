@@ -15,8 +15,7 @@
     "eofline": true,
     "forin": true,
     "import-blacklist": [
-      true,
-      "rxjs"
+      true
     ],
     "import-spacing": true,
     "indent": [
@@ -112,10 +111,15 @@
     "nx-enforce-module-boundaries": [
       true,
       {
-        "lazyLoad": [
-          "slides"
-        ],
-        "allow": []
+        "allow": [],
+        "depConstraints": [
+          {
+            "sourceTag": "*",
+            "onlyDependOnLibsWithTags": [
+              "*"
+            ]
+          }
+        ]
       }
     ]
   }
