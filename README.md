@@ -40,7 +40,8 @@ This makes the create-nx-workspace binary available at the terminal.
 ```
 npm i -g @nrwl/schematics
 npm i -g @angular/cli
-create-nx-workspace my-project-name --directory=my-project-directory --npm-scope=@my-organisation-name 
+npm i -g @ngrx/schematics
+ng new workspace --collection @nrwl/schematics
 ```
 
 Libs and apps folders created and node modules installed. 
@@ -226,12 +227,8 @@ You use this schematic to build out a new ngrx feature area that provides a new 
 
 ```sh
 ng generate ngrx FeatureName [options]
-```
 
-##### OR
-
-```sh
-ng generate f FeatureName [options]
+ng generate ngrx app --module=apps/school/src/app/app.module.ts
 ```
 
 ### Options
@@ -513,3 +510,11 @@ npm run format:check -- --files="libs/mylib/index.ts,libs/mylib2/index.ts"
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+Nrwl schematics help 
+
+```bash
+npm run help
+npm run help ngrx
+...
+```
