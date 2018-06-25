@@ -18,6 +18,27 @@
     "paths": {
       "@nx-examples/*": [
         "libs/*"
+      ],
+      "@nx-examples/ar": [
+        "libs/ar/src/index.ts"
+      ],
+      "@nx-examples/login": [
+        "libs/login/src/index.ts"
+      ],
+      "@nx-examples/model": [
+        "libs/model/src/index.ts"
+      ],
+      "@nx-examples/nx-d3": [
+        "libs/nx-d3/src/index.ts"
+      ],
+      "@nx-examples/school-ui": [
+        "libs/school-ui/src/index.ts"
+      ],
+      "@nx-examples/shared-components": [
+        "libs/shared-components/src/index.ts"
+      ],
+      "@nx-examples/slides": [
+        "libs/slides/src/index.ts"
       ]
     }
   },

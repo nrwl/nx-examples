@@ -18,7 +18,14 @@ const routes = [
 ];
 
 @NgModule({
-  imports: [BrowserModule, RouterModule.forRoot(routes), NxD3Module, NxModule.forRoot(), SharedComponentsModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    NxD3Module,
+    NxModule.forRoot(),
+    SharedComponentsModule,
+    BrowserAnimationsModule
+  ],
   declarations: [AppComponent, D3ExampleComponent],
   bootstrap: [AppComponent]
 })
