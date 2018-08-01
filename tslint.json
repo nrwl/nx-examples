@@ -12,10 +12,14 @@
       "check-space"
     ],
     "curly": true,
+    "deprecation": {
+      "severity": "warn"
+    },
     "eofline": true,
     "forin": true,
     "import-blacklist": [
-      true
+      true,
+      "rxjs/Rx"
     ],
     "import-spacing": true,
     "indent": [
@@ -60,18 +64,30 @@
       true,
       "ignore-params"
     ],
-    "no-misused-new": false,
+    "no-misused-new": true,
     "no-non-null-assertion": true,
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-string-throw": true,
     "no-switch-case-fall-through": true,
+    "no-trailing-whitespace": true,
     "no-unnecessary-initializer": true,
     "no-unused-expression": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-else",
+      "check-whitespace"
+    ],
     "prefer-const": true,
+    "quotemark": [
+      true,
+      "single"
+    ],
     "radix": true,
     "semicolon": [
       true,
@@ -81,21 +97,27 @@
       true,
       "allow-null-check"
     ],
-    "typeof-compare": true,
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
+    ],
     "unified-signatures": true,
     "variable-name": false,
-    "directive-selector": [
+    "whitespace": [
       true,
-      "attribute",
-      "app",
-      "camelCase"
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
     ],
-    "component-selector": [
-      true,
-      "element",
-      "app",
-      "kebab-case"
-    ],
+    "no-output-on-prefix": true,
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
@@ -104,23 +126,20 @@
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
-    "directive-class-suffix": true,
-    "no-access-missing-member": true,
-    "templates-use-public": true,
-    "invoke-injectable": true,
-    "nx-enforce-module-boundaries": [
-      true,
-      {
-        "allow": [],
-        "depConstraints": [
-          {
-            "sourceTag": "*",
-            "onlyDependOnLibsWithTags": [
-              "*"
-            ]
-          }
-        ]
-      }
-    ]
-  }
+    "directive-class-suffix": true
+  },
+  "nx-enforce-module-boundaries": [
+    true,
+    {
+      "allow": [],
+      "depConstraints": [
+        {
+          "sourceTag": "*",
+          "onlyDependOnLibsWithTags": [
+            "*"
+          ]
+        }
+      ]
+    }
+  ]
 }
