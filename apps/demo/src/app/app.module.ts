@@ -33,16 +33,16 @@ const routes = [
     NxModule.forRoot(),
     SharedComponentsModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot(
-  { app: appReducer },
-  {
-    initialState : { app : appInitialState },
-    metaReducers : !environment.production ? [storeFreeze] : []
-  }
-),
-    EffectsModule.forRoot([AppEffects]),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreRouterConnectingModule
+//     StoreModule.forRoot(
+//   { app: appReducer },
+//   {
+//     initialState : { app : appInitialState },
+//     metaReducers : !environment.production ? [storeFreeze] : []
+//   }
+// ),
+//     EffectsModule.forRoot([AppEffects]),
+//     !environment.production ? StoreDevtoolsModule.instrument() : [],
+//     StoreRouterConnectingModule
   ],
   declarations: [AppComponent, D3ExampleComponent],
   bootstrap: [AppComponent],
