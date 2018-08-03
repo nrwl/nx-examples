@@ -19,6 +19,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * [Running end-to-end tests](#running-end-to-end-tests)
 * [Affected Apps](#affected-apps)
 * [Further Help](#further-help)
+* [FAQ](#faq)
 
 ### Install Nx:
 
@@ -518,3 +519,11 @@ npm run help
 npm run help ngrx
 ...
 ```
+
+## FAQ
+
+*  Where do I find list of libraries (and their versions) that are associated with each Nx release.
+
+You can find the package versions that your current nx depends on in node_modules/@nrwl/schematics/src/lib-versions.d.ts file on your project. You can also check [update/6.x branch](https://github.com/nrwl/nx-examples/tree/update/6.1.1) on this repo to see the updated packages in the nx version you are looking for.
+
+
