@@ -214,10 +214,6 @@
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-6.0.1.tgz#1c5c77b138eaed030b58f4203bf921e88cc51112"
 
-"@ngrx/schematics@5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/schematics/-/schematics-5.2.0.tgz#ab7180d79f0ec68bd4ac3ef4ec83b9348d18d26c"
-
 "@ngrx/schematics@6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@ngrx/schematics/-/schematics-6.0.1.tgz#f6ff797faf1f46d5cdb980719d97b9991cca515f"
@@ -238,15 +234,14 @@
     tree-kill "^1.0.0"
     webpack-sources "^1.1.0"
 
-"@nrwl/nx@6.1.0":
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/@nrwl/nx/-/nx-6.1.0.tgz#a2bc3c94f6cc7529932702b4aa3e433b60377fa6"
+"@nrwl/nx@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@nrwl/nx/-/nx-6.2.0.tgz#7737846a5d03bc25e0d9cd418e9bde11697c85ad"
 
-"@nrwl/schematics@^6.1.1":
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/@nrwl/schematics/-/schematics-6.1.1.tgz#4dfc1140104a3b4d2c72be18624e1b80daf89884"
+"@nrwl/schematics@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@nrwl/schematics/-/schematics-6.2.0.tgz#bb84ebda6846cf2e8b431086bf232fc785d8ccdb"
   dependencies:
-    "@ngrx/schematics" "5.2.0"
     "@types/yargs" "^11.0.0"
     app-root-path "^2.0.1"
     cosmiconfig "4.0.0"
@@ -6055,9 +6050,9 @@ rxjs-compat@6.2.1:
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/rxjs-compat/-/rxjs-compat-6.2.1.tgz#f5a5e4bd700db414e82aa7cb34e5c9222c6d3756"
 
-rxjs@6.2.1:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.2.1.tgz#246cebec189a6cbc143a3ef9f62d6f4c91813ca1"
+rxjs@6.2.2:
+  version "6.2.2"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.2.2.tgz#eb75fa3c186ff5289907d06483a77884586e1cf9"
   dependencies:
     tslib "^1.9.0"
 
