@@ -8,6 +8,8 @@ import { SharedComponentsModule } from '@nx-examples/shared-components';
 import { NxD3Module } from '@nx-examples/nx-d3';
 import { D3ExampleComponent } from './d3-example/d3-example.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const routes = [
   { path: '', pathMatch: 'full', redirectTo: 'd3' },
@@ -24,7 +26,8 @@ const routes = [
     NxD3Module,
     NxModule.forRoot(),
     SharedComponentsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   declarations: [AppComponent, D3ExampleComponent],
   bootstrap: [AppComponent]
