@@ -526,4 +526,7 @@ npm run help ngrx
 
 You can find the package versions that your current nx depends on in node_modules/@nrwl/schematics/src/lib-versions.d.ts file on your project. You can also check [update/6.x branch](https://github.com/nrwl/nx-examples/tree/update/6.1.1) on this repo to see the updated packages in the nx version you are looking for.
 
+* Is there an example application that shows how to organize libraries and applications? 
+
+There are more than one way to organize your application in your organization. As an example you can take a look at [Angular-Console](https://github.com/nrwl/angular-console) repo. Angular Console has UI and Utils library that has common functionality and UI. Also there are feature libraries that holds the functionality of each feature, tab in the application. apps/angular-console is where all of the feature libraries come together to create the application. Seperating each feature into it's own library allows us to work on features independently, as well as flexibility to make changes quickly. 
 
