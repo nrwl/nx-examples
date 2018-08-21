@@ -62,7 +62,7 @@ ng add @nrwl/schematics
 ng generate app school --routing
 ```
 
-This will configure the root NgModule to wire up routing, as well as add a <router-outlet> to the AppComponent template to help get us started.
+This will configure the root NgModule to wire up routing, as well as add a \<router-outlet\> to the AppComponent template to help get us started.
 
 
 ### Creating a Library: 
@@ -76,7 +76,7 @@ ng generate lib ar
 ```
 
 This library currently exists as an empty module and not added to be used in any other module. 
-The library name is registered in .angular-cli.json file. If you need to delete it for any reason, remember to remove it from the .angular-cli.json apps list as well.
+The library name is registered in the angular.json file. If you need to delete it for any reason, remember to remove it from the angular.json apps list as well.
 
 
 [Create Lib with Routing](https://github.com/nrwl/nx-examples/tree/ui-lib): generates a library with routing and adds the routes to the app module.
@@ -129,7 +129,7 @@ ng g lib impllib --tags=impl
 ng g lib untagged
 ```
 
-(you can also pass multiple tags ng g lib apilib --tags=one,two or modify .angular-cli.json)
+(you can also pass multiple tags ng g lib apilib --tags=one,two or modify angular.json)
 
 You can then define a constraint in tslint.json, like this:
 
@@ -281,7 +281,6 @@ The files generated are shown below and include placeholders for the *feature* n
 *  [&lt;feature&gt;.reducer.ts](#featurereducerts)
 *  [&lt;feature&gt;.effects.ts](#featureeffectsts)
 *  [&lt;feature&gt;.selectors.ts](#featureselectorsts)
-*  [&lt;feature&gt;.facade.ts](#featurefacadests)
 
 *  [../app.module.ts](#appmodulets)
   
@@ -522,11 +521,11 @@ npm run help ngrx
 
 ## FAQ
 
-*  Where do I find list of libraries (and their versions) that are associated with each Nx release.
+*  Where do I find list of the libraries (and their versions) that are associated with each Nx release?
 
-You can find the package versions that your current nx depends on in node_modules/@nrwl/schematics/src/lib-versions.d.ts file on your project. You can also check [update/6.x branch](https://github.com/nrwl/nx-examples/tree/update/6.1.1) on this repo to see the updated packages in the nx version you are looking for.
+You can find the package versions that your current Nx depends on in node_modules/@nrwl/schematics/src/lib-versions.d.ts file in your project. You can also check [update/6.x branch](https://github.com/nrwl/nx-examples/tree/update/6.1.1) on this repo to see the updated packages in the Nx version you are looking for.
 
 * Is there an example application that shows how to organize libraries and applications? 
 
-There are more than one way to organize your application in your organization. As an example you can take a look at [Angular-Console](https://github.com/nrwl/angular-console) repo. Angular Console has UI and Utils library that has common functionality and UI. Also there are feature libraries that holds the functionality of each feature, tab in the application. apps/angular-console is where all of the feature libraries come together to create the application. Seperating each feature into it's own library allows us to work on features independently, as well as flexibility to make changes quickly. 
+There is more than one way to organize your application in your organization. As an example you can take a look at the [Angular-Console](https://github.com/nrwl/angular-console) repo. Angular Console has UI and util libraries that have common functionality and UI. Also, there are feature libraries that holds the functionality of each feature, tab in the application. apps/angular-console is where all of the feature libraries come together to create the application. Separating each feature into its own library allows us to work on features independently, as well as flexibility to make changes quickly. 
 
