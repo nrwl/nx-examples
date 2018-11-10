@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NxD3Module } from '@nx-examples/nx-d3/src';
 
 import { D3ExampleComponent } from './d3-example.component';
 
@@ -9,6 +10,7 @@ describe('D3ExampleComponent', () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
+        imports: [NxD3Module],
         declarations: [D3ExampleComponent]
       }).compileComponents();
     })

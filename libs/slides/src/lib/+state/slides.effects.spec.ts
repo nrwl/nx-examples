@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { StoreModule } from '@ngrx/store';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { DataPersistence } from '@nrwl/nx';
-import { readAll, hot } from '@nrwl/nx/testing';
+import { hot, cold } from '@nrwl/nx/testing';
 import { SlidesEffects } from './slides.effects';
 
 describe('SlidesEffects', () => {
@@ -19,9 +19,10 @@ describe('SlidesEffects', () => {
   });
 
   describe('someEffect', () => {
-    it('should work', async () => {
-      actions = hot('-a-|', { a: { type: 'LOAD_DATA' } });
-      expect(await readAll(effects.loadData)).toEqual([{ type: 'DATA_LOADED', payload: {} }]);
+    it('should work', () => {
+      actions = hot('a', { a: { type: 'LOAD_DATA' } });
+      const expected = cold('a', { a: { type: 'DATA_LOADED', payload: {} }});
+      expect(effects.loadData).toBeObservable(expected);
     });
   });
 });

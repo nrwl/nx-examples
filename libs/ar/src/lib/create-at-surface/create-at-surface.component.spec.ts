@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateAtSurfaceComponent } from './create-at-surface.component';
+import { ArService } from '@nx-examples/ar/src/lib/ar.service';
 
 describe('CreateAtSurfaceComponent', () => {
   let component: CreateAtSurfaceComponent;
@@ -9,7 +10,8 @@ describe('CreateAtSurfaceComponent', () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [CreateAtSurfaceComponent]
+        declarations: [CreateAtSurfaceComponent],
+        providers: [ArService]
       }).compileComponents();
     })
   );
