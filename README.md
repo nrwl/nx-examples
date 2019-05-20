@@ -476,7 +476,7 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 ```bash
 npm run affected:apps -- SHA1 SHA2
-npm run affected: builds -- SHA1 SHA2
+npm run affected:builds -- SHA1 SHA2
 npm run affected:e2e -- SHA1 SHA2
 npm run format:write -- SHA1 SHA2 --libs-and-apps
 npm run format:check -- SHA1 SHA2 --libs-and-apps
@@ -486,7 +486,7 @@ OR
 
 ```bash
 yarn affected:apps -- SHA1 SHA2
-yarn affected: builds -- SHA1 SHA2
+yarn affected:builds -- SHA1 SHA2
 yarn affected:e2e -- SHA1 SHA2
 ```
 
