@@ -1,0 +1,41 @@
+{
+  "name": "nx-example",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "nx lint && ng lint",
+    "e2e": "ng e2e",
+    "affected:apps": "nx affected:apps",
+    "affected:libs": "nx affected:libs",
+    "affected:build": "nx affected:build",
+    "affected:e2e": "nx affected:e2e",
+    "affected:test": "nx affected:test",
+    "affected:lint": "nx affected:lint",
+    "affected:dep-graph": "nx affected:dep-graph",
+    "affected": "nx affected",
+    "format": "nx format:write",
+    "format:write": "nx format:write",
+    "format:check": "nx format:check",
+    "update": "ng update @nrwl/workspace",
+    "update:check": "ng update",
+    "workspace-schematic": "nx workspace-schematic",
+    "dep-graph": "nx dep-graph",
+    "help": "nx help"
+  },
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@nrwl/workspace": "8.2.0",
+    "@types/node": "~8.9.4",
+    "dotenv": "6.2.0",
+    "ts-node": "~7.0.0",
+    "tslint": "~5.11.0",
+    "typescript": "~3.4.5",
+    "prettier": "1.16.4",
+    "@angular/cli": "8.0.0"
+  }
+}
