@@ -15,7 +15,7 @@ set_env: &set_env
     echo 'export CIRCLE_PR_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}"' >> $BASH_ENV
     source $BASH_ENV
     echo "export CIRCLE_PR_BASE_SHA=`curl -s https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pulls/${CIRCLE_PR_NUMBER} | jq -r '.base.sha'`" >> $BASH_ENV
-    echo 'export AFFECTED_ARGS="--base ${CIRCLE_PR_BASE_SHA} --parallel"' >> $BASH_ENV
+    echo 'export AFFECTED_ARGS="--base ${CIRCLE_PR_BASE_SHA}"' >> $BASH_ENV
     source $BASH_ENV
     echo $AFFECTED_ARGS
 
@@ -63,7 +63,7 @@ jobs:
       - restore_cache:
           <<: *yarn_cache
       - run: ./node_modules/.bin/nx lint
-      - run: yarn affected:lint ${AFFECTED_ARGS}
+      - run: yarn affected:lint ${AFFECTED_ARGS} --parallel
   build:
     <<: *defaults
     steps:
@@ -72,7 +72,7 @@ jobs:
           <<: *set_env
       - restore_cache:
           <<: *yarn_cache
-      - run: yarn affected:build -- ${AFFECTED_ARGS} -- --configuration production
+      - run: yarn affected:build -- ${AFFECTED_ARGS} --parallel -- --configuration production
       - store_artifacts:
           path: dist
   test:
@@ -83,7 +83,7 @@ jobs:
           <<: *set_env
       - restore_cache:
           <<: *yarn_cache
-      - run: yarn affected:test -- ${AFFECTED_ARGS} -- --ci --code-coverage
+      - run: yarn affected:test -- ${AFFECTED_ARGS} --parallel -- --ci --code-coverage
   e2e:
     <<: *defaults
     steps:
