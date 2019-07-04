@@ -72,7 +72,7 @@ jobs:
           <<: *set_env
       - restore_cache:
           <<: *yarn_cache
-      - run: yarn affected:build -- ${AFFECTED_ARGS} -- --configuration production --maxWorkers 4
+      - run: yarn affected:build -- ${AFFECTED_ARGS} -- --configuration production
       - store_artifacts:
           path: dist
   test:
