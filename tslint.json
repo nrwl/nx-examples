@@ -58,6 +58,10 @@
           {
             "sourceTag": "scope:products",
             "onlyDependOnLibsWithTags": ["scope:products", "scope:shared"]
+          },
+          {
+            "sourceTag": "scope:cart",
+            "onlyDependOnLibsWithTags": ["scope:cart", "scope:shared"]
           }
         ]
       }
