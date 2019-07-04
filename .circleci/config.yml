@@ -1,0 +1,118 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:12-browsers
+
+set_env: &set_env
+  name: Setup Environment Variables
+  command: |
+    echo 'export CIRCLE_PR_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}"' >> $BASH_ENV
+    source $BASH_ENV
+    echo "export CIRCLE_PR_BASE_SHA=`curl -s https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pulls/${CIRCLE_PR_NUMBER} | jq -r '.base.sha'`" >> $BASH_ENV
+    echo 'export AFFECTED_ARGS="--base ${CIRCLE_PR_BASE_SHA} --parallel"' >> $BASH_ENV
+    source $BASH_ENV
+    echo $AFFECTED_ARGS
+
+yarn_cache: &yarn_cache
+  keys:
+    - node-deps-node12-{{ checksum "yarn.lock" }}
+    # fallback to using the latest cache if no exact match is found
+    - node-deps-node12-
+
+yarn_install: &yarn_install
+  name: Install Dependencies
+  command: yarn install --frozen-lockfile --non-interactive
+
+jobs:
+  install:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          <<: *set_env
+      - restore_cache:
+          <<: *yarn_cache
+      - run:
+          <<: *yarn_install
+      - save_cache:
+          key: node-deps-node12-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache
+            - node_modules
+  check-formatting:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          <<: *set_env
+      - restore_cache:
+          <<: *yarn_cache
+      - run: yarn format:check ${AFFECTED_ARGS}
+  lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          <<: *set_env
+      - restore_cache:
+          <<: *yarn_cache
+      - run: ./node_modules/.bin/nx lint
+      - run: yarn affected:lint ${AFFECTED_ARGS}
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          <<: *set_env
+      - restore_cache:
+          <<: *yarn_cache
+      - run: yarn affected:build -- ${AFFECTED_ARGS} -- --configuration production --maxWorkers 4
+      - store_artifacts:
+          path: dist
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          <<: *set_env
+      - restore_cache:
+          <<: *yarn_cache
+      - run: yarn affected:test -- ${AFFECTED_ARGS} -- --ci --code-coverage
+  e2e:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          <<: *set_env
+      - restore_cache:
+          <<: *yarn_cache
+      - run: yarn affected:e2e -- ${AFFECTED_ARGS} -- --configuration production --headless
+      - store_artifacts:
+          path: dist/cypress
+
+workflows:
+  version: 2
+  pr_check:
+    jobs:
+      - install
+      - check-formatting:
+          requires:
+            - install
+      - lint:
+          requires:
+            - install
+      - test:
+          requires:
+            - install
+      - build:
+          requires:
+            - install
+      - e2e:
+          requires:
+            - install
