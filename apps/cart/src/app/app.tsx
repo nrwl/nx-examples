@@ -1,14 +1,18 @@
 import React from 'react';
 
 import { Route } from 'react-router-dom';
+import { CartCartPage } from '@nx-example/cart/cart-page';
 
 export const App = () => {
   return (
-    <Route
-      path="/cart"
-      exact
-      render={() => <div>Welcome to cart!</div>}
-    />
+    <>
+      <div>Welcome to cart!</div>
+      <Route
+        path="/cart"
+        exact
+        component={CartCartPage}
+      />
+    </>
   );
 };
 
