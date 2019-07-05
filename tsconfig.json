@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
+    "noUnusedLocals": true,
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -22,6 +23,9 @@
       "@nx-example/shared/product/data": [
         "libs/shared/product/data/src/index.ts"
       ],
+      "@nx-example/shared/product/data/testing": [
+        "libs/shared/product/data/src/testing.ts"
+      ],
       "@nx-example/shared/product/ui": ["libs/shared/product/ui/src/index.ts"],
       "@nx-example/products/home-page": [
         "libs/products/home-page/src/index.ts"
@@ -30,7 +34,11 @@
       "@nx-example/shared/product/e2e-utils": [
         "libs/shared/product/e2e-utils/src/index.ts"
       ],
-      "@nx-example/shared/jsxify": ["libs/shared/jsxify/src/index.ts"]
+      "@nx-example/shared/jsxify": ["libs/shared/jsxify/src/index.ts"],
+      "@nx-example/shared/cart/state": ["libs/shared/cart/state/src/index.ts"],
+      "@nx-example/shared/product/state": [
+        "libs/shared/product/state/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

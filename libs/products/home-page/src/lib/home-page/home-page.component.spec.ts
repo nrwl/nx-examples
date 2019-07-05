@@ -1,7 +1,7 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomePageComponent } from './home-page.component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('HomePageComponent', () => {
   let component: HomePageComponent;
@@ -25,8 +25,6 @@ describe('HomePageComponent', () => {
   });
 
   it('should render products', () => {
-    expect(
-      fixture.nativeElement.querySelectorAll('nx-example-product').length
-    ).toEqual(2);
+    expect(fixture.nativeElement.querySelectorAll('li').length).toEqual(5);
   });
 });

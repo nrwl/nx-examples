@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+li {
+  width: 300px;
+  text-align: center;
+}
+
+figure {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}

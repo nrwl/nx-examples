@@ -1,1 +1,1 @@
-export * from './lib/product.element';
+export * from './lib/product-price/product-price.element';

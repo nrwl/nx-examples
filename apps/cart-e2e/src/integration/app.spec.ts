@@ -1,14 +1,21 @@
 import { getPage } from '../support/app.po';
-import { getProducts } from '@nx-example/shared/product/e2e-utils';
 
 describe('cart', () => {
-  beforeEach(() => cy.visit('/cart'));
+  before(() => cy.visit('/cart'));
 
   it('should display welcome message', () => {
     getPage().contains('Welcome to cart!');
   });
 
   it('should display products', () => {
-    getProducts().should('have.length', 2);
+    getPage()
+      .get('li figure')
+      .should('have.length', 5);
+  });
+
+  it('should have the total price', () => {
+    getPage()
+      .get('li:last-of-type nx-example-product-price')
+      .contains('$500.00');
   });
 });

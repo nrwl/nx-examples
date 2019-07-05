@@ -24,10 +24,21 @@
             "tsConfig": "apps/products/tsconfig.app.json",
             "assets": [
               "apps/products/src/_redirects",
-              "apps/products/src/favicon.ico",
-              "apps/products/src/assets"
+              {
+                "input": "libs/shared/assets/src/assets",
+                "glob": "**/*",
+                "output": "assets"
+              },
+              {
+                "input": "libs/shared/assets/src",
+                "glob": "favicon.ico",
+                "output": "."
+              }
             ],
-            "styles": ["apps/products/src/styles.scss"],
+            "styles": [
+              "apps/products/src/styles.scss",
+              "node_modules/normalize.css/normalize.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -136,12 +147,23 @@
             "polyfills": "apps/cart/src/polyfills.ts",
             "tsConfig": "apps/cart/tsconfig.app.json",
             "assets": [
-              "apps/cart/src/favicon.ico",
-              "apps/cart/src/assets",
-              "apps/cart/src/_redirects"
+              "apps/cart/src/_redirects",
+              {
+                "input": "libs/shared/assets/src/assets",
+                "glob": "**/*",
+                "output": "assets"
+              },
+              {
+                "input": "libs/shared/assets/src",
+                "glob": "favicon.ico",
+                "output": ""
+              }
             ],
             "maxWorkers": 8,
-            "styles": [],
+            "styles": [
+              "apps/cart/src/styles.scss",
+              "node_modules/normalize.css/normalize.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -372,6 +394,75 @@
           }
         }
       }
+    },
+    "shared-cart-state": {
+      "projectType": "library",
+      "root": "libs/shared/cart/state",
+      "sourceRoot": "libs/shared/cart/state/src",
+      "prefix": "nx-example",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/cart/state/tsconfig.lib.json",
+              "libs/shared/cart/state/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/cart/state/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/cart/state/jest.config.js",
+            "tsConfig": "libs/shared/cart/state/tsconfig.spec.json",
+            "setupFile": "libs/shared/cart/state/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "shared-product-state": {
+      "projectType": "library",
+      "root": "libs/shared/product/state",
+      "sourceRoot": "libs/shared/product/state/src",
+      "prefix": "nx-example",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/product/state/tsconfig.lib.json",
+              "libs/shared/product/state/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/product/state/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/product/state/jest.config.js",
+            "tsConfig": "libs/shared/product/state/tsconfig.spec.json",
+            "setupFile": "libs/shared/product/state/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "shared-assets": {
+      "root": "libs/shared/assets",
+      "sourceRoot": "libs/shared/assets/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {}
     }
   },
   "cli": {
