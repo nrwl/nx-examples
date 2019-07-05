@@ -16,11 +16,11 @@ describe('App', () => {
     expect(baseElement).toBeTruthy();
   });
 
-  it('should have a greeting as the title', () => {
+  it('should display a title', () => {
     expect(render(
       <MemoryRouter initialEntries={['/cart']}>
         <App />
       </MemoryRouter>
-    ).baseElement).toMatchSnapshot();
+    ).baseElement.textContent).toContain('Welcome to cart!');
   });
 });

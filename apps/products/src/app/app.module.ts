@@ -8,7 +8,19 @@ import { RouterModule } from '@angular/router';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabled' })
+    RouterModule.forRoot(
+      [
+        {
+          path: '',
+          pathMatch: 'full',
+          loadChildren: () =>
+            import('@nx-example/products/home-page').then(
+              module => module.ProductsHomePageModule
+            )
+        }
+      ],
+      { initialNavigation: 'enabled' }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,7 +9,7 @@
   },
   "projects": {
     "products-e2e": {
-      "tags": []
+      "tags": ["scope:products", "type:e2e"]
     },
     "products": {
       "tags": ["type:app", "scope:products"]
@@ -18,7 +18,28 @@
       "tags": ["type:app", "scope:cart"]
     },
     "cart-e2e": {
-      "tags": []
+      "tags": ["scope:cart", "type:e2e"]
+    },
+    "shared-product-types": {
+      "tags": ["type:types", "scope:shared"]
+    },
+    "shared-product-data": {
+      "tags": ["type:data", "scope:shared"]
+    },
+    "shared-product-ui": {
+      "tags": ["scope:shared", "type:ui"]
+    },
+    "products-home-page": {
+      "tags": ["scope:products", "type:feature"]
+    },
+    "cart-cart-page": {
+      "tags": ["scope:cart", "type:feature"]
+    },
+    "shared-product-e2e-utils": {
+      "tags": ["scope:shared", "type:e2e-utils"]
+    },
+    "shared-jsxify": {
+      "tags": ["scope:shared", "type:types"]
     }
   }
 }

@@ -15,7 +15,23 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-example/shared/product/types": [
+        "libs/shared/product/types/src/index.ts"
+      ],
+      "@nx-example/shared/product/data": [
+        "libs/shared/product/data/src/index.ts"
+      ],
+      "@nx-example/shared/product/ui": ["libs/shared/product/ui/src/index.ts"],
+      "@nx-example/products/home-page": [
+        "libs/products/home-page/src/index.ts"
+      ],
+      "@nx-example/cart/cart-page": ["libs/cart/cart-page/src/index.ts"],
+      "@nx-example/shared/product/e2e-utils": [
+        "libs/shared/product/e2e-utils/src/index.ts"
+      ],
+      "@nx-example/shared/jsxify": ["libs/shared/jsxify/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

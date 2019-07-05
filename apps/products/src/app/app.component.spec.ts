@@ -1,6 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -16,8 +17,13 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should match snapshot`, () => {
+  it(`should render a title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    expect(fixture).toMatchSnapshot();
+    expect(fixture.nativeElement.textContent).toContain('Welcome to products!');
+  });
+
+  it(`should render the route outlet`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    expect(fixture.nativeElement.querySelector('router-outlet')).toBeTruthy();
   });
 });

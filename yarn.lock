@@ -1192,6 +1192,17 @@
     tree-kill "1.2.1"
     webpack-sources "1.3.0"
 
+"@nrwl/angular@8.2.0":
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/@nrwl/angular/-/angular-8.2.0.tgz#56bfd812d1bdcccf796323e92ffba47bfc425cba"
+  integrity sha512-xYSOq/y9CyAnrYTaxgBW/RSuBkFxn+f1YaoE7FRfk4sy0UaBEsXfREVPVgx3NnDasaTMYObjQYXPNzzKDMc91Q==
+  dependencies:
+    "@angular-devkit/schematics" "8.0.1"
+    "@nrwl/cypress" "8.2.0"
+    "@nrwl/jest" "8.2.0"
+    "@schematics/angular" "8.0.1"
+    jasmine-marbles "~0.5.0"
+
 "@nrwl/cypress@8.2.0":
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/@nrwl/cypress/-/cypress-8.2.0.tgz#70d0f16eec8ba58fbbfbe3f03bbf15a742910752"
@@ -1276,6 +1287,14 @@
   dependencies:
     "@angular-devkit/core" "8.0.0"
     "@angular-devkit/schematics" "8.0.0"
+
+"@schematics/angular@8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-8.0.1.tgz#8d5bfb00c0ba79cc248c6d17b4782b00b6453d79"
+  integrity sha512-/FyFJbHuxWfvVgTBSnEa0fiDgeLhAmfK7NeT8Owj2xDAqvVMxfSxupfdr7a9cDr82WImW09SX7PUlv2EomcGLA==
+  dependencies:
+    "@angular-devkit/core" "8.0.1"
+    "@angular-devkit/schematics" "8.0.1"
 
 "@schematics/update@0.800.0":
   version "0.800.0"
@@ -5493,6 +5512,13 @@ istanbul-reports@^2.1.1:
   dependencies:
     handlebars "^4.1.2"
 
+jasmine-marbles@~0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/jasmine-marbles/-/jasmine-marbles-0.5.0.tgz#5d4c51082fcf619bb8dbc85583cb11718a32b200"
+  integrity sha512-hkSYy7VJpcxaKE48s/CasVpGyheElp5ZegguFi5kpYAaUWsyOko6RnMZS1kv14ThMtlJVNqCW5z16f1q6HqbEg==
+  dependencies:
+    lodash "^4.5.0"
+
 jest-changed-files@^24.8.0:
   version "24.8.0"
   resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-24.8.0.tgz#7e7eb21cf687587a85e50f3d249d1327e15b157b"
@@ -6334,7 +6360,7 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@4.17.11, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4, lodash@^4.17.5:
+lodash@4.17.11, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.5.0:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
