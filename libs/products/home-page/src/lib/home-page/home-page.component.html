@@ -1,8 +1,13 @@
 <ul>
   <li *ngFor="let product of products">
-    <nx-example-product
-      [name]="product.name"
-      [price]="product.price"
-    ></nx-example-product>
+    <figure>
+      <img [src]="product.image" />
+    </figure>
+    <h2>{{ product.name }}</h2>
+    <p>
+      <nx-example-product-price
+        [value]="product.price"
+      ></nx-example-product-price>
+    </p>
   </li>
 </ul>
