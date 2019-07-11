@@ -12,10 +12,12 @@
       "tags": ["scope:products", "type:e2e"]
     },
     "products": {
-      "tags": ["type:app", "scope:products"]
+      "tags": ["type:app", "scope:products"],
+      "implicitDependencies": ["shared-assets"]
     },
     "cart": {
-      "tags": ["type:app", "scope:cart"]
+      "tags": ["type:app", "scope:cart"],
+      "implicitDependencies": ["shared-assets"]
     },
     "cart-e2e": {
       "tags": ["scope:cart", "type:e2e"]
@@ -40,6 +42,15 @@
     },
     "shared-jsxify": {
       "tags": ["scope:shared", "type:types"]
+    },
+    "shared-cart-state": {
+      "tags": ["scope:shared", "type:state"]
+    },
+    "shared-product-state": {
+      "tags": ["scope:shared", "type:state"]
+    },
+    "shared-assets": {
+      "tags": ["type:assets", "scope:shared"]
     }
   }
 }

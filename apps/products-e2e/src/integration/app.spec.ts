@@ -1,5 +1,4 @@
 import { getPage } from '../support/app.po';
-import { getProducts } from '@nx-example/shared/product/e2e-utils';
 
 describe('products', () => {
   beforeEach(() => cy.visit('/'));
@@ -9,6 +8,8 @@ describe('products', () => {
   });
 
   it('should display products', () => {
-    getProducts().should('have.length', 2);
+    getPage()
+      .get('li figure')
+      .should('have.length', 5);
   });
 });

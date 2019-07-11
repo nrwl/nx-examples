@@ -50,10 +50,11 @@
     "triple-equals": [true, "allow-null-check"],
     "unified-signatures": true,
     "variable-name": false,
+    "ordered-imports": true,
     "nx-enforce-module-boundaries": [
       true,
       {
-        "allow": [],
+        "allow": ["@nx-example/shared/product/data/testing"],
         "depConstraints": [
           {
             "sourceTag": "type:app",
@@ -61,11 +62,24 @@
           },
           {
             "sourceTag": "type:feature",
-            "onlyDependOnLibsWithTags": ["type:ui", "type:data", "type:types"]
+            "onlyDependOnLibsWithTags": [
+              "type:ui",
+              "type:data",
+              "type:types",
+              "type:state"
+            ]
           },
           {
             "sourceTag": "type:types",
             "onlyDependOnLibsWithTags": ["type:types"]
+          },
+          {
+            "sourceTag": "type:state",
+            "onlyDependOnLibsWithTags": [
+              "type:state",
+              "type:types",
+              "type:data"
+            ]
           },
           {
             "sourceTag": "type:data",

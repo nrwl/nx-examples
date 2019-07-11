@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import '@nx-example/shared/product/ui';
 
-import { Product } from '@nx-example/shared/product/types';
 import { products } from '@nx-example/shared/product/data';
+import { Product } from '@nx-example/shared/product/types';
 
 @Component({
   selector: 'products-home-page',
