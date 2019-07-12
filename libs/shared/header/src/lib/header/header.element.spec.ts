@@ -1,7 +1,7 @@
 import './header.element';
 import { HeaderElement } from './header.element';
 
-describe('ProductElement', () => {
+describe('HeaderElement', () => {
   let headerElement: HeaderElement;
 
   beforeEach(() => {

@@ -45,7 +45,7 @@ const StyledLi = styled.li`
     max-height: 100%;
   }
 
-  h2 {
+  a {
     flex-grow: 1;
     margin-left: 50px;
   }
@@ -85,9 +85,13 @@ export const CartCartPage = () => {
       {cartState.items.map((item: CartItem) => (
         <StyledLi key={item.productId}>
           <figure>
-            <img src={getProduct(productsState, item.productId).image} />
+            <a href={`/product/${item.productId}`}>
+              <img src={getProduct(productsState, item.productId).image} />
+            </a>
           </figure>
-          <h2>{getProduct(productsState, item.productId).name}</h2>
+          <a href={`/product/${item.productId}`}>
+            <h2>{getProduct(productsState, item.productId).name}</h2>
+          </a>
           <p>
             <nx-example-product-price
               value={getProduct(productsState, item.productId).price}

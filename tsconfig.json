@@ -37,7 +37,11 @@
       "@nx-example/shared/product/state": [
         "libs/shared/product/state/src/index.ts"
       ],
-      "@nx-example/shared/header": ["libs/shared/header/src/index.ts"]
+      "@nx-example/shared/header": ["libs/shared/header/src/index.ts"],
+      "@nx-example/products/product-detail-page": [
+        "libs/products/product-detail-page/src/index.ts"
+      ],
+      "@nx-example/shared/styles": ["libs/shared/styles/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,10 +1,25 @@
 nx-example-header {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
   background-color: #143055;
   padding: 20px;
 
   h2 {
     color: #ffffff;
     margin: 0;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: flex-end;
+
+    span.icon {
+      height: 32px;
+      width: 32px;
+      background-size: contain;
+    }
   }
 }
