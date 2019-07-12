@@ -1,0 +1,16 @@
+<ng-container *ngIf="(product | async) as product">
+  <div>
+    <figure>
+      <img [src]="product.image" />
+    </figure>
+    <div>
+      <h1>{{ product.name }}</h1>
+      <p>
+        Price:
+        <nx-example-product-price
+          [value]="product.price"
+        ></nx-example-product-price>
+      </p>
+    </div>
+  </div>
+</ng-container>

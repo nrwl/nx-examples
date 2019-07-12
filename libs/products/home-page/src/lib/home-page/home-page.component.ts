@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-import '@nx-example/shared/product/ui';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
-import { products } from '@nx-example/shared/product/data';
+import {
+  getProducts,
+  getProductsState,
+  ProductsPartialState
+} from '@nx-example/shared/product/state';
 import { Product } from '@nx-example/shared/product/types';
+import '@nx-example/shared/product/ui';
 
 @Component({
   selector: 'products-home-page',
@@ -11,9 +17,12 @@ import { Product } from '@nx-example/shared/product/types';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  products: Product[];
+  products: Observable<Product[]> = this.store.pipe(
+    select(getProductsState),
+    select(getProducts)
+  );
 
-  ngOnInit() {
-    this.products = products;
-  }
+  constructor(private store: Store<ProductsPartialState>) {}
+
+  ngOnInit() {}
 }

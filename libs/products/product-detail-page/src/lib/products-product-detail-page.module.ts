@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { SharedProductStateModule } from '@nx-example/shared/product/state';
 
-import { HomePageComponent } from './home-page/home-page.component';
+import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
 
 @NgModule({
   imports: [
@@ -12,14 +12,10 @@ import { HomePageComponent } from './home-page/home-page.component';
     SharedProductStateModule,
 
     RouterModule.forChild([
-      {
-        path: '',
-        pathMatch: 'full',
-        component: HomePageComponent
-      }
+      { path: ':productId', component: ProductDetailPageComponent }
     ])
   ],
-  declarations: [HomePageComponent],
+  declarations: [ProductDetailPageComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class ProductsHomePageModule {}
+export class ProductsProductDetailPageModule {}

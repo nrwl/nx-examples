@@ -1,5 +1,10 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+
+import { StoreModule } from '@ngrx/store';
+
+import { SharedProductStateModule } from '@nx-example/shared/product/state';
 
 import { HomePageComponent } from './home-page.component';
 
@@ -9,6 +14,11 @@ describe('HomePageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        StoreModule.forRoot({}),
+        RouterTestingModule,
+        SharedProductStateModule
+      ],
       declarations: [HomePageComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
