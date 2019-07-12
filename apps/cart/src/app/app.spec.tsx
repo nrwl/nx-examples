@@ -16,13 +16,13 @@ describe('App', () => {
     expect(baseElement).toBeTruthy();
   });
 
-  it('should display a title', () => {
+  it('should display the header', () => {
     expect(
       render(
         <MemoryRouter initialEntries={['/cart']}>
           <App />
         </MemoryRouter>
-      ).baseElement.textContent
-    ).toContain('Welcome to cart!');
+      ).baseElement.querySelector('nx-example-header')
+    ).toBeTruthy();
   });
 });
