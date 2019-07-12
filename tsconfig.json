@@ -31,14 +31,13 @@
         "libs/products/home-page/src/index.ts"
       ],
       "@nx-example/cart/cart-page": ["libs/cart/cart-page/src/index.ts"],
-      "@nx-example/shared/product/e2e-utils": [
-        "libs/shared/product/e2e-utils/src/index.ts"
-      ],
+      "@nx-example/shared/e2e-utils": ["libs/shared/e2e-utils/src/index.ts"],
       "@nx-example/shared/jsxify": ["libs/shared/jsxify/src/index.ts"],
       "@nx-example/shared/cart/state": ["libs/shared/cart/state/src/index.ts"],
       "@nx-example/shared/product/state": [
         "libs/shared/product/state/src/index.ts"
-      ]
+      ],
+      "@nx-example/shared/header": ["libs/shared/header/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

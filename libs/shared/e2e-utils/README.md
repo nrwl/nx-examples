@@ -1,4 +1,4 @@
-# shared-product-e2e-utils
+# shared-e2e-utils
 
 This library was generated with [Nx](https://nx.dev).
 
