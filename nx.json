@@ -13,11 +13,11 @@
     },
     "products": {
       "tags": ["type:app", "scope:products"],
-      "implicitDependencies": ["shared-assets"]
+      "implicitDependencies": ["shared-assets", "shared-styles"]
     },
     "cart": {
       "tags": ["type:app", "scope:cart"],
-      "implicitDependencies": ["shared-assets"]
+      "implicitDependencies": ["shared-assets", "shared-styles"]
     },
     "cart-e2e": {
       "tags": ["scope:cart", "type:e2e"]
@@ -54,6 +54,12 @@
     },
     "shared-header": {
       "tags": ["scope:shared", "type:ui"]
+    },
+    "products-product-detail-page": {
+      "tags": ["type:feature", "scope:products"]
+    },
+    "shared-styles": {
+      "tags": ["scope:shared", "type:styles"]
     }
   }
 }

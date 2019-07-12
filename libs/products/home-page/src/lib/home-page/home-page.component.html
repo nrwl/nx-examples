@@ -1,13 +1,15 @@
 <ul>
-  <li *ngFor="let product of products">
-    <figure>
-      <img [src]="product.image" />
-    </figure>
-    <h2>{{ product.name }}</h2>
-    <p>
-      <nx-example-product-price
-        [value]="product.price"
-      ></nx-example-product-price>
-    </p>
+  <li *ngFor="let product of (products | async)">
+    <a [routerLink]="['/product', product.id]">
+      <figure>
+        <img [src]="product.image" />
+      </figure>
+      <h2>{{ product.name }}</h2>
+      <p>
+        <nx-example-product-price
+          [value]="product.price"
+        ></nx-example-product-price>
+      </p>
+    </a>
   </li>
 </ul>

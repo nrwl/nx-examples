@@ -36,7 +36,7 @@
               }
             ],
             "styles": [
-              "apps/products/src/styles.scss",
+              "libs/shared/styles/src/index.scss",
               "libs/shared/header/index.scss",
               "node_modules/normalize.css/normalize.css"
             ],
@@ -162,7 +162,7 @@
             ],
             "maxWorkers": 8,
             "styles": [
-              "apps/cart/src/styles.scss",
+              "libs/shared/styles/src/index.scss",
               "libs/shared/header/index.scss",
               "node_modules/normalize.css/normalize.css"
             ],
@@ -485,6 +485,55 @@
             "jestConfig": "libs/shared/header/jest.config.js",
             "tsConfig": "libs/shared/header/tsconfig.spec.json",
             "setupFile": "libs/shared/header/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "products-product-detail-page": {
+      "projectType": "library",
+      "root": "libs/products/product-detail-page",
+      "sourceRoot": "libs/products/product-detail-page/src",
+      "prefix": "nx-example",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/products/product-detail-page/tsconfig.lib.json",
+              "libs/products/product-detail-page/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/products/product-detail-page/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/products/product-detail-page/jest.config.js",
+            "tsConfig": "libs/products/product-detail-page/tsconfig.spec.json",
+            "setupFile": "libs/products/product-detail-page/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "shared-styles": {
+      "root": "libs/shared/styles",
+      "sourceRoot": "libs/shared/styles/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/styles/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/shared/styles/**"]
           }
         }
       }

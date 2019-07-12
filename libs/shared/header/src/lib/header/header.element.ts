@@ -1,7 +1,8 @@
 import { JSXify } from '@nx-example/shared/jsxify';
 
-enum HeaderElementAttribute {
-  Heading = 'heading'
+const enum HeaderElementAttribute {
+  Heading = 'heading',
+  Href = 'href'
 }
 
 declare global {
@@ -13,26 +14,58 @@ declare global {
 }
 
 export class HeaderElement extends HTMLElement {
-  static observedAttributes = [HeaderElementAttribute.Heading];
+  static observedAttributes = [
+    HeaderElementAttribute.Heading,
+    HeaderElementAttribute.Href
+  ];
 
-  private headingElement = document.createElement('h2');
-
-  get heading(): string {
+  get heading() {
     return this.getAttribute(HeaderElementAttribute.Heading) || 'Nx Store';
   }
   set heading(heading: string) {
     this.setAttribute(HeaderElementAttribute.Heading, heading);
   }
 
-  connectedCallback() {
-    this.headingElement.textContent = this.heading;
-    this.appendChild(this.headingElement);
+  get href() {
+    return this.getAttribute(HeaderElementAttribute.Href) || '/';
+  }
+  set href(heading: string) {
+    this.setAttribute(HeaderElementAttribute.Href, heading);
   }
 
-  attributeChangedCallback(name: string) {
+  private githubLink = document.createElement('a');
+  private headingLink = document.createElement('a');
+  private headingElement = document.createElement('h2');
+
+  connectedCallback() {
+    const leftSide = document.createElement('div');
+    this.headingLink.href = this.href;
+    this.headingElement.textContent = this.heading;
+    this.headingLink.appendChild(this.headingElement);
+    leftSide.appendChild(this.headingLink);
+
+    const rightSide = document.createElement('div');
+    const icon = document.createElement('span');
+
+    this.githubLink.href = 'https://github.com/nrwl/nx-examples';
+    icon.classList.add('icon', 'icon-github');
+    this.githubLink.appendChild(icon);
+
+    rightSide.appendChild(this.githubLink);
+
+    this.appendChild(leftSide);
+    this.appendChild(rightSide);
+  }
+
+  attributeChangedCallback(name: HeaderElementAttribute) {
     switch (name) {
       case HeaderElementAttribute.Heading: {
         this.headingElement.textContent = this.heading;
+        break;
+      }
+      case HeaderElementAttribute.Href: {
+        this.headingLink.href = this.href;
+        break;
       }
     }
   }
