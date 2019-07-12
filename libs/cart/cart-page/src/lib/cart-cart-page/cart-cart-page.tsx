@@ -33,8 +33,8 @@ const StyledLi = styled.li`
 
   figure {
     flex-shrink: 0;
-    height: 150px;
-    width: 150px;
+    height: 125px;
+    width: 125px;
     justify-content: center;
     display: flex;
     margin: 0;
@@ -47,7 +47,7 @@ const StyledLi = styled.li`
 
   h2 {
     flex-grow: 1;
-    margin-left: 100px;
+    margin-left: 50px;
   }
 
   select {
@@ -64,7 +64,7 @@ const StyledTotalLi = styled.li`
 
   h2 {
     flex-grow: 1;
-    margin-left: 250px;
+    margin-left: 175px;
   }
 `;
 
