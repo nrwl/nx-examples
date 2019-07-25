@@ -62,7 +62,7 @@ jobs:
           <<: *set_env
       - restore_cache:
           <<: *yarn_cache
-      - run: ./node_modules/.bin/nx lint
+      - run: ./node_modules/.bin/nx workspace-lint
       - run: yarn affected:lint ${AFFECTED_ARGS} --parallel
   build:
     <<: *defaults
