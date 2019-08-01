@@ -6,6 +6,10 @@ This project was generated using [Nx](https://nx.dev).
 
 🔎 **Nx is a set of Angular CLI power-ups for modern development.**
 
+## Nx 5 Example
+
+If you are looking for the Nx 5 Example, it is available on the [`nx-v5-example` branch](https://github.com/nrwl/nx-examples/commits/nx-v5-example).
+
 ## Quick Start & Documentation
 
 [Nx Documentation](https://nx.dev)
