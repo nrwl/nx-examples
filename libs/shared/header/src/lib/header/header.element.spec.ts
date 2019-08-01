@@ -15,13 +15,15 @@ describe('HeaderElement', () => {
     expect(headerElement).toBeTruthy();
   });
 
-  it('should display the default heading', () => {
+  it('should display the application title', () => {
     expect(headerElement.textContent).toContain('Nx Store');
   });
 
-  it('should display the given heading', () => {
-    headerElement.heading = 'Test Heading';
+  it('should display the given heading', async () => {
+    headerElement.title = 'Test Title';
 
-    expect(headerElement.textContent).toContain('Test Heading');
+    await Promise.resolve();
+
+    expect(headerElement.textContent).toContain('Test Title');
   });
 });

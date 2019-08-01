@@ -9,6 +9,11 @@ ul {
   margin: 0;
 }
 
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .icon {
   width: 1em;
   height: 1em;
@@ -28,5 +33,12 @@ a {
 
   &:visited {
     color: inherit;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  html,
+  body {
+    font-size: 12px;
   }
 }

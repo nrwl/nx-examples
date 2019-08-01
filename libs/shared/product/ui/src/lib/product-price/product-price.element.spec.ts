@@ -14,8 +14,9 @@ describe('ProductElement', () => {
     expect(productPrice).toBeTruthy();
   });
 
-  it('displays the price', () => {
+  it('displays the price', async () => {
     productPrice.value = 12345;
+    await Promise.resolve();
     expect(productPrice.textContent).toContain('$123.45');
   });
 });
