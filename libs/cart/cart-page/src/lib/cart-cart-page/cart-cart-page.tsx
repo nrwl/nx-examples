@@ -23,6 +23,10 @@ const StyledUl = styled.ul`
   margin: auto;
   max-width: 900px;
   padding: 10px;
+  
+  @media screen and (max-width: 900px) {
+    max-width: 100%;
+  }
 `;
 
 const StyledLi = styled.li`
@@ -40,19 +44,25 @@ const StyledLi = styled.li`
     margin: 0;
   }
 
-  img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-
-  a {
-    flex-grow: 1;
-    margin-left: 50px;
-  }
-
   select {
     width: 50px;
     margin: 0 20px;
+  }
+
+  .title {
+    flex-grow: 1;
+    margin-left: 50px;
+  }
+  
+  @media screen and (max-width: 900px) {
+    figure {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .title {
+      margin-left: 1em;
+    }
   }
 `;
 
@@ -84,12 +94,12 @@ export const CartCartPage = () => {
     <StyledUl>
       {cartState.items.map((item: CartItem) => (
         <StyledLi key={item.productId}>
-          <figure>
-            <a href={`/product/${item.productId}`}>
-              <img src={getProduct(productsState, item.productId).image} />
-            </a>
-          </figure>
           <a href={`/product/${item.productId}`}>
+            <figure>
+              <img src={getProduct(productsState, item.productId).image} />
+            </figure>
+          </a>
+          <a href={`/product/${item.productId}`} className="title">
             <h2>{getProduct(productsState, item.productId).name}</h2>
           </a>
           <p>

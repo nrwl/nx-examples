@@ -25,23 +25,25 @@ describe(' CartCartPage', () => {
     ).toContain('Total');
   });
 
-  it('should update the item cost', () => {
+  it('should update the item cost', async () => {
     const result = render(<CartCartPage />);
     const cartPage = result.baseElement;
-    const select = cartPage.querySelector('li select');
-    (select as HTMLSelectElement).value = '2';
+    const select: HTMLSelectElement = cartPage.querySelector('li select');
+    select.value = '2';
     fireEvent.change(select);
+    await Promise.resolve();
     expect(cartPage.querySelector('li p:last-of-type').textContent).toContain(
       '200.00'
     );
   });
 
-  it('should update the total cost', () => {
+  it('should update the total cost', async () => {
     const result = render(<CartCartPage />);
     const cartPage = result.baseElement;
     const select = cartPage.querySelector('li select');
     (select as HTMLSelectElement).value = '2';
     fireEvent.change(select);
+    await Promise.resolve();
     expect(
       cartPage.querySelector('li:last-of-type p:last-of-type').textContent
     ).toContain('600.00');

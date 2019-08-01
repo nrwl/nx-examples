@@ -5,7 +5,17 @@ nx-example-header {
   background-color: #143055;
   padding: 20px;
 
+  div {
+    display: flex;
+
+    > *:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+
   h2 {
+    display: flex;
+    align-items: center;
     color: #ffffff;
     margin: 0;
   }
@@ -21,5 +31,9 @@ nx-example-header {
       width: 32px;
       background-size: contain;
     }
+  }
+
+  @media screen and (max-width: 900px) {
+    padding: 10px;
   }
 }

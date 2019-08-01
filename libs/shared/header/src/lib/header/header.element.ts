@@ -1,8 +1,7 @@
 import { JSXify } from '@nx-example/shared/jsxify';
 
 const enum HeaderElementAttribute {
-  Heading = 'heading',
-  Href = 'href'
+  Title = 'title'
 }
 
 declare global {
@@ -14,60 +13,56 @@ declare global {
 }
 
 export class HeaderElement extends HTMLElement {
-  static observedAttributes = [
-    HeaderElementAttribute.Heading,
-    HeaderElementAttribute.Href
-  ];
+  static observedAttributes = [HeaderElementAttribute.Title];
 
-  get heading() {
-    return this.getAttribute(HeaderElementAttribute.Heading) || 'Nx Store';
+  get title() {
+    return this.getAttribute(HeaderElementAttribute.Title);
   }
-  set heading(heading: string) {
-    this.setAttribute(HeaderElementAttribute.Heading, heading);
+  set title(title: string) {
+    this.setAttribute(HeaderElementAttribute.Title, title);
   }
 
-  get href() {
-    return this.getAttribute(HeaderElementAttribute.Href) || '/';
-  }
-  set href(heading: string) {
-    this.setAttribute(HeaderElementAttribute.Href, heading);
-  }
-
-  private githubLink = document.createElement('a');
-  private headingLink = document.createElement('a');
-  private headingElement = document.createElement('h2');
+  private titleElement = document.createElement('h2');
 
   connectedCallback() {
-    const leftSide = document.createElement('div');
-    this.headingLink.href = this.href;
-    this.headingElement.textContent = this.heading;
-    this.headingLink.appendChild(this.headingElement);
-    leftSide.appendChild(this.headingLink);
-
-    const rightSide = document.createElement('div');
-    const icon = document.createElement('span');
-
-    this.githubLink.href = 'https://github.com/nrwl/nx-examples';
-    icon.classList.add('icon', 'icon-github');
-    this.githubLink.appendChild(icon);
-
-    rightSide.appendChild(this.githubLink);
-
-    this.appendChild(leftSide);
-    this.appendChild(rightSide);
+    this.appendChild(this.createLeftSide());
+    this.appendChild(this.createRightSide());
   }
 
   attributeChangedCallback(name: HeaderElementAttribute) {
     switch (name) {
-      case HeaderElementAttribute.Heading: {
-        this.headingElement.textContent = this.heading;
-        break;
-      }
-      case HeaderElementAttribute.Href: {
-        this.headingLink.href = this.href;
+      case HeaderElementAttribute.Title: {
+        this.titleElement.textContent = this.title;
         break;
       }
     }
+  }
+
+  private createLeftSide() {
+    const leftSide = document.createElement('div');
+    const homeLink = document.createElement('a');
+    const homeLinkText = document.createElement('h2');
+    homeLink.href = '/';
+    homeLinkText.textContent = 'Nx Store';
+    homeLink.appendChild(homeLinkText);
+    leftSide.appendChild(homeLink);
+
+    this.titleElement.textContent = this.title;
+    leftSide.appendChild(this.titleElement);
+    return leftSide;
+  }
+
+  private createRightSide() {
+    const githubLink = document.createElement('a');
+    const icon = document.createElement('span');
+
+    githubLink.href = 'https://github.com/nrwl/nx-examples';
+    icon.classList.add('icon', 'icon-github');
+    githubLink.appendChild(icon);
+
+    const rightSide = document.createElement('div');
+    rightSide.appendChild(githubLink);
+    return rightSide;
   }
 }
 customElements.define('nx-example-header', HeaderElement);
