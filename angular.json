@@ -103,6 +103,16 @@
             "tsConfig": "apps/products/tsconfig.spec.json",
             "setupFile": "apps/products/src/test-setup.ts"
           }
+        },
+        "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx ts-node --project tools/tsconfig.tools.json tools/scripts/deploy --siteName nrwl-nx-examples-products --outputPath dist/apps/products"
+              }
+            ]
+          }
         }
       }
     },
@@ -220,6 +230,16 @@
             "jestConfig": "apps/cart/jest.config.js",
             "tsConfig": "apps/cart/tsconfig.spec.json",
             "setupFile": "apps/cart/src/test-setup.ts"
+          }
+        },
+        "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx ts-node --project tools/tsconfig.tools.json tools/scripts/deploy --siteName nrwl-nx-examples-cart --outputPath dist/apps/cart"
+              }
+            ]
           }
         }
       }

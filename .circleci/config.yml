@@ -73,6 +73,10 @@ jobs:
       - restore_cache:
           <<: *yarn_cache
       - run: yarn affected:build -- ${AFFECTED_ARGS} --parallel -- --configuration production
+      - save_cache:
+          key: build-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+          paths:
+            - dist
       - store_artifacts:
           path: dist
   test:
@@ -96,6 +100,18 @@ jobs:
       - store_artifacts:
           path: dist/cypress
 
+  deploy:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          <<: *set_env
+      - restore_cache:
+          <<: *yarn_cache
+      - restore_cache:
+          key: build-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+      - run: yarn affected -- --target deploy ${AFFECTED_ARGS}
+
 workflows:
   version: 2
   pr_check:
@@ -116,3 +132,10 @@ workflows:
       - e2e:
           requires:
             - install
+      - deploy:
+          requires:
+            - check-formatting
+            - lint
+            - test
+            - build
+            - e2e
