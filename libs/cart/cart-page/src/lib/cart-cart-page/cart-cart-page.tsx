@@ -23,7 +23,7 @@ const StyledUl = styled.ul`
   margin: auto;
   max-width: 900px;
   padding: 10px;
-  
+
   @media screen and (max-width: 900px) {
     max-width: 100%;
   }
@@ -53,13 +53,13 @@ const StyledLi = styled.li`
     flex-grow: 1;
     margin-left: 50px;
   }
-  
+
   @media screen and (max-width: 900px) {
     figure {
       width: 50px;
       height: 50px;
     }
-    
+
     .title {
       margin-left: 1em;
     }
