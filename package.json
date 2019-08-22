@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "nx workspace-lint && ng lint",
-    "e2e": "ng e2e",
+    "nx": "nx",
+    "start": "nx serve",
+    "build": "nx build",
+    "test": "nx test",
+    "lint": "nx workspace-lint && nx lint",
+    "e2e": "nx e2e",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
@@ -20,12 +20,11 @@
     "format": "nx format:write",
     "format:write": "nx format:write",
     "format:check": "nx format:check",
-    "update": "ng update @nrwl/workspace",
-    "update:check": "ng update",
+    "update": "nx update @nrwl/workspace",
+    "update:check": "nx update",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help",
-    "nx": "nx"
+    "help": "nx help"
   },
   "private": true,
   "dependencies": {
@@ -57,7 +56,6 @@
   "devDependencies": {
     "@angular-devkit/architect": "<0.900 || ^0.900.0-0 || ^9.0.0-0",
     "@angular-devkit/build-angular": "^0.801.1",
-    "@angular/cli": "8.1.1",
     "@angular/compiler-cli": "8.2.0-next.2",
     "@angular/language-service": "8.2.0-next.2",
     "@ngrx/store-devtools": "8.1.0",
