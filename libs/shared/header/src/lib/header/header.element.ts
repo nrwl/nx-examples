@@ -1,6 +1,6 @@
 import { JSXify } from '@nx-example/shared/jsxify';
 
-const enum HeaderElementAttribute {
+enum HeaderElementAttribute {
   Title = 'title'
 }
 
