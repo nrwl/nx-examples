@@ -1,3 +1,5 @@
+This is a WIP prototype of using Nx to auto-generate bazel configurations!
+
 # NxExample
 
 This project was generated using [Nx](https://nx.dev).
