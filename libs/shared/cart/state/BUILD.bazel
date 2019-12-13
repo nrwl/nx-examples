@@ -5,7 +5,10 @@ load("@npm//@nrwl/cli:index.bzl", "nx", "nx_test")
 
 filegroup(
     name = "shared-cart-state",
-    srcs = glob(["**"]),
+    srcs = glob(["**"]) + [
+        # Dependencies
+        
+    ],
     visibility = ["//visibility:public"],
 )
 
@@ -18,10 +21,6 @@ nx(
     ],
     data = [
         ":shared-cart-state",
-        # Dependencies
-        "//libs/shared/product/data:shared-product-data",
-        "//libs/shared/product/state:shared-product-state",
-        
         # Root Files
         "//:angular.json",
         "//:package.json",

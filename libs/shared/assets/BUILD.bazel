@@ -5,7 +5,10 @@ load("@npm//@nrwl/cli:index.bzl", "nx", "nx_test")
 
 filegroup(
     name = "shared-assets",
-    srcs = glob(["**"]),
+    srcs = glob(["**"]) + [
+        # Dependencies
+        
+    ],
     visibility = ["//visibility:public"],
 )
 
@@ -18,8 +21,6 @@ nx(
     ],
     data = [
         ":shared-assets",
-        # Dependencies
-        
         # Root Files
         "//:angular.json",
         "//:package.json",

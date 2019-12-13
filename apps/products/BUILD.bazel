@@ -5,7 +5,13 @@ load("@npm//@nrwl/cli:index.bzl", "nx", "nx_test")
 
 filegroup(
     name = "products",
-    srcs = glob(["**"]),
+    srcs = glob(["**"]) + [
+        # Dependencies
+        "//apps/products:products",
+        "//libs/shared/assets:shared-assets",
+        "//libs/shared/styles:shared-styles",
+        
+    ],
     visibility = ["//visibility:public"],
 )
 
@@ -18,13 +24,6 @@ nx(
     ],
     data = [
         ":products",
-        # Dependencies
-        "//libs/shared/header:shared-header",
-        "//libs/products/home-page:products-home-page",
-        "//libs/products/product-detail-page:products-product-detail-page",
-        "//libs/shared/assets:shared-assets",
-        "//libs/shared/styles:shared-styles",
-        
         # Root Files
         "//:angular.json",
         "//:package.json",
