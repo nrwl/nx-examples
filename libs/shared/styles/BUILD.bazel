@@ -12,28 +12,19 @@ filegroup(
     visibility = ["//visibility:public"],
 )
 
-nx(
-    name = "build",
+
+nx_test(
+    name = "lint",
     args = [
-        "build",
-        "shared-styles",
-        "--outputPath=$@",
+        "run",
+        "shared-styles:lint",
     ],
     data = [
         ":shared-styles",
         # Root Files
-        "//:angular.json",
-        "//:package.json",
-        "//:tsconfig.json",
-        # NOTE: Use @npm//node_modules causes bundling to fail due to Babel errors.
-        "@npm//@angular-devkit/build-angular",
-        "@npm//@angular/cli",
-        "@npm//@angular/core",
-        "@npm//@angular/platform-browser-dynamic",
-        "@npm//@angular/router",
-        "@npm//@babel/preset-env",
-        "@npm//@nrwl/workspace",
-        "@npm//inquirer",
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
     ],
-    output_dir = True,
 )
+

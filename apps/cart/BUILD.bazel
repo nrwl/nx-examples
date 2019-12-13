@@ -7,36 +7,120 @@ filegroup(
     name = "cart",
     srcs = glob(["**"]) + [
         # Dependencies
-        "//apps/cart:cart",
         "//libs/shared/assets:shared-assets",
         "//libs/shared/styles:shared-styles",
-        
+
     ],
     visibility = ["//visibility:public"],
 )
 
+
 nx(
     name = "build",
     args = [
-        "build",
-        "cart",
-        "--outputPath=$@",
+        "run",
+        "cart:build",
+        "--outputPath=$(@D)",
     ],
     data = [
         ":cart",
         # Root Files
-        "//:angular.json",
-        "//:package.json",
-        "//:tsconfig.json",
-        # NOTE: Use @npm//node_modules causes bundling to fail due to Babel errors.
-        "@npm//@angular-devkit/build-angular",
-        "@npm//@angular/cli",
-        "@npm//@angular/core",
-        "@npm//@angular/platform-browser-dynamic",
-        "@npm//@angular/router",
-        "@npm//@babel/preset-env",
-        "@npm//@nrwl/workspace",
-        "@npm//inquirer",
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
     ],
     output_dir = True,
 )
+
+nx(
+    name = "build__production",
+    args = [
+        "run",
+        "cart:build:production",
+        "--outputPath=$(@D)",
+    ],
+    data = [
+        ":cart",
+        # Root Files
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
+    ],
+    output_dir = True,
+)
+
+nx(
+    name = "serve",
+    args = [
+        "run",
+        "cart:serve",
+    ],
+    data = [
+        ":cart",
+        # Root Files
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
+    ],
+)
+
+nx(
+    name = "serve__production",
+    args = [
+        "run",
+        "cart:serve:production",
+    ],
+    data = [
+        ":cart",
+        # Root Files
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
+    ],
+)
+
+nx_test(
+    name = "lint",
+    args = [
+        "run",
+        "cart:lint",
+    ],
+    data = [
+        ":cart",
+        # Root Files
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
+    ],
+)
+
+nx_test(
+    name = "test",
+    args = [
+        "run",
+        "cart:test",
+    ],
+    data = [
+        ":cart",
+        # Root Files
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
+    ],
+)
+
+nx(
+    name = "deploy",
+    args = [
+        "run",
+        "cart:deploy",
+    ],
+    data = [
+        ":cart",
+        # Root Files
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
+    ],
+)
+

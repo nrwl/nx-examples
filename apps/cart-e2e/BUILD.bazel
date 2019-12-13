@@ -13,28 +13,49 @@ filegroup(
     visibility = ["//visibility:public"],
 )
 
-nx(
-    name = "build",
+
+nx_test(
+    name = "e2e",
     args = [
-        "build",
-        "cart-e2e",
-        "--outputPath=$@",
+        "run",
+        "cart-e2e:e2e",
     ],
     data = [
         ":cart-e2e",
         # Root Files
-        "//:angular.json",
-        "//:package.json",
-        "//:tsconfig.json",
-        # NOTE: Use @npm//node_modules causes bundling to fail due to Babel errors.
-        "@npm//@angular-devkit/build-angular",
-        "@npm//@angular/cli",
-        "@npm//@angular/core",
-        "@npm//@angular/platform-browser-dynamic",
-        "@npm//@angular/router",
-        "@npm//@babel/preset-env",
-        "@npm//@nrwl/workspace",
-        "@npm//inquirer",
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
     ],
-    output_dir = True,
 )
+
+nx_test(
+    name = "e2e__production",
+    args = [
+        "run",
+        "cart-e2e:e2e:production",
+    ],
+    data = [
+        ":cart-e2e",
+        # Root Files
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
+    ],
+)
+
+nx_test(
+    name = "lint",
+    args = [
+        "run",
+        "cart-e2e:lint",
+    ],
+    data = [
+        ":cart-e2e",
+        # Root Files
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
+    ],
+)
+

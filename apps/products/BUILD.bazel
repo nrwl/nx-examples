@@ -15,28 +15,128 @@ filegroup(
     visibility = ["//visibility:public"],
 )
 
+
 nx(
     name = "build",
     args = [
-        "build",
-        "products",
-        "--outputPath=$@",
+        "run",
+        "products:build",
+        "--outputPath=$(@D)",
     ],
     data = [
         ":products",
         # Root Files
-        "//:angular.json",
-        "//:package.json",
-        "//:tsconfig.json",
-        # NOTE: Use @npm//node_modules causes bundling to fail due to Babel errors.
-        "@npm//@angular-devkit/build-angular",
-        "@npm//@angular/cli",
-        "@npm//@angular/core",
-        "@npm//@angular/platform-browser-dynamic",
-        "@npm//@angular/router",
-        "@npm//@babel/preset-env",
-        "@npm//@nrwl/workspace",
-        "@npm//inquirer",
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
     ],
     output_dir = True,
 )
+
+nx(
+    name = "build__production",
+    args = [
+        "run",
+        "products:build:production",
+        "--outputPath=$(@D)",
+    ],
+    data = [
+        ":products",
+        # Root Files
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
+    ],
+    output_dir = True,
+)
+
+nx(
+    name = "serve",
+    args = [
+        "run",
+        "products:serve",
+    ],
+    data = [
+        ":products",
+        # Root Files
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
+    ],
+)
+
+nx(
+    name = "serve__production",
+    args = [
+        "run",
+        "products:serve:production",
+    ],
+    data = [
+        ":products",
+        # Root Files
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
+    ],
+)
+
+nx(
+    name = "extract-i18n",
+    args = [
+        "run",
+        "products:extract-i18n",
+    ],
+    data = [
+        ":products",
+        # Root Files
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
+    ],
+)
+
+nx_test(
+    name = "lint",
+    args = [
+        "run",
+        "products:lint",
+    ],
+    data = [
+        ":products",
+        # Root Files
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
+    ],
+)
+
+nx_test(
+    name = "test",
+    args = [
+        "run",
+        "products:test",
+    ],
+    data = [
+        ":products",
+        # Root Files
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
+    ],
+)
+
+nx(
+    name = "deploy",
+    args = [
+        "run",
+        "products:deploy",
+    ],
+    data = [
+        ":products",
+        # Root Files
+        "//:root-files",
+        # Node Modules
+        "@npm//:node_modules"
+    ],
+)
+

@@ -12,28 +12,4 @@ filegroup(
     visibility = ["//visibility:public"],
 )
 
-nx(
-    name = "build",
-    args = [
-        "build",
-        "shared-assets",
-        "--outputPath=$@",
-    ],
-    data = [
-        ":shared-assets",
-        # Root Files
-        "//:angular.json",
-        "//:package.json",
-        "//:tsconfig.json",
-        # NOTE: Use @npm//node_modules causes bundling to fail due to Babel errors.
-        "@npm//@angular-devkit/build-angular",
-        "@npm//@angular/cli",
-        "@npm//@angular/core",
-        "@npm//@angular/platform-browser-dynamic",
-        "@npm//@angular/router",
-        "@npm//@babel/preset-env",
-        "@npm//@nrwl/workspace",
-        "@npm//inquirer",
-    ],
-    output_dir = True,
-)
+
