@@ -7,6 +7,9 @@ filegroup(
     name = "cart-cart-page",
     srcs = glob(["**"]) + [
         # Dependencies
+        "//libs/shared/product/ui:shared-product-ui",
+        "//libs/shared/cart/state:shared-cart-state",
+        "//libs/shared/product/state:shared-product-state",
         
     ],
     visibility = ["//visibility:public"],

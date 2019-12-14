@@ -7,7 +7,9 @@ filegroup(
     name = "products",
     srcs = glob(["**"]) + [
         # Dependencies
-        "//apps/products:products",
+        "//libs/shared/header:shared-header",
+        "//libs/products/home-page:products-home-page",
+        "//libs/products/product-detail-page:products-product-detail-page",
         "//libs/shared/assets:shared-assets",
         "//libs/shared/styles:shared-styles",
         

@@ -7,6 +7,8 @@ filegroup(
     name = "shared-product-state",
     srcs = glob(["**"]) + [
         # Dependencies
+        "//libs/shared/product/data:shared-product-data",
+        "//libs/shared/product/types:shared-product-types",
         
     ],
     visibility = ["//visibility:public"],

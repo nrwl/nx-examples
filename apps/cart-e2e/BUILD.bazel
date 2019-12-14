@@ -7,6 +7,7 @@ filegroup(
     name = "cart-e2e",
     srcs = glob(["**"]) + [
         # Dependencies
+        "//libs/shared/e2e-utils:shared-e2e-utils",
         "//apps/cart:cart",
         
     ],

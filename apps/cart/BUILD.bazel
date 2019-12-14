@@ -7,9 +7,11 @@ filegroup(
     name = "cart",
     srcs = glob(["**"]) + [
         # Dependencies
+        "//libs/shared/header:shared-header",
+        "//libs/cart/cart-page:cart-cart-page",
         "//libs/shared/assets:shared-assets",
         "//libs/shared/styles:shared-styles",
-
+        
     ],
     visibility = ["//visibility:public"],
 )

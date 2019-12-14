@@ -25,7 +25,8 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "nx": "nx"
+    "nx": "nx",
+    "postinstall": "patch-package"
   },
   "private": true,
   "dependencies": {
@@ -60,6 +61,8 @@
     "@angular/compiler-cli": "8.2.14",
     "@angular/language-service": "8.2.14",
     "@babel/preset-react": "7.0.0",
+    "@bazel/bazel": "^1.2.0",
+    "@bazel/ibazel": "0.10.3",
     "@ngrx/store-devtools": "8.3.0",
     "@nrwl/cypress": "8.8.3",
     "@nrwl/jest": "8.8.3",
@@ -83,6 +86,7 @@
     "jest-environment-jsdom-fourteen": "^0.1.0",
     "jest-preset-angular": "7.0.0",
     "netlify": "^2.4.8",
+    "patch-package": "^6.2.0",
     "prettier": "1.16.4",
     "ts-jest": "24.0.0",
     "ts-node": "~7.0.0",
