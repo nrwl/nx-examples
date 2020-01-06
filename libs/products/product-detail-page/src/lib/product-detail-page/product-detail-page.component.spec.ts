@@ -10,7 +10,9 @@ import { SharedProductStateModule } from '@nx-example/shared/product/state';
 import { ProductDetailPageComponent } from './product-detail-page.component';
 
 class MockActivatedRoute {
-  paramMap = of(new Map<string, string>([['productId', '1']]));
+  paramMap = of(
+    new Map<string, string>([['productId', '1']])
+  );
 }
 
 describe('ProductDetailPageComponent', () => {
