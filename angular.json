@@ -153,7 +153,7 @@
           "builder": "@nrwl/web:build",
           "options": {
             "outputPath": "dist/apps/cart",
-            "webpackConfig": "@nrwl/react/plugins/babel",
+            "webpackConfig": "@nrwl/react/plugins/webpack",
             "index": "apps/cart/src/index.html",
             "main": "apps/cart/src/main.tsx",
             "polyfills": "apps/cart/src/polyfills.ts",

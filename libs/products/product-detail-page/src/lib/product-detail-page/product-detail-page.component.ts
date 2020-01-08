@@ -20,10 +20,7 @@ export class ProductDetailPageComponent implements OnInit {
   product = this.route.paramMap.pipe(
     map(paramMap => paramMap.get('productId')),
     concatMap(productId =>
-      this.store.pipe(
-        select(getProductsState),
-        select(getProduct, productId)
-      )
+      this.store.pipe(select(getProductsState), select(getProduct, productId))
     )
   );
   constructor(

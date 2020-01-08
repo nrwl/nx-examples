@@ -25,9 +25,7 @@ if (!existsSync(outDir)) {
     console.log(`Deploying ${argv.siteName} to Netlify...`);
     const deployResult = await netlifyClient.deploy(site.id, outDir);
     console.log(
-      `\n🚀 New version of ${argv.siteName} is running at ${
-        deployResult.deploy.ssl_url
-      }!\n`
+      `\n🚀 New version of ${argv.siteName} is running at ${deployResult.deploy.ssl_url}!\n`
     );
   } catch (e) {
     console.error('Authentication Failure: Invalid Token');

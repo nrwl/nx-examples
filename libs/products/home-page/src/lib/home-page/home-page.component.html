@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let product of (products | async)">
+  <li *ngFor="let product of products | async">
     <a [routerLink]="['/product', product.id]">
       <figure>
         <img [src]="product.image" />
