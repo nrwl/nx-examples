@@ -7,6 +7,16 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
+
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/insights",
+      "options": {
+        "insightsUrl": "https://api.staging.nrwl.io",
+        "cacheableOperations": ["build", "lint", "test"]
+      }
+    }
+  },
   "projects": {
     "products-e2e": {
       "tags": ["scope:products", "type:e2e"]
