@@ -7,7 +7,6 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/insights",
@@ -19,7 +18,8 @@
   },
   "projects": {
     "products-e2e": {
-      "tags": ["scope:products", "type:e2e"]
+      "tags": ["scope:products", "type:e2e"],
+      "implicitDependencies": ["products"]
     },
     "products": {
       "tags": ["type:app", "scope:products"],
@@ -30,7 +30,8 @@
       "implicitDependencies": ["shared-assets", "shared-styles"]
     },
     "cart-e2e": {
-      "tags": ["scope:cart", "type:e2e"]
+      "tags": ["scope:cart", "type:e2e"],
+      "implicitDependencies": ["cart"]
     },
     "shared-product-types": {
       "tags": ["type:types", "scope:shared"]

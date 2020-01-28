@@ -101,7 +101,8 @@
             "sourceTag": "scope:cart",
             "onlyDependOnLibsWithTags": ["scope:cart", "scope:shared"]
           }
-        ]
+        ],
+        "enforceBuildableLibDependency": true
       }
     ],
     "directive-selector": [true, "attribute", "app", "camelCase"],
