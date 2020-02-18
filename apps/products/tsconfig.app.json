@@ -4,13 +4,10 @@
     "outDir": "../../dist/out-tsc",
     "types": []
   },
+  "files": ["src/main.ts", "src/polyfills.ts"],
   "include": [
-    "**/*.ts",
+    "**/*.d.ts",
     "../../libs/products/home-page/src/index.ts",
     "../../libs/products/product-detail-page/src/index.ts"
-  ],
-  "exclude": ["src/test-setup.ts", "**/*.spec.ts"],
-  "angularCompilerOptions": {
-    "enableIvy": true
-  }
+  ]
 }
