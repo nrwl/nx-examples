@@ -2622,14 +2622,6 @@
     tsconfig-paths-webpack-plugin "3.2.0"
     webpack-node-externals "1.7.2"
 
-"@nrwl/insights@^8.12.4":
-  version "8.12.4"
-  resolved "https://registry.yarnpkg.com/@nrwl/insights/-/insights-8.12.4.tgz#f27b6f262e96c89fdc530ac169e934266bd8e31c"
-  integrity sha512-gufEl6A72AstPpWHhdzEj9W7zYflAxSSKW+G9gc1vd/28uqlU2t2oF0WixwrhYK4ogkPzJSwRhjsCzjB82nH1Q==
-  dependencies:
-    axios "^0.19.0"
-    tar "5.0.5"
-
 "@nrwl/jest@9.0.4":
   version "9.0.4"
   resolved "https://registry.yarnpkg.com/@nrwl/jest/-/jest-9.0.4.tgz#ffc6b74902b6c270021d26ecd5086de077685107"
@@ -2645,6 +2637,14 @@
   integrity sha512-LeWfVxz8MivYFji3WAOlxqNX3lc0s51FlTAwUPY0sNrH9IgzH7GMgzo2qVcfhDh/KxbZPGJYIt9NphXwx/ypEw==
   dependencies:
     "@angular-devkit/architect" "~0.900.1"
+
+"@nrwl/nx-cloud@9.0.1":
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/nx-cloud/-/nx-cloud-9.0.1.tgz#17373926086395d3b4242703217e97ab30d958ba"
+  integrity sha512-Z/5GYMl3X/GomQRaog03mDM9M0nBmDukCcOK7Rg+FsNt86yNd4ISKNaSlzJYrE3pGK4i1ncv2JLmCspxwjXklQ==
+  dependencies:
+    axios "^0.19.0"
+    tar "5.0.5"
 
 "@nrwl/react@9.0.4":
   version "9.0.4"

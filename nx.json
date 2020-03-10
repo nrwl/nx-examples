@@ -9,10 +9,9 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/insights",
+      "runner": "@nrwl/nx-cloud",
       "options": {
-        "insightsUrl": "https://api.staging.nrwl.io",
-        "accessToken": "ZDA5MzcyNmItZTUyZS00YzE3LThiM2EtZjYzNjRhM2MwNWZmfHJlYWQ=",
+        "accessToken": "YmM1MGMwMTUtNzAyYi00ZjM4LWExNGUtZDM2ZjYyNzNiODAxfHJlYWQ=",
         "cacheableOperations": ["build", "lint", "test"]
       }
     }
