@@ -90,7 +90,7 @@ jobs:
           <<: *set_env
       - restore_cache:
           <<: *yarn_cache
-      - run: yarn affected:build -- ${AFFECTED_ARGS} --parallel -- --configuration production
+      - run: yarn affected:build -- ${AFFECTED_ARGS} --parallel --configuration production
       - save_cache:
           key: build-{{ .Environment.CIRCLE_WORKFLOW_ID }}
           paths:
@@ -118,7 +118,7 @@ jobs:
           <<: *set_env
       - restore_cache:
           <<: *yarn_cache
-      - run: yarn affected:e2e -- ${AFFECTED_ARGS} -- --configuration production --headless
+      - run: yarn affected:e2e -- ${AFFECTED_ARGS} --configuration production -- --headless
       - store_artifacts:
           path: dist/cypress
 
