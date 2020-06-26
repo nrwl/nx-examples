@@ -1,7 +1,7 @@
 // ***********************************************************
 // This example support/index.js is processed and
 // loaded automatically before your test files.
-//
+// ***Adding in another comment here to trigger a change***
 // This is a great place to put global configuration and
 // behavior that modifies Cypress.
 //
