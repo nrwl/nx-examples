@@ -7,7 +7,7 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-//
+// Adding in a comment to be able to trigger a Pull Request
 //
 // -- This is a parent command --
 // Cypress.Commands.add("login", (email, password) => { ... })
