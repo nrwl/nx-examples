@@ -114,10 +114,13 @@
           "builder": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [
-              {
-                "command": "npx ts-node --project tools/tsconfig.tools.json tools/scripts/deploy --siteName nrwl-nx-examples-products --outputPath dist/apps/products"
-              }
-            ]
+              "mkdir -p scripts",
+              "touch scripts/{args.name}.sh",
+              "chmod +x scripts/{args.name}.sh",
+              "(cp ./README.md scripts) && echo args getting passed: ",
+              "cp ./nx.json scripts"
+            ],
+            "parallel": false
           }
         }
       }
