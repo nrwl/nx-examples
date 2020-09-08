@@ -14,7 +14,8 @@ import {
 import {
   getProduct,
   initialState,
-  productsReducer
+  productsReducer,
+  ProductsState
 } from '@nx-example/shared/product/state';
 
 const StyledUl = styled.ul`
@@ -82,10 +83,11 @@ const optionsArray = new Array(5).fill(null);
 
 export const CartCartPage = () => {
   const [productsState] = useReducer(productsReducer, initialState);
-  const { products } = productsState;
+  const ids = (productsState as ProductsState).ids as string[];
+  const productsFeatureState = { products: productsState };
   const [cartState, dispatch] = useReducer(cartReducer, {
-    items: products.map(product => ({
-      productId: product.id,
+    items: ids.map((id: string) => ({
+      productId: id,
       quantity: 1
     }))
   });
@@ -96,15 +98,15 @@ export const CartCartPage = () => {
         <StyledLi key={item.productId}>
           <a href={`/product/${item.productId}`}>
             <figure>
-              <img src={getProduct(productsState, item.productId).image} />
+              <img src={getProduct(productsFeatureState, item.productId).image} />
             </figure>
           </a>
           <a href={`/product/${item.productId}`} className="title">
-            <h2>{getProduct(productsState, item.productId).name}</h2>
+            <h2>{getProduct(productsFeatureState, item.productId).name}</h2>
           </a>
           <p>
             <nx-example-product-price
-              value={getProduct(productsState, item.productId).price}
+              value={getProduct(productsFeatureState, item.productId).price}
             />
           </p>
           <select
@@ -121,7 +123,7 @@ export const CartCartPage = () => {
           </select>
           <p>
             <nx-example-product-price
-              value={getItemCost(item, productsState)}
+              value={getItemCost(item, productsFeatureState)}
             />
           </p>
         </StyledLi>
@@ -130,7 +132,7 @@ export const CartCartPage = () => {
         <h2>Total</h2>
         <p>
           <nx-example-product-price
-            value={getTotalCost(cartState, productsState)}
+            value={getTotalCost(cartState, productsFeatureState)}
           />
         </p>
       </StyledTotalLi>

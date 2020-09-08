@@ -3,11 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import {
-  getProducts,
-  getProductsState,
-  ProductsPartialState
-} from '@nx-example/shared/product/state';
+import { getProducts } from '@nx-example/shared/product/state';
 import { Product } from '@nx-example/shared/product/types';
 import '@nx-example/shared/product/ui';
 
@@ -17,12 +13,9 @@ import '@nx-example/shared/product/ui';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  products: Observable<Product[]> = this.store.pipe(
-    select(getProductsState),
-    select(getProducts)
-  );
+  products: Observable<Product[]> = this.store.pipe(select(getProducts));
 
-  constructor(private store: Store<ProductsPartialState>) {}
+  constructor(private store: Store) {}
 
   ngOnInit() {}
 }

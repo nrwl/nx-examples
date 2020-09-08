@@ -1,14 +1,12 @@
 import { mockProducts } from '@nx-example/shared/product/data/testing';
 
-import { productsReducer, ProductsState } from './products.reducer';
+import { productsReducer, ProductsState, initialState } from './products.reducer';
 
 describe('Products Reducer', () => {
   let productsState: ProductsState;
 
   beforeEach(() => {
-    productsState = {
-      products: mockProducts
-    };
+    productsState = initialState;
   });
 
   describe('unknown action', () => {

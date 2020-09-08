@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -29,7 +30,10 @@ import { AppComponent } from './app.component';
       ],
       { initialNavigation: 'enabled' }
     ),
-    StoreModule.forRoot({})
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 5
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,29 +1,23 @@
-import { ProductsAction } from './products.actions';
+import { createReducer } from '@ngrx/store';
+import { createEntityAdapter, EntityState } from '@ngrx/entity';
 
 import { products } from '@nx-example/shared/product/data';
 import { Product } from '@nx-example/shared/product/types';
 
 export const PRODUCTS_FEATURE_KEY = 'products';
 
-export interface ProductsState {
-  products: Product[];
-}
+export interface ProductsState extends EntityState<Product> {}
 
 export interface ProductsPartialState {
   readonly [PRODUCTS_FEATURE_KEY]: ProductsState;
 }
 
+export const productsAdapter = createEntityAdapter<Product>();
+
 export const initialState: ProductsState = {
-  products: products
+  ...productsAdapter.setAll(products, productsAdapter.getInitialState())
 };
 
-export function productsReducer(
-  state: ProductsState = initialState,
-  action: ProductsAction
-): ProductsState {
-  switch (action.type) {
-    default: {
-      return state;
-    }
-  }
-}
+export const productsReducer = createReducer(initialState);
+
+export const { selectAll, selectEntities } = productsAdapter.getSelectors();
