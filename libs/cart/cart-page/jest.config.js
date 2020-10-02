@@ -1,6 +1,5 @@
 module.exports = {
-  name: 'cart-cart-page',
-  preset: '../../../jest.config.js',
+  preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
@@ -8,4 +7,5 @@ module.exports = {
   coverageDirectory: '../../../coverage/libs/cart/cart-page',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: { 'ts-jest': { tsConfig: '<rootDir>/tsconfig.spec.json' } },
+  displayName: 'cart-cart-page',
 };

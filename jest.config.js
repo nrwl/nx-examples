@@ -1,10 +1,13 @@
 module.exports = {
-  testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
-  transform: {
-    '^.+\\.(ts|js|html)$': 'ts-jest'
-  },
-  testEnvironment: 'jest-environment-jsdom-fourteen',
-  resolver: '@nrwl/jest/plugins/resolver',
-  moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageReporters: ['html']
+  projects: [
+    '<rootDir>/apps/products',
+    '<rootDir>/apps/cart',
+    '<rootDir>/libs/shared/product/ui',
+    '<rootDir>/libs/products/home-page',
+    '<rootDir>/libs/cart/cart-page',
+    '<rootDir>/libs/shared/cart/state',
+    '<rootDir>/libs/shared/product/state',
+    '<rootDir>/libs/shared/header',
+    '<rootDir>/libs/products/product-detail-page',
+  ],
 };
