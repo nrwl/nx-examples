@@ -1,6 +1,5 @@
 module.exports = {
-  name: 'shared-product-ui',
-  preset: '../../../../jest.config.js',
+  preset: '../../../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
@@ -8,4 +7,5 @@ module.exports = {
   coverageDirectory: '../../../../coverage/libs/shared/product/ui',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: { 'ts-jest': { tsConfig: '<rootDir>/tsconfig.spec.json' } },
+  displayName: 'shared-product-ui',
 };

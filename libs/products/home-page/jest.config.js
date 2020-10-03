@@ -1,6 +1,5 @@
 module.exports = {
-  name: 'products-home-page',
-  preset: '../../../jest.config.js',
+  preset: '../../../jest.preset.js',
   coverageDirectory: '../../../coverage/libs/products/home-page',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
@@ -18,4 +17,5 @@ module.exports = {
       ],
     },
   },
+  displayName: 'products-home-page',
 };
