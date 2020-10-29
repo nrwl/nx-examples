@@ -555,6 +555,86 @@
           }
         }
       }
+    },
+    "buildable-foo": {
+      "root": "libs/buildable-foo",
+      "sourceRoot": "libs/buildable-foo/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/buildable-foo/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/web:package",
+          "options": {
+            "outputPath": "dist/libs/buildable-foo",
+            "tsConfig": "libs/buildable-foo/tsconfig.lib.json",
+            "project": "libs/buildable-foo/package.json",
+            "entryFile": "libs/buildable-foo/src/index.ts",
+            "external": ["react", "react-dom"],
+            "babelConfig": "@nrwl/react/plugins/bundle-babel",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/buildable-foo/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "buildable-bar": {
+      "root": "libs/buildable-bar",
+      "sourceRoot": "libs/buildable-bar/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/buildable-bar/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/web:package",
+          "options": {
+            "outputPath": "dist/libs/buildable-bar",
+            "tsConfig": "libs/buildable-bar/tsconfig.lib.json",
+            "project": "libs/buildable-bar/package.json",
+            "entryFile": "libs/buildable-bar/src/index.ts",
+            "external": ["react", "react-dom"],
+            "babelConfig": "@nrwl/react/plugins/bundle-babel",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/buildable-bar/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

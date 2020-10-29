@@ -9,5 +9,7 @@ module.exports = {
     '<rootDir>/libs/shared/product/state',
     '<rootDir>/libs/shared/header',
     '<rootDir>/libs/products/product-detail-page',
+    '<rootDir>/libs/buildable-foo',
+    '<rootDir>/libs/buildable-bar',
   ],
 };
