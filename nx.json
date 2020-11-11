@@ -13,130 +13,65 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "accessToken": "YmM1MGMwMTUtNzAyYi00ZjM4LWExNGUtZDM2ZjYyNzNiODAxfHJlYWQ=",
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test"
-        ]
+        "cacheableOperations": ["build", "lint", "test"]
       }
     }
   },
   "projects": {
     "products-e2e": {
-      "tags": [
-        "scope:products",
-        "type:e2e"
-      ],
-      "implicitDependencies": [
-        "products"
-      ]
+      "tags": ["scope:products", "type:e2e"],
+      "implicitDependencies": ["products"]
     },
     "products": {
-      "tags": [
-        "type:app",
-        "scope:products"
-      ],
-      "implicitDependencies": [
-        "shared-assets",
-        "shared-styles"
-      ]
+      "tags": ["type:app", "scope:products"],
+      "implicitDependencies": ["shared-assets", "shared-styles"]
     },
     "cart": {
-      "tags": [
-        "type:app",
-        "scope:cart"
-      ],
-      "implicitDependencies": [
-        "shared-assets",
-        "shared-styles"
-      ]
+      "tags": ["type:app", "scope:cart"],
+      "implicitDependencies": ["shared-assets", "shared-styles"]
     },
     "cart-e2e": {
-      "tags": [
-        "scope:cart",
-        "type:e2e"
-      ],
-      "implicitDependencies": [
-        "cart"
-      ]
+      "tags": ["scope:cart", "type:e2e"],
+      "implicitDependencies": ["cart"]
     },
     "shared-product-types": {
-      "tags": [
-        "type:types",
-        "scope:shared"
-      ]
+      "tags": ["type:types", "scope:shared"]
     },
     "shared-product-data": {
-      "tags": [
-        "type:data",
-        "scope:shared"
-      ]
+      "tags": ["type:data", "scope:shared"]
     },
     "shared-product-ui": {
-      "tags": [
-        "scope:shared",
-        "type:ui"
-      ]
+      "tags": ["scope:shared", "type:ui"]
     },
     "products-home-page": {
-      "tags": [
-        "scope:products",
-        "type:feature"
-      ]
+      "tags": ["scope:products", "type:feature"]
     },
     "cart-cart-page": {
-      "tags": [
-        "scope:cart",
-        "type:feature"
-      ]
+      "tags": ["scope:cart", "type:feature"]
     },
     "shared-e2e-utils": {
-      "tags": [
-        "scope:shared",
-        "type:e2e-utils"
-      ]
+      "tags": ["scope:shared", "type:e2e-utils"]
     },
     "shared-jsxify": {
-      "tags": [
-        "scope:shared",
-        "type:types"
-      ]
+      "tags": ["scope:shared", "type:types"]
     },
     "shared-cart-state": {
-      "tags": [
-        "scope:shared",
-        "type:state"
-      ]
+      "tags": ["scope:shared", "type:state"]
     },
     "shared-product-state": {
-      "tags": [
-        "scope:shared",
-        "type:state"
-      ]
+      "tags": ["scope:shared", "type:state"]
     },
     "shared-assets": {
-      "tags": [
-        "type:assets",
-        "scope:shared"
-      ]
+      "tags": ["type:assets", "scope:shared"]
     },
     "products-product-detail-page": {
-      "tags": [
-        "type:feature",
-        "scope:products"
-      ]
+      "tags": ["type:feature", "scope:products"]
     },
     "shared-styles": {
-      "tags": [
-        "scope:shared",
-        "type:styles"
-      ]
+      "tags": ["scope:shared", "type:styles"]
     },
     "shared-header-renamed": {
-      "tags": [
-        "scope:shared",
-        "type:ui"
-      ]
+      "tags": ["scope:shared", "type:ui"]
     }
   },
   "affected": {
