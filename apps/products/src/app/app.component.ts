@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import '@nx-example/shared/header';
+import '@nx-example/shared/header-renamed';
 
 @Component({
   selector: 'nx-example-root',
