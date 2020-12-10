@@ -16,23 +16,23 @@ import { AppComponent } from './app.component';
           pathMatch: 'full',
           loadChildren: () =>
             import('@nx-example/products/home-page').then(
-              module => module.ProductsHomePageModule
-            )
+              (module) => module.ProductsHomePageModule
+            ),
         },
         {
           path: 'product',
           loadChildren: () =>
             import('@nx-example/products/product-detail-page').then(
-              module => module.ProductsProductDetailPageModule
-            )
-        }
+              (module) => module.ProductsProductDetailPageModule
+            ),
+        },
       ],
-      { initialNavigation: 'enabled' }
+      { initialNavigation: 'enabled', relativeLinkResolution: 'legacy' }
     ),
-    StoreModule.forRoot({})
+    StoreModule.forRoot({}),
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

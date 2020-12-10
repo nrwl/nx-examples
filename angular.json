@@ -54,7 +54,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -72,7 +71,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -106,7 +106,8 @@
           "options": {
             "jestConfig": "apps/products/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/products"]
         },
         "deploy": {
           "builder": "@nrwl/workspace:run-commands",
@@ -207,7 +208,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@nrwl/web:dev-server",
@@ -235,7 +237,8 @@
           "options": {
             "jestConfig": "apps/cart/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/cart"]
         },
         "deploy": {
           "builder": "@nrwl/workspace:run-commands",
@@ -327,7 +330,8 @@
           "options": {
             "jestConfig": "libs/shared/product/ui/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/shared/product/ui"]
         }
       }
     },
@@ -352,7 +356,8 @@
           "options": {
             "jestConfig": "libs/products/home-page/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/products/home-page"]
         }
       },
       "schematics": {
@@ -382,7 +387,8 @@
           "options": {
             "jestConfig": "libs/cart/cart-page/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/cart/cart-page"]
         }
       }
     },
@@ -437,7 +443,8 @@
           "options": {
             "jestConfig": "libs/shared/cart/state/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/shared/cart/state"]
         }
       },
       "schematics": {
@@ -467,7 +474,8 @@
           "options": {
             "jestConfig": "libs/shared/product/state/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/shared/product/state"]
         }
       },
       "schematics": {
@@ -504,7 +512,8 @@
           "options": {
             "jestConfig": "libs/shared/header/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/shared/header"]
         }
       }
     },
@@ -532,7 +541,8 @@
           "options": {
             "jestConfig": "libs/products/product-detail-page/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/products/product-detail-page"]
         }
       },
       "schematics": {
