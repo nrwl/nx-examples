@@ -1,7 +1,34 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "",
+  "cli": {
+    "warnings": {
+      "versionMismatch": false
+    },
+    "packageManager": "yarn",
+    "defaultCollection": "@nrwl/angular",
+    "analytics": false
+  },
+  "defaultProject": "products",
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "style": "styled-jsx",
+        "linter": "eslint"
+      }
+    }
+  },
   "projects": {
     "products": {
       "projectType": "application",
@@ -565,24 +592,85 @@
           }
         }
       }
-    }
-  },
-  "cli": {
-    "warnings": {
-      "versionMismatch": false
     },
-    "packageManager": "yarn",
-    "defaultCollection": "@nrwl/angular",
-    "analytics": false
-  },
-  "schematics": {
-    "@nrwl/angular:application": {
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+    "next-with-styledjsx": {
+      "root": "apps/next-with-styledjsx",
+      "sourceRoot": "apps/next-with-styledjsx",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/next:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "root": "apps/next-with-styledjsx",
+            "outputPath": "dist/apps/next-with-styledjsx"
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/next:server",
+          "options": {
+            "buildTarget": "next-with-styledjsx:build",
+            "dev": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "next-with-styledjsx:build:production",
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "builder": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "next-with-styledjsx:build:production"
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/next-with-styledjsx"],
+          "options": {
+            "jestConfig": "apps/next-with-styledjsx/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/next-with-styledjsx/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        }
+      }
     },
-    "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
+    "next-with-styledjsx-e2e": {
+      "root": "apps/next-with-styledjsx-e2e",
+      "sourceRoot": "apps/next-with-styledjsx-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/next-with-styledjsx-e2e/cypress.json",
+            "tsConfig": "apps/next-with-styledjsx-e2e/tsconfig.e2e.json",
+            "devServerTarget": "next-with-styledjsx:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "next-with-styledjsx:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/next-with-styledjsx-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
     }
-  },
-  "defaultProject": "products"
+  }
 }

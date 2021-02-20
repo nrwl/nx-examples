@@ -1,5 +1,4 @@
 {
-  "npmScope": "nx-example",
   "implicitDependencies": {
     "package.json": {
       "dependencies": "*",
@@ -8,6 +7,10 @@
     "tslint.json": "*",
     ".eslintrc.json": "*"
   },
+  "affected": {
+    "defaultBase": "master"
+  },
+  "npmScope": "nx-example",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
@@ -72,9 +75,13 @@
     },
     "shared-styles": {
       "tags": ["scope:shared", "type:styles"]
+    },
+    "next-with-styledjsx": {
+      "tags": []
+    },
+    "next-with-styledjsx-e2e": {
+      "tags": [],
+      "implicitDependencies": ["next-with-styledjsx"]
     }
-  },
-  "affected": {
-    "defaultBase": "master"
   }
 }
