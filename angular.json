@@ -1,7 +1,35 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "",
+  "cli": {
+    "warnings": {
+      "versionMismatch": false
+    },
+    "packageManager": "yarn",
+    "defaultCollection": "@nrwl/angular",
+    "analytics": false
+  },
+  "defaultProject": "products",
+  "schematics": {
+    "@nrwl/angular:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
+    },
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
+    }
+  },
   "projects": {
     "products": {
       "projectType": "application",
@@ -565,24 +593,97 @@
           }
         }
       }
-    }
-  },
-  "cli": {
-    "warnings": {
-      "versionMismatch": false
     },
-    "packageManager": "yarn",
-    "defaultCollection": "@nrwl/angular",
-    "analytics": false
-  },
-  "schematics": {
-    "@nrwl/angular:application": {
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+    "design-system": {
+      "projectType": "library",
+      "schematics": {
+        "@nxext/stencil:component": {
+          "style": "scss",
+          "storybook": false
+        }
+      },
+      "root": "libs/design-system",
+      "sourceRoot": "libs/design-system/src",
+      "architect": {
+        "test": {
+          "builder": "@nxext/stencil:test",
+          "options": {
+            "projectType": "library",
+            "configPath": "libs/design-system/stencil.config.ts"
+          }
+        },
+        "e2e": {
+          "builder": "@nxext/stencil:e2e",
+          "options": {
+            "projectType": "library",
+            "configPath": "libs/design-system/stencil.config.ts"
+          }
+        },
+        "build": {
+          "builder": "@nxext/stencil:build",
+          "options": {
+            "projectType": "library",
+            "configPath": "libs/design-system/stencil.config.ts"
+          }
+        },
+        "serve": {
+          "builder": "@nxext/stencil:build",
+          "options": {
+            "projectType": "library",
+            "configPath": "libs/design-system/stencil.config.ts",
+            "serve": true,
+            "watch": true
+          }
+        }
+      }
     },
-    "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
+    "design-system-angular": {
+      "projectType": "library",
+      "root": "libs/design-system-angular",
+      "sourceRoot": "libs/design-system-angular/src",
+      "prefix": "nx-example",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/design-system-angular/src/**/*.ts",
+              "libs/design-system-angular/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/design-system-angular"],
+          "options": {
+            "jestConfig": "libs/design-system-angular/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "design-system-react": {
+      "root": "libs/design-system-react",
+      "sourceRoot": "libs/design-system-react/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/design-system-react/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/design-system-react"],
+          "options": {
+            "jestConfig": "libs/design-system-react/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
-  },
-  "defaultProject": "products"
+  }
 }
