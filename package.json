@@ -3,12 +3,11 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
+    "start": "nx serve",
     "build": "nx build",
-    "test": "ng test",
-    "lint": "nx workspace-lint && ng lint",
-    "e2e": "ng e2e",
+    "test": "nx test",
+    "lint": "nx workspace-lint && nx lint",
+    "e2e": "nx e2e",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
@@ -21,7 +20,6 @@
     "format:write": "nx format:write",
     "format:check": "nx format:check",
     "update": "nx migrate latest",
-    "update:check": "ng update",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "nx": "nx",
@@ -41,6 +39,7 @@
     "@emotion/babel-preset-css-prop": "11.0.0",
     "@emotion/react": "11.0.0",
     "@emotion/styled": "11.0.0",
+    "@ngrx/component-store": "11.0.0",
     "@ngrx/effects": "11.0.0",
     "@ngrx/entity": "11.0.0",
     "@ngrx/router-store": "11.0.0",
@@ -54,8 +53,7 @@
     "react-router-dom": "5.2.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.3",
-    "@ngrx/component-store": "11.0.0"
+    "zone.js": "~0.10.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.1102.0",
