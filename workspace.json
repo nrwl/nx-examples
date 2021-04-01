@@ -1,6 +1,28 @@
 {
   "version": 2,
-  "newProjectRoot": "",
+  "cli": {
+    "warnings": {
+      "versionMismatch": false
+    },
+    "packageManager": "yarn",
+    "defaultCollection": "@nrwl/angular",
+    "analytics": false
+  },
+  "defaultProject": "products",
+  "generators": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular": {
+      "convert-tslint-to-eslint": {
+        "removeTSLintIfNoMoreTSLintTargets": true
+      }
+    }
+  },
   "projects": {
     "products": {
       "projectType": "application",
@@ -14,7 +36,7 @@
       "prefix": "nx-example",
       "targets": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "executor": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
             "outputPath": "dist/apps/products",
@@ -74,7 +96,7 @@
           "outputs": ["{options.outputPath}"]
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "executor": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "products:build"
           },
@@ -85,23 +107,22 @@
           }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "executor": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "products:build"
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/products/tsconfig.app.json",
-              "apps/products/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/products/**/*"]
+            "lintFilePatterns": [
+              "apps/products/src/**/*.ts",
+              "apps/products/src/**/*.html"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/products/jest.config.js",
             "passWithNoTests": true
@@ -109,7 +130,7 @@
           "outputs": ["coverage/apps/products"]
         },
         "deploy": {
-          "builder": "@nrwl/workspace:run-commands",
+          "executor": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [
               {
@@ -126,7 +147,7 @@
       "projectType": "application",
       "targets": {
         "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+          "executor": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/products-e2e/cypress.json",
             "tsConfig": "apps/products-e2e/tsconfig.e2e.json",
@@ -139,10 +160,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": "apps/products-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**", "!apps/products-e2e/**/*"]
+            "lintFilePatterns": ["apps/products-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -154,7 +174,7 @@
       "generators": {},
       "targets": {
         "build": {
-          "builder": "@nrwl/web:build",
+          "executor": "@nrwl/web:build",
           "options": {
             "outputPath": "dist/apps/cart",
             "webpackConfig": "@nrwl/react/plugins/webpack",
@@ -211,7 +231,7 @@
           "outputs": ["{options.outputPath}"]
         },
         "serve": {
-          "builder": "@nrwl/web:dev-server",
+          "executor": "@nrwl/web:dev-server",
           "options": {
             "buildTarget": "cart:build"
           },
@@ -222,17 +242,13 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/cart/tsconfig.app.json",
-              "apps/cart/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/cart/**/*"]
+            "lintFilePatterns": ["apps/cart/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/cart/jest.config.js",
             "passWithNoTests": true
@@ -240,7 +256,7 @@
           "outputs": ["coverage/apps/cart"]
         },
         "deploy": {
-          "builder": "@nrwl/workspace:run-commands",
+          "executor": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [
               {
@@ -257,7 +273,7 @@
       "projectType": "application",
       "targets": {
         "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+          "executor": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/cart-e2e/cypress.json",
             "tsConfig": "apps/cart-e2e/tsconfig.e2e.json",
@@ -270,10 +286,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": "apps/cart-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**", "!apps/cart-e2e/**/*"]
+            "lintFilePatterns": ["apps/cart-e2e/**/*.{ts,tsx,js,jsx}"]
           }
         }
       }
@@ -285,10 +300,12 @@
       "generators": {},
       "targets": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/shared/product/types/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/shared/product/types/**/*"]
+            "lintFilePatterns": [
+              "libs/shared/product/types/src/**/*.ts",
+              "libs/shared/product/types/src/**/*.html"
+            ]
           }
         }
       }
@@ -300,10 +317,12 @@
       "generators": {},
       "targets": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/shared/product/data/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/shared/product/data/**/*"]
+            "lintFilePatterns": [
+              "libs/shared/product/data/src/**/*.ts",
+              "libs/shared/product/data/src/**/*.html"
+            ]
           }
         }
       }
@@ -315,17 +334,16 @@
       "generators": {},
       "targets": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/shared/product/ui/tsconfig.lib.json",
-              "libs/shared/product/ui/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/shared/product/ui/**/*"]
+            "lintFilePatterns": [
+              "libs/shared/product/ui/src/**/*.ts",
+              "libs/shared/product/ui/src/**/*.html"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/product/ui/jest.config.js",
             "passWithNoTests": true
@@ -341,17 +359,16 @@
       "prefix": "nx-example",
       "targets": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/products/home-page/tsconfig.lib.json",
-              "libs/products/home-page/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/products/home-page/**/*"]
+            "lintFilePatterns": [
+              "libs/products/home-page/src/**/*.ts",
+              "libs/products/home-page/src/**/*.html"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/products/home-page/jest.config.js",
             "passWithNoTests": true
@@ -372,17 +389,16 @@
       "generators": {},
       "targets": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/cart/cart-page/tsconfig.lib.json",
-              "libs/cart/cart-page/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/cart/cart-page/**/*"]
+            "lintFilePatterns": [
+              "libs/cart/cart-page/src/**/*.ts",
+              "libs/cart/cart-page/src/**/*.html"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/cart/cart-page/jest.config.js",
             "passWithNoTests": true
@@ -398,10 +414,12 @@
       "generators": {},
       "targets": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/shared/e2e-utils/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/shared/e2e-utils/**/*"]
+            "lintFilePatterns": [
+              "libs/shared/e2e-utils/src/**/*.ts",
+              "libs/shared/e2e-utils/src/**/*.html"
+            ]
           }
         }
       }
@@ -413,10 +431,12 @@
       "generators": {},
       "targets": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["libs/shared/jsxify/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/shared/jsxify/**/*"]
+            "lintFilePatterns": [
+              "libs/shared/jsxify/src/**/*.ts",
+              "libs/shared/jsxify/src/**/*.html"
+            ]
           }
         }
       }
@@ -428,17 +448,16 @@
       "prefix": "nx-example",
       "targets": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/shared/cart/state/tsconfig.lib.json",
-              "libs/shared/cart/state/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/shared/cart/state/**/*"]
+            "lintFilePatterns": [
+              "libs/shared/cart/state/src/**/*.ts",
+              "libs/shared/cart/state/src/**/*.html"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/cart/state/jest.config.js",
             "passWithNoTests": true
@@ -459,17 +478,16 @@
       "prefix": "nx-example",
       "targets": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/shared/product/state/tsconfig.lib.json",
-              "libs/shared/product/state/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/shared/product/state/**/*"]
+            "lintFilePatterns": [
+              "libs/shared/product/state/src/**/*.ts",
+              "libs/shared/product/state/src/**/*.html"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/product/state/jest.config.js",
             "passWithNoTests": true
@@ -497,17 +515,16 @@
       "generators": {},
       "targets": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/shared/header/tsconfig.lib.json",
-              "libs/shared/header/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/shared/header/**/*"]
+            "lintFilePatterns": [
+              "libs/shared/header/src/**/*.ts",
+              "libs/shared/header/src/**/*.html"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/header/jest.config.js",
             "passWithNoTests": true
@@ -523,20 +540,16 @@
       "prefix": "nx-example",
       "targets": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/products/product-detail-page/tsconfig.lib.json",
-              "libs/products/product-detail-page/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/products/product-detail-page/**/*"
+            "lintFilePatterns": [
+              "libs/products/product-detail-page/src/**/*.ts",
+              "libs/products/product-detail-page/src/**/*.html"
             ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/products/product-detail-page/jest.config.js",
             "passWithNoTests": true
@@ -555,33 +568,7 @@
       "sourceRoot": "libs/shared/styles/src",
       "projectType": "library",
       "generators": {},
-      "targets": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["libs/shared/styles/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/shared/styles/**/*"]
-          }
-        }
-      }
+      "targets": {}
     }
-  },
-  "cli": {
-    "warnings": {
-      "versionMismatch": false
-    },
-    "packageManager": "yarn",
-    "defaultCollection": "@nrwl/angular",
-    "analytics": false
-  },
-  "generators": {
-    "@nrwl/angular:application": {
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
-    }
-  },
-  "defaultProject": "products"
+  }
 }

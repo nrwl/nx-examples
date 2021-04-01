@@ -2,7 +2,6 @@ import { CartAction, CartActionTypes } from './cart.actions';
 
 export const CART_FEATURE_KEY = 'cart';
 
-/* tslint:disable:no-empty-interface */
 export interface CartItem {
   productId: string;
   quantity: number;

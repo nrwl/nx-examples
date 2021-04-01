@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { select, Store } from '@ngrx/store';
@@ -16,7 +16,7 @@ import '@nx-example/shared/product/ui';
   templateUrl: './product-detail-page.component.html',
   styleUrls: ['./product-detail-page.component.scss']
 })
-export class ProductDetailPageComponent implements OnInit {
+export class ProductDetailPageComponent {
   product = this.route.paramMap.pipe(
     map(paramMap => paramMap.get('productId')),
     concatMap(productId =>
@@ -27,6 +27,4 @@ export class ProductDetailPageComponent implements OnInit {
     private store: Store<ProductsPartialState>,
     private route: ActivatedRoute
   ) {}
-
-  ngOnInit() {}
 }

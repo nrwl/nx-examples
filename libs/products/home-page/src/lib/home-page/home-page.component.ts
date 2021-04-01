@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -16,13 +16,11 @@ import '@nx-example/shared/product/ui';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent {
   products: Observable<Product[]> = this.store.pipe(
     select(getProductsState),
     select(getProducts)
   );
 
   constructor(private store: Store<ProductsPartialState>) {}
-
-  ngOnInit() {}
 }
