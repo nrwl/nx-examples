@@ -1,11 +1,10 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
+  "version": 2,
   "newProjectRoot": "",
   "projects": {
     "products": {
       "projectType": "application",
-      "schematics": {
+      "generators": {
         "@nrwl/workspace:component": {
           "style": "scss"
         }
@@ -13,7 +12,7 @@
       "root": "apps/products",
       "sourceRoot": "apps/products/src",
       "prefix": "nx-example",
-      "architect": {
+      "targets": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
@@ -125,7 +124,7 @@
       "root": "apps/products-e2e",
       "sourceRoot": "apps/products-e2e/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
@@ -152,8 +151,8 @@
       "root": "apps/cart",
       "sourceRoot": "apps/cart/src",
       "projectType": "application",
-      "schematics": {},
-      "architect": {
+      "generators": {},
+      "targets": {
         "build": {
           "builder": "@nrwl/web:build",
           "options": {
@@ -256,7 +255,7 @@
       "root": "apps/cart-e2e",
       "sourceRoot": "apps/cart-e2e/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
@@ -283,8 +282,8 @@
       "root": "libs/shared/product/types",
       "sourceRoot": "libs/shared/product/types/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {
+      "generators": {},
+      "targets": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -298,8 +297,8 @@
       "root": "libs/shared/product/data",
       "sourceRoot": "libs/shared/product/data/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {
+      "generators": {},
+      "targets": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -313,8 +312,8 @@
       "root": "libs/shared/product/ui",
       "sourceRoot": "libs/shared/product/ui/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {
+      "generators": {},
+      "targets": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -340,7 +339,7 @@
       "root": "libs/products/home-page",
       "sourceRoot": "libs/products/home-page/src",
       "prefix": "nx-example",
-      "architect": {
+      "targets": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -360,7 +359,7 @@
           "outputs": ["coverage/libs/products/home-page"]
         }
       },
-      "schematics": {
+      "generators": {
         "@nrwl/angular:component": {
           "styleext": "scss"
         }
@@ -370,8 +369,8 @@
       "root": "libs/cart/cart-page",
       "sourceRoot": "libs/cart/cart-page/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {
+      "generators": {},
+      "targets": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -396,8 +395,8 @@
       "root": "libs/shared/e2e-utils",
       "sourceRoot": "libs/shared/e2e-utils/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {
+      "generators": {},
+      "targets": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -411,8 +410,8 @@
       "root": "libs/shared/jsxify",
       "sourceRoot": "libs/shared/jsxify/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {
+      "generators": {},
+      "targets": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -427,7 +426,7 @@
       "root": "libs/shared/cart/state",
       "sourceRoot": "libs/shared/cart/state/src",
       "prefix": "nx-example",
-      "architect": {
+      "targets": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -447,7 +446,7 @@
           "outputs": ["coverage/libs/shared/cart/state"]
         }
       },
-      "schematics": {
+      "generators": {
         "@nrwl/angular:component": {
           "styleext": "scss"
         }
@@ -458,7 +457,7 @@
       "root": "libs/shared/product/state",
       "sourceRoot": "libs/shared/product/state/src",
       "prefix": "nx-example",
-      "architect": {
+      "targets": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -478,7 +477,7 @@
           "outputs": ["coverage/libs/shared/product/state"]
         }
       },
-      "schematics": {
+      "generators": {
         "@nrwl/angular:component": {
           "styleext": "scss"
         }
@@ -488,15 +487,15 @@
       "root": "libs/shared/assets",
       "sourceRoot": "libs/shared/assets/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {}
+      "generators": {},
+      "targets": {}
     },
     "shared-header": {
       "root": "libs/shared/header",
       "sourceRoot": "libs/shared/header/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {
+      "generators": {},
+      "targets": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -522,7 +521,7 @@
       "root": "libs/products/product-detail-page",
       "sourceRoot": "libs/products/product-detail-page/src",
       "prefix": "nx-example",
-      "architect": {
+      "targets": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -545,7 +544,7 @@
           "outputs": ["coverage/libs/products/product-detail-page"]
         }
       },
-      "schematics": {
+      "generators": {
         "@nrwl/angular:component": {
           "styleext": "scss"
         }
@@ -555,8 +554,8 @@
       "root": "libs/shared/styles",
       "sourceRoot": "libs/shared/styles/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {
+      "generators": {},
+      "targets": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -575,7 +574,7 @@
     "defaultCollection": "@nrwl/angular",
     "analytics": false
   },
-  "schematics": {
+  "generators": {
     "@nrwl/angular:application": {
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
