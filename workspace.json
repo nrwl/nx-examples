@@ -160,7 +160,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/products-e2e/**/*.{js,ts}"]
           }
@@ -242,7 +242,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/cart/**/*.{ts,tsx,js,jsx}"]
           }
@@ -286,7 +286,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/cart-e2e/**/*.{ts,tsx,js,jsx}"]
           }

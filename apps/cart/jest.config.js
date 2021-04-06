@@ -1,10 +1,11 @@
 module.exports = {
-  displayName: 'my-react-app',
   preset: '../../jest.preset.js',
   transform: {
-    '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nrwl/react/plugins/jest',
-    '^.+\\.[tj]sx?$': 'babel-jest',
+    '^.+\\.[tj]sx?$': 'ts-jest',
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/apps/my-react-app',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
+  coverageDirectory: '../../coverage/apps/cart',
+  setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
+  globals: { 'ts-jest': { tsConfig: '<rootDir>/tsconfig.spec.json' } },
+  displayName: 'cart',
 };

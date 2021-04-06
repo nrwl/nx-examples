@@ -14,7 +14,7 @@ export interface ProductsPartialState {
 }
 
 export const initialState: ProductsState = {
-  products: products
+  products: products,
 };
 
 export function productsReducer(

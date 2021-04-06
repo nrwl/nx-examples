@@ -8,7 +8,7 @@ describe('Products Reducer', () => {
 
   beforeEach(() => {
     productsState = {
-      products: mockProducts
+      products: mockProducts,
     };
   });
 

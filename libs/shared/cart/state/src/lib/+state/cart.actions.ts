@@ -2,7 +2,7 @@ import { Action } from '@ngrx/store';
 
 export enum CartActionTypes {
   /* eslint-disable @typescript-eslint/no-shadow */
-  SetQuantity = '[Cart] Set Quantity'
+  SetQuantity = '[Cart] Set Quantity',
 }
 
 export class SetQuantity implements Action {
