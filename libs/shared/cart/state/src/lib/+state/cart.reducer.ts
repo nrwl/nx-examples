@@ -2,7 +2,6 @@ import { CartAction, CartActionTypes } from './cart.actions';
 
 export const CART_FEATURE_KEY = 'cart';
 
-/* tslint:disable:no-empty-interface */
 export interface CartItem {
   productId: string;
   quantity: number;
@@ -17,7 +16,7 @@ export interface CartPartialState {
 }
 
 export const initialState: CartState = {
-  items: []
+  items: [],
 };
 
 export const cartReducer = (state: CartState, action: CartAction) => {
@@ -25,16 +24,16 @@ export const cartReducer = (state: CartState, action: CartAction) => {
     case CartActionTypes.SetQuantity: {
       return {
         ...state,
-        items: state.items.map(item => {
+        items: state.items.map((item) => {
           if (item.productId !== action.productId) {
             return item;
           }
 
           return {
             ...item,
-            quantity: action.quantity
+            quantity: action.quantity,
           };
-        })
+        }),
       };
     }
 

@@ -7,7 +7,8 @@ export function getItemCost(item: CartItem, productsState: ProductsState) {
 }
 
 export function getTotalCost(state: CartState, productsState: ProductsState) {
-  return state.items.reduce((total, item) => {
-    return total + getItemCost(item, productsState);
-  }, 0);
+  return state.items.reduce(
+    (total, item) => total + getItemCost(item, productsState),
+    0
+  );
 }

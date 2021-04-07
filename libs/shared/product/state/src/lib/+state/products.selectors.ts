@@ -6,6 +6,5 @@ export const getProductsState = createFeatureSelector(PRODUCTS_FEATURE_KEY);
 
 export const getProducts = ({ products }: ProductsState) => products;
 
-export const getProduct = ({ products }: ProductsState, productId: string) => {
-  return products.find(product => product.id === productId);
-};
+export const getProduct = ({ products }: ProductsState, productId: string) =>
+  products.find((product) => product.id === productId);

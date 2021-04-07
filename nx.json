@@ -1,13 +1,15 @@
 {
-  "npmScope": "nx-example",
   "implicitDependencies": {
     "package.json": {
       "dependencies": "*",
       "devDependencies": "*"
     },
-    "tslint.json": "*",
     ".eslintrc.json": "*"
   },
+  "affected": {
+    "defaultBase": "master"
+  },
+  "npmScope": "nx-example",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
@@ -73,8 +75,5 @@
     "shared-styles": {
       "tags": ["scope:shared", "type:styles"]
     }
-  },
-  "affected": {
-    "defaultBase": "master"
   }
 }

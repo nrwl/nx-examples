@@ -1,3 +1,4 @@
+import { Action } from '@ngrx/store';
 import { mockProducts } from '@nx-example/shared/product/data/testing';
 
 import { productsReducer, ProductsState } from './products.reducer';
@@ -7,13 +8,13 @@ describe('Products Reducer', () => {
 
   beforeEach(() => {
     productsState = {
-      products: mockProducts
+      products: mockProducts,
     };
   });
 
   describe('unknown action', () => {
     it('should return the initial state', () => {
-      const action = {} as any;
+      const action = {} as Action;
       const result = productsReducer(productsState, action);
 
       expect(result).toBe(productsState);
