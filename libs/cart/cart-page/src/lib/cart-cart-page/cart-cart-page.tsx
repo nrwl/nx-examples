@@ -9,12 +9,12 @@ import {
   cartReducer,
   getItemCost,
   getTotalCost,
-  SetQuantity
+  SetQuantity,
 } from '@nx-example/shared/cart/state';
 import {
   getProduct,
   initialState,
-  productsReducer
+  productsReducer,
 } from '@nx-example/shared/product/state';
 
 const StyledUl = styled.ul`
@@ -84,10 +84,10 @@ export const CartCartPage = () => {
   const [productsState] = useReducer(productsReducer, initialState);
   const { products } = productsState;
   const [cartState, dispatch] = useReducer(cartReducer, {
-    items: products.map(product => ({
+    items: products.map((product) => ({
       productId: product.id,
-      quantity: 1
-    }))
+      quantity: 1,
+    })),
   });
 
   return (
@@ -109,7 +109,7 @@ export const CartCartPage = () => {
           </p>
           <select
             value={item.quantity}
-            onChange={event => {
+            onChange={(event) => {
               dispatch(new SetQuantity(item.productId, +event.target.value));
             }}
           >
