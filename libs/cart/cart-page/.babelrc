@@ -1,7 +1,4 @@
 {
-  "presets": [
-    "@nrwl/react/babel",
-    "@emotion/babel-preset-css-prop"
-  ],
-  "plugins": []
+  "presets": ["@nrwl/react/babel"],
+  "plugins": ["@emotion/babel-plugin"]
 }

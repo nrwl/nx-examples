@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { cleanup, fireEvent, render } from '@testing-library/react';
 
 import CartCartPage from './cart-cart-page';
