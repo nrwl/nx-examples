@@ -25,4 +25,14 @@ describe('App', () => {
       ).baseElement.querySelector('nx-example-header')
     ).toBeTruthy();
   });
+
+  it('should display the header again', () => {
+    expect(
+      render(
+        <MemoryRouter initialEntries={['/cart']}>
+          <App />
+        </MemoryRouter>
+      ).baseElement.querySelector('nx-example-header')
+    ).toBeTruthy();
+  });
 });
