@@ -1,0 +1,24 @@
+{
+  "rulesDirectory": [
+    "node_modules/@nrwl/workspace/src/tslint",
+    "node_modules/codelyzer"
+  ],
+  "linterOptions": {
+    "exclude": ["**/*"]
+  },
+  "rules": {
+    "nx-enforce-module-boundaries": [
+      true,
+      {
+        "enforceBuildableLibDependency": true,
+        "allow": [],
+        "depConstraints": [
+          {
+            "sourceTag": "*",
+            "onlyDependOnLibsWithTags": ["*"]
+          }
+        ]
+      }
+    ]
+  }
+}
