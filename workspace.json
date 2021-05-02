@@ -35,6 +35,14 @@
       "sourceRoot": "apps/products/src",
       "prefix": "nx-example",
       "targets": {
+        "servex": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "npm run",
+            "cwd": ".",
+            "readyWhen": "READY"
+          }
+        },
         "build": {
           "executor": "@angular-devkit/build-angular:browser",
           "options": {
@@ -93,7 +101,9 @@
               ]
             }
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "serve": {
           "executor": "@angular-devkit/build-angular:dev-server",
@@ -127,7 +137,9 @@
             "jestConfig": "apps/products/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/apps/products"]
+          "outputs": [
+            "coverage/apps/products"
+          ]
         },
         "deploy": {
           "executor": "@nrwl/workspace:run-commands",
@@ -162,7 +174,9 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/products-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/products-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -228,7 +242,9 @@
               ]
             }
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "serve": {
           "executor": "@nrwl/web:dev-server",
@@ -244,7 +260,9 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/cart/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/cart/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
@@ -253,7 +271,9 @@
             "jestConfig": "apps/cart/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/apps/cart"]
+          "outputs": [
+            "coverage/apps/cart"
+          ]
         },
         "deploy": {
           "executor": "@nrwl/workspace:run-commands",
@@ -288,7 +308,9 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/cart-e2e/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/cart-e2e/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         }
       }
@@ -348,7 +370,9 @@
             "jestConfig": "libs/shared/product/ui/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/shared/product/ui"]
+          "outputs": [
+            "coverage/libs/shared/product/ui"
+          ]
         }
       }
     },
@@ -373,7 +397,9 @@
             "jestConfig": "libs/products/home-page/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/products/home-page"]
+          "outputs": [
+            "coverage/libs/products/home-page"
+          ]
         }
       },
       "generators": {
@@ -403,7 +429,9 @@
             "jestConfig": "libs/cart/cart-page/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/cart/cart-page"]
+          "outputs": [
+            "coverage/libs/cart/cart-page"
+          ]
         }
       }
     },
@@ -462,7 +490,9 @@
             "jestConfig": "libs/shared/cart/state/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/shared/cart/state"]
+          "outputs": [
+            "coverage/libs/shared/cart/state"
+          ]
         }
       },
       "generators": {
@@ -492,7 +522,9 @@
             "jestConfig": "libs/shared/product/state/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/shared/product/state"]
+          "outputs": [
+            "coverage/libs/shared/product/state"
+          ]
         }
       },
       "generators": {
@@ -529,7 +561,9 @@
             "jestConfig": "libs/shared/header/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/shared/header"]
+          "outputs": [
+            "coverage/libs/shared/header"
+          ]
         }
       }
     },
@@ -554,7 +588,9 @@
             "jestConfig": "libs/products/product-detail-page/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/products/product-detail-page"]
+          "outputs": [
+            "coverage/libs/products/product-detail-page"
+          ]
         }
       },
       "generators": {
