@@ -87,7 +87,7 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
 
 ## ☁ Nx Cloud
 
-### Computation Memoization in the Cloud
+### Computation Caching in the Cloud
 
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
 
@@ -95,4 +95,8 @@ Nx Cloud pairs with Nx in order to enable you to build and test code more rapidl
 
 Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
 
-Visit [Nx Cloud](https://nx.app/) to learn more.
+[Nx Cloud](https://nx.app/)
+
+[Computation Caching Fundamentals](https://blog.nrwl.io/computation-caching-the-fundamentals-behind-nxs-lightning-fast-execution-dc761fe41eb8)
+
+[Computation Caching with NX](https://nx.dev/latest/core-concepts/computation-caching)
