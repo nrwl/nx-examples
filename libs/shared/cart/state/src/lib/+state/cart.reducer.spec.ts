@@ -1,8 +1,5 @@
-import {
-  cartReducer,
-  CartState,
-  SetQuantity
-} from '@nx-example/shared/cart/state';
+import { SetQuantity } from './cart.actions';
+import { cartReducer, CartState } from './cart.reducer';
 
 describe('Cart Reducer', () => {
   let cartState: CartState;
@@ -11,13 +8,13 @@ describe('Cart Reducer', () => {
       items: [
         {
           productId: '0',
-          quantity: 0
+          quantity: 0,
         },
         {
           productId: '1',
-          quantity: 1
-        }
-      ]
+          quantity: 1,
+        },
+      ],
     };
   });
 
