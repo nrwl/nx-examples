@@ -127,7 +127,8 @@
       "extends": ["plugin:@nrwl/nx/angular-template"],
       "rules": {
         "@angular-eslint/template/banana-in-box": "error",
-        "@angular-eslint/template/no-negated-async": "error"
+        "@angular-eslint/template/no-negated-async": "error",
+        "@angular-eslint/template/eqeqeq": "error"
       },
       "plugins": ["@angular-eslint/eslint-plugin-template"]
     }
