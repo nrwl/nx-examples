@@ -20,57 +20,57 @@
     }
   },
   "projects": {
-    "products-e2e": {
-      "tags": ["scope:products", "type:e2e"],
-      "implicitDependencies": ["products"]
-    },
-    "products": {
-      "tags": ["type:app", "scope:products"],
-      "implicitDependencies": ["shared-assets", "shared-styles"]
-    },
     "cart": {
       "tags": ["type:app", "scope:cart"],
       "implicitDependencies": ["shared-assets", "shared-styles"]
+    },
+    "cart-cart-page": {
+      "tags": ["scope:cart", "type:feature"]
     },
     "cart-e2e": {
       "tags": ["scope:cart", "type:e2e"],
       "implicitDependencies": ["cart"]
     },
-    "shared-product-types": {
-      "tags": ["type:types", "scope:shared"]
+    "products": {
+      "tags": ["type:app", "scope:products"],
+      "implicitDependencies": ["shared-assets", "shared-styles"]
     },
-    "shared-product-data": {
-      "tags": ["type:data", "scope:shared"]
-    },
-    "shared-product-ui": {
-      "tags": ["scope:shared", "type:ui"]
+    "products-e2e": {
+      "tags": ["scope:products", "type:e2e"],
+      "implicitDependencies": ["products"]
     },
     "products-home-page": {
       "tags": ["scope:products", "type:feature"]
     },
-    "cart-cart-page": {
-      "tags": ["scope:cart", "type:feature"]
-    },
-    "shared-e2e-utils": {
-      "tags": ["scope:shared", "type:e2e-utils"]
-    },
-    "shared-jsxify": {
-      "tags": ["scope:shared", "type:types"]
-    },
-    "shared-cart-state": {
-      "tags": ["scope:shared", "type:state"]
-    },
-    "shared-product-state": {
-      "tags": ["scope:shared", "type:state"]
+    "products-product-detail-page": {
+      "tags": ["type:feature", "scope:products"]
     },
     "shared-assets": {
       "tags": ["type:assets", "scope:shared"]
     },
+    "shared-cart-state": {
+      "tags": ["scope:shared", "type:state"]
+    },
+    "shared-e2e-utils": {
+      "tags": ["scope:shared", "type:e2e-utils"]
+    },
     "shared-header": {
       "tags": ["scope:shared", "type:ui"]
     },
-    "products-product-detail-page": {
-      "tags": ["type:feature", "scope:products"]
+    "shared-jsxify": {
+      "tags": ["scope:shared", "type:types"]
+    },
+    "shared-product-data": {
+      "tags": ["type:data", "scope:shared"]
+    },
+    "shared-product-state": {
+      "tags": ["scope:shared", "type:state"]
+    },
+    "shared-product-types": {
+      "tags": ["type:types", "scope:shared"]
+    },
+    "shared-product-ui": {
+      "tags": ["scope:shared", "type:ui"]
     },
     "shared-styles": {
       "tags": ["scope:shared", "type:styles"]
