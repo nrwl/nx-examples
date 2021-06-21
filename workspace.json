@@ -187,7 +187,7 @@
       "prefix": "nx-example",
       "targets": {
         "build": {
-          "executor": "@angular-devkit/build-angular:browser",
+          "executor": "@nrwl/angular:webpack-browser",
           "options": {
             "aot": true,
             "outputPath": "dist/apps/products",
@@ -254,6 +254,17 @@
           "configurations": {
             "production": {
               "browserTarget": "products:build:production"
+            }
+          }
+        },
+        "serve2": {
+          "executor": "@nrwl/web:file-server",
+          "options": {
+            "buildTarget": "products:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "products:build:production"
             }
           }
         },
