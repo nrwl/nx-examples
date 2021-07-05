@@ -75,5 +75,13 @@
     "shared-styles": {
       "tags": ["scope:shared", "type:styles"]
     }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }
