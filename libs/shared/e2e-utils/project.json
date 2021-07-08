@@ -1,0 +1,18 @@
+{
+  "root": "libs/shared/e2e-utils",
+  "sourceRoot": "libs/shared/e2e-utils/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/e2e-utils/src/**/*.ts",
+          "libs/shared/e2e-utils/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:shared", "type:e2e-utils"]
+}

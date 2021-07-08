@@ -1,0 +1,31 @@
+{
+  "projectType": "library",
+  "root": "libs/shared/cart/state",
+  "sourceRoot": "libs/shared/cart/state/src",
+  "prefix": "nx-example",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/cart/state/src/**/*.ts",
+          "libs/shared/cart/state/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/shared/cart/state/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/shared/cart/state"]
+    }
+  },
+  "generators": {
+    "@nrwl/angular:component": {
+      "styleext": "scss"
+    }
+  },
+  "tags": ["scope:shared", "type:state"]
+}

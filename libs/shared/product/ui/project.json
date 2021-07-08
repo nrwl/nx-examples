@@ -1,0 +1,26 @@
+{
+  "root": "libs/shared/product/ui",
+  "sourceRoot": "libs/shared/product/ui/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/product/ui/src/**/*.ts",
+          "libs/shared/product/ui/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/shared/product/ui/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/shared/product/ui"]
+    }
+  },
+  "tags": ["scope:shared", "type:ui"]
+}
