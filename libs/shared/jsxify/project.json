@@ -1,0 +1,18 @@
+{
+  "root": "libs/shared/jsxify",
+  "sourceRoot": "libs/shared/jsxify/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/jsxify/src/**/*.ts",
+          "libs/shared/jsxify/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:shared", "type:types"]
+}

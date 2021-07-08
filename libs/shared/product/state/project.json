@@ -1,0 +1,31 @@
+{
+  "projectType": "library",
+  "root": "libs/shared/product/state",
+  "sourceRoot": "libs/shared/product/state/src",
+  "prefix": "nx-example",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/product/state/src/**/*.ts",
+          "libs/shared/product/state/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/shared/product/state/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/shared/product/state"]
+    }
+  },
+  "generators": {
+    "@nrwl/angular:component": {
+      "styleext": "scss"
+    }
+  },
+  "tags": ["scope:shared", "type:state"]
+}

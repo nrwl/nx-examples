@@ -1,0 +1,18 @@
+{
+  "root": "libs/shared/product/types",
+  "sourceRoot": "libs/shared/product/types/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/product/types/src/**/*.ts",
+          "libs/shared/product/types/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["type:types", "scope:shared"]
+}

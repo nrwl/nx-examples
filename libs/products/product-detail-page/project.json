@@ -1,0 +1,31 @@
+{
+  "projectType": "library",
+  "root": "libs/products/product-detail-page",
+  "sourceRoot": "libs/products/product-detail-page/src",
+  "prefix": "nx-example",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/products/product-detail-page/src/**/*.ts",
+          "libs/products/product-detail-page/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/products/product-detail-page/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/products/product-detail-page"]
+    }
+  },
+  "generators": {
+    "@nrwl/angular:component": {
+      "styleext": "scss"
+    }
+  },
+  "tags": ["type:feature", "scope:products"]
+}

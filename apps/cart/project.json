@@ -1,0 +1,102 @@
+{
+  "root": "apps/cart",
+  "sourceRoot": "apps/cart/src",
+  "projectType": "application",
+  "generators": {},
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:build",
+      "options": {
+        "outputPath": "dist/apps/cart",
+        "webpackConfig": "@nrwl/react/plugins/webpack",
+        "index": "apps/cart/src/index.html",
+        "main": "apps/cart/src/main.tsx",
+        "polyfills": "apps/cart/src/polyfills.ts",
+        "tsConfig": "apps/cart/tsconfig.app.json",
+        "assets": [
+          "apps/cart/src/_redirects",
+          {
+            "input": "libs/shared/assets/src/assets",
+            "glob": "**/*",
+            "output": "assets"
+          },
+          {
+            "input": "libs/shared/assets/src",
+            "glob": "favicon.ico",
+            "output": ""
+          }
+        ],
+        "maxWorkers": 8,
+        "styles": [
+          "libs/shared/styles/src/index.scss",
+          "libs/shared/header/index.scss",
+          "node_modules/normalize.css/normalize.css"
+        ],
+        "scripts": [],
+        "buildLibsFromSource": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/cart/src/environments/environment.ts",
+              "with": "apps/cart/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "extractCss": true,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            }
+          ]
+        }
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "cart:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "cart:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/cart/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "apps/cart/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/apps/cart"]
+    },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "npx ts-node --project tools/tsconfig.tools.json tools/scripts/deploy --siteName nrwl-nx-examples-cart --outputPath dist/apps/cart"
+          }
+        ]
+      }
+    }
+  },
+  "tags": ["type:app", "scope:cart"],
+  "implicitDependencies": ["shared-assets", "shared-styles"]
+}
