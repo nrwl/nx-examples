@@ -35,7 +35,7 @@ Below are our core plugins:
 - [Node](https://nodejs.org)
   - `npm install --save-dev @nrwl/node`
 
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
+There are also many [community plugins](https://nx.dev/community) you could add.
 
 ## Generate an application
 
