@@ -93,7 +93,8 @@
           "apps/products/src/**/*.ts",
           "apps/products/src/**/*.html"
         ]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",

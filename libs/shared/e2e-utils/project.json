@@ -11,7 +11,8 @@
           "libs/shared/e2e-utils/src/**/*.ts",
           "libs/shared/e2e-utils/src/**/*.html"
         ]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     }
   },
   "tags": ["scope:shared", "type:e2e-utils"]

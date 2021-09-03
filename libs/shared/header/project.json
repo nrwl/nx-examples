@@ -11,7 +11,8 @@
           "libs/shared/header/src/**/*.ts",
           "libs/shared/header/src/**/*.html"
         ]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",

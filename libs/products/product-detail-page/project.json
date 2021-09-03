@@ -11,7 +11,8 @@
           "libs/products/product-detail-page/src/**/*.ts",
           "libs/products/product-detail-page/src/**/*.html"
         ]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
