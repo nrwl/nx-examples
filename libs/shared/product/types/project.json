@@ -11,7 +11,8 @@
           "libs/shared/product/types/src/**/*.ts",
           "libs/shared/product/types/src/**/*.html"
         ]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     }
   },
   "tags": ["type:types", "scope:shared"]

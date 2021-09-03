@@ -11,7 +11,8 @@
           "libs/shared/jsxify/src/**/*.ts",
           "libs/shared/jsxify/src/**/*.html"
         ]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     }
   },
   "tags": ["scope:shared", "type:types"]
