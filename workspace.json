@@ -1,28 +1,5 @@
 {
   "version": 2,
-  "cli": {
-    "warnings": {
-      "versionMismatch": false
-    },
-    "packageManager": "yarn",
-    "defaultCollection": "@nrwl/angular",
-    "analytics": false
-  },
-  "defaultProject": "products",
-  "generators": {
-    "@nrwl/angular:application": {
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular": {
-      "convert-tslint-to-eslint": {
-        "removeTSLintIfNoMoreTSLintTargets": true
-      }
-    }
-  },
   "projects": {
     "cart": "apps/cart",
     "cart-cart-page": "libs/cart/cart-page",
