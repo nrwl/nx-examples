@@ -7,6 +7,7 @@
     "build": {
       "executor": "@nrwl/web:build",
       "options": {
+        "runtimeChunk": false,
         "outputPath": "dist/apps/cart",
         "webpackConfig": "@nrwl/react/plugins/webpack",
         "index": "apps/cart/src/index.html",
