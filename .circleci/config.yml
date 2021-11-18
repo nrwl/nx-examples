@@ -118,7 +118,7 @@ jobs:
           <<: *set_env
       - restore_cache:
           <<: *yarn_cache
-      - run: yarn affected:e2e -- ${AFFECTED_ARGS} --configuration production -- --headless
+      - run: yarn affected:e2e -- ${AFFECTED_ARGS} --configuration production --parallel false -- --headless
       - store_artifacts:
           path: dist/cypress
 

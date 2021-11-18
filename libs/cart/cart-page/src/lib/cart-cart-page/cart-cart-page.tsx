@@ -10,12 +10,12 @@ import {
   getItemCost,
   getTotalCost,
   SetQuantity,
-} from '@nx-example/shared/cart/state';
+} from '@nx-example/shared/cart/state/react';
 import {
   getProduct,
   initialState,
   productsReducer,
-} from '@nx-example/shared/product/state';
+} from '@nx-example/shared/product/state/react';
 
 const StyledUl = styled.ul`
   display: flex;
