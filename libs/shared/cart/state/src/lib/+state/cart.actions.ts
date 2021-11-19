@@ -1,4 +1,4 @@
-import { Action } from '@ngrx/store';
+import type { Action } from '@ngrx/store';
 
 export enum CartActionTypes {
   /* eslint-disable @typescript-eslint/no-shadow */

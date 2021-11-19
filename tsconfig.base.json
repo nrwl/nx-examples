@@ -25,6 +25,9 @@
         "libs/products/product-detail-page/src/index.ts"
       ],
       "@nx-example/shared/cart/state": ["libs/shared/cart/state/src/index.ts"],
+      "@nx-example/shared/cart/state/react": [
+        "libs/shared/cart/state/src/react.ts"
+      ],
       "@nx-example/shared/e2e-utils": ["libs/shared/e2e-utils/src/index.ts"],
       "@nx-example/shared/header": ["libs/shared/header/src/index.ts"],
       "@nx-example/shared/jsxify": ["libs/shared/jsxify/src/index.ts"],
@@ -36,6 +39,9 @@
       ],
       "@nx-example/shared/product/state": [
         "libs/shared/product/state/src/index.ts"
+      ],
+      "@nx-example/shared/product/state/react": [
+        "libs/shared/product/state/src/react.ts"
       ],
       "@nx-example/shared/product/types": [
         "libs/shared/product/types/src/index.ts"
