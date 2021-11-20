@@ -9,5 +9,6 @@
     "**/*.d.ts",
     "../../libs/products/home-page/src/index.ts",
     "../../libs/products/product-detail-page/src/index.ts"
-  ]
+  ],
+  "exclude": ["**/*.stories.ts", "**/*.stories.js"]
 }
