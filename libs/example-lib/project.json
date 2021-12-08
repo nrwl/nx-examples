@@ -1,0 +1,46 @@
+{
+  "projectType": "library",
+  "root": "libs/example-lib",
+  "sourceRoot": "libs/example-lib/src",
+  "prefix": "nx-example",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/example-lib"],
+      "options": {
+        "project": "libs/example-lib/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/example-lib/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/example-lib/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/example-lib"],
+      "options": {
+        "jestConfig": "libs/example-lib/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/example-lib/src/**/*.ts",
+          "libs/example-lib/src/**/*.html",
+          "libs/example-lib/models/abstract/**/*.ts",
+          "libs/example-lib/models/abstract/**/*.html",
+          "libs/example-lib/models/implementations/**/*.ts",
+          "libs/example-lib/models/implementations/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
