@@ -23,7 +23,6 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "nx": "nx",
-    "postinstall": "ngcc --properties es2015 browser module main && node decorate-angular-cli.js",
     "workspace-generator": "nx workspace-generator"
   },
   "private": true,
@@ -101,5 +100,6 @@
     "ts-jest": "27.0.5",
     "ts-node": "9.1.1",
     "typescript": "4.4.4"
-  }
+  },
+  "packageManager": "yarn@3.1.1"
 }

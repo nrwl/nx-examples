@@ -24,6 +24,15 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# yarn PnP
+/.yarn/*
+!/.yarn/cache
+!/.yarn/patches
+!/.yarn/plugins
+!/.yarn/releases
+!/.yarn/sdks
+!/.yarn/versions
+
 # misc
 /.angular/cache
 /.sass-cache
