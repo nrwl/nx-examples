@@ -5,7 +5,7 @@
   "generators": {},
   "targets": {
     "build": {
-      "executor": "@nrwl/web:build",
+      "executor": "@nrwl/web:webpack",
       "options": {
         "outputPath": "dist/apps/cart",
         "webpackConfig": "@nrwl/react/plugins/webpack",
