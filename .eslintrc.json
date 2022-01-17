@@ -138,8 +138,8 @@
         "guard-for-in": "error",
         "id-blacklist": "off",
         "id-match": "off",
-        "import/no-deprecated": "warn",
-        "import/order": "error",
+//        "import/no-deprecated": "warn",
+//        "import/order": "error",
         "no-bitwise": "error",
         "no-caller": "error",
         "no-console": [
@@ -182,7 +182,7 @@
         "radix": "error"
       },
       "plugins": [
-        "eslint-plugin-import",
+//        "eslint-plugin-import",
         "@angular-eslint/eslint-plugin",
         "@typescript-eslint"
       ]

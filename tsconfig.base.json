@@ -17,6 +17,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@example/lib": ["libs/example-lib/src/index.ts"],
+      "@example/lib/models/abstract": [
+        "libs/example-lib/models/abstract/src/index.ts"
+      ],
+      "@example/lib/models/implementations": [
+        "libs/example-lib/models/implementations/src/index.ts"
+      ],
       "@nx-example/cart/cart-page": ["libs/cart/cart-page/src/index.ts"],
       "@nx-example/products/home-page": [
         "libs/products/home-page/src/index.ts"

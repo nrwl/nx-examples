@@ -38,17 +38,20 @@
   },
   "generators": {
     "@nrwl/angular:application": {
+      "linter": "eslint",
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
     },
     "@nrwl/angular:library": {
+      "linter": "eslint",
       "unitTestRunner": "jest"
     },
     "@nrwl/angular": {
       "convert-tslint-to-eslint": {
         "removeTSLintIfNoMoreTSLintTargets": true
       }
-    }
+    },
+    "@nrwl/angular:component": {}
   },
   "defaultProject": "products"
 }
