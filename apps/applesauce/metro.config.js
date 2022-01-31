@@ -1,6 +1,8 @@
 const { withNxMetro } = require('@nrwl/react-native');
 const { getDefaultConfig } = require('metro-config');
 
+console.log('IN METRO CONFIG');
+
 module.exports = (async () => {
   const {
     resolver: { sourceExts, assetExts },
