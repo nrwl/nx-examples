@@ -75,6 +75,7 @@
     {
       "files": ["*.ts"],
       "rules": {
+        "@typescript-eslint/prefer-readonly": "error",
         "@angular-eslint/component-selector": [
           "error",
           {
