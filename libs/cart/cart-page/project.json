@@ -21,6 +21,12 @@
         "passWithNoTests": true
       },
       "outputs": ["coverage/libs/cart/cart-page"]
+    },
+    "echo": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "echo 'hi'"
+      }
     }
   },
   "tags": ["scope:cart", "type:feature"]

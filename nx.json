@@ -9,6 +9,7 @@
   "affected": {
     "defaultBase": "master"
   },
+  "plugins": ["./tools/my-plugin/my-plugin.js"],
   "npmScope": "nx-example",
   "tasksRunnerOptions": {
     "default": {
