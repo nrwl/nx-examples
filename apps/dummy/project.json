@@ -1,0 +1,39 @@
+{
+  "root": "apps/dummy",
+  "sourceRoot": "apps/dummy/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/dummy",
+        "main": "apps/dummy/src/index.ts",
+        "tsConfig": "apps/dummy/tsconfig.app.json",
+        "assets": ["apps/dummy/*.md"]
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "options": {
+        "buildTarget": "dummy:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/dummy/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/dummy"],
+      "options": {
+        "jestConfig": "apps/dummy/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
