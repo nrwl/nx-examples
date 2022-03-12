@@ -1,0 +1,13 @@
+{
+  "root": "libs/foo",
+  "sourceRoot": "libs/foo/src",
+  "projectType": "library",
+  "targets": {
+    "baz": {
+      "executor": "./libs/foo/src/executors:bar",
+      "outputs": ["{options.outputFile}"],
+      "options": {}
+    }
+  },
+  "tags": []
+}
