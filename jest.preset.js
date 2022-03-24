@@ -7,6 +7,6 @@ module.exports = {
   },
   resolver: '@nrwl/jest/plugins/resolver',
   moduleFileExtensions: ['ts', 'js', 'html'],
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.after.env.js'],
+  setupFilesAfterEnv: ['./jest.setup.after.env.js'],
   coverageReporters: ['html'],
 };
