@@ -1,0 +1,73 @@
+{
+  "root": "apps/react-pascal",
+  "sourceRoot": "apps/react-pascal/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/react-pascal",
+        "index": "apps/react-pascal/src/index.html",
+        "baseHref": "/",
+        "main": "apps/react-pascal/src/main.tsx",
+        "polyfills": "apps/react-pascal/src/polyfills.ts",
+        "tsConfig": "apps/react-pascal/tsconfig.app.json",
+        "assets": [
+          "apps/react-pascal/src/favicon.ico",
+          "apps/react-pascal/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/react-pascal/src/environments/environment.ts",
+              "with": "apps/react-pascal/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "react-pascal:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "react-pascal:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/react-pascal/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/react-pascal"],
+      "options": {
+        "jestConfig": "apps/react-pascal/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
