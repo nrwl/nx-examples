@@ -1,5 +1,4 @@
 module.exports = {
-  preset: '../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
@@ -8,4 +7,5 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: { 'ts-jest': { tsconfig: '<rootDir>/tsconfig.spec.json' } },
   displayName: 'cart',
+  preset: '../../jest.preset.ts',
 };

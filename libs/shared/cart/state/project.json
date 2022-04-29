@@ -17,7 +17,7 @@
     "test": {
       "executor": "@nrwl/jest:jest",
       "options": {
-        "jestConfig": "libs/shared/cart/state/jest.config.js",
+        "jestConfig": "libs/shared/cart/state/jest.config.ts",
         "passWithNoTests": true
       },
       "outputs": ["coverage/libs/shared/cart/state"]

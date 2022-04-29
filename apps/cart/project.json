@@ -57,9 +57,16 @@
               "maximumError": "5mb"
             }
           ]
+        },
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
         }
       },
-      "outputs": ["{options.outputPath}"]
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production"
     },
     "serve": {
       "executor": "@nrwl/web:dev-server",
@@ -69,8 +76,12 @@
       "configurations": {
         "production": {
           "buildTarget": "cart:build:production"
+        },
+        "development": {
+          "buildTarget": "cart:build:development"
         }
-      }
+      },
+      "defaultConfiguration": "development"
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -82,7 +93,7 @@
     "test": {
       "executor": "@nrwl/jest:jest",
       "options": {
-        "jestConfig": "apps/cart/jest.config.js",
+        "jestConfig": "apps/cart/jest.config.ts",
         "passWithNoTests": true
       },
       "outputs": ["coverage/apps/cart"]

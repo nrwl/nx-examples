@@ -99,7 +99,7 @@
     "test": {
       "executor": "@nrwl/jest:jest",
       "options": {
-        "jestConfig": "apps/products/jest.config.js",
+        "jestConfig": "apps/products/jest.config.ts",
         "passWithNoTests": true
       },
       "outputs": ["coverage/apps/products"]
