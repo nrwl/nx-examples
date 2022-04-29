@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import '@nx-example/shared/header';
 
@@ -8,7 +8,9 @@ export const App = () => {
   return (
     <>
       <nx-example-header />
-      <Route path="/cart" exact component={CartCartPage} />
+      <Routes>
+        <Route path="/cart" element={<CartCartPage />} />
+      </Routes>
     </>
   );
 };

@@ -1,6 +1,5 @@
 module.exports = {
-  preset: '../../../../jest.preset.js',
-  coverageDirectory: '../../../../coverage/libs/shared/product/state',
+  coverageDirectory: '../../../coverage/libs/products/product-detail-page',
 
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -10,7 +9,7 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
-  displayName: 'shared-product-state',
+  displayName: 'products-product-detail-page',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',
@@ -20,4 +19,5 @@ module.exports = {
     '^.+.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
   transformIgnorePatterns: ['node_modules/(?!.*.mjs$)'],
+  preset: '../../../jest.preset.ts',
 };
