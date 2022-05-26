@@ -1,0 +1,65 @@
+# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Build workflow
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - closed
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.19.1'
+          registry-url: 'https://npm.pkg.github.com'
+          always-auth: true
+          scope: '@Hogarth-Worldwide'
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v2
+      - run: yarn install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GPR_TOKEN }}
+      - if: ${{ github.event.pull_request.merged == true }}
+        run: echo "NX_BASE=$(git rev-parse @~)" >> $GITHUB_ENV
+      - run: npx nx affected --target=lint --base=$NX_BASE --head=$NX_HEAD --parallel
+      - run: npx nx affected --target=test --base=$NX_BASE --head=$NX_HEAD --parallel
+      - run: npx nx affected --target=build --base=$NX_BASE --head=$NX_HEAD --parallel
+      - run: yarn install
+        working-directory: ./devops
+      - run: node devops/buildDebian.js
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          path: ${{ github.sha }}/*.deb
+          retention-days: 5
+      - name: Upload to S3
+        run: aws s3 sync ${{ github.sha }} s3://${{ secrets.AWS_BUCKET }}/${{ github.sha }} --exclude "*" --include '*.deb'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_EC2_METADATA_DISABLED: true
+      - name: AWS SSM Send-Command
+        uses: peterkimzz/aws-ssm-send-command@master
+        id: ssm
+        with:
+          aws-region: eu-west-1
+          aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          instance-ids: ${{ secrets.CONTROL_BOX_INSTANCE_ID }}
+          command: deploy-to-repo ${{ github.sha }} zonza/zonza5/bionic ${{ github.event.number }} ${{ github.event.pull_request.merged }}
+          comment: raptly-deployment
+
+      # Catch SSM outputs
+      - name: Get SSM output
+        run: echo "The Command id is ${{ steps.ssm.outputs.command-id }}"
