@@ -1,0 +1,13 @@
+{
+  "name": "devops",
+  "version": "1.0.0",
+  "description": "Scripts used in GitHub actions to facilitate DevOps tasks",
+  "main": "buildDebian.js",
+  "author": "Andrei Muresianu <andrei.muresianu@hogarthww.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "child_process": "^1.0.2",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^10.0.0"
+  }
+}
