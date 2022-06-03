@@ -8,7 +8,7 @@ describe('Products Selectors', () => {
 
   beforeEach(() => {
     productsState = {
-      products: mockProducts
+      products: mockProducts,
     };
   });
 

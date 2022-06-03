@@ -15,11 +15,11 @@ import { HomePageComponent } from './home-page/home-page.component';
       {
         path: '',
         pathMatch: 'full',
-        component: HomePageComponent
-      }
-    ])
+        component: HomePageComponent,
+      },
+    ]),
   ],
   declarations: [HomePageComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ProductsHomePageModule {}

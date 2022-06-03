@@ -1,7 +1,7 @@
 import { JSXify } from '@nx-example/shared/jsxify';
 
 enum ProductPriceElementAttribute {
-  Value = 'value'
+  Value = 'value',
 }
 
 declare global {

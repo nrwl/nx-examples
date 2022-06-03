@@ -12,10 +12,10 @@ import { ProductDetailPageComponent } from './product-detail-page/product-detail
     SharedProductStateModule,
 
     RouterModule.forChild([
-      { path: ':productId', component: ProductDetailPageComponent }
-    ])
+      { path: ':productId', component: ProductDetailPageComponent },
+    ]),
   ],
   declarations: [ProductDetailPageComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ProductsProductDetailPageModule {}

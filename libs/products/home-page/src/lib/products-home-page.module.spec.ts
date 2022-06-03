@@ -4,7 +4,7 @@ import { ProductsHomePageModule } from './products-home-page.module';
 describe('ProductsHomePageModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ProductsHomePageModule]
+      imports: [ProductsHomePageModule],
     }).compileComponents();
   }));
 

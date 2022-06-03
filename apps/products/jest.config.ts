@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   coverageDirectory: '../../coverage/apps/products',
 
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
@@ -19,5 +19,5 @@ module.exports = {
     'jest-preset-angular/build/serializers/html-comment',
   ],
   transformIgnorePatterns: ['node_modules/(?!.*.mjs$)'],
-  preset: '../../jest.preset.ts',
+  preset: '../../jest.preset.js',
 };

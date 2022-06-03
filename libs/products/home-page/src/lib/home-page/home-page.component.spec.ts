@@ -17,10 +17,10 @@ describe('HomePageComponent', () => {
       imports: [
         StoreModule.forRoot({}),
         RouterTestingModule,
-        SharedProductStateModule
+        SharedProductStateModule,
       ],
       declarations: [HomePageComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
 

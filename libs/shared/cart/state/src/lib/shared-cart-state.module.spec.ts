@@ -4,7 +4,7 @@ import { SharedCartStateModule } from './shared-cart-state.module';
 describe('SharedCartStateModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [SharedCartStateModule]
+      imports: [SharedCartStateModule],
     }).compileComponents();
   }));
 

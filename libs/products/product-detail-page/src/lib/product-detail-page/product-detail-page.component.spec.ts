@@ -10,9 +10,7 @@ import { SharedProductStateModule } from '@nx-example/shared/product/state';
 import { ProductDetailPageComponent } from './product-detail-page.component';
 
 class MockActivatedRoute {
-  paramMap = of(
-    new Map<string, string>([['productId', '1']])
-  );
+  paramMap = of(new Map<string, string>([['productId', '1']]));
 }
 
 describe('ProductDetailPageComponent', () => {
@@ -25,11 +23,11 @@ describe('ProductDetailPageComponent', () => {
       providers: [
         {
           provide: ActivatedRoute,
-          useClass: MockActivatedRoute
-        }
+          useClass: MockActivatedRoute,
+        },
       ],
       declarations: [ProductDetailPageComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
 

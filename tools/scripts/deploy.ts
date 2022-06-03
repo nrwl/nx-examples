@@ -18,7 +18,7 @@ if (!existsSync(outDir)) {
 (async () => {
   try {
     const sites = await netlifyClient.listSites();
-    const site = sites.find(s => argv.siteName === s.name);
+    const site = sites.find((s) => argv.siteName === s.name);
     if (!site) {
       throw Error(`Could not find site ${argv.siteName}`);
     }

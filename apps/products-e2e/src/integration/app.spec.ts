@@ -10,16 +10,11 @@ describe('products', () => {
   });
 
   it('should display products', () => {
-    getPage()
-      .get('li figure')
-      .should('have.length', 5);
+    getPage().get('li figure').should('have.length', 5);
   });
 
   it('should navigate to product details', () => {
-    getPage()
-      .get('li a')
-      .first()
-      .click();
+    getPage().get('li a').first().click();
 
     cy.url().should('include', '/product/1');
   });
