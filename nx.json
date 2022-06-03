@@ -33,7 +33,6 @@
       "versionMismatch": false
     },
     "packageManager": "yarn",
-    "defaultCollection": "@nrwl/angular",
     "analytics": false
   },
   "generators": {
@@ -50,5 +49,6 @@
       }
     }
   },
-  "defaultProject": "products"
+  "defaultProject": "products",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json"
 }

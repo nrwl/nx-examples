@@ -1,11 +1,11 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "generators": {
     "@nrwl/workspace:component": {
       "style": "scss"
     }
   },
-  "root": "apps/products",
   "sourceRoot": "apps/products/src",
   "prefix": "nx-example",
   "targets": {

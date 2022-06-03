@@ -4,7 +4,7 @@ import { SharedProductStateModule } from './shared-product-state.module';
 describe('SharedProductStateModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [SharedProductStateModule]
+      imports: [SharedProductStateModule],
     }).compileComponents();
   }));
 

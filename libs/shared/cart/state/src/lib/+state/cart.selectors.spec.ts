@@ -13,17 +13,17 @@ describe('Cart Selectors', () => {
       items: [
         {
           productId: '0',
-          quantity: 0
+          quantity: 0,
         },
         {
           productId: '1',
-          quantity: 1
-        }
-      ]
+          quantity: 1,
+        },
+      ],
     };
 
     productsState = {
-      products: mockProducts
+      products: mockProducts,
     };
   });
 
@@ -33,7 +33,7 @@ describe('Cart Selectors', () => {
         getItemCost(
           {
             productId: '1',
-            quantity: 2
+            quantity: 2,
           },
           productsState
         )

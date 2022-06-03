@@ -1,7 +1,7 @@
 import { JSXify } from '@nx-example/shared/jsxify';
 
 enum HeaderElementAttribute {
-  Title = 'title'
+  Title = 'title',
 }
 
 declare global {

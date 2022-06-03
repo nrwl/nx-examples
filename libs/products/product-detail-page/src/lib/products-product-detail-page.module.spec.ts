@@ -4,7 +4,7 @@ import { ProductsProductDetailPageModule } from './products-product-detail-page.
 describe('ProductsProductDetailPageModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ProductsProductDetailPageModule]
+      imports: [ProductsProductDetailPageModule],
     }).compileComponents();
   }));
 
