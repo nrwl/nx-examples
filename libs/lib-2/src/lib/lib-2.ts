@@ -1,3 +1,3 @@
-export function lib2(): string {
-  return 'lib-2';
-}
+import { TestFunction } from '@nx-example/lib-1';
+
+export const testFunction: TestFunction = (arg: string) => arg;

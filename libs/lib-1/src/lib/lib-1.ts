@@ -1,3 +1,1 @@
-export function lib1(): string {
-  return 'lib-1';
-}
+export type TestFunction = (arg: string) => string;
