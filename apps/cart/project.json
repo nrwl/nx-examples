@@ -107,6 +107,13 @@
           }
         ]
       }
+    },
+    "run-in-dist":{
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "dist/apps/cart",
+        "command": "nx run cart:build"
+      }
     }
   },
   "tags": ["type:app", "scope:cart"],
