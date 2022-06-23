@@ -1,0 +1,26 @@
+{
+  "build": {
+    "production": {
+      "android": {
+        "buildType": "app-bundle"
+      }
+    },
+    "development": {
+      "android": {
+        "developmentClient": true,
+        "distribution": "internal"
+      }
+    },
+    "preview": {
+      "ios": {
+        "simulator": true
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    }
+  },
+  "cli": {
+    "version": ">= 0.38.1"
+  }
+}
