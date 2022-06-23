@@ -1,0 +1,64 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/expo-app-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "build-ios": {
+      "executor": "@nrwl/detox:build",
+      "options": {
+        "detoxConfiguration": "ios.sim.debug"
+      },
+      "configurations": {
+        "production": {
+          "detoxConfiguration": "ios.sim.release"
+        }
+      }
+    },
+    "test-ios": {
+      "executor": "@nrwl/detox:test",
+      "options": {
+        "detoxConfiguration": "ios.sim.debug",
+        "buildTarget": "expo-app-e2e:build-ios"
+      },
+      "configurations": {
+        "production": {
+          "detoxConfiguration": "ios.sim.release",
+          "buildTarget": "expo-app-e2e:build-ios:prod"
+        }
+      }
+    },
+    "build-android": {
+      "executor": "@nrwl/detox:build",
+      "options": {
+        "detoxConfiguration": "android.emu.debug"
+      },
+      "configurations": {
+        "production": {
+          "detoxConfiguration": "android.emu.release"
+        }
+      }
+    },
+    "test-android": {
+      "executor": "@nrwl/detox:test",
+      "options": {
+        "detoxConfiguration": "android.emu.debug",
+        "buildTarget": "expo-app-e2e:build-android"
+      },
+      "configurations": {
+        "production": {
+          "detoxConfiguration": "android.emu.release",
+          "buildTarget": "expo-app-e2e:build-android:prod"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/expo-app-e2e/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["expo-app"]
+}
