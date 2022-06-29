@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
+import '@yonatankra/style-import';
 
 @NgModule({
   declarations: [AppComponent],

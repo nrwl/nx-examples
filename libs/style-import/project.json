@@ -1,0 +1,44 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/style-import/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/style-import/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/style-import"],
+      "options": {
+        "jestConfig": "libs/style-import/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "entryFile": "libs/style-import/src/index.ts",
+        "outputPath": "dist/libs/style-import",
+        "tsConfig": "libs/style-import/tsconfig.lib.json",
+        "project": "libs/style-import/package.json",
+        "assets": [
+          {
+            "input": "./libs/style-import",
+            "glob": "README.md",
+            "output": "."
+          }
+        ],
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true,
+        "format": ["umd"],
+        "extractCss": false
+      }
+    }
+  },
+  "tags": ["type:feature", "type:ui"]
+}
