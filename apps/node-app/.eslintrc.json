@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "plugin:@nrwl/nx/react",
+    "../../.eslintrc.json"
+  ],
+  "ignorePatterns": [
+    "!**/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "apps/node-app/tsconfig.*?.json"
+        ]
+      },
+      "rules": {}
+    }
+  ]
+}
