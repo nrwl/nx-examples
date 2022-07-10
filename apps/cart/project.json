@@ -94,7 +94,8 @@
       "executor": "@nrwl/jest:jest",
       "options": {
         "jestConfig": "apps/cart/jest.config.ts",
-        "passWithNoTests": true
+        "passWithNoTests": true,
+        "coverageReporters": [["text", { "skipFull": true }]]
       },
       "outputs": ["coverage/apps/cart"]
     },
