@@ -107,7 +107,7 @@ jobs:
           <<: *set_env
       - restore_cache:
           <<: *yarn_cache
-      - run: yarn affected:test -- ${AFFECTED_ARGS} --parallel -- --ci --code-coverage
+      - run: npx jest
   e2e:
     <<: *defaults
     steps:
@@ -146,29 +146,6 @@ workflows:
   pr_check:
     jobs:
       - install
-      - check-formatting:
-          requires:
-            - install
-      - lint:
-          requires:
-            - install
       - test:
           requires:
             - install
-      - build:
-          requires:
-            - install
-      - e2e:
-          requires:
-            - install
-      - deploy:
-          filters:
-            branches:
-              only:
-                - master
-          requires:
-            - check-formatting
-            - lint
-            - test
-            - build
-            - e2e
