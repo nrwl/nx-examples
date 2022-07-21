@@ -6,8 +6,9 @@
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/products-e2e/cypress.json",
-        "devServerTarget": "products:serve"
+        "cypressConfig": "apps/products-e2e/cypress.config.ts",
+        "devServerTarget": "products:serve",
+        "testingType": "e2e"
       },
       "configurations": {
         "production": {
