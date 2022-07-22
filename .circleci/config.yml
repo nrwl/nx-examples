@@ -36,6 +36,10 @@ yarn_cache: &yarn_cache
     # fallback to using the latest cache if no exact match is found
     - node-deps-node12-
 
+install_certificates: &install_certificates
+  name: Install Certificates
+  command: sudo apt-get install -y ca-certificates
+
 deploy_cache: &deploy_cache
   key: last-deploy-sha
 
@@ -48,6 +52,8 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - run:
+          <<: *install_certificates
       - restore_cache:
           <<: *yarn_cache
       - run:
@@ -61,6 +67,8 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - run:
+          <<: *install_certificates
       - restore_cache:
           <<: *deploy_cache
       - run:
@@ -72,6 +80,8 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - run:
+          <<: *install_certificates
       - restore_cache:
           <<: *deploy_cache
       - run:
@@ -84,6 +94,8 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - run:
+          <<: *install_certificates
       - restore_cache:
           <<: *deploy_cache
       - run:
@@ -101,6 +113,8 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - run:
+          <<: *install_certificates
       - restore_cache:
           <<: *deploy_cache
       - run:
@@ -112,6 +126,8 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - run:
+          <<: *install_certificates
       - restore_cache:
           <<: *deploy_cache
       - run:
@@ -126,6 +142,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - command:
       - restore_cache:
           <<: *deploy_cache
       - run:
