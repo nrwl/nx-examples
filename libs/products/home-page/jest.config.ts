@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   coverageDirectory: '../../../coverage/libs/products/home-page',
 
