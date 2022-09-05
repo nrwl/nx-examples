@@ -1,4 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
+import * as transitiveDependency from '@jridgewell/gen-mapping';
+import * as peerDependency from 'fuzzy';
 
 import '@nx-example/shared/header';
 
@@ -16,3 +18,9 @@ export const App = () => {
 };
 
 export default App;
+
+// make sure no other linting warnings like "unused variables" are thrown, by pretending to use the imports
+export const testfunc = {
+  transitiveDependency,
+  peerDependency,
+};

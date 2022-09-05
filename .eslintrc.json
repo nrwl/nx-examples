@@ -57,7 +57,8 @@
                 "onlyDependOnLibsWithTags": ["scope:cart", "scope:shared"]
               }
             ],
-            "enforceBuildableLibDependency": true
+            "enforceBuildableLibDependency": true,
+            "banTransitiveDependencies": true
           }
         ]
       }
