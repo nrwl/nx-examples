@@ -1,0 +1,12 @@
+{
+  "migrations": [
+    {
+      "cli": "nx",
+      "version": "14.7.0-beta.0",
+      "description": "Update Cypress if using v10 to support latest component testing features",
+      "factory": "./src/migrations/update-14-7-0/update-cypress-version-if-10",
+      "package": "@nrwl/cypress",
+      "name": "update-cypress-if-v10"
+    }
+  ]
+}
