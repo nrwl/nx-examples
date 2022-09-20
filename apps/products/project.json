@@ -100,7 +100,8 @@
       "executor": "@nrwl/jest:jest",
       "options": {
         "jestConfig": "apps/products/jest.config.ts",
-        "passWithNoTests": true
+        "passWithNoTests": true,
+        "coverage": true
       },
       "outputs": ["coverage/apps/products"]
     },
