@@ -14,9 +14,14 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "accessToken": "YmM1MGMwMTUtNzAyYi00ZjM4LWExNGUtZDM2ZjYyNzNiODAxfHJlYWQ=",
-        "cacheableOperations": ["build", "lint", "test"],
-        "parallel": 1
+        "accessToken": "ZjEwOTlmMTktMTUwZS00MjI4LWE3OGQtZDY5ZGU1MzE0ODUzfHJlYWQtd3JpdGU=",
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test"
+        ],
+        "parallel": 1,
+        "url": "https://nxcloud-integration-test.ngrok.io"
       }
     }
   },
@@ -45,7 +50,9 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     }
   }
 }
