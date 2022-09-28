@@ -20,7 +20,7 @@
         "jestConfig": "libs/shared/header/jest.config.ts",
         "passWithNoTests": true
       },
-      "outputs": ["coverage/libs/shared/header"]
+      "outputs": ["{workspaceRoot}/coverage/libs/shared/header"]
     }
   },
   "tags": ["scope:shared", "type:ui"]
