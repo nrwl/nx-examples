@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
+import * as ProductStateActions from 'libs/shared/product/state/src/lib/+state/products.actions';
+
 import {
   getProducts,
   getProductsState,
@@ -23,4 +25,6 @@ export class HomePageComponent {
   );
 
   constructor(private store: Store<ProductsPartialState>) {}
+
+  action: ProductStateActions.ProductsAction;
 }
