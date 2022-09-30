@@ -105,7 +105,7 @@
       "outputs": ["coverage/apps/products"]
     },
     "deploy": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": [
           {
