@@ -9,6 +9,7 @@
   "affected": {
     "defaultBase": "master"
   },
+  "plugins": ["./tools/project-graph-plugins/plugin.js"],
   "npmScope": "nx-example",
   "tasksRunnerOptions": {
     "default": {
