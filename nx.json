@@ -47,5 +47,6 @@
     "build": {
       "dependsOn": ["^build"]
     }
-  }
+  },
+  "plugins": ["@nx-example/broken-plugin"]
 }

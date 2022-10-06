@@ -195,6 +195,11 @@
         "@angular-eslint/template/eqeqeq": "error"
       },
       "plugins": ["@angular-eslint/eslint-plugin-template"]
+    },
+    {
+      "files": "*.json",
+      "parser": "jsonc-eslint-parser",
+      "rules": {}
     }
   ]
 }
