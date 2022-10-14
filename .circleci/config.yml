@@ -29,12 +29,14 @@ set_env: &set_env
     fi
     source $BASH_ENV
     echo $AFFECTED_ARGS
+    node -v
+    yarn -v
 
 yarn_cache: &yarn_cache
   keys:
-    - node-deps-node12-{{ checksum "yarn.lock" }}
+    - node-deps-node16-{{ checksum "yarn.lock" }}
     # fallback to using the latest cache if no exact match is found
-    - node-deps-node12-
+    - node-deps-node16-
 
 deploy_cache: &deploy_cache
   key: last-deploy-sha
@@ -53,7 +55,7 @@ jobs:
       - run:
           <<: *yarn_install
       - save_cache:
-          key: node-deps-node12-{{ checksum "yarn.lock" }}
+          key: node-deps-node16-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache
             - node_modules
