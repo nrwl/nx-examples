@@ -11,9 +11,8 @@
   "prefix": "nx-example",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nrwl/angular:webpack-browser",
       "options": {
-        "aot": true,
         "outputPath": "dist/apps/products",
         "index": "apps/products/src/index.html",
         "main": "apps/products/src/main.ts",
@@ -37,7 +36,10 @@
           "libs/shared/header/index.scss",
           "node_modules/normalize.css/normalize.css"
         ],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/products/webpack.config.ts"
+        }
       },
       "configurations": {
         "production": {
@@ -71,15 +73,13 @@
       "outputs": ["{options.outputPath}"]
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
-      "options": {
-        "browserTarget": "products:build"
-      },
+      "executor": "@nrwl/angular:webpack-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "products:build:production"
         }
-      }
+      },
+      "defaultConfiguration": "production"
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
