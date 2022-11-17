@@ -22,6 +22,12 @@
         "passWithNoTests": true
       },
       "outputs": ["{workspaceRoot}/coverage/libs/products/home-page"]
+    },
+    "custom-command": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "echo 'custom-command'"
+      }
     }
   },
   "generators": {
