@@ -27,7 +27,7 @@ import { AppComponent } from './app.component';
             ),
         },
       ],
-      { initialNavigation: 'enabledBlocking', relativeLinkResolution: 'legacy' }
+      { initialNavigation: 'enabledBlocking' }
     ),
     StoreModule.forRoot({}),
   ],
