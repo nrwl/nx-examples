@@ -52,6 +52,7 @@ jobs:
       - checkout
       - restore_cache:
           <<: *yarn_cache
+      - run: rm -rf node_modules
       - run:
           <<: *yarn_install
       - save_cache:
