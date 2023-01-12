@@ -17,7 +17,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nx-example/buildable-angular-library": [
+        "libs/buildable-angular-library/src/index.ts"
+      ],
       "@nx-example/cart/cart-page": ["libs/cart/cart-page/src/index.ts"],
+      "@nx-example/js-library": ["libs/js-library/src/index.ts"],
       "@nx-example/products/home-page": [
         "libs/products/home-page/src/index.ts"
       ],

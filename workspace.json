@@ -1,9 +1,11 @@
 {
   "version": 2,
   "projects": {
+    "buildable-angular-library": "libs/buildable-angular-library",
     "cart": "apps/cart",
     "cart-cart-page": "libs/cart/cart-page",
     "cart-e2e": "apps/cart-e2e",
+    "js-library": "libs/js-library",
     "products": "apps/products",
     "products-e2e": "apps/products-e2e",
     "products-home-page": "libs/products/home-page",
@@ -19,5 +21,6 @@
     "shared-product-ui": "libs/shared/product/ui",
     "shared-styles": "libs/shared/styles"
   },
-  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "defaultProject": "products"
 }
