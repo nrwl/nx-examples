@@ -9,7 +9,7 @@
       "executor": "@nrwl/webpack:webpack",
       "options": {
         "outputPath": "dist/apps/cart",
-        "webpackConfig": "@nrwl/react/plugins/webpack",
+        "webpackConfig": "apps/cart/webpack.config.js",
         "index": "apps/cart/src/index.html",
         "main": "apps/cart/src/main.tsx",
         "polyfills": "apps/cart/src/polyfills.ts",
@@ -34,7 +34,8 @@
           "node_modules/normalize.css/normalize.css"
         ],
         "scripts": [],
-        "buildLibsFromSource": true
+        "buildLibsFromSource": true,
+        "isolatedConfig": true
       },
       "configurations": {
         "production": {
