@@ -23,7 +23,6 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "nx": "nx",
-    "postinstall": "ngcc --properties es2020 browser module main && node decorate-angular-cli.js",
     "workspace-generator": "nx workspace-generator"
   },
   "private": true,
@@ -122,4 +121,3 @@
     "webpack-merge": "^5.8.0"
   }
 }
-
