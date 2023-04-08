@@ -47,7 +47,8 @@
         "libs/shared/product/types/src/index.ts"
       ],
       "@nx-example/shared/product/ui": ["libs/shared/product/ui/src/index.ts"],
-      "@nx-example/shared/styles": ["libs/shared/styles/src/index.ts"]
+      "@nx-example/shared/styles": ["libs/shared/styles/src/index.ts"],
+      "@ui-kit/core": ["libs/ui-kit/core/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
