@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "generators": {
-    "@nx/workspace:component": {
+    "@nrwl/workspace:component": {
       "style": "scss"
     }
   },
@@ -88,7 +88,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "apps/products/src/**/*.ts",
@@ -98,7 +98,7 @@
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "executor": "@nx/jest:jest",
+      "executor": "@nrwl/jest:jest",
       "options": {
         "jestConfig": "apps/products/jest.config.ts",
         "passWithNoTests": true

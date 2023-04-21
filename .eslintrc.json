@@ -1,12 +1,12 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nx/nx"],
+  "plugins": ["@nrwl/nx"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
-        "@nx/nx/enforce-module-boundaries": [
+        "@nrwl/nx/enforce-module-boundaries": [
           "error",
           {
             "enforceBuildableLibDependency": true,
@@ -23,12 +23,12 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/nx/typescript"],
+      "extends": ["plugin:@nrwl/nx/typescript"],
       "rules": {}
     },
     {
       "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nx/nx/javascript"],
+      "extends": ["plugin:@nrwl/nx/javascript"],
       "rules": {}
     },
     {

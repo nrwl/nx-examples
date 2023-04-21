@@ -6,7 +6,7 @@
   "generators": {},
   "targets": {
     "build": {
-      "executor": "@nx/webpack:webpack",
+      "executor": "@nrwl/webpack:webpack",
       "options": {
         "outputPath": "dist/apps/cart",
         "webpackConfig": "apps/cart/webpack.config.js",
@@ -71,7 +71,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@nx/webpack:dev-server",
+      "executor": "@nrwl/webpack:dev-server",
       "options": {
         "buildTarget": "cart:build"
       },
@@ -86,14 +86,14 @@
       "defaultConfiguration": "development"
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": ["apps/cart/**/*.{ts,tsx,js,jsx}"]
       },
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "executor": "@nx/jest:jest",
+      "executor": "@nrwl/jest:jest",
       "options": {
         "jestConfig": "apps/cart/jest.config.ts",
         "passWithNoTests": true

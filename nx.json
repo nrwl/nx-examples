@@ -5,7 +5,7 @@
   "npmScope": "nx-example",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "nx-cloud",
+      "runner": "@nrwl/nx-cloud",
       "options": {
         "accessToken": "YmM1MGMwMTUtNzAyYi00ZjM4LWExNGUtZDM2ZjYyNzNiODAxfHJlYWQ=",
         "cacheableOperations": ["build", "lint", "test"],
@@ -21,14 +21,14 @@
     "analytics": false
   },
   "generators": {
-    "@nx/angular:application": {
+    "@nrwl/angular:application": {
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
     },
-    "@nx/angular:library": {
+    "@nrwl/angular:library": {
       "unitTestRunner": "jest"
     },
-    "@nx/angular": {
+    "@nrwl/angular": {
       "convert-tslint-to-eslint": {
         "removeTSLintIfNoMoreTSLintTargets": true
       }

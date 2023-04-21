@@ -6,7 +6,7 @@
   "prefix": "nx-example",
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/products/home-page/src/**/*.ts",
@@ -16,7 +16,7 @@
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "executor": "@nx/jest:jest",
+      "executor": "@nrwl/jest:jest",
       "options": {
         "jestConfig": "libs/products/home-page/jest.config.ts",
         "passWithNoTests": true
@@ -25,7 +25,7 @@
     }
   },
   "generators": {
-    "@nx/angular:component": {
+    "@nrwl/angular:component": {
       "styleext": "scss"
     }
   },

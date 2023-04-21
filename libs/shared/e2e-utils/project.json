@@ -6,7 +6,7 @@
   "generators": {},
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/shared/e2e-utils/src/**/*.ts",
