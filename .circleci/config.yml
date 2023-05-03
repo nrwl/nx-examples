@@ -7,7 +7,7 @@ version: 2
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/node:lts-browsers
+    - image: cimg/node:lts-browsers
 
 set_env: &set_env
   name: Setup Environment Variables
