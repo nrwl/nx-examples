@@ -27,6 +27,7 @@ set_env: &set_env
       fi
       echo 'export AFFECTED_ARGS="--base $(cat dist/last-deploy.txt)"' >> $BASH_ENV
     fi
+    echo 'export NX_BATCH_MODE=true' >> $BASH_ENV
     source $BASH_ENV
     echo $AFFECTED_ARGS
     node -v
@@ -110,7 +111,7 @@ jobs:
           <<: *set_env
       - restore_cache:
           <<: *yarn_cache
-      - run: yarn affected:test -- ${AFFECTED_ARGS} --parallel -- --ci --code-coverage
+      - run: yarn affected:test -- ${AFFECTED_ARGS} --parallel -- --ci --code-coveragea --output-style=stream
   e2e:
     <<: *defaults
     steps:
