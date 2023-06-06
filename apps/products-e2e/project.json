@@ -8,12 +8,12 @@
       "executor": "@nx/cypress:cypress",
       "options": {
         "cypressConfig": "apps/products-e2e/cypress.config.ts",
-        "devServerTarget": "products:serve",
+        "devServerTarget": "products-frontend:serve",
         "testingType": "e2e"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "products:serve:production"
+          "devServerTarget": "products-frontend:serve:production"
         }
       }
     },

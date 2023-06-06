@@ -7,20 +7,20 @@
       "style": "scss"
     }
   },
-  "sourceRoot": "apps/products/src",
+  "sourceRoot": "products/frontend/src",
   "prefix": "nx-example",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "options": {
         "aot": true,
-        "outputPath": "dist/apps/products",
-        "index": "apps/products/src/index.html",
-        "main": "apps/products/src/main.ts",
-        "polyfills": "apps/products/src/polyfills.ts",
-        "tsConfig": "apps/products/tsconfig.app.json",
+        "outputPath": "dist/products/frontend",
+        "index": "products/frontend/src/index.html",
+        "main": "products/frontend/src/main.ts",
+        "polyfills": "products/frontend/src/polyfills.ts",
+        "tsConfig": "products/frontend/tsconfig.app.json",
         "assets": [
-          "apps/products/src/_redirects",
+          "products/frontend/src/_redirects",
           {
             "input": "libs/shared/assets/src/assets",
             "glob": "**/*",
@@ -43,8 +43,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "apps/products/src/environments/environment.ts",
-              "with": "apps/products/src/environments/environment.prod.ts"
+              "replace": "products/frontend/src/environments/environment.ts",
+              "with": "products/frontend/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -73,26 +73,26 @@
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
       "options": {
-        "browserTarget": "products:build"
+        "browserTarget": "products-frontend:build"
       },
       "configurations": {
         "production": {
-          "browserTarget": "products:build:production"
+          "browserTarget": "products-frontend:build:production"
         }
       }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "products:build"
+        "browserTarget": "products-frontend:build"
       }
     },
     "lint": {
       "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "apps/products/src/**/*.ts",
-          "apps/products/src/**/*.html"
+          "products/frontend/src/**/*.ts",
+          "products/frontend/src/**/*.html"
         ]
       },
       "outputs": ["{options.outputFile}"]
@@ -100,17 +100,17 @@
     "test": {
       "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "apps/products/jest.config.ts",
+        "jestConfig": "products/frontend/jest.config.ts",
         "passWithNoTests": true
       },
-      "outputs": ["{workspaceRoot}/coverage/apps/products"]
+      "outputs": ["{workspaceRoot}/coverage/products/frontend"]
     },
     "deploy": {
       "executor": "nx:run-commands",
       "options": {
         "commands": [
           {
-            "command": "npx ts-node --project tools/tsconfig.tools.json tools/scripts/deploy --siteName nrwl-nx-examples-products --outputPath dist/apps/products"
+            "command": "npx ts-node --project tools/tsconfig.tools.json tools/scripts/deploy --siteName nrwl-nx-examples-products --outputPath dist/products/frontend"
           }
         ]
       }

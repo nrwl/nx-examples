@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  coverageDirectory: '../../coverage/apps/products',
+  coverageDirectory: '../../coverage/products/frontend',
 
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {},
@@ -14,7 +14,7 @@ export default {
       },
     ],
   },
-  displayName: 'products',
+  displayName: 'products-frontend',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',
