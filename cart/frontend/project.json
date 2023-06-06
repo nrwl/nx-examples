@@ -1,21 +1,21 @@
 {
   "name": "cart",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/cart/src",
+  "sourceRoot": "cart/frontend/src",
   "projectType": "application",
   "generators": {},
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
       "options": {
-        "outputPath": "dist/apps/cart",
-        "webpackConfig": "apps/cart/webpack.config.js",
-        "index": "apps/cart/src/index.html",
-        "main": "apps/cart/src/main.tsx",
-        "polyfills": "apps/cart/src/polyfills.ts",
-        "tsConfig": "apps/cart/tsconfig.app.json",
+        "outputPath": "dist/cart/frontend",
+        "webpackConfig": "cart/frontend/webpack.config.js",
+        "index": "cart/frontend/src/index.html",
+        "main": "cart/frontend/src/main.tsx",
+        "polyfills": "cart/frontend/src/polyfills.ts",
+        "tsConfig": "cart/frontend/tsconfig.app.json",
         "assets": [
-          "apps/cart/src/_redirects",
+          "cart/frontend/src/_redirects",
           {
             "input": "libs/shared/assets/src/assets",
             "glob": "**/*",
@@ -41,8 +41,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "apps/cart/src/environments/environment.ts",
-              "with": "apps/cart/src/environments/environment.prod.ts"
+              "replace": "cart/frontend/src/environments/environment.ts",
+              "with": "cart/frontend/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -73,14 +73,14 @@
     "serve": {
       "executor": "@nx/webpack:dev-server",
       "options": {
-        "buildTarget": "cart:build"
+        "buildTarget": "cart-frontend:build"
       },
       "configurations": {
         "production": {
-          "buildTarget": "cart:build:production"
+          "buildTarget": "cart-frontend:build:production"
         },
         "development": {
-          "buildTarget": "cart:build:development"
+          "buildTarget": "cart-frontend:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -88,24 +88,24 @@
     "lint": {
       "executor": "@nx/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/cart/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["cart/frontend/**/*.{ts,tsx,js,jsx}"]
       },
       "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "apps/cart/jest.config.ts",
+        "jestConfig": "cart/frontend/jest.config.ts",
         "passWithNoTests": true
       },
-      "outputs": ["{workspaceRoot}/coverage/apps/cart"]
+      "outputs": ["{workspaceRoot}/coverage/cart/frontend"]
     },
     "deploy": {
       "executor": "nx:run-commands",
       "options": {
         "commands": [
           {
-            "command": "npx ts-node --project tools/tsconfig.tools.json tools/scripts/deploy --siteName nrwl-nx-examples-cart --outputPath dist/apps/cart"
+            "command": "npx ts-node --project tools/tsconfig.tools.json tools/scripts/deploy --siteName nrwl-nx-examples-cart --outputPath dist/cart/frontend"
           }
         ]
       }

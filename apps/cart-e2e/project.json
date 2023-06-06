@@ -8,12 +8,12 @@
       "executor": "@nx/cypress:cypress",
       "options": {
         "cypressConfig": "apps/cart-e2e/cypress.config.ts",
-        "devServerTarget": "cart:serve",
+        "devServerTarget": "cart-frontend:serve",
         "testingType": "e2e"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "cart:serve:production"
+          "devServerTarget": "cart-frontend:serve:production"
         }
       }
     },
