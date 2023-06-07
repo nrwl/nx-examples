@@ -1,0 +1,37 @@
+"use strict";
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.findTestFiles = void 0;
+const glob_1 = require("glob");
+const util_1 = require("util");
+const globAsync = (0, util_1.promisify)(glob_1.glob);
+/**
+ * Finds all test files in the project.
+ *
+ * @param options The builder options describing where to find tests.
+ * @param workspaceRoot The path to the root directory of the workspace.
+ * @param glob A promisified implementation of the `glob` module. Only intended for
+ *     testing purposes.
+ * @returns A set of all test files in the project.
+ */
+async function findTestFiles(options, workspaceRoot, glob = globAsync) {
+    const globOptions = {
+        cwd: workspaceRoot,
+        ignore: ['node_modules/**'].concat(options.exclude),
+        strict: true,
+        nobrace: true,
+        noext: true,
+        nodir: true, // Match only files, don't care about directories.
+    };
+    const included = await Promise.all(options.include.map((pattern) => glob(pattern, globOptions)));
+    // Flatten and deduplicate any files found in multiple include patterns.
+    return new Set(included.flat());
+}
+exports.findTestFiles = findTestFiles;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidGVzdC1maWxlcy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uLy4uLy4uL3BhY2thZ2VzL2FuZ3VsYXJfZGV2a2l0L2J1aWxkX2FuZ3VsYXIvc3JjL2J1aWxkZXJzL2plc3QvdGVzdC1maWxlcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7Ozs7OztHQU1HOzs7QUFFSCwrQkFBK0Q7QUFDL0QsK0JBQWlDO0FBR2pDLE1BQU0sU0FBUyxHQUFHLElBQUEsZ0JBQVMsRUFBQyxXQUFNLENBQUMsQ0FBQztBQUVwQzs7Ozs7Ozs7R0FRRztBQUNJLEtBQUssVUFBVSxhQUFhLENBQ2pDLE9BQTJCLEVBQzNCLGFBQXFCLEVBQ3JCLE9BQXlCLFNBQVM7SUFFbEMsTUFBTSxXQUFXLEdBQWdCO1FBQy9CLEdBQUcsRUFBRSxhQUFhO1FBQ2xCLE1BQU0sRUFBRSxDQUFDLGlCQUFpQixDQUFDLENBQUMsTUFBTSxDQUFDLE9BQU8sQ0FBQyxPQUFPLENBQUM7UUFDbkQsTUFBTSxFQUFFLElBQUk7UUFDWixPQUFPLEVBQUUsSUFBSTtRQUNiLEtBQUssRUFBRSxJQUFJO1FBQ1gsS0FBSyxFQUFFLElBQUksRUFBRSxrREFBa0Q7S0FDaEUsQ0FBQztJQUVGLE1BQU0sUUFBUSxHQUFHLE1BQU0sT0FBTyxDQUFDLEdBQUcsQ0FBQyxPQUFPLENBQUMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxDQUFDLE9BQU8sRUFBRSxFQUFFLENBQUMsSUFBSSxDQUFDLE9BQU8sRUFBRSxXQUFXLENBQUMsQ0FBQyxDQUFDLENBQUM7SUFFakcsd0VBQXdFO0lBQ3hFLE9BQU8sSUFBSSxHQUFHLENBQUMsUUFBUSxDQUFDLElBQUksRUFBRSxDQUFDLENBQUM7QUFDbEMsQ0FBQztBQWxCRCxzQ0FrQkMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEBsaWNlbnNlXG4gKiBDb3B5cmlnaHQgR29vZ2xlIExMQyBBbGwgUmlnaHRzIFJlc2VydmVkLlxuICpcbiAqIFVzZSBvZiB0aGlzIHNvdXJjZSBjb2RlIGlzIGdvdmVybmVkIGJ5IGFuIE1JVC1zdHlsZSBsaWNlbnNlIHRoYXQgY2FuIGJlXG4gKiBmb3VuZCBpbiB0aGUgTElDRU5TRSBmaWxlIGF0IGh0dHBzOi8vYW5ndWxhci5pby9saWNlbnNlXG4gKi9cblxuaW1wb3J0IHsgSU9wdGlvbnMgYXMgR2xvYk9wdGlvbnMsIGdsb2IgYXMgZ2xvYkNiIH0gZnJvbSAnZ2xvYic7XG5pbXBvcnQgeyBwcm9taXNpZnkgfSBmcm9tICd1dGlsJztcbmltcG9ydCB7IEplc3RCdWlsZGVyT3B0aW9ucyB9IGZyb20gJy4vb3B0aW9ucyc7XG5cbmNvbnN0IGdsb2JBc3luYyA9IHByb21pc2lmeShnbG9iQ2IpO1xuXG4vKipcbiAqIEZpbmRzIGFsbCB0ZXN0IGZpbGVzIGluIHRoZSBwcm9qZWN0LlxuICpcbiAqIEBwYXJhbSBvcHRpb25zIFRoZSBidWlsZGVyIG9wdGlvbnMgZGVzY3JpYmluZyB3aGVyZSB0byBmaW5kIHRlc3RzLlxuICogQHBhcmFtIHdvcmtzcGFjZVJvb3QgVGhlIHBhdGggdG8gdGhlIHJvb3QgZGlyZWN0b3J5IG9mIHRoZSB3b3Jrc3BhY2UuXG4gKiBAcGFyYW0gZ2xvYiBBIHByb21pc2lmaWVkIGltcGxlbWVudGF0aW9uIG9mIHRoZSBgZ2xvYmAgbW9kdWxlLiBPbmx5IGludGVuZGVkIGZvclxuICogICAgIHRlc3RpbmcgcHVycG9zZXMuXG4gKiBAcmV0dXJucyBBIHNldCBvZiBhbGwgdGVzdCBmaWxlcyBpbiB0aGUgcHJvamVjdC5cbiAqL1xuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGZpbmRUZXN0RmlsZXMoXG4gIG9wdGlvbnM6IEplc3RCdWlsZGVyT3B0aW9ucyxcbiAgd29ya3NwYWNlUm9vdDogc3RyaW5nLFxuICBnbG9iOiB0eXBlb2YgZ2xvYkFzeW5jID0gZ2xvYkFzeW5jLFxuKTogUHJvbWlzZTxTZXQ8c3RyaW5nPj4ge1xuICBjb25zdCBnbG9iT3B0aW9uczogR2xvYk9wdGlvbnMgPSB7XG4gICAgY3dkOiB3b3Jrc3BhY2VSb290LFxuICAgIGlnbm9yZTogWydub2RlX21vZHVsZXMvKionXS5jb25jYXQob3B0aW9ucy5leGNsdWRlKSxcbiAgICBzdHJpY3Q6IHRydWUsIC8vIEZhaWwgb24gYW4gXCJ1bnVzdWFsIGVycm9yXCIgd2hlbiByZWFkaW5nIHRoZSBmaWxlIHN5c3RlbS5cbiAgICBub2JyYWNlOiB0cnVlLCAvLyBEbyBub3QgZXhwYW5kIGBhe2IsY31gIHRvIGBhYixhY2AuXG4gICAgbm9leHQ6IHRydWUsIC8vIERpc2FibGUgXCJleHRnbG9iXCIgcGF0dGVybnMuXG4gICAgbm9kaXI6IHRydWUsIC8vIE1hdGNoIG9ubHkgZmlsZXMsIGRvbid0IGNhcmUgYWJvdXQgZGlyZWN0b3JpZXMuXG4gIH07XG5cbiAgY29uc3QgaW5jbHVkZWQgPSBhd2FpdCBQcm9taXNlLmFsbChvcHRpb25zLmluY2x1ZGUubWFwKChwYXR0ZXJuKSA9PiBnbG9iKHBhdHRlcm4sIGdsb2JPcHRpb25zKSkpO1xuXG4gIC8vIEZsYXR0ZW4gYW5kIGRlZHVwbGljYXRlIGFueSBmaWxlcyBmb3VuZCBpbiBtdWx0aXBsZSBpbmNsdWRlIHBhdHRlcm5zLlxuICByZXR1cm4gbmV3IFNldChpbmNsdWRlZC5mbGF0KCkpO1xufVxuIl19

@@ -1,0 +1,75 @@
+"use strict";
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.parseJitUri = exports.generateJitInlineUri = exports.generateJitFileUri = exports.JIT_NAMESPACE_REGEXP = exports.JIT_TEMPLATE_NAMESPACE = exports.JIT_STYLE_NAMESPACE = void 0;
+/**
+ * A string value representing the base namespace for Angular JIT mode related imports.
+ */
+const JIT_BASE_NAMESPACE = 'angular:jit';
+/**
+ * A string value representing the namespace for Angular JIT mode related imports for
+ * Component styles. This namespace is used for both inline (`styles`) and external
+ * (`styleUrls`) styles.
+ */
+exports.JIT_STYLE_NAMESPACE = `${JIT_BASE_NAMESPACE}:style`;
+/**
+ * A string value representing the namespace for Angular JIT mode related imports for
+ * Component templates. This namespace is currently only used for external (`templateUrl`)
+ * templates.
+ */
+exports.JIT_TEMPLATE_NAMESPACE = `${JIT_BASE_NAMESPACE}:template`;
+/**
+ * A regular expression that can be used to match a Angular JIT mode namespace URI.
+ * It contains capture groups for the type (template/style), origin (file/inline), and specifier.
+ * The {@link parseJitUri} function can be used to parse and return an object representation of a JIT URI.
+ */
+exports.JIT_NAMESPACE_REGEXP = new RegExp(`^${JIT_BASE_NAMESPACE}:(template|style):(file|inline);(.*)$`);
+/**
+ * Generates an Angular JIT mode namespace URI for a given file.
+ * @param file The path of the file to be included.
+ * @param type The type of the file (`style` or `template`).
+ * @returns A string containing the full JIT namespace URI.
+ */
+function generateJitFileUri(file, type) {
+    return `${JIT_BASE_NAMESPACE}:${type}:file;${file}`;
+}
+exports.generateJitFileUri = generateJitFileUri;
+/**
+ * Generates an Angular JIT mode namespace URI for a given inline style or template.
+ * The provided content is base64 encoded and included in the URI.
+ * @param data The content to encode within the URI.
+ * @param type The type of the content (`style` or `template`).
+ * @returns A string containing the full JIT namespace URI.
+ */
+function generateJitInlineUri(data, type) {
+    return `${JIT_BASE_NAMESPACE}:${type}:inline;${Buffer.from(data).toString('base64')}`;
+}
+exports.generateJitInlineUri = generateJitInlineUri;
+/**
+ * Parses a string containing a JIT namespace URI.
+ * JIT namespace URIs are used to encode the information for an Angular component's stylesheets
+ * and templates when compiled in JIT mode.
+ * @param uri The URI to parse into its underlying components.
+ * @returns An object containing the namespace, type, origin, and specifier of the URI;
+ * `undefined` if not a JIT namespace URI.
+ */
+function parseJitUri(uri) {
+    const matches = exports.JIT_NAMESPACE_REGEXP.exec(uri);
+    if (!matches) {
+        return undefined;
+    }
+    return {
+        namespace: `${JIT_BASE_NAMESPACE}:${matches[1]}`,
+        type: matches[1],
+        origin: matches[2],
+        specifier: matches[3],
+    };
+}
+exports.parseJitUri = parseJitUri;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidXJpLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vcGFja2FnZXMvYW5ndWxhcl9kZXZraXQvYnVpbGRfYW5ndWxhci9zcmMvYnVpbGRlcnMvYnJvd3Nlci1lc2J1aWxkL2FuZ3VsYXIvdXJpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7O0dBTUc7OztBQUVIOztHQUVHO0FBQ0gsTUFBTSxrQkFBa0IsR0FBRyxhQUFhLENBQUM7QUFFekM7Ozs7R0FJRztBQUNVLFFBQUEsbUJBQW1CLEdBQUcsR0FBRyxrQkFBa0IsUUFBaUIsQ0FBQztBQUUxRTs7OztHQUlHO0FBQ1UsUUFBQSxzQkFBc0IsR0FBRyxHQUFHLGtCQUFrQixXQUFvQixDQUFDO0FBRWhGOzs7O0dBSUc7QUFDVSxRQUFBLG9CQUFvQixHQUFHLElBQUksTUFBTSxDQUM1QyxJQUFJLGtCQUFrQix1Q0FBdUMsQ0FDOUQsQ0FBQztBQUVGOzs7OztHQUtHO0FBQ0gsU0FBZ0Isa0JBQWtCLENBQUMsSUFBWSxFQUFFLElBQTBCO0lBQ3pFLE9BQU8sR0FBRyxrQkFBa0IsSUFBSSxJQUFJLFNBQVMsSUFBSSxFQUFFLENBQUM7QUFDdEQsQ0FBQztBQUZELGdEQUVDO0FBRUQ7Ozs7OztHQU1HO0FBQ0gsU0FBZ0Isb0JBQW9CLENBQUMsSUFBeUIsRUFBRSxJQUEwQjtJQUN4RixPQUFPLEdBQUcsa0JBQWtCLElBQUksSUFBSSxXQUFXLE1BQU0sQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLENBQUMsUUFBUSxDQUFDLFFBQVEsQ0FBQyxFQUFFLENBQUM7QUFDeEYsQ0FBQztBQUZELG9EQUVDO0FBRUQ7Ozs7Ozs7R0FPRztBQUNILFNBQWdCLFdBQVcsQ0FBQyxHQUFXO0lBQ3JDLE1BQU0sT0FBTyxHQUFHLDRCQUFvQixDQUFDLElBQUksQ0FBQyxHQUFHLENBQUMsQ0FBQztJQUMvQyxJQUFJLENBQUMsT0FBTyxFQUFFO1FBQ1osT0FBTyxTQUFTLENBQUM7S0FDbEI7SUFFRCxPQUFPO1FBQ0wsU0FBUyxFQUFFLEdBQUcsa0JBQWtCLElBQUksT0FBTyxDQUFDLENBQUMsQ0FBQyxFQUFFO1FBQ2hELElBQUksRUFBRSxPQUFPLENBQUMsQ0FBQyxDQUF5QjtRQUN4QyxNQUFNLEVBQUUsT0FBTyxDQUFDLENBQUMsQ0FBc0I7UUFDdkMsU0FBUyxFQUFFLE9BQU8sQ0FBQyxDQUFDLENBQUM7S0FDdEIsQ0FBQztBQUNKLENBQUM7QUFaRCxrQ0FZQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQGxpY2Vuc2VcbiAqIENvcHlyaWdodCBHb29nbGUgTExDIEFsbCBSaWdodHMgUmVzZXJ2ZWQuXG4gKlxuICogVXNlIG9mIHRoaXMgc291cmNlIGNvZGUgaXMgZ292ZXJuZWQgYnkgYW4gTUlULXN0eWxlIGxpY2Vuc2UgdGhhdCBjYW4gYmVcbiAqIGZvdW5kIGluIHRoZSBMSUNFTlNFIGZpbGUgYXQgaHR0cHM6Ly9hbmd1bGFyLmlvL2xpY2Vuc2VcbiAqL1xuXG4vKipcbiAqIEEgc3RyaW5nIHZhbHVlIHJlcHJlc2VudGluZyB0aGUgYmFzZSBuYW1lc3BhY2UgZm9yIEFuZ3VsYXIgSklUIG1vZGUgcmVsYXRlZCBpbXBvcnRzLlxuICovXG5jb25zdCBKSVRfQkFTRV9OQU1FU1BBQ0UgPSAnYW5ndWxhcjpqaXQnO1xuXG4vKipcbiAqIEEgc3RyaW5nIHZhbHVlIHJlcHJlc2VudGluZyB0aGUgbmFtZXNwYWNlIGZvciBBbmd1bGFyIEpJVCBtb2RlIHJlbGF0ZWQgaW1wb3J0cyBmb3JcbiAqIENvbXBvbmVudCBzdHlsZXMuIFRoaXMgbmFtZXNwYWNlIGlzIHVzZWQgZm9yIGJvdGggaW5saW5lIChgc3R5bGVzYCkgYW5kIGV4dGVybmFsXG4gKiAoYHN0eWxlVXJsc2ApIHN0eWxlcy5cbiAqL1xuZXhwb3J0IGNvbnN0IEpJVF9TVFlMRV9OQU1FU1BBQ0UgPSBgJHtKSVRfQkFTRV9OQU1FU1BBQ0V9OnN0eWxlYCBhcyBjb25zdDtcblxuLyoqXG4gKiBBIHN0cmluZyB2YWx1ZSByZXByZXNlbnRpbmcgdGhlIG5hbWVzcGFjZSBmb3IgQW5ndWxhciBKSVQgbW9kZSByZWxhdGVkIGltcG9ydHMgZm9yXG4gKiBDb21wb25lbnQgdGVtcGxhdGVzLiBUaGlzIG5hbWVzcGFjZSBpcyBjdXJyZW50bHkgb25seSB1c2VkIGZvciBleHRlcm5hbCAoYHRlbXBsYXRlVXJsYClcbiAqIHRlbXBsYXRlcy5cbiAqL1xuZXhwb3J0IGNvbnN0IEpJVF9URU1QTEFURV9OQU1FU1BBQ0UgPSBgJHtKSVRfQkFTRV9OQU1FU1BBQ0V9OnRlbXBsYXRlYCBhcyBjb25zdDtcblxuLyoqXG4gKiBBIHJlZ3VsYXIgZXhwcmVzc2lvbiB0aGF0IGNhbiBiZSB1c2VkIHRvIG1hdGNoIGEgQW5ndWxhciBKSVQgbW9kZSBuYW1lc3BhY2UgVVJJLlxuICogSXQgY29udGFpbnMgY2FwdHVyZSBncm91cHMgZm9yIHRoZSB0eXBlICh0ZW1wbGF0ZS9zdHlsZSksIG9yaWdpbiAoZmlsZS9pbmxpbmUpLCBhbmQgc3BlY2lmaWVyLlxuICogVGhlIHtAbGluayBwYXJzZUppdFVyaX0gZnVuY3Rpb24gY2FuIGJlIHVzZWQgdG8gcGFyc2UgYW5kIHJldHVybiBhbiBvYmplY3QgcmVwcmVzZW50YXRpb24gb2YgYSBKSVQgVVJJLlxuICovXG5leHBvcnQgY29uc3QgSklUX05BTUVTUEFDRV9SRUdFWFAgPSBuZXcgUmVnRXhwKFxuICBgXiR7SklUX0JBU0VfTkFNRVNQQUNFfToodGVtcGxhdGV8c3R5bGUpOihmaWxlfGlubGluZSk7KC4qKSRgLFxuKTtcblxuLyoqXG4gKiBHZW5lcmF0ZXMgYW4gQW5ndWxhciBKSVQgbW9kZSBuYW1lc3BhY2UgVVJJIGZvciBhIGdpdmVuIGZpbGUuXG4gKiBAcGFyYW0gZmlsZSBUaGUgcGF0aCBvZiB0aGUgZmlsZSB0byBiZSBpbmNsdWRlZC5cbiAqIEBwYXJhbSB0eXBlIFRoZSB0eXBlIG9mIHRoZSBmaWxlIChgc3R5bGVgIG9yIGB0ZW1wbGF0ZWApLlxuICogQHJldHVybnMgQSBzdHJpbmcgY29udGFpbmluZyB0aGUgZnVsbCBKSVQgbmFtZXNwYWNlIFVSSS5cbiAqL1xuZXhwb3J0IGZ1bmN0aW9uIGdlbmVyYXRlSml0RmlsZVVyaShmaWxlOiBzdHJpbmcsIHR5cGU6ICdzdHlsZScgfCAndGVtcGxhdGUnKSB7XG4gIHJldHVybiBgJHtKSVRfQkFTRV9OQU1FU1BBQ0V9OiR7dHlwZX06ZmlsZTske2ZpbGV9YDtcbn1cblxuLyoqXG4gKiBHZW5lcmF0ZXMgYW4gQW5ndWxhciBKSVQgbW9kZSBuYW1lc3BhY2UgVVJJIGZvciBhIGdpdmVuIGlubGluZSBzdHlsZSBvciB0ZW1wbGF0ZS5cbiAqIFRoZSBwcm92aWRlZCBjb250ZW50IGlzIGJhc2U2NCBlbmNvZGVkIGFuZCBpbmNsdWRlZCBpbiB0aGUgVVJJLlxuICogQHBhcmFtIGRhdGEgVGhlIGNvbnRlbnQgdG8gZW5jb2RlIHdpdGhpbiB0aGUgVVJJLlxuICogQHBhcmFtIHR5cGUgVGhlIHR5cGUgb2YgdGhlIGNvbnRlbnQgKGBzdHlsZWAgb3IgYHRlbXBsYXRlYCkuXG4gKiBAcmV0dXJucyBBIHN0cmluZyBjb250YWluaW5nIHRoZSBmdWxsIEpJVCBuYW1lc3BhY2UgVVJJLlxuICovXG5leHBvcnQgZnVuY3Rpb24gZ2VuZXJhdGVKaXRJbmxpbmVVcmkoZGF0YTogc3RyaW5nIHwgVWludDhBcnJheSwgdHlwZTogJ3N0eWxlJyB8ICd0ZW1wbGF0ZScpIHtcbiAgcmV0dXJuIGAke0pJVF9CQVNFX05BTUVTUEFDRX06JHt0eXBlfTppbmxpbmU7JHtCdWZmZXIuZnJvbShkYXRhKS50b1N0cmluZygnYmFzZTY0Jyl9YDtcbn1cblxuLyoqXG4gKiBQYXJzZXMgYSBzdHJpbmcgY29udGFpbmluZyBhIEpJVCBuYW1lc3BhY2UgVVJJLlxuICogSklUIG5hbWVzcGFjZSBVUklzIGFyZSB1c2VkIHRvIGVuY29kZSB0aGUgaW5mb3JtYXRpb24gZm9yIGFuIEFuZ3VsYXIgY29tcG9uZW50J3Mgc3R5bGVzaGVldHNcbiAqIGFuZCB0ZW1wbGF0ZXMgd2hlbiBjb21waWxlZCBpbiBKSVQgbW9kZS5cbiAqIEBwYXJhbSB1cmkgVGhlIFVSSSB0byBwYXJzZSBpbnRvIGl0cyB1bmRlcmx5aW5nIGNvbXBvbmVudHMuXG4gKiBAcmV0dXJucyBBbiBvYmplY3QgY29udGFpbmluZyB0aGUgbmFtZXNwYWNlLCB0eXBlLCBvcmlnaW4sIGFuZCBzcGVjaWZpZXIgb2YgdGhlIFVSSTtcbiAqIGB1bmRlZmluZWRgIGlmIG5vdCBhIEpJVCBuYW1lc3BhY2UgVVJJLlxuICovXG5leHBvcnQgZnVuY3Rpb24gcGFyc2VKaXRVcmkodXJpOiBzdHJpbmcpIHtcbiAgY29uc3QgbWF0Y2hlcyA9IEpJVF9OQU1FU1BBQ0VfUkVHRVhQLmV4ZWModXJpKTtcbiAgaWYgKCFtYXRjaGVzKSB7XG4gICAgcmV0dXJuIHVuZGVmaW5lZDtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgbmFtZXNwYWNlOiBgJHtKSVRfQkFTRV9OQU1FU1BBQ0V9OiR7bWF0Y2hlc1sxXX1gLFxuICAgIHR5cGU6IG1hdGNoZXNbMV0gYXMgJ3N0eWxlJyB8ICd0ZW1wbGF0ZScsXG4gICAgb3JpZ2luOiBtYXRjaGVzWzJdIGFzICdmaWxlJyB8ICdpbmxpbmUnLFxuICAgIHNwZWNpZmllcjogbWF0Y2hlc1szXSxcbiAgfTtcbn1cbiJdfQ==
