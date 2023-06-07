@@ -1,0 +1,60 @@
+{
+  "$schema": "../architect/src/builders-schema.json",
+  "builders": {
+    "app-shell": {
+      "implementation": "./src/builders/app-shell",
+      "schema": "./src/builders/app-shell/schema.json",
+      "description": "Build a server application and a browser application, then render the index.html and use it for the browser output."
+    },
+    "browser": {
+      "implementation": "./src/builders/browser",
+      "schema": "./src/builders/browser/schema.json",
+      "description": "Build a browser application."
+    },
+    "browser-rspack": {
+      "implementation": "./src/builders/browser-rspack",
+      "schema": "./src/builders/browser-rspack/schema.json",
+      "description": "Build a browser application."
+    },
+    "browser-esbuild": {
+      "implementation": "./src/builders/browser-esbuild",
+      "schema": "./src/builders/browser-esbuild/schema.json",
+      "description": "Build a browser application."
+    },
+    "dev-server": {
+      "implementation": "./src/builders/dev-server",
+      "schema": "./src/builders/dev-server/schema.json",
+      "description": "Serve a browser application."
+    },
+    "extract-i18n": {
+      "implementation": "./src/builders/extract-i18n",
+      "schema": "./src/builders/extract-i18n/schema.json",
+      "description": "Extract i18n strings from a browser application."
+    },
+    "jest": {
+      "implementation": "./src/builders/jest",
+      "schema": "./src/builders/jest/schema.json",
+      "description": "Run unit tests using Jest."
+    },
+    "karma": {
+      "implementation": "./src/builders/karma",
+      "schema": "./src/builders/karma/schema.json",
+      "description": "Run Karma unit tests."
+    },
+    "protractor": {
+      "implementation": "./src/builders/protractor",
+      "schema": "./src/builders/protractor/schema.json",
+      "description": "Run protractor over a dev server."
+    },
+    "server": {
+      "implementation": "./src/builders/server",
+      "schema": "./src/builders/server/schema.json",
+      "description": "Build a server Angular application."
+    },
+    "ng-packagr": {
+      "implementation": "./src/builders/ng-packagr",
+      "schema": "./src/builders/ng-packagr/schema.json",
+      "description": "Build a library with ng-packagr."
+    }
+  }
+}
