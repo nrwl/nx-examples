@@ -5,7 +5,7 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "parserOptions": {
-        "project": "apps/products-e2e/tsconfig.*?.json"
+        "project": ["cart/e2e/tsconfig.*?.json"]
       },
       "rules": {}
     },

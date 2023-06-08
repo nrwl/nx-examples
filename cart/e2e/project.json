@@ -1,30 +1,30 @@
 {
-  "name": "products-e2e",
+  "name": "cart-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/products-e2e/src",
+  "sourceRoot": "cart/e2e/src",
   "projectType": "application",
   "targets": {
     "e2e": {
       "executor": "@nx/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/products-e2e/cypress.config.ts",
-        "devServerTarget": "products-frontend:serve",
+        "cypressConfig": "cart/e2e/cypress.config.ts",
+        "devServerTarget": "cart-frontend:serve",
         "testingType": "e2e"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "products-frontend:serve:production"
+          "devServerTarget": "cart-frontend:serve:production"
         }
       }
     },
     "lint": {
       "executor": "@nx/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/products-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": ["cart/e2e/**/*.{ts,tsx,js,jsx}"]
       },
       "outputs": ["{options.outputFile}"]
     }
   },
-  "tags": ["scope:products", "type:e2e"],
-  "implicitDependencies": ["products"]
+  "tags": ["scope:cart", "type:e2e"],
+  "implicitDependencies": ["cart"]
 }
