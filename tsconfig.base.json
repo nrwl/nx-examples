@@ -17,37 +17,21 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-example/cart/cart-page": ["libs/cart/cart-page/src/index.ts"],
-      "@nx-example/products/home-page": [
-        "libs/products/home-page/src/index.ts"
-      ],
-      "@nx-example/products/product-detail-page": [
-        "libs/products/product-detail-page/src/index.ts"
-      ],
-      "@nx-example/shared/cart/state": ["libs/shared/cart/state/src/index.ts"],
-      "@nx-example/shared/cart/state/react": [
-        "libs/shared/cart/state/src/react.ts"
-      ],
-      "@nx-example/shared/e2e-utils": ["libs/shared/e2e-utils/src/index.ts"],
-      "@nx-example/shared/header": ["libs/shared/header/src/index.ts"],
-      "@nx-example/shared/jsxify": ["libs/shared/jsxify/src/index.ts"],
-      "@nx-example/shared/product/data": [
-        "libs/shared/product/data/src/index.ts"
-      ],
-      "@nx-example/shared/product/data/testing": [
-        "libs/shared/product/data/src/testing.ts"
-      ],
-      "@nx-example/shared/product/state": [
-        "libs/shared/product/state/src/index.ts"
-      ],
-      "@nx-example/shared/product/state/react": [
-        "libs/shared/product/state/src/react.ts"
-      ],
-      "@nx-example/shared/product/types": [
-        "libs/shared/product/types/src/index.ts"
-      ],
-      "@nx-example/shared/product/ui": ["libs/shared/product/ui/src/index.ts"],
-      "@nx-example/shared/styles": ["libs/shared/styles/src/index.ts"]
+      "@nx-example/cart/home-page": ["cart/home-page/src/index.ts"],
+      "@nx-example/cart/state": ["cart/state/src/index.ts"],
+      "@nx-example/cart/state/react": ["cart/state/src/react.ts"],
+      "@nx-example/products/data": ["products/data/src/index.ts"],
+      "@nx-example/products/data/testing": ["products/data/src/testing.ts"],
+      "@nx-example/products/detail-page": ["products/detail-page/src/index.ts"],
+      "@nx-example/products/home-page": ["products/home-page/src/index.ts"],
+      "@nx-example/products/state": ["products/state/src/index.ts"],
+      "@nx-example/products/state/react": ["products/state/src/react.ts"],
+      "@nx-example/products/types": ["products/types/src/index.ts"],
+      "@nx-example/products/ui": ["products/ui/src/index.ts"],
+      "@nx-example/shared/e2e-utils": ["shared/e2e-utils/src/index.ts"],
+      "@nx-example/shared/header": ["shared/header/src/index.ts"],
+      "@nx-example/shared/jsxify": ["shared/jsxify/src/index.ts"],
+      "@nx-example/shared/styles": ["shared/styles/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

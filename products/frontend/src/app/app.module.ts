@@ -22,8 +22,8 @@ import { AppComponent } from './app.component';
         {
           path: 'product',
           loadChildren: () =>
-            import('@nx-example/products/product-detail-page').then(
-              (module) => module.ProductsProductDetailPageModule
+            import('@nx-example/products/detail-page').then(
+              (module) => module.ProductsDetailPageModule
             ),
         },
       ],

@@ -22,19 +22,19 @@
         "assets": [
           "products/frontend/src/_redirects",
           {
-            "input": "libs/shared/assets/src/assets",
+            "input": "shared/assets/src/assets",
             "glob": "**/*",
             "output": "assets"
           },
           {
-            "input": "libs/shared/assets/src",
+            "input": "shared/assets/src",
             "glob": "favicon.ico",
             "output": "."
           }
         ],
         "styles": [
-          "libs/shared/styles/src/index.scss",
-          "libs/shared/header/index.scss",
+          "shared/styles/src/index.scss",
+          "shared/header/index.scss",
           "node_modules/normalize.css/normalize.css"
         ],
         "scripts": []
@@ -73,18 +73,18 @@
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
       "options": {
-        "browserTarget": "products-frontend:build"
+        "browserTarget": "products:build"
       },
       "configurations": {
         "production": {
-          "browserTarget": "products-frontend:build:production"
+          "browserTarget": "products:build:production"
         }
       }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "products-frontend:build"
+        "browserTarget": "products:build"
       }
     },
     "lint": {

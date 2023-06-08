@@ -1,0 +1,20 @@
+{
+  "name": "shared-e2e-utils",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "shared/e2e-utils/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "shared/e2e-utils/src/**/*.ts",
+          "shared/e2e-utils/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": ["scope:shared", "type:e2e-utils"]
+}
