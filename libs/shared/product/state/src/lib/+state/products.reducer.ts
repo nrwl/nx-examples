@@ -1,4 +1,3 @@
-import { products } from '@nx-example/shared/product/data';
 import { Product } from '@nx-example/shared/product/types';
 
 import { ProductsAction } from './products.actions';
@@ -14,14 +13,19 @@ export interface ProductsPartialState {
 }
 
 export const initialState: ProductsState = {
-  products: products,
+  products: [],
 };
 
 export function productsReducer(
   state: ProductsState = initialState,
   action: ProductsAction
 ): ProductsState {
+  console.log('productsReducer', action.type);
   switch (action.type) {
+    case '[Products] Load Products Success':
+      return { products: action.products };
+    case '[Products] Load Products':
+      return { products: [] };
     default: {
       return state;
     }

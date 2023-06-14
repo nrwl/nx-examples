@@ -13,7 +13,10 @@
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "options": {
-        "aot": true,
+        "aot": false,
+        "buildOptimizer": false,
+        "optimization": false,
+        "sourceMap": true,
         "outputPath": "dist/apps/products",
         "index": "apps/products/src/index.html",
         "main": "apps/products/src/main.ts",
@@ -92,7 +95,8 @@
       "options": {
         "lintFilePatterns": [
           "apps/products/src/**/*.ts",
-          "apps/products/src/**/*.html"
+          "apps/products/src/**/*.html",
+          "./functions/**/*.ts"
         ]
       },
       "outputs": ["{options.outputFile}"]
@@ -113,6 +117,22 @@
             "command": "npx ts-node --project tools/tsconfig.tools.json tools/scripts/deploy --siteName nrwl-nx-examples-products --outputPath dist/apps/products"
           }
         ]
+      }
+    },
+    "serve-functions": {
+      "command": "npx netlify dev"
+    },
+    "deploy-functions": {
+      "dependsOn": ["lint"],
+      "command": "npx netlify deploy",
+      "options": {
+        "cwd": "apps/products"
+      },
+      "configurations": {
+        "production": {
+          "command": "npx netlify deploy --prod",
+          "cwd": "apps/products"
+        }
       }
     }
   },

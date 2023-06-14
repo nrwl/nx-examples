@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +31,7 @@ import { AppComponent } from './app.component';
       { initialNavigation: 'enabledBlocking' }
     ),
     StoreModule.forRoot({}),
+    EffectsModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

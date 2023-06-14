@@ -8,6 +8,8 @@ import {
   productsReducer,
   PRODUCTS_FEATURE_KEY,
 } from './+state/products.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { ProductsEffects } from './+state/products.effects';
 
 @NgModule({
   imports: [
@@ -15,6 +17,7 @@ import {
     StoreModule.forFeature(PRODUCTS_FEATURE_KEY, productsReducer, {
       initialState: productsInitialState,
     }),
+    EffectsModule.forFeature(ProductsEffects),
   ],
 })
 export class SharedProductStateModule {}
