@@ -1,21 +1,16 @@
-import { useReducer } from 'react';
-
 import styled from '@emotion/styled';
 
 import '@nx-example/shared/product/ui';
 
 import {
   CartItem,
-  cartReducer,
   getItemCost,
   getTotalCost,
   SetQuantity,
+  CheckoutSuccess,
 } from '@nx-example/shared/cart/state/react';
-import {
-  getProduct,
-  initialState,
-  productsReducer,
-} from '@nx-example/shared/product/state/react';
+import { getProduct } from '@nx-example/shared/product/state/react';
+import { useProducts } from './cart-page-hooks';
 
 const StyledUl = styled.ul`
   display: flex;
@@ -80,60 +75,78 @@ const StyledTotalLi = styled.li`
 
 const optionsArray = new Array(5).fill(null);
 
-export const CartCartPage = () => {
-  const [productsState] = useReducer(productsReducer, initialState);
-  const { products } = productsState;
-  const [cartState, dispatch] = useReducer(cartReducer, {
-    items: products.map((product) => ({
-      productId: product.id,
-      quantity: 1,
-    })),
-  });
+export const CartCartPage = (props) => {
+  const [state, dispatch] = useProducts(props.baseUrl);
+
+  const handleCheckout = () => {
+    fetch('/api/checkout', {
+      method: 'POST',
+      body: JSON.stringify(state.cart.items),
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
+      .then((r) => r.json())
+      .then((r) => {
+        dispatch.cart(new CheckoutSuccess(r.orderId));
+      });
+  };
 
   return (
     <StyledUl>
-      {cartState.items.map((item: CartItem) => (
-        <StyledLi key={item.productId}>
-          <a href={`/product/${item.productId}`}>
-            <figure>
-              <img src={getProduct(productsState, item.productId).image} />
-            </figure>
-          </a>
-          <a href={`/product/${item.productId}`} className="title">
-            <h2>{getProduct(productsState, item.productId).name}</h2>
-          </a>
-          <p>
-            <nx-example-product-price
-              value={getProduct(productsState, item.productId).price}
-            />
-          </p>
-          <select
-            value={item.quantity}
-            onChange={(event) => {
-              dispatch(new SetQuantity(item.productId, +event.target.value));
-            }}
-          >
-            {optionsArray.map((_, i) => (
-              <option key={i} value={i}>
-                {i}
-              </option>
-            ))}
-          </select>
-          <p>
-            <nx-example-product-price
-              value={getItemCost(item, productsState)}
-            />
-          </p>
-        </StyledLi>
-      ))}
+      {state.products.products.length > 0 &&
+        state.cart.items.length > 0 &&
+        state.cart.items.map((item: CartItem) => (
+          <StyledLi key={item.productId}>
+            <a href={`/product/${item.productId}`}>
+              <figure>
+                <img src={getProduct(state.products, item.productId)?.image} />
+              </figure>
+            </a>
+            <a href={`/product/${item.productId}`} className="title">
+              <h2>{getProduct(state.products, item.productId)?.name}</h2>
+            </a>
+            <p>
+              <nx-example-product-price
+                value={getProduct(state.products, item.productId)?.price}
+              />
+            </p>
+            <select
+              value={item.quantity}
+              onChange={(event) => {
+                dispatch.cart(
+                  new SetQuantity(item.productId, +event.target.value)
+                );
+              }}
+            >
+              {optionsArray.map((_, i) => (
+                <option key={i} value={i}>
+                  {i}
+                </option>
+              ))}
+            </select>
+            <p>
+              <nx-example-product-price
+                value={getItemCost(item, state.products)}
+              />
+            </p>
+          </StyledLi>
+        ))}
       <StyledTotalLi>
         <h2>Total</h2>
         <p>
           <nx-example-product-price
-            value={getTotalCost(cartState, productsState)}
+            value={getTotalCost(state.cart, state.products)}
           />
         </p>
       </StyledTotalLi>
+      <p>
+        {state.cart.orderId ? (
+          <span>Checkout Success! Order ID: {state.cart.orderId}</span>
+        ) : (
+          <button onClick={handleCheckout}>Checkout</button>
+        )}
+      </p>
     </StyledUl>
   );
 };

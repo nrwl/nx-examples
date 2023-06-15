@@ -70,7 +70,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production"
     },
-    "serve": {
+    "serve-app": {
       "executor": "@nx/webpack:dev-server",
       "options": {
         "buildTarget": "cart:build"
@@ -88,7 +88,10 @@
     "lint": {
       "executor": "@nx/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/cart/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "apps/cart/**/*.{ts,tsx,js,jsx}",
+          "./functions/**/*.ts"
+        ]
       },
       "outputs": ["{options.outputFile}"]
     },
@@ -100,15 +103,18 @@
       },
       "outputs": ["{workspaceRoot}/coverage/apps/cart"]
     },
-    "deploy": {
+    "serve": {
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          {
-            "command": "npx ts-node --project tools/tsconfig.tools.json tools/scripts/deploy --siteName nrwl-nx-examples-cart --outputPath dist/apps/cart"
-          }
+          "BROWSER=false netlify dev --functions=apps/cart/functions",
+          "nx serve-app cart"
         ]
       }
+    },
+    "deploy": {
+      "dependsOn": ["build"],
+      "command": "netlify deploy --site=nx-examples-cart-test --dir dist/apps/cart --functions apps/cart/functions --prod"
     }
   },
   "tags": ["type:app", "scope:cart"],

@@ -26,7 +26,6 @@ export class HomePageComponent implements OnInit {
   constructor(private store: Store<ProductsPartialState>) {}
 
   ngOnInit() {
-    console.log('cmp init');
     this.store.dispatch(new LoadProducts());
   }
 }

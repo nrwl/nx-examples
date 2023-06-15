@@ -10,7 +10,6 @@ import { ProductDetailPageComponent } from './product-detail-page/product-detail
   imports: [
     CommonModule,
     SharedProductStateModule,
-
     RouterModule.forChild([
       { path: ':productId', component: ProductDetailPageComponent },
     ]),

@@ -9,6 +9,7 @@ export interface CartItem {
 
 export interface CartState {
   items: CartItem[];
+  orderId?: string;
 }
 
 export interface CartPartialState {
@@ -21,6 +22,15 @@ export const initialState: CartState = {
 
 export const cartReducer = (state: CartState, action: CartAction) => {
   switch (action.type) {
+    case CartActionTypes.Checkout: {
+      return {
+        ...state,
+        orderId: action.orderId,
+      };
+    }
+    case CartActionTypes.SetItems: {
+      return { items: action.items };
+    }
     case CartActionTypes.SetQuantity: {
       return {
         ...state,

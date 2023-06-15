@@ -6,3 +6,4 @@ export * from './lib/+state/products.selectors';
 export * from './lib/+state/products.actions';
 export const getProductsState = createFeatureSelector(PRODUCTS_FEATURE_KEY);
 export * from './lib/shared-product-state.module';
+export * from './lib/+state/products.effects';

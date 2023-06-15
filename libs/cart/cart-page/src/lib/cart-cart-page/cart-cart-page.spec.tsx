@@ -1,7 +1,31 @@
+import { useReducer } from 'react';
+jest.doMock('./cart-page-hooks', () => {
+  return {
+    useProducts: (): ReturnType<typeof useProducts> => {
+      const [cartState, dispatchCart] = useReducer(cartReducer, {
+        items: products.map((p) => ({ productId: p.id, quantity: 1 })),
+      });
+      const [productsState, dispatchProducts] = useReducer(productsReducer, {
+        products,
+      });
+
+      return [
+        { cart: cartState, products: productsState },
+        { cart: dispatchCart, products: dispatchProducts },
+      ];
+    },
+  };
+});
+
 import { cleanup, fireEvent, render } from '@testing-library/react';
+import { products } from '@nx-example/shared/product/data';
+
+import { cartReducer } from '@nx-example/shared/cart/state/react';
+import { productsReducer } from '@nx-example/shared/product/state/react';
 
 import CartCartPage from './cart-cart-page';
 
+import { useProducts } from './cart-page-hooks';
 describe(' CartCartPage', () => {
   afterEach(cleanup);
 
@@ -11,9 +35,9 @@ describe(' CartCartPage', () => {
   });
 
   it('should render products', () => {
-    expect(
-      render(<CartCartPage />).baseElement.querySelectorAll('li figure').length
-    ).toEqual(5);
+    const { baseElement } = render(<CartCartPage />);
+
+    expect(baseElement.querySelectorAll('li figure').length).toEqual(5);
   });
 
   it('should render a total', () => {
