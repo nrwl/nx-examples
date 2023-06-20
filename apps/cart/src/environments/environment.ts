@@ -3,4 +3,5 @@
 
 export const environment = {
   production: false,
+  baseApiPath: 'http://localhost:8888/.netlify/functions',
 };

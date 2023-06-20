@@ -5,9 +5,14 @@ import { ActivatedRoute } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { of } from 'rxjs';
 
-import { SharedProductStateModule } from '@nx-example/shared/product/state';
+import {
+  createMockProductService,
+  SharedProductStateModule,
+} from '@nx-example/shared/product/state';
+import { products } from '@nx-example/shared/product/data';
 
 import { ProductDetailPageComponent } from './product-detail-page.component';
+import { EffectsModule } from '@ngrx/effects';
 
 class MockActivatedRoute {
   paramMap = of(new Map<string, string>([['productId', '1']]));
@@ -19,12 +24,18 @@ describe('ProductDetailPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [StoreModule.forRoot({}), SharedProductStateModule],
+      imports: [
+        StoreModule.forRoot(),
+        EffectsModule.forRoot(),
+        SharedProductStateModule,
+      ],
       providers: [
         {
           provide: ActivatedRoute,
           useClass: MockActivatedRoute,
         },
+        createMockProductService(products),
+        { provide: 'BASE_API_PATH', useValue: '' },
       ],
       declarations: [ProductDetailPageComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],

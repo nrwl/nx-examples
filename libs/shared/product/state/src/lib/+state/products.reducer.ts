@@ -1,7 +1,6 @@
-import { products } from '@nx-example/shared/product/data';
 import { Product } from '@nx-example/shared/product/types';
 
-import { ProductsAction } from './products.actions';
+import { ProductsAction, ProductsActionTypes } from './products.actions';
 
 export const PRODUCTS_FEATURE_KEY = 'products';
 
@@ -14,7 +13,7 @@ export interface ProductsPartialState {
 }
 
 export const initialState: ProductsState = {
-  products: products,
+  products: [],
 };
 
 export function productsReducer(
@@ -22,6 +21,10 @@ export function productsReducer(
   action: ProductsAction
 ): ProductsState {
   switch (action.type) {
+    case ProductsActionTypes.LoadProductsSuccess:
+      return { products: action.products };
+    case ProductsActionTypes.LoadProducts:
+      return { products: [] };
     default: {
       return state;
     }

@@ -13,7 +13,10 @@
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "options": {
-        "aot": true,
+        "aot": false,
+        "buildOptimizer": false,
+        "optimization": false,
+        "sourceMap": true,
         "outputPath": "dist/apps/products",
         "index": "apps/products/src/index.html",
         "main": "apps/products/src/main.ts",
@@ -47,14 +50,14 @@
               "with": "apps/products/src/environments/environment.prod.ts"
             }
           ],
-          "optimization": true,
+          "optimization": false,
           "outputHashing": "all",
-          "sourceMap": false,
+          "sourceMap": true,
           "namedChunks": false,
-          "aot": true,
+          "aot": false,
           "extractLicenses": true,
           "vendorChunk": false,
-          "buildOptimizer": true,
+          "buildOptimizer": false,
           "budgets": [
             {
               "type": "initial",
@@ -70,7 +73,7 @@
       },
       "outputs": ["{options.outputPath}"]
     },
-    "serve": {
+    "serve-app": {
       "executor": "@angular-devkit/build-angular:dev-server",
       "options": {
         "browserTarget": "products:build"
@@ -92,7 +95,8 @@
       "options": {
         "lintFilePatterns": [
           "apps/products/src/**/*.ts",
-          "apps/products/src/**/*.html"
+          "apps/products/src/**/*.html",
+          "./functions/**/*.ts"
         ]
       },
       "outputs": ["{options.outputFile}"]
@@ -105,15 +109,19 @@
       },
       "outputs": ["{workspaceRoot}/coverage/apps/products"]
     },
-    "deploy": {
+
+    "serve": {
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          {
-            "command": "npx ts-node --project tools/tsconfig.tools.json tools/scripts/deploy --siteName nrwl-nx-examples-products --outputPath dist/apps/products"
-          }
+          "BROWSER=false netlify dev --functions=apps/products/functions",
+          "nx serve-app products"
         ]
       }
+    },
+    "deploy": {
+      "dependsOn": ["build"],
+      "command": "netlify deploy --site=nx-examples-products-test --dir dist/apps/products --functions apps/products/functions --prod"
     }
   },
   "tags": ["type:app", "scope:products"],

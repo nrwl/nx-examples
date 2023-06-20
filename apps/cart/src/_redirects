@@ -1,3 +1,4 @@
 /cart/*    /index.html   200
-/          https://nrwl-nx-examples-products.netlify.com/ 301
-*          https://nrwl-nx-examples-products.netlify.com/:splat 301
+/api/*     https://nx-examples-cart-test.netlify.app/.netlify/functions/api/:splat 200
+/          https://nx-examples-products-test.netlify.com/cart 301
+*          https://nx-examples-products-test.netlify.com/:splat 301

@@ -2,6 +2,8 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { cleanup, render } from '@testing-library/react';
 
+jest.doMock('@nx-example/cart/cart-page');
+// eslint-disable-next-line
 import App from './app';
 
 describe('App', () => {
