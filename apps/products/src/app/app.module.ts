@@ -6,11 +6,13 @@ import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
 import { EffectsModule } from '@ngrx/effects';
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(
       [
         {

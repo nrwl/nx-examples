@@ -73,10 +73,11 @@
       },
       "outputs": ["{options.outputPath}"]
     },
-    "serve-app": {
+    "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
       "options": {
-        "browserTarget": "products:build"
+        "browserTarget": "products:build",
+        "proxyConfig": "apps/products/proxy.conf.json"
       },
       "configurations": {
         "production": {
@@ -109,8 +110,7 @@
       },
       "outputs": ["{workspaceRoot}/coverage/apps/products"]
     },
-
-    "serve": {
+    "serve-old": {
       "executor": "nx:run-commands",
       "options": {
         "commands": [

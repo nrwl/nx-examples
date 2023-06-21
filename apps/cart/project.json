@@ -70,10 +70,11 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production"
     },
-    "serve-app": {
+    "serve": {
       "executor": "@nx/webpack:dev-server",
       "options": {
-        "buildTarget": "cart:build"
+        "buildTarget": "cart:build",
+        "proxyConfig": "apps/cart/proxy.conf.json"
       },
       "configurations": {
         "production": {
@@ -103,7 +104,7 @@
       },
       "outputs": ["{workspaceRoot}/coverage/apps/cart"]
     },
-    "serve": {
+    "serve-old": {
       "executor": "nx:run-commands",
       "options": {
         "commands": [

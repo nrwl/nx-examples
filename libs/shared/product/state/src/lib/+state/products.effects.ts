@@ -13,7 +13,7 @@ export class ProductsService {
   ) {}
 
   getProducts() {
-    return this.http.get<Product[]>(`${this.baseUrl}/products`);
+    return this.http.get<Product[]>(`${this.baseUrl}/api/products`);
   }
 }
 
