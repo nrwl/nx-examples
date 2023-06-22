@@ -86,6 +86,21 @@
       },
       "defaultConfiguration": "development"
     },
+    "serve-with-api": {
+      "executor": "@nx-example/plugin:combine-latest",
+      "options": {
+        "targets": [
+          {
+            "target": "cart:serve",
+            "overrides": {}
+          },
+          {
+            "target": "cart-api:serve",
+            "overrides": {}
+          }
+        ]
+      }
+    },
     "lint": {
       "executor": "@nx/linter:eslint",
       "options": {

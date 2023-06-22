@@ -51,6 +51,9 @@
         }
       }
     },
+    "serve-functions": {
+      "command": "BROWSER=false netlify dev --functions=apps/cart-api/src/functions"
+    },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],

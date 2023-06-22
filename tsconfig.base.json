@@ -18,11 +18,15 @@
     "baseUrl": ".",
     "paths": {
       "@nx-example/cart/cart-page": ["libs/cart/cart-page/src/index.ts"],
+      "@nx-example/plugin": ["libs/plugin/src/index.ts"],
       "@nx-example/products/home-page": [
         "libs/products/home-page/src/index.ts"
       ],
       "@nx-example/products/product-detail-page": [
         "libs/products/product-detail-page/src/index.ts"
+      ],
+      "@nx-example/products/product-routes": [
+        "libs/products/product-routes/src/index.ts"
       ],
       "@nx-example/shared/cart/state": ["libs/shared/cart/state/src/index.ts"],
       "@nx-example/shared/cart/state/react": [

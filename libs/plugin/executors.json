@@ -1,0 +1,9 @@
+{
+  "executors": {
+    "combine-latest": {
+      "implementation": "./src/executors/combine-latest/executor",
+      "schema": "./src/executors/combine-latest/schema.json",
+      "description": "combine-latest executor"
+    }
+  }
+}
