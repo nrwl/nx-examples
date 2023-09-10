@@ -101,7 +101,8 @@
       "executor": "@nx/jest:jest",
       "options": {
         "jestConfig": "apps/products/jest.config.ts",
-        "passWithNoTests": true
+        "passWithNoTests": true,
+        "coverage": true
       },
       "outputs": ["{workspaceRoot}/coverage/apps/products"]
     },

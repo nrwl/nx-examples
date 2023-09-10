@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import '@nx-example/shared/header';
 
@@ -7,4 +8,8 @@ import '@nx-example/shared/header';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor(router: Router) {
+    console.log(router.url)
+  }
+}
