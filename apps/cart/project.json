@@ -9,7 +9,7 @@
       "executor": "@nx/webpack:webpack",
       "options": {
         "outputPath": "dist/apps/cart",
-        "webpackConfig": "apps/cart/webpack.config.js",
+        "webpackConfig": "apps/cart/webpack.config.ts",
         "index": "apps/cart/src/index.html",
         "main": "apps/cart/src/main.tsx",
         "polyfills": "apps/cart/src/polyfills.ts",
