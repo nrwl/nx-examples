@@ -6,7 +6,7 @@
   "prefix": "nx-example",
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "lintFilePatterns": [
           "libs/shared/cart/state/src/**/*.ts",
