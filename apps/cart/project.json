@@ -86,7 +86,7 @@
       "defaultConfiguration": "development"
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "lintFilePatterns": ["apps/cart/**/*.{ts,tsx,js,jsx}"]
       },
