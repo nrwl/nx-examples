@@ -189,8 +189,6 @@ jobs:
 
       - run: npx nx format:check
       - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t lint,test,build --parallel=3 --configuration=ci
-      - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t test --parallel=3 --configuration=ci
-      - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t build --parallel=3
 workflows:
   build:
     jobs:
