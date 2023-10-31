@@ -184,7 +184,7 @@ jobs:
       - image: cimg/node:lts-browsers
     steps:
       - checkout
-      - run: npm ci
+      - run: yarn
       - nx/set-shas
 
       - run: npx nx format:check
