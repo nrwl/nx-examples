@@ -95,8 +95,7 @@
     "test": {
       "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "apps/cart/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/cart/jest.config.ts"
       },
       "outputs": ["{workspaceRoot}/coverage/apps/cart"]
     },

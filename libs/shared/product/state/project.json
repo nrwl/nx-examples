@@ -18,8 +18,7 @@
     "test": {
       "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "libs/shared/product/state/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/shared/product/state/jest.config.ts"
       },
       "outputs": ["{workspaceRoot}/coverage/libs/shared/product/state"]
     }
