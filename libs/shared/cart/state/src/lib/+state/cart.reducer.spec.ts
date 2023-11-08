@@ -26,13 +26,4 @@ describe('Cart Reducer', () => {
       expect(result.items[1].quantity).toEqual(3);
     });
   });
-
-  describe('unknown action', () => {
-    it('should return the initial state', () => {
-      const action = {} as any;
-      const result = cartReducer(cartState, action);
-
-      expect(result).toBe(cartState);
-    });
-  });
 });

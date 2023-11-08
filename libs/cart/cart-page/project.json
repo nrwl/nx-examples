@@ -18,8 +18,7 @@
     "test": {
       "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "libs/cart/cart-page/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/cart/cart-page/jest.config.ts"
       },
       "outputs": ["{workspaceRoot}/coverage/libs/cart/cart-page"]
     }
