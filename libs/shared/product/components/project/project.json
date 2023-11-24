@@ -1,0 +1,29 @@
+{
+  "name": "shared-product-component",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/product/component/project/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/product/component/project/src/**/*.ts",
+          "libs/shared/product/component/project/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "libs/shared/product/component/project/jest.config.ts"
+      },
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/shared/product/component/project"
+      ]
+    }
+  },
+  "tags": ["scope:shared", "type:ui"]
+}
