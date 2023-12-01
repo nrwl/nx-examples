@@ -32,4 +32,4 @@ jobs:
                 "repository": {"name": "aviator-co", "org": "nx-examples"},
                 "affected_targets": '"$TARGETS_JSON"'
             }
-          }' https://api.aviator.co/api/v1/pull_request/
+          }' https://staging.mergequeue.com/api/v1/pull_request/
