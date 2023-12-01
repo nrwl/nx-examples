@@ -1,0 +1,35 @@
+name: Fetch Aviator targets
+
+on:
+  pull_request:
+    paths:
+      - "frontend/**"
+
+jobs:
+  nextjs-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+         working-directory: ./frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'yarn'
+          cache-dependency-path: frontend/yarn.lock
+      - run: yarn install --immutable
+      - run: |
+          TARGETS_JSON=$(npx nx show projects --affected --base $GITHUB_BASE_REF --head=$GITHUB_HEAD_REF --json)
+          TARGETS=${{ toJSON($TARGETS_JSON) }}
+          echo $TARGETS
+          curl -X POST -H "Authorization: Bearer ${{ secrets.AVIATOR_API_KEY }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+          "action": "update",
+          "pull_request": {
+              "number": '"$PR_NUMBER"',
+              "repository": {"name": "aviator-co", "org": "nx-examples"},
+              "affected_targets": '"$TARGETS"'
+          }
+        }' https://api.aviator.co/api/v1/pull_request/
