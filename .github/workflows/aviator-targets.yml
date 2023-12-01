@@ -20,15 +20,15 @@ jobs:
       - run: |
           set -euo pipefail
           git fetch origin $GITHUB_BASE_REF
-#          TARGETS_JSON=$(npx nx show projects --affected --base FETCH_HEAD --head $GITHUB_HEAD_REF --json)
-#          echo $TARGETS_JSON
-#          curl -X POST -H "Authorization: Bearer ${{ secrets.AVIATOR_API_KEY }}" \
-#          -H "Content-Type: application/json" \
-#          -d '{
-#            "action": "update",
-#            "pull_request": {
-#                "number": '"$PR_NUMBER"',
-#                "repository": {"name": "aviator-co", "org": "nx-examples"},
-#                "affected_targets": '"$TARGETS_JSON"'
-#            }
-#          }' https://api.aviator.co/api/v1/pull_request/
+          TARGETS_JSON=$(npx nx show projects --affected --base FETCH_HEAD --head $GITHUB_HEAD_REF --json)
+          echo $TARGETS_JSON
+          curl -X POST -H "Authorization: Bearer ${{ secrets.AVIATOR_API_KEY }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "action": "update",
+            "pull_request": {
+                "number": '"$PR_NUMBER"',
+                "repository": {"name": "aviator-co", "org": "nx-examples"},
+                "affected_targets": '"$TARGETS_JSON"'
+            }
+          }' https://api.aviator.co/api/v1/pull_request/
