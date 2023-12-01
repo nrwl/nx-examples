@@ -20,7 +20,7 @@ jobs:
       - run: |
           set -euo pipefail
           git fetch origin $GITHUB_BASE_REF
-          TARGETS_JSON=$(npx nx show projects --affected --base FETCH_HEAD --head $GITHUB_HEAD_REF --json)
+          TARGETS_JSON=$(npx nx show projects --affected --base FETCH_HEAD --head HEAD --json)
           echo $TARGETS_JSON
           curl -X POST -H "Authorization: Bearer ${{ secrets.AVIATOR_API_KEY }}" \
           -H "Content-Type: application/json" \
