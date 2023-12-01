@@ -19,8 +19,7 @@ jobs:
       - run: yarn install --immutable
       - run: |
           TARGETS_JSON=$(npx nx show projects --affected --base $GITHUB_BASE_REF --head=$GITHUB_HEAD_REF --json)
-          TARGETS=${{ toJSON($TARGETS_JSON) }}
-          echo $TARGETS
+          echo $TARGETS_JSON
           curl -X POST -H "Authorization: Bearer ${{ secrets.AVIATOR_API_KEY }}" \
           -H "Content-Type: application/json" \
           -d '{
@@ -28,6 +27,6 @@ jobs:
             "pull_request": {
                 "number": '"$PR_NUMBER"',
                 "repository": {"name": "aviator-co", "org": "nx-examples"},
-                "affected_targets": '"$TARGETS"'
+                "affected_targets": '"$TARGETS_JSON"'
             }
           }' https://api.aviator.co/api/v1/pull_request/
