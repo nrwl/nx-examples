@@ -15,15 +15,14 @@ jobs:
         with:
           node-version: '18'
           cache: 'yarn'
-          cache-dependency-path: ./yarn.lock
-      - run: yarn install --immutable
+      - run: yarn install
       - run: |
           set -euo pipefail
           git fetch origin $GITHUB_BASE_REF
           PR_NUMBER=${{ github.event.number }}
           TARGETS_JSON=$(npx nx show projects --affected --base FETCH_HEAD --head HEAD --json)
           echo $TARGETS_JSON
-          curl -X POST -H "Authorization: Bearer ${{ secrets.AVIATOR_API_KEY }}" \
+          curl -X POST -H "Authorization: Bearer ${{ secrets.AVIATOR_API_TOKEN }}" \
           -H "Content-Type: application/json" \
           -d '{
             "action": "update",
