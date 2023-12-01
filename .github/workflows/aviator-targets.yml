@@ -2,8 +2,6 @@ name: Fetch Aviator targets
 
 on:
   pull_request:
-    paths:
-      - "frontend/**"
 
 jobs:
   nextjs-build:
