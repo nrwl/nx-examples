@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '18'
           cache: 'yarn'
-          cache-dependency-path: frontend/yarn.lock
+          cache-dependency-path: ./yarn.lock
       - run: yarn install --immutable
       - run: |
           TARGETS_JSON=$(npx nx show projects --affected --base $GITHUB_BASE_REF --head=$GITHUB_HEAD_REF --json)
