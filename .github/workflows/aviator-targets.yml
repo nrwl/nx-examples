@@ -28,7 +28,7 @@ jobs:
             "action": "update",
             "pull_request": {
                 "number": '"$PR_NUMBER"',
-                "repository": {"name": "aviator-co", "org": "nx-examples"},
+                "repository": {"name": "nx-examples", "org": "aviator-co"},
                 "affected_targets": '"$TARGETS_JSON"'
             }
           }' https://staging.mergequeue.com/api/v1/pull_request/
