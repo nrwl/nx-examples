@@ -7,12 +7,6 @@
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/shared/product/types/src/**/*.ts",
-          "libs/shared/product/types/src/**/*.html"
-        ]
-      },
       "outputs": ["{options.outputFile}"]
     }
   },
