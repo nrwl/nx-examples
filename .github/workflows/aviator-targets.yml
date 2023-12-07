@@ -16,11 +16,21 @@ jobs:
           node-version: '18'
           cache: 'yarn'
       - run: yarn install
+      - uses: octokit/request-action@v2.x
+        id: get_pr
+        with:
+          route: GET /repos/${{ github.repository }}/pulls/${{ github.event.number }}
+          owner: octokit
+          repo: request-action
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - run: "echo latest sha: '${{ fromJson(steps.get_pr.outputs.data).base.sha }}'"
       - run: |
           set -euo pipefail
           git fetch origin $GITHUB_BASE_REF
           PR_NUMBER=${{ github.event.number }}
-          TARGETS_JSON=$(npx nx show projects --affected --base FETCH_HEAD --head HEAD --json)
+          TARGETS_JSON=$(npx nx show projects --affected --base FETCH_HEAD --head ${{ github.sha }} --json)
           echo $TARGETS_JSON
           curl -X POST -H "Authorization: Bearer ${{ secrets.AVIATOR_API_TOKEN }}" \
           -H "Content-Type: application/json" \
