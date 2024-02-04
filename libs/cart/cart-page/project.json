@@ -4,18 +4,6 @@
   "sourceRoot": "libs/cart/cart-page/src",
   "projectType": "library",
   "generators": {},
-  "targets": {
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "libs/cart/cart-page/jest.config.ts"
-      },
-      "outputs": ["{workspaceRoot}/coverage/libs/cart/cart-page"]
-    }
-  },
+  "targets": {},
   "tags": ["scope:cart", "type:feature"]
 }

@@ -87,17 +87,6 @@
         "buildTarget": "products:build"
       }
     },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "apps/products/jest.config.ts"
-      },
-      "outputs": ["{workspaceRoot}/coverage/apps/products"]
-    },
     "deploy": {
       "executor": "nx:run-commands",
       "options": {

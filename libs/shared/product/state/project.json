@@ -4,19 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/shared/product/state/src",
   "prefix": "nx-example",
-  "targets": {
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "libs/shared/product/state/jest.config.ts"
-      },
-      "outputs": ["{workspaceRoot}/coverage/libs/shared/product/state"]
-    }
-  },
+  "targets": {},
   "generators": {
     "@nx/angular:component": {
       "styleext": "scss"
