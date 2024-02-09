@@ -1,142 +1,33 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
-version: 2
+version: 2.1
 
-defaults: &defaults
-  working_directory: ~/repo
-  docker:
-    - image: cimg/node:lts-browsers
-
-set_env: &set_env
-  name: Setup Environment Variables
-  command: |
-    if [[ $CIRCLE_PULL_REQUEST ]]
-    then
-      echo 'Fetching Base Commit from GitHub'
-      echo 'export CIRCLE_PR_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}"' >> $BASH_ENV
-      source $BASH_ENV
-      echo "export CIRCLE_PR_BASE_SHA=`curl -s https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pulls/${CIRCLE_PR_NUMBER} | jq -r '.base.sha'`" >> $BASH_ENV
-      echo 'export AFFECTED_ARGS="--base ${CIRCLE_PR_BASE_SHA}"' >> $BASH_ENV
-    else
-      echo 'Fetching Base Commit from Deploy Cache'
-      if [[ ! -f dist/last-deploy.txt ]]
-      then
-        mkdir dist && git rev-parse HEAD~1 > dist/last-deploy.txt
-      fi
-      echo 'export AFFECTED_ARGS="--base $(cat dist/last-deploy.txt)"' >> $BASH_ENV
-    fi
-    source $BASH_ENV
-    echo $AFFECTED_ARGS
-    node -v
-    yarn -v
-
-yarn_cache: &yarn_cache
-  keys:
-    - node-deps-node16-{{ checksum "yarn.lock" }}
-    # fallback to using the latest cache if no exact match is found
-    - node-deps-node16-
+orbs:
+  nx: nrwl/nx@1.6.2
 
 deploy_cache: &deploy_cache
   key: last-deploy-sha
 
-yarn_install: &yarn_install
-  name: Install Dependencies
-  command: yarn install --frozen-lockfile --non-interactive
-
 jobs:
-  install:
-    <<: *defaults
+  main:
+    docker:
+      - image: cimg/node:lts-browsers
     steps:
       - checkout
-      - restore_cache:
-          <<: *yarn_cache
-      - run: rm -rf node_modules
-      - run:
-          <<: *yarn_install
-      - save_cache:
-          key: node-deps-node16-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache
-            - node_modules
-  check-formatting:
-    <<: *defaults
-    steps:
-      - checkout
-      - restore_cache:
-          <<: *deploy_cache
-      - run:
-          <<: *set_env
-      - restore_cache:
-          <<: *yarn_cache
-      - run: yarn format:check ${AFFECTED_ARGS}
-  lint:
-    <<: *defaults
-    steps:
-      - checkout
-      - restore_cache:
-          <<: *deploy_cache
-      - run:
-          <<: *set_env
-      - restore_cache:
-          <<: *yarn_cache
-      - run: yarn affected:lint ${AFFECTED_ARGS} --parallel --exclude shared-assets shared-styles
-  build:
-    <<: *defaults
-    steps:
-      - checkout
-      - restore_cache:
-          <<: *deploy_cache
-      - run:
-          <<: *set_env
-      - restore_cache:
-          <<: *yarn_cache
-      - run: yarn affected:build -- ${AFFECTED_ARGS} --parallel --configuration production
-      - save_cache:
-          key: build-{{ .Environment.CIRCLE_WORKFLOW_ID }}
-          paths:
-            - dist
-      - store_artifacts:
-          path: dist
-  test:
-    <<: *defaults
-    steps:
-      - checkout
-      - restore_cache:
-          <<: *deploy_cache
-      - run:
-          <<: *set_env
-      - restore_cache:
-          <<: *yarn_cache
-      - run: yarn affected -- -t test ${AFFECTED_ARGS} --parallel -- --ci --runInBand
-  e2e:
-    <<: *defaults
-    steps:
-      - checkout
-      - restore_cache:
-          <<: *deploy_cache
-      - run:
-          <<: *set_env
-      - restore_cache:
-          <<: *yarn_cache
-      - run: yarn affected:e2e -- ${AFFECTED_ARGS} --configuration production --parallel false -- --headless
-      - store_artifacts:
-          path: dist/cypress
 
-  deploy:
-    <<: *defaults
-    steps:
-      - checkout
+      # Connect your workspace on nx.app and uncomment this to enable task distribution.
+      # The "--stop-agents-after" is optional, but allows idle agents to shut down once the "e2e-ci" targets have been requested
+      - run: npx nx-cloud start-ci-run --distribute-on="5 custom-linux" --stop-agents-after="e2e-ci"
+
+      - run: yarn install --frozen-lockfile
+      - nx/set-shas:
+          main-branch-name: 'master'
       - restore_cache:
           <<: *deploy_cache
-      - run:
-          <<: *set_env
-      - restore_cache:
-          <<: *yarn_cache
-      - restore_cache:
-          key: build-{{ .Environment.CIRCLE_WORKFLOW_ID }}
-      - run: yarn affected -- --target deploy ${AFFECTED_ARGS}
+
+      - run: yarn nx-cloud record -- nx format:check --base=$NX_BASE --head=$NX_HEAD
+      - run: yarn nx affected --base=$NX_BASE --head=$NX_HEAD -t lint --exclude shared-assets shared-styles --parallel 4
+      - run: yarn nx affected --base=$NX_BASE --head=$NX_HEAD -t test build --parallel 4
+      - run: yarn nx affected --base=$NX_BASE --head=$NX_HEAD -t e2e-ci --parallel 1
+      - run: yarn nx affected --base=$NX_BASE --head=$NX_HEAD -t deploy --no-agents
       - run: git rev-parse HEAD > dist/last-deploy.txt
       - save_cache:
           key: last-deploy-sha
@@ -145,32 +36,7 @@ jobs:
 
 workflows:
   version: 2
-  pr_check:
+
+  ci:
     jobs:
-      - install
-      - check-formatting:
-          requires:
-            - install
-      - lint:
-          requires:
-            - install
-      - test:
-          requires:
-            - install
-      - build:
-          requires:
-            - install
-      - e2e:
-          requires:
-            - install
-      - deploy:
-          filters:
-            branches:
-              only:
-                - master
-          requires:
-            - check-formatting
-            - lint
-            - test
-            - build
-            - e2e
+      - main
