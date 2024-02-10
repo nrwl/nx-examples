@@ -3,25 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/products-e2e/src",
   "projectType": "application",
-  "targets": {
-    "e2e": {
-      "executor": "@nx/cypress:cypress",
-      "options": {
-        "cypressConfig": "apps/products-e2e/cypress.config.ts",
-        "devServerTarget": "products:serve",
-        "testingType": "e2e"
-      },
-      "configurations": {
-        "production": {
-          "devServerTarget": "products:serve:production"
-        }
-      }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
-    }
-  },
+  "targets": {},
   "tags": ["scope:products", "type:e2e"],
   "implicitDependencies": ["products"]
 }

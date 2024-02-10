@@ -1,0 +1,19 @@
+launch-templates:
+  custom-linux:
+    resource-class: 'docker_linux_amd64/medium'
+    image: 'ubuntu22.04-node20.9-v2'
+    init-steps:
+      - name: Checkout
+        uses: 'nrwl/nx-cloud-workflows/v3.1/workflow-steps/checkout/main.yaml'
+      - name: Restore Node Modules Cache
+        uses: 'nrwl/nx-cloud-workflows/v3.1/workflow-steps/cache/main.yaml'
+        env:
+          KEY: 'package-lock.json|yarn.lock|pnpm-lock.yaml'
+          PATHS: 'node_modules'
+          BASE_BRANCH: 'main'
+      - name: Install Node Modules
+        uses: 'nrwl/nx-cloud-workflows/v3.1/workflow-steps/install-node-modules/main.yaml'
+      - name: Install Browsers (if needed)
+        uses: 'nrwl/nx-cloud-workflows/v3.1/workflow-steps/install-browsers/main.yaml'
+      - name: Setup Cypress
+        script: 'yarn cypress install'

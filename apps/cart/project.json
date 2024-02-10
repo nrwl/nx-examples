@@ -85,17 +85,6 @@
       },
       "defaultConfiguration": "development"
     },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "apps/cart/jest.config.ts"
-      },
-      "outputs": ["{workspaceRoot}/coverage/apps/cart"]
-    },
     "deploy": {
       "executor": "nx:run-commands",
       "options": {

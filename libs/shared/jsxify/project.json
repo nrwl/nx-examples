@@ -4,11 +4,6 @@
   "sourceRoot": "libs/shared/jsxify/src",
   "projectType": "library",
   "generators": {},
-  "targets": {
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
-    }
-  },
+  "targets": {},
   "tags": ["scope:shared", "type:types"]
 }

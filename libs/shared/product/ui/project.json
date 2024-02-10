@@ -4,18 +4,6 @@
   "sourceRoot": "libs/shared/product/ui/src",
   "projectType": "library",
   "generators": {},
-  "targets": {
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "libs/shared/product/ui/jest.config.ts"
-      },
-      "outputs": ["{workspaceRoot}/coverage/libs/shared/product/ui"]
-    }
-  },
+  "targets": {},
   "tags": ["scope:shared", "type:ui"]
 }

@@ -4,19 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/shared/cart/state/src",
   "prefix": "nx-example",
-  "targets": {
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "libs/shared/cart/state/jest.config.ts"
-      },
-      "outputs": ["{workspaceRoot}/coverage/libs/shared/cart/state"]
-    }
-  },
+  "targets": {},
   "generators": {
     "@nx/angular:component": {
       "styleext": "scss"
