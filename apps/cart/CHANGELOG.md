@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.0-alpha.1](https://github.com/janasarcanys/nx-examples-test/compare/cart-0.1.0-alpha.0...cart-0.1.0-alpha.1) (2024-03-07)
+
+
+### Features
+
+* changed html etc ([8201721](https://github.com/janasarcanys/nx-examples-test/commit/82017213c7b9abee2ffebee3de0a0181be1830f0))
+
 ## 0.1.0-alpha.0 (2024-03-07)
 
 
