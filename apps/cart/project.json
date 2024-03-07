@@ -98,7 +98,9 @@
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
-        "preset": "conventionalcommits"
+        "preset": "conventionalcommits",
+        "baseBranch": "master"
+        }
       }
     }
   },
