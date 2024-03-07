@@ -96,6 +96,12 @@
           }
         ]
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventionalcommits"
+      }
     }
   },
   "tags": ["type:app", "scope:products"],
