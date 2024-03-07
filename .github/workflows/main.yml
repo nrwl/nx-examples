@@ -20,7 +20,7 @@ jobs:
           git config user.email "gituser@example.com"
       - run: npm install --legacy-peer-deps
       - name: Version
-        run: npx nx run cart:version --releaseAs=prerelease --preid=alpha
+        run: npx nx run cart:version --releaseAs=prerelease --preid=alpha --push=true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Tag last-release
