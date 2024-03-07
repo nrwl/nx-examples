@@ -23,8 +23,3 @@ jobs:
         run: npx nx run cart:version --releaseAs=prerelease --preid=alpha --push=true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Tag last-release
-        shell: bash
-        run: |
-          git tag -f last-release
-          git push origin last-release --force
