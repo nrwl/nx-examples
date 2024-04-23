@@ -3,18 +3,12 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/product/data/src",
   "projectType": "library",
+  "tags": ["type:data", "scope:shared"],
   "generators": {},
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/shared/product/data/src/**/*.ts",
-          "libs/shared/product/data/src/**/*.html"
-        ]
-      },
       "outputs": ["{options.outputFile}"]
     }
-  },
-  "tags": ["type:data", "scope:shared"]
+  }
 }

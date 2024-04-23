@@ -3,18 +3,12 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/jsxify/src",
   "projectType": "library",
+  "tags": ["scope:shared", "type:types"],
   "generators": {},
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/shared/jsxify/src/**/*.ts",
-          "libs/shared/jsxify/src/**/*.html"
-        ]
-      },
       "outputs": ["{options.outputFile}"]
     }
-  },
-  "tags": ["scope:shared", "type:types"]
+  }
 }

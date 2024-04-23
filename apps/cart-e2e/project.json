@@ -3,6 +3,8 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/cart-e2e/src",
   "projectType": "application",
+  "tags": ["scope:cart", "type:e2e"],
+  "implicitDependencies": ["cart"],
   "targets": {
     "e2e": {
       "executor": "@nx/cypress:cypress",
@@ -19,12 +21,7 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["apps/cart-e2e/**/*.{ts,tsx,js,jsx}"]
-      },
       "outputs": ["{options.outputFile}"]
     }
-  },
-  "tags": ["scope:cart", "type:e2e"],
-  "implicitDependencies": ["cart"]
+  }
 }

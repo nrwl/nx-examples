@@ -4,15 +4,15 @@
   "projectType": "library",
   "sourceRoot": "libs/products/home-page/src",
   "prefix": "nx-example",
+  "tags": ["scope:products", "type:feature"],
+  "generators": {
+    "@nx/angular:component": {
+      "styleext": "scss"
+    }
+  },
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/products/home-page/src/**/*.ts",
-          "libs/products/home-page/src/**/*.html"
-        ]
-      },
       "outputs": ["{options.outputFile}"]
     },
     "test": {
@@ -22,11 +22,5 @@
       },
       "outputs": ["{workspaceRoot}/coverage/libs/products/home-page"]
     }
-  },
-  "generators": {
-    "@nx/angular:component": {
-      "styleext": "scss"
-    }
-  },
-  "tags": ["scope:products", "type:feature"]
+  }
 }

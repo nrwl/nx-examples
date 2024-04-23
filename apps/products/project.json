@@ -2,13 +2,15 @@
   "name": "products",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
+  "sourceRoot": "apps/products/src",
+  "prefix": "nx-example",
+  "tags": ["type:app", "scope:products"],
+  "implicitDependencies": ["shared-assets", "shared-styles"],
   "generators": {
     "@nx/workspace:component": {
       "style": "scss"
     }
   },
-  "sourceRoot": "apps/products/src",
-  "prefix": "nx-example",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -89,12 +91,6 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "apps/products/src/**/*.ts",
-          "apps/products/src/**/*.html"
-        ]
-      },
       "outputs": ["{options.outputFile}"]
     },
     "test": {
@@ -114,7 +110,5 @@
         ]
       }
     }
-  },
-  "tags": ["type:app", "scope:products"],
-  "implicitDependencies": ["shared-assets", "shared-styles"]
+  }
 }

@@ -4,15 +4,15 @@
   "projectType": "library",
   "sourceRoot": "libs/shared/cart/state/src",
   "prefix": "nx-example",
+  "tags": ["scope:shared", "type:state"],
+  "generators": {
+    "@nx/angular:component": {
+      "styleext": "scss"
+    }
+  },
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/shared/cart/state/src/**/*.ts",
-          "libs/shared/cart/state/src/**/*.html"
-        ]
-      },
       "outputs": ["{options.outputFile}"]
     },
     "test": {
@@ -22,11 +22,5 @@
       },
       "outputs": ["{workspaceRoot}/coverage/libs/shared/cart/state"]
     }
-  },
-  "generators": {
-    "@nx/angular:component": {
-      "styleext": "scss"
-    }
-  },
-  "tags": ["scope:shared", "type:state"]
+  }
 }

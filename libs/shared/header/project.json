@@ -3,16 +3,11 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/header/src",
   "projectType": "library",
+  "tags": ["scope:shared", "type:ui"],
   "generators": {},
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/shared/header/src/**/*.ts",
-          "libs/shared/header/src/**/*.html"
-        ]
-      },
       "outputs": ["{options.outputFile}"]
     },
     "test": {
@@ -22,6 +17,5 @@
       },
       "outputs": ["{workspaceRoot}/coverage/libs/shared/header"]
     }
-  },
-  "tags": ["scope:shared", "type:ui"]
+  }
 }
