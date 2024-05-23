@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
@@ -17,8 +17,8 @@ describe('ProductDetailPageComponent', () => {
   let component: ProductDetailPageComponent;
   let fixture: ComponentFixture<ProductDetailPageComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [StoreModule.forRoot({}), SharedProductStateModule],
       providers: [
         {
@@ -29,7 +29,7 @@ describe('ProductDetailPageComponent', () => {
       declarations: [ProductDetailPageComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(async () => {
     fixture = TestBed.createComponent(ProductDetailPageComponent);

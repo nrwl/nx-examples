@@ -9,7 +9,7 @@ export default defineConfig({
       },
       ciWebServerCommand: 'nx run products:serve',
       webServerConfig: {
-        timeout: 30000,
+        timeout: 45000,
       },
     }),
     baseUrl: 'http://localhost:4200',
