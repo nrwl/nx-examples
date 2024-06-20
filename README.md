@@ -10,7 +10,7 @@ This project was generated using [Nx](https://nx.dev).
 
 [Nx Documentation](https://nx.dev)
 
-[30-minute video showing all Nx features](https://nx.dev/getting-started/what-is-nx)
+[30-minute video showing all Nx features](https://nx.dev/getting-started/why-nx)
 
 [Interactive Tutorial](https://nx.dev/tutorial/01-create-application)
 
