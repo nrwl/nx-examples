@@ -12,8 +12,6 @@ This project was generated using [Nx](https://nx.dev).
 
 [30-minute video showing all Nx features](https://nx.dev/getting-started/why-nx)
 
-[Interactive Tutorial](https://nx.dev/tutorial/01-create-application)
-
 ## Adding capabilities to your workspace
 
 Nx supports many plugins which add capabilities for developing different types of applications and different tools.
