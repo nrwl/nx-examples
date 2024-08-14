@@ -24,9 +24,7 @@ jobs:
           <<: *deploy_cache
 
       - run: yarn nx-cloud record -- nx format:check --base=$NX_BASE --head=$NX_HEAD
-      - run: yarn nx affected --base=$NX_BASE --head=$NX_HEAD -t lint --exclude shared-assets shared-styles --parallel 4
-      - run: yarn nx affected --base=$NX_BASE --head=$NX_HEAD -t test build --parallel 4
-      - run: yarn nx affected --base=$NX_BASE --head=$NX_HEAD -t e2e-ci --parallel 1
+      - run: yarn nx affected --base=$NX_BASE --head=$NX_HEAD -t lint,test,build,e2e-ci --parallel 4
       - run: yarn nx affected --base=$NX_BASE --head=$NX_HEAD -t deploy --no-agents
       - run: git rev-parse HEAD > dist/last-deploy.txt
       - save_cache:
