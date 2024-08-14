@@ -7,7 +7,7 @@ export default defineConfig({
       webServerCommands: {
         default: 'nx serve cart',
       },
-      ciWebServerCommand: 'nx run cart:serve-static',
+      ciWebServerCommand: 'nx run cart:serve',
       webServerConfig: {
         timeout: 30000,
       },
