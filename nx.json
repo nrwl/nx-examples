@@ -68,7 +68,6 @@
       "!{projectRoot}/test-setup.[jt]s"
     ]
   },
-  "nxCloudAccessToken": "MTE1ZmYwZmItNGQxNS00NWMyLWExY2YtYWIyODkxZTdkOWNkfHJlYWQ=",
   "parallel": 1,
   "plugins": [
     {
@@ -92,5 +91,7 @@
       }
     }
   ],
-  "defaultBase": "master"
+  "defaultBase": "master",
+  "nxCloudUrl": "http://localhost:4203",
+  "nxCloudAccessToken": "YjY3ZjIwYjktNzJmNS00MGM5LWExODktYzYyZjY1YmVkZGZlfHJlYWQtd3JpdGU="
 }
