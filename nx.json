@@ -69,6 +69,7 @@
     ]
   },
   "parallel": 1,
+  "bust": 9,
   "plugins": [
     {
       "plugin": "@nx/eslint/plugin",
@@ -93,5 +94,12 @@
   ],
   "defaultBase": "master",
   "nxCloudUrl": "http://localhost:4203",
-  "nxCloudAccessToken": "YjY3ZjIwYjktNzJmNS00MGM5LWExODktYzYyZjY1YmVkZGZlfHJlYWQtd3JpdGU="
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx-cloud",
+      "options": {
+        "nxCloudId": "66c607f30d90a65c629b7fd2"
+      }
+    }
+  }
 }
