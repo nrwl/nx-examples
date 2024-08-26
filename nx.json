@@ -38,6 +38,12 @@
   "defaultProject": "products",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
+    "test": {
+      "cache": true,
+      "options": {
+        "coverage": true
+      }
+    },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"],
