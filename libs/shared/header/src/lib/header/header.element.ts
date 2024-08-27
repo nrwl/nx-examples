@@ -1,5 +1,7 @@
 import { JSXify } from '@nx-example/shared/jsxify';
 
+console.log('test1');
+
 enum HeaderElementAttribute {
   Title = 'title',
 }
