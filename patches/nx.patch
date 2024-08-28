@@ -1,3 +1,15 @@
+diff --git a/src/tasks-runner/life-cycle.js b/src/tasks-runner/life-cycle.js
+index 4168d75380239273cf46ae84ebc12a65f3a3caba..88db9f7912adecbaef1dd5aacb2de544169087ec 100644
+--- a/src/tasks-runner/life-cycle.js
++++ b/src/tasks-runner/life-cycle.js
+@@ -34,6 +34,7 @@ class CompositeLifeCycle {
+         }
+     }
+     endTask(task, code) {
++       console.log('DEBUG: compostite life cycle endTask', task, code)
+         for (let l of this.lifeCycles) {
+             if (l.endTask) {
+                 l.endTask(task, code);
 diff --git a/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js b/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js
 index 440de2635f580959c62717b3c94593f1d6154ad7..6493598231d6d20d085e6e8e5425a23b34365a51 100644
 --- a/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js
