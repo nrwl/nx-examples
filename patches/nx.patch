@@ -24,7 +24,7 @@ index 4168d75380239273cf46ae84ebc12a65f3a3caba..88db9f7912adecbaef1dd5aacb2de544
              if (l.endTask) {
                  l.endTask(task, code);
 diff --git a/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js b/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js
-index 440de2635f580959c62717b3c94593f1d6154ad7..6493598231d6d20d085e6e8e5425a23b34365a51 100644
+index 440de2635f580959c62717b3c94593f1d6154ad7..0a035b0df04cc2eab4035ca70c3d2de1f3ee3268 100644
 --- a/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js
 +++ b/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js
 @@ -5,6 +5,7 @@ const output_1 = require("../../utils/output");
@@ -51,7 +51,7 @@ index 440de2635f580959c62717b3c94593f1d6154ad7..6493598231d6d20d085e6e8e5425a23b
          for (let t of taskResults) {
              this.taskResults[t.task.id] = t;
              if (t.status === 'failure') {
-@@ -62,6 +65,7 @@ class InvokeRunnerTerminalOutputLifeCycle {
+@@ -62,10 +65,15 @@ class InvokeRunnerTerminalOutputLifeCycle {
          }
      }
      printTaskTerminalOutput(task, cacheStatus, terminalOutput) {
@@ -59,6 +59,14 @@ index 440de2635f580959c62717b3c94593f1d6154ad7..6493598231d6d20d085e6e8e5425a23b
          const args = (0, utils_1.getPrintableCommandArgsForTask)(task);
          output_1.output.logCommandOutput(args.join(' '), cacheStatus, terminalOutput);
      }
+     getTaskResults() {
++        console.log(
++          'DEBUG: InvokeRunnerTerminalOutputLifeCycle getTaskResults',
++        )
++       console.log('DEBUG: InvokeRunnerTerminalOutputLifeCycle stack', new Error().stack)
+         return this.taskResults;
+     }
+ }
 diff --git a/src/tasks-runner/task-orchestrator.js b/src/tasks-runner/task-orchestrator.js
 index 473c0c99501515b9ca1609a4becf0ff23dfd360a..560b3192cea7d28189e49a4b677036952f7ad7bb 100644
 --- a/src/tasks-runner/task-orchestrator.js
