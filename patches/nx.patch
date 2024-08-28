@@ -1,5 +1,19 @@
+diff --git a/src/nx-cloud/nx-cloud-tasks-runner-shell.js b/src/nx-cloud/nx-cloud-tasks-runner-shell.js
+index 9339cda1d422f84c886f79791958f0bcaba95bb1..f89bf4ad8e66fe3563eee642290929c8b9303e12 100644
+--- a/src/nx-cloud/nx-cloud-tasks-runner-shell.js
++++ b/src/nx-cloud/nx-cloud-tasks-runner-shell.js
+@@ -11,6 +11,9 @@ const nxCloudTasksRunnerShell = async (tasks, options, context) => {
+         options.clientVersion = version;
+         const paths = (0, resolution_helpers_1.findAncestorNodeModules)(__dirname, []);
+         nxCloudClient.configureLightClientRequire()(paths);
++        console.log(
++          'DEBUG::nx using nxCloudTasksRunnerShell from light client',
++        )
+         return nxCloudClient.nxCloudTasksRunner(tasks, options, context);
+     }
+     catch (e) {
 diff --git a/src/tasks-runner/run-command.js b/src/tasks-runner/run-command.js
-index f87f19abf727e52f1cad750148cc560a754bad0a..06a3b4c55f360fe0e8195f233121a642521e9675 100644
+index f87f19abf727e52f1cad750148cc560a754bad0a..9766b3fe7906ef6dccea97be90d9eeb67bde1883 100644
 --- a/src/tasks-runner/run-command.js
 +++ b/src/tasks-runner/run-command.js
 @@ -241,6 +241,7 @@ function setEnvVarsBasedOnArgs(nxArgs, loadDotEnvFiles) {
@@ -10,7 +24,15 @@ index f87f19abf727e52f1cad750148cc560a754bad0a..06a3b4c55f360fe0e8195f233121a642
      let hasher = (0, create_task_hasher_1.createTaskHasher)(projectGraph, nxJson, runnerOptions);
      // this is used for two reasons: to fetch all remote cache hits AND
      // to submit everything that is known in advance to Nx Cloud to run in
-@@ -425,7 +426,7 @@ function getTasksRunnerPath(runner, nxJson) {
+@@ -391,6 +392,7 @@ function loadTasksRunner(modulePath) {
+             : maybeTasksRunner;
+     }
+     catch (e) {
++      console.log('DEBUG::NX nxCloudTasksRunnerShell')
+         if (e.code === 'MODULE_NOT_FOUND' &&
+             (modulePath === 'nx-cloud' || modulePath === '@nrwl/nx-cloud')) {
+             return require('../nx-cloud/nx-cloud-tasks-runner-shell')
+@@ -425,7 +427,7 @@ function getTasksRunnerPath(runner, nxJson) {
          }
          return modulePath;
      }
