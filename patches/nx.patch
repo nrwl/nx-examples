@@ -13,10 +13,31 @@ index 9339cda1d422f84c886f79791958f0bcaba95bb1..f89bf4ad8e66fe3563eee642290929c8
      }
      catch (e) {
 diff --git a/src/tasks-runner/life-cycle.js b/src/tasks-runner/life-cycle.js
-index 4168d75380239273cf46ae84ebc12a65f3a3caba..d3b7586294f2b028204acf7f58af9ffc77d54fd5 100644
+index 4168d75380239273cf46ae84ebc12a65f3a3caba..040347da0cea125778828bdad12fccd51c84aac7 100644
 --- a/src/tasks-runner/life-cycle.js
 +++ b/src/tasks-runner/life-cycle.js
-@@ -51,6 +51,7 @@ class CompositeLifeCycle {
+@@ -3,7 +3,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.CompositeLifeCycle = void 0;
+ class CompositeLifeCycle {
+     constructor(lifeCycles) {
+-        this.lifeCycles = lifeCycles;
++      Object.defineProperty(this, 'lifeCycles', {
++        get() {
++      console.log('Getter for lifeCycles called', new Error().stack);
++      return this._lifeCycles;
++        },
++        set(value) {
++      console.log('Setter for lifeCycles called', new Error().stack);
++      this._lifeCycles = value;
++        }
++    });
++        this._lifeCycles = lifeCycles;
++
++
+     }
+     async startCommand() {
+         for (let l of this.lifeCycles) {
+@@ -51,6 +63,7 @@ class CompositeLifeCycle {
          }
      }
      async endTasks(taskResults, metadata) {
