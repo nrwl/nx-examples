@@ -35,7 +35,7 @@ index 440de2635f580959c62717b3c94593f1d6154ad7..6493598231d6d20d085e6e8e5425a23b
          output_1.output.logCommandOutput(args.join(' '), cacheStatus, terminalOutput);
      }
 diff --git a/src/tasks-runner/task-orchestrator.js b/src/tasks-runner/task-orchestrator.js
-index 473c0c99501515b9ca1609a4becf0ff23dfd360a..50a8b6a4ce3c775cc9351a958537f04e8427a0cc 100644
+index 473c0c99501515b9ca1609a4becf0ff23dfd360a..560b3192cea7d28189e49a4b677036952f7ad7bb 100644
 --- a/src/tasks-runner/task-orchestrator.js
 +++ b/src/tasks-runner/task-orchestrator.js
 @@ -179,31 +179,8 @@ class TaskOrchestrator {
@@ -114,11 +114,42 @@ index 473c0c99501515b9ca1609a4becf0ff23dfd360a..50a8b6a4ce3c775cc9351a958537f04e
      async runTaskInForkedProcess(task, env, pipeOutput, temporaryOutputPath, streamOutput) {
          try {
              const usePtyFork = process.env.NX_NATIVE_COMMAND_RUNNER !== 'false';
-@@ -362,6 +366,7 @@ class TaskOrchestrator {
+@@ -362,20 +366,24 @@ class TaskOrchestrator {
              perf_hooks_1.performance.mark('cache-results-end');
              perf_hooks_1.performance.measure('cache-results', 'cache-results-start', 'cache-results-end');
          }
+-        await this.options.lifeCycle.endTasks(results.map((result) => {
+-            const code = result.status === 'success' ||
+-                result.status === 'local-cache' ||
+-                result.status === 'local-cache-kept-existing' ||
+-                result.status === 'remote-cache'
+-                ? 0
+-                : 1;
+-            return {
+-                ...result,
+-                task: result.task,
+-                status: result.status,
+-                code,
+-            };
+-        }), { groupId });
 +       console.log('DEBUG: postRunSteps lifeCycle.endTasks', results)
-         await this.options.lifeCycle.endTasks(results.map((result) => {
-             const code = result.status === 'success' ||
-                 result.status === 'local-cache' ||
++      console.log('DEBUG: postRunSteps lifeCycle = this.options.lifeCycle', this.options.lifeCycle)
++      const newResults = results.map((result) => {
++        const code = result.status === 'success' ||
++            result.status === 'local-cache' ||
++            result.status === 'local-cache-kept-existing' ||
++            result.status === 'remote-cache'
++            ? 0
++            : 1;
++        return {
++            ...result,
++            task: result.task,
++            status: result.status,
++            code,
++        };
++    })
++    console.log('DEBUG: postRunSteps newResults', newResults)
++        await this.options.lifeCycle.endTasks(newResults, { groupId });
+         this.complete(results.map(({ task, status }) => {
+             return {
+                 taskId: task.id,
