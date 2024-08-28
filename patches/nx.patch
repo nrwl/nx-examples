@@ -1,8 +1,24 @@
 diff --git a/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js b/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js
-index 440de2635f580959c62717b3c94593f1d6154ad7..573e9820d8001ca1ad5cb4ed95c2c27a07a6e412 100644
+index 440de2635f580959c62717b3c94593f1d6154ad7..6493598231d6d20d085e6e8e5425a23b34365a51 100644
 --- a/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js
 +++ b/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js
-@@ -45,6 +45,7 @@ class InvokeRunnerTerminalOutputLifeCycle {
+@@ -5,6 +5,7 @@ const output_1 = require("../../utils/output");
+ const utils_1 = require("../utils");
+ class InvokeRunnerTerminalOutputLifeCycle {
+     constructor(tasks) {
++      console.log('NX tasks', tasks)
+         this.tasks = tasks;
+         this.failedTasks = [];
+         this.cachedTasks = [];
+@@ -21,6 +22,7 @@ class InvokeRunnerTerminalOutputLifeCycle {
+         output_1.output.addVerticalSeparatorWithoutNewLines('cyan');
+     }
+     endCommand() {
++      console.log('NX endCommand')
+         output_1.output.addNewline();
+         const taskIds = this.tasks.map((task) => {
+             const cached = this.cachedTasks.indexOf(task) !== -1;
+@@ -45,6 +47,7 @@ class InvokeRunnerTerminalOutputLifeCycle {
          }
      }
      endTasks(taskResults) {
@@ -10,3 +26,11 @@ index 440de2635f580959c62717b3c94593f1d6154ad7..573e9820d8001ca1ad5cb4ed95c2c27a
          for (let t of taskResults) {
              this.taskResults[t.task.id] = t;
              if (t.status === 'failure') {
+@@ -62,6 +65,7 @@ class InvokeRunnerTerminalOutputLifeCycle {
+         }
+     }
+     printTaskTerminalOutput(task, cacheStatus, terminalOutput) {
++      console.log('NX printTaskTerminalOutput', task, cacheStatus)
+         const args = (0, utils_1.getPrintableCommandArgsForTask)(task);
+         output_1.output.logCommandOutput(args.join(' '), cacheStatus, terminalOutput);
+     }
