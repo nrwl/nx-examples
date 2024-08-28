@@ -12,6 +12,18 @@ index 9339cda1d422f84c886f79791958f0bcaba95bb1..f89bf4ad8e66fe3563eee642290929c8
          return nxCloudClient.nxCloudTasksRunner(tasks, options, context);
      }
      catch (e) {
+diff --git a/src/tasks-runner/life-cycle.js b/src/tasks-runner/life-cycle.js
+index 4168d75380239273cf46ae84ebc12a65f3a3caba..d3b7586294f2b028204acf7f58af9ffc77d54fd5 100644
+--- a/src/tasks-runner/life-cycle.js
++++ b/src/tasks-runner/life-cycle.js
+@@ -51,6 +51,7 @@ class CompositeLifeCycle {
+         }
+     }
+     async endTasks(taskResults, metadata) {
++      console.log("DEBUG::NX this.lifeCycles", this.lifeCycles);
+         for (let l of this.lifeCycles) {
+             if (l.endTasks) {
+                 await l.endTasks(taskResults, metadata);
 diff --git a/src/tasks-runner/run-command.js b/src/tasks-runner/run-command.js
 index f87f19abf727e52f1cad750148cc560a754bad0a..9766b3fe7906ef6dccea97be90d9eeb67bde1883 100644
 --- a/src/tasks-runner/run-command.js
