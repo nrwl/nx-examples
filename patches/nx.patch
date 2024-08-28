@@ -35,18 +35,43 @@ index 440de2635f580959c62717b3c94593f1d6154ad7..6493598231d6d20d085e6e8e5425a23b
          output_1.output.logCommandOutput(args.join(' '), cacheStatus, terminalOutput);
      }
 diff --git a/src/tasks-runner/task-orchestrator.js b/src/tasks-runner/task-orchestrator.js
-index 473c0c99501515b9ca1609a4becf0ff23dfd360a..b9160de328796a50ee8a6f96bc6aac0201acb257 100644
+index 473c0c99501515b9ca1609a4becf0ff23dfd360a..50a8b6a4ce3c775cc9351a958537f04e8427a0cc 100644
 --- a/src/tasks-runner/task-orchestrator.js
 +++ b/src/tasks-runner/task-orchestrator.js
-@@ -204,6 +204,7 @@ class TaskOrchestrator {
-     // endregion Batch
-     // region Single Task
+@@ -179,31 +179,8 @@ class TaskOrchestrator {
+             }, groupId);
+         }
+     }
+-    async runBatch(batch, env) {
+-        try {
+-            const results = await this.forkedProcessTaskRunner.forkProcessForBatch(batch, this.taskGraph, env);
+-            const batchResultEntries = Object.entries(results);
+-            return batchResultEntries.map(([taskId, result]) => ({
+-                ...result,
+-                task: {
+-                    ...this.taskGraph.tasks[taskId],
+-                    startTime: result.startTime,
+-                    endTime: result.endTime,
+-                },
+-                status: (result.success ? 'success' : 'failure'),
+-                terminalOutput: result.terminalOutput,
+-            }));
+-        }
+-        catch (e) {
+-            return batch.taskGraph.roots.map((rootTaskId) => ({
+-                task: this.taskGraph.tasks[rootTaskId],
+-                status: 'failure',
+-            }));
+-        }
+-    }
+-    // endregion Batch
+-    // region Single Task
      async applyFromCacheOrRunTask(doNotSkipCache, task, groupId) {
 +      console.log("[DEBUG]: applyFromCacheOrRunTask start")
          // Wait for task to be processed
          const taskSpecificEnv = await this.processedTasks.get(task.id);
          await this.preRunSteps([task], { groupId });
-@@ -221,6 +222,7 @@ class TaskOrchestrator {
+@@ -221,6 +198,7 @@ class TaskOrchestrator {
          let results = doNotSkipCache ? await this.applyCachedResults([task]) : [];
          // the task wasn't cached
          if (results.length === 0) {
@@ -54,19 +79,46 @@ index 473c0c99501515b9ca1609a4becf0ff23dfd360a..b9160de328796a50ee8a6f96bc6aac02
              const shouldPrefix = streamOutput && process.env.NX_PREFIX_OUTPUT === 'true';
              const targetConfiguration = (0, utils_1.getTargetConfigurationForTask)(task, this.projectGraph);
              if (process.env.NX_RUN_COMMANDS_DIRECTLY !== 'false' &&
-@@ -294,6 +296,7 @@ class TaskOrchestrator {
+@@ -294,8 +272,34 @@ class TaskOrchestrator {
                  });
              }
          }
++        console.log("[DEBUG]: applyFromCacheOrRunTask results", results)
 +        console.log("[DEBUG]: applyFromCacheOrRunTask before postRunSteps")
          await this.postRunSteps([task], results, doNotSkipCache, { groupId });
      }
++    async runBatch(batch, env) {
++        try {
++            const results = await this.forkedProcessTaskRunner.forkProcessForBatch(batch, this.taskGraph, env);
++            const batchResultEntries = Object.entries(results);
++            return batchResultEntries.map(([taskId, result]) => ({
++                ...result,
++                task: {
++                    ...this.taskGraph.tasks[taskId],
++                    startTime: result.startTime,
++                    endTime: result.endTime,
++                },
++                status: (result.success ? 'success' : 'failure'),
++                terminalOutput: result.terminalOutput,
++            }));
++        }
++        catch (e) {
++            return batch.taskGraph.roots.map((rootTaskId) => ({
++                task: this.taskGraph.tasks[rootTaskId],
++                status: 'failure',
++            }));
++        }
++    }
++    // endregion Batch
++    // region Single Task
      async runTaskInForkedProcess(task, env, pipeOutput, temporaryOutputPath, streamOutput) {
-@@ -362,6 +365,7 @@ class TaskOrchestrator {
+         try {
+             const usePtyFork = process.env.NX_NATIVE_COMMAND_RUNNER !== 'false';
+@@ -362,6 +366,7 @@ class TaskOrchestrator {
              perf_hooks_1.performance.mark('cache-results-end');
              perf_hooks_1.performance.measure('cache-results', 'cache-results-start', 'cache-results-end');
          }
-+       console.log('DEBUG: postRunSteps lifeCycle.endTasks')
++       console.log('DEBUG: postRunSteps lifeCycle.endTasks', results)
          await this.options.lifeCycle.endTasks(results.map((result) => {
              const code = result.status === 'success' ||
                  result.status === 'local-cache' ||
