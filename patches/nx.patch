@@ -1,0 +1,12 @@
+diff --git a/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js b/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js
+index 440de2635f580959c62717b3c94593f1d6154ad7..573e9820d8001ca1ad5cb4ed95c2c27a07a6e412 100644
+--- a/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js
++++ b/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js
+@@ -45,6 +45,7 @@ class InvokeRunnerTerminalOutputLifeCycle {
+         }
+     }
+     endTasks(taskResults) {
++      console.log('NX taskResults', taskResults);
+         for (let t of taskResults) {
+             this.taskResults[t.task.id] = t;
+             if (t.status === 'failure') {
