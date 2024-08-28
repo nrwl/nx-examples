@@ -1,196 +1,21 @@
-diff --git a/src/tasks-runner/init-tasks-runner.js b/src/tasks-runner/init-tasks-runner.js
-index b1c774d5a4bf2e870250e269a2cc413d0c049555..8849a941f518f4b37130d23ef9eb778f9a196954 100644
---- a/src/tasks-runner/init-tasks-runner.js
-+++ b/src/tasks-runner/init-tasks-runner.js
-@@ -28,6 +28,8 @@ async function initTasksRunner(nxArgs) {
-                 }
-             });
-             const lifeCycle = new invoke_runner_terminal_output_life_cycle_1.InvokeRunnerTerminalOutputLifeCycle(opts.tasks);
-+            console.log('DEBUG invoke lifecycle', lifeCycle)
-+          console.log('DEBUG invoke stack', new Error().stack)
-             const taskGraph = {
-                 roots: opts.tasks.map((task) => task.id),
-                 tasks: opts.tasks.reduce((acc, task) => {
-@@ -52,6 +54,7 @@ async function initTasksRunner(nxArgs) {
-             return {
-                 status,
-                 taskGraph,
-+                lifeCycle,
-                 taskResults: lifeCycle.getTaskResults(),
-             };
-         },
-diff --git a/src/tasks-runner/life-cycle.js b/src/tasks-runner/life-cycle.js
-index 4168d75380239273cf46ae84ebc12a65f3a3caba..88db9f7912adecbaef1dd5aacb2de544169087ec 100644
---- a/src/tasks-runner/life-cycle.js
-+++ b/src/tasks-runner/life-cycle.js
-@@ -34,6 +34,7 @@ class CompositeLifeCycle {
+diff --git a/src/tasks-runner/run-command.js b/src/tasks-runner/run-command.js
+index f87f19abf727e52f1cad750148cc560a754bad0a..06a3b4c55f360fe0e8195f233121a642521e9675 100644
+--- a/src/tasks-runner/run-command.js
++++ b/src/tasks-runner/run-command.js
+@@ -241,6 +241,7 @@ function setEnvVarsBasedOnArgs(nxArgs, loadDotEnvFiles) {
+ async function invokeTasksRunner({ tasks, projectGraph, taskGraph, lifeCycle, nxJson, nxArgs, loadDotEnvFiles, initiatingProject, }) {
+     setEnvVarsBasedOnArgs(nxArgs, loadDotEnvFiles);
+     const { tasksRunner, runnerOptions } = getRunner(nxArgs, nxJson);
++  console.log('DEBUG::NX tasksRUner', tasksRunner);
+     let hasher = (0, create_task_hasher_1.createTaskHasher)(projectGraph, nxJson, runnerOptions);
+     // this is used for two reasons: to fetch all remote cache hits AND
+     // to submit everything that is known in advance to Nx Cloud to run in
+@@ -425,7 +426,7 @@ function getTasksRunnerPath(runner, nxJson) {
          }
+         return modulePath;
      }
-     endTask(task, code) {
-+       console.log('DEBUG: compostite life cycle endTask', task, code)
-         for (let l of this.lifeCycles) {
-             if (l.endTask) {
-                 l.endTask(task, code);
-diff --git a/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js b/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js
-index 440de2635f580959c62717b3c94593f1d6154ad7..0a035b0df04cc2eab4035ca70c3d2de1f3ee3268 100644
---- a/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js
-+++ b/src/tasks-runner/life-cycles/invoke-runner-terminal-output-life-cycle.js
-@@ -5,6 +5,7 @@ const output_1 = require("../../utils/output");
- const utils_1 = require("../utils");
- class InvokeRunnerTerminalOutputLifeCycle {
-     constructor(tasks) {
-+      console.log('NX tasks', tasks)
-         this.tasks = tasks;
-         this.failedTasks = [];
-         this.cachedTasks = [];
-@@ -21,6 +22,7 @@ class InvokeRunnerTerminalOutputLifeCycle {
-         output_1.output.addVerticalSeparatorWithoutNewLines('cyan');
-     }
-     endCommand() {
-+      console.log('NX endCommand')
-         output_1.output.addNewline();
-         const taskIds = this.tasks.map((task) => {
-             const cached = this.cachedTasks.indexOf(task) !== -1;
-@@ -45,6 +47,7 @@ class InvokeRunnerTerminalOutputLifeCycle {
-         }
-     }
-     endTasks(taskResults) {
-+      console.log('NX taskResults', taskResults);
-         for (let t of taskResults) {
-             this.taskResults[t.task.id] = t;
-             if (t.status === 'failure') {
-@@ -62,10 +65,15 @@ class InvokeRunnerTerminalOutputLifeCycle {
-         }
-     }
-     printTaskTerminalOutput(task, cacheStatus, terminalOutput) {
-+      console.log('NX printTaskTerminalOutput', task, cacheStatus)
-         const args = (0, utils_1.getPrintableCommandArgsForTask)(task);
-         output_1.output.logCommandOutput(args.join(' '), cacheStatus, terminalOutput);
-     }
-     getTaskResults() {
-+        console.log(
-+          'DEBUG: InvokeRunnerTerminalOutputLifeCycle getTaskResults',
-+        )
-+       console.log('DEBUG: InvokeRunnerTerminalOutputLifeCycle stack', new Error().stack)
-         return this.taskResults;
-     }
- }
-diff --git a/src/tasks-runner/task-orchestrator.js b/src/tasks-runner/task-orchestrator.js
-index 473c0c99501515b9ca1609a4becf0ff23dfd360a..560b3192cea7d28189e49a4b677036952f7ad7bb 100644
---- a/src/tasks-runner/task-orchestrator.js
-+++ b/src/tasks-runner/task-orchestrator.js
-@@ -179,31 +179,8 @@ class TaskOrchestrator {
-             }, groupId);
-         }
-     }
--    async runBatch(batch, env) {
--        try {
--            const results = await this.forkedProcessTaskRunner.forkProcessForBatch(batch, this.taskGraph, env);
--            const batchResultEntries = Object.entries(results);
--            return batchResultEntries.map(([taskId, result]) => ({
--                ...result,
--                task: {
--                    ...this.taskGraph.tasks[taskId],
--                    startTime: result.startTime,
--                    endTime: result.endTime,
--                },
--                status: (result.success ? 'success' : 'failure'),
--                terminalOutput: result.terminalOutput,
--            }));
--        }
--        catch (e) {
--            return batch.taskGraph.roots.map((rootTaskId) => ({
--                task: this.taskGraph.tasks[rootTaskId],
--                status: 'failure',
--            }));
--        }
--    }
--    // endregion Batch
--    // region Single Task
-     async applyFromCacheOrRunTask(doNotSkipCache, task, groupId) {
-+      console.log("[DEBUG]: applyFromCacheOrRunTask start")
-         // Wait for task to be processed
-         const taskSpecificEnv = await this.processedTasks.get(task.id);
-         await this.preRunSteps([task], { groupId });
-@@ -221,6 +198,7 @@ class TaskOrchestrator {
-         let results = doNotSkipCache ? await this.applyCachedResults([task]) : [];
-         // the task wasn't cached
-         if (results.length === 0) {
-+            console.log("[DEBUG]: applyFromCacheOrRunTask results.length === 0")
-             const shouldPrefix = streamOutput && process.env.NX_PREFIX_OUTPUT === 'true';
-             const targetConfiguration = (0, utils_1.getTargetConfigurationForTask)(task, this.projectGraph);
-             if (process.env.NX_RUN_COMMANDS_DIRECTLY !== 'false' &&
-@@ -294,8 +272,34 @@ class TaskOrchestrator {
-                 });
-             }
-         }
-+        console.log("[DEBUG]: applyFromCacheOrRunTask results", results)
-+        console.log("[DEBUG]: applyFromCacheOrRunTask before postRunSteps")
-         await this.postRunSteps([task], results, doNotSkipCache, { groupId });
-     }
-+    async runBatch(batch, env) {
-+        try {
-+            const results = await this.forkedProcessTaskRunner.forkProcessForBatch(batch, this.taskGraph, env);
-+            const batchResultEntries = Object.entries(results);
-+            return batchResultEntries.map(([taskId, result]) => ({
-+                ...result,
-+                task: {
-+                    ...this.taskGraph.tasks[taskId],
-+                    startTime: result.startTime,
-+                    endTime: result.endTime,
-+                },
-+                status: (result.success ? 'success' : 'failure'),
-+                terminalOutput: result.terminalOutput,
-+            }));
-+        }
-+        catch (e) {
-+            return batch.taskGraph.roots.map((rootTaskId) => ({
-+                task: this.taskGraph.tasks[rootTaskId],
-+                status: 'failure',
-+            }));
-+        }
-+    }
-+    // endregion Batch
-+    // region Single Task
-     async runTaskInForkedProcess(task, env, pipeOutput, temporaryOutputPath, streamOutput) {
-         try {
-             const usePtyFork = process.env.NX_NATIVE_COMMAND_RUNNER !== 'false';
-@@ -362,20 +366,24 @@ class TaskOrchestrator {
-             perf_hooks_1.performance.mark('cache-results-end');
-             perf_hooks_1.performance.measure('cache-results', 'cache-results-start', 'cache-results-end');
-         }
--        await this.options.lifeCycle.endTasks(results.map((result) => {
--            const code = result.status === 'success' ||
--                result.status === 'local-cache' ||
--                result.status === 'local-cache-kept-existing' ||
--                result.status === 'remote-cache'
--                ? 0
--                : 1;
--            return {
--                ...result,
--                task: result.task,
--                status: result.status,
--                code,
--            };
--        }), { groupId });
-+       console.log('DEBUG: postRunSteps lifeCycle.endTasks', results)
-+      console.log('DEBUG: postRunSteps lifeCycle = this.options.lifeCycle', this.options.lifeCycle)
-+      const newResults = results.map((result) => {
-+        const code = result.status === 'success' ||
-+            result.status === 'local-cache' ||
-+            result.status === 'local-cache-kept-existing' ||
-+            result.status === 'remote-cache'
-+            ? 0
-+            : 1;
-+        return {
-+            ...result,
-+            task: result.task,
-+            status: result.status,
-+            code,
-+        };
-+    })
-+    console.log('DEBUG: postRunSteps newResults', newResults)
-+        await this.options.lifeCycle.endTasks(newResults, { groupId });
-         this.complete(results.map(({ task, status }) => {
-             return {
-                 taskId: task.id,
+-    const isCloudRunner = 
++    const isCloudRunner =
+     // No tasksRunnerOptions for given --runner
+     nxJson.nxCloudAccessToken ||
+         // No runner prop in tasks runner options, check if access token is set.
