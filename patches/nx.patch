@@ -1,3 +1,16 @@
+diff --git a/src/tasks-runner/init-tasks-runner.js b/src/tasks-runner/init-tasks-runner.js
+index b1c774d5a4bf2e870250e269a2cc413d0c049555..2f1d9aa8586eb641a67eb6cd3c9123b3da8f3a76 100644
+--- a/src/tasks-runner/init-tasks-runner.js
++++ b/src/tasks-runner/init-tasks-runner.js
+@@ -28,6 +28,8 @@ async function initTasksRunner(nxArgs) {
+                 }
+             });
+             const lifeCycle = new invoke_runner_terminal_output_life_cycle_1.InvokeRunnerTerminalOutputLifeCycle(opts.tasks);
++            console.log('DEBUG invoke lifecycle', lifeCycle)
++          console.log('DEBUG invoke stack', new Error().stack)
+             const taskGraph = {
+                 roots: opts.tasks.map((task) => task.id),
+                 tasks: opts.tasks.reduce((acc, task) => {
 diff --git a/src/tasks-runner/life-cycle.js b/src/tasks-runner/life-cycle.js
 index 4168d75380239273cf46ae84ebc12a65f3a3caba..88db9f7912adecbaef1dd5aacb2de544169087ec 100644
 --- a/src/tasks-runner/life-cycle.js
