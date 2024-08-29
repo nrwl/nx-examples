@@ -13,6 +13,7 @@ describe('HeaderElement', () => {
 
   it('can be created', () => {
     expect(headerElement).toBeTruthy();
+    expect(false).toBe(true);
   });
 
   it('should display the application title', () => {
