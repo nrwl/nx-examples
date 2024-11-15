@@ -1,0 +1,85 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+    "name": "Dev container",
+    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+
+    "mounts": [
+      "source=qc_nx_node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+    ],
+
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    "features": {
+      "ghcr.io/devcontainers-contrib/features/angular-cli:2": {},
+      "ghcr.io/balazs23/devcontainers-features/nx:1": {}
+    },
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+
+    // Configure tool-specific properties.
+    "customizations": {
+      "vscode": {
+        "settings": {},
+        "extensions": [
+          "Angular.ng-template",
+          "nrwl.angular-console",
+          "esbenp.prettier-vscode",
+          "aaron-bond.better-comments"
+        ]
+      },
+      "jetbrains": {
+              "backend": "WebStorm",
+              "plugins": [
+                "dev.nx.console"
+              ]
+          }
+    },
+
+    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+    "remoteUser": "root"
+  }
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+    "name": "NX Dev container",
+    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+
+    "mounts": [
+      "source=qc_nx_node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+    ],
+
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    "features": {
+      "ghcr.io/devcontainers-contrib/features/angular-cli:2": {},
+      "ghcr.io/balazs23/devcontainers-features/nx:1": {},
+      "ghcr.io/devcontainers-community/npm-features/typescript:1": {}
+    },
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+
+    // Configure tool-specific properties.
+    "customizations": {
+      "vscode": {
+        "settings": {},
+        "extensions": [
+          "Angular.ng-template",
+          "nrwl.angular-console",
+          "esbenp.prettier-vscode",
+          "aaron-bond.better-comments"
+        ]
+      },
+      "jetbrains": {
+              "backend": "WebStorm",
+              "plugins": [
+          "dev.nx.console"
+              ]
+          }
+    },
+
+    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+    "remoteUser": "root"
+  }
