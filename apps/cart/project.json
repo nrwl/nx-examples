@@ -71,9 +71,11 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@nx/webpack:dev-server",
+      "executor": "@nx/js:node",
+      "dependsOn": ["build"],
       "options": {
-        "buildTarget": "cart:build"
+        "buildTarget": "cart:build",
+        "runBuildTargetDependencies": false
       },
       "configurations": {
         "production": {
@@ -81,6 +83,11 @@
         },
         "development": {
           "buildTarget": "cart:build:development"
+        },
+        "repl": {
+          "buildTargetOptions": {
+            "main": "{projectRoot}/src/repl.ts"
+          }
         }
       },
       "defaultConfiguration": "development"
