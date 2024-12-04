@@ -12,10 +12,10 @@ import { Product } from '@nx-example/shared/product/types';
 import '@nx-example/shared/product/ui';
 
 @Component({
-    selector: 'products-home-page',
-    templateUrl: './home-page.component.html',
-    styleUrls: ['./home-page.component.scss'],
-    standalone: false
+  selector: 'products-home-page',
+  templateUrl: './home-page.component.html',
+  styleUrls: ['./home-page.component.scss'],
+  standalone: false,
 })
 export class HomePageComponent {
   products: Observable<Product[]> = this.store.pipe(
