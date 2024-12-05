@@ -27,7 +27,8 @@
             "prefix": "products",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/prefer-standalone": "off"
       },
       "plugins": ["@angular-eslint/eslint-plugin", "@typescript-eslint"]
     },
