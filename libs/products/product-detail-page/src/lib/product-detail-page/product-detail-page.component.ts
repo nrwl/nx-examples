@@ -15,6 +15,7 @@ import '@nx-example/shared/product/ui';
   selector: 'nx-example-product-detail-page',
   templateUrl: './product-detail-page.component.html',
   styleUrls: ['./product-detail-page.component.scss'],
+  standalone: false,
 })
 export class ProductDetailPageComponent {
   product = this.route.paramMap.pipe(

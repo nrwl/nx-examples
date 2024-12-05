@@ -15,6 +15,7 @@ import '@nx-example/shared/product/ui';
   selector: 'products-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
+  standalone: false,
 })
 export class HomePageComponent {
   products: Observable<Product[]> = this.store.pipe(
