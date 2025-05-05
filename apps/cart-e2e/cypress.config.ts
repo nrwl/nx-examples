@@ -12,7 +12,7 @@ export default defineConfig({
         timeout: 30000,
       },
     }),
-    baseUrl: 'http://localhost:4200',
+    baseUrl: 'http://localhost:4201',
     fileServerFolder: '.',
     fixturesFolder: './src/fixtures',
     video: true,

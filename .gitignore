@@ -7,7 +7,8 @@
 
 # dependencies
 /node_modules
-/.yarn
+/.yarn/*
+!/.yarn/patches
 
 # IDEs and editors
 /.idea
