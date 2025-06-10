@@ -1,5 +1,6 @@
 <ul>
-  <li *ngFor="let product of products | async">
+  @for (product of products | async; track product) {
+  <li>
     <a [routerLink]="['/product', product.id]">
       <figure>
         <img [src]="product.image" />
@@ -12,4 +13,5 @@
       </p>
     </a>
   </li>
+  }
 </ul>

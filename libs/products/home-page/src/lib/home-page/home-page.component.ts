@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -18,10 +18,10 @@ import '@nx-example/shared/product/ui';
   standalone: false,
 })
 export class HomePageComponent {
+  private store = inject<Store<ProductsPartialState>>(Store);
+
   products: Observable<Product[]> = this.store.pipe(
     select(getProductsState),
     select(getProducts)
   );
-
-  constructor(private store: Store<ProductsPartialState>) {}
 }
