@@ -10,6 +10,36 @@
     "@nx/angular": {
       "convert-tslint-to-eslint": {
         "removeTSLintIfNoMoreTSLintTargets": true
+      },
+      "component": {
+        "type": "component"
+      },
+      "directive": {
+        "type": "directive"
+      },
+      "service": {
+        "type": "service"
+      },
+      "scam": {
+        "type": "component"
+      },
+      "scam-directive": {
+        "type": "directive"
+      },
+      "guard": {
+        "typeSeparator": "."
+      },
+      "interceptor": {
+        "typeSeparator": "."
+      },
+      "module": {
+        "typeSeparator": "."
+      },
+      "pipe": {
+        "typeSeparator": "."
+      },
+      "resolver": {
+        "typeSeparator": "."
       }
     },
     "@nx/react": {
@@ -26,6 +56,30 @@
         "style": "css",
         "linter": "eslint"
       }
+    },
+    "@schematics/angular:component": {
+      "type": "component"
+    },
+    "@schematics/angular:directive": {
+      "type": "directive"
+    },
+    "@schematics/angular:service": {
+      "type": "service"
+    },
+    "@schematics/angular:guard": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:interceptor": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:module": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:pipe": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:resolver": {
+      "typeSeparator": "."
     }
   },
   "defaultProject": "products",
