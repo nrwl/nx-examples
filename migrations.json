@@ -1,0 +1,20 @@
+{
+  "migrations": [
+    {
+      "cli": "nx",
+      "version": "21.6.1-beta.2",
+      "requires": { "@angular/core": ">=20.3.0" },
+      "description": "Update the @angular/cli package version to ~20.3.0.",
+      "factory": "./src/migrations/update-21-6-1/update-angular-cli",
+      "package": "@nx/angular",
+      "name": "update-angular-cli-version-20-3-0"
+    },
+    {
+      "version": "20.3.0",
+      "description": "Adds `BootstrapContext` to `bootstrapApplication` calls in `main.server.ts` to support server rendering.",
+      "factory": "./bundles/add-bootstrap-context-to-server-main.cjs#migrate",
+      "package": "@angular/core",
+      "name": "add-bootstrap-context-to-server-main"
+    }
+  ]
+}
