@@ -1,5 +1,5 @@
 /* eslint-disable */
-export default {
+module.exports = {
   coverageDirectory: '../../coverage/apps/products',
 
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
