@@ -6,6 +6,7 @@ describe('cart', () => {
   before(() => cy.visit('/cart'));
 
   it('should display the header', () => {
+    console.log('some test');
     getHeader().should('exist');
   });
 
