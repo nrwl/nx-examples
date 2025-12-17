@@ -4,7 +4,8 @@
     "types": ["node", "jest"],
     "target": "es2020",
     "module": "preserve",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "lib": ["dom", "es2022"]
   },
   "include": [],
   "files": [],
