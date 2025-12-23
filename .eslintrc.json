@@ -13,7 +13,27 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "*",
+                "allSourceTags": ["type:app", "scope:cart"],
+                "onlyDependOnLibsWithTags": [
+                  "type:no-such-type",
+                  "scope:shared",
+                  "type:ui"
+                ]
+              },
+              {
+                "sourceTag": "scope:products",
+                "onlyDependOnLibsWithTags": ["*"]
+              },
+              {
+                "sourceTag": "type:feature",
+                "onlyDependOnLibsWithTags": ["*"]
+              },
+              {
+                "sourceTag": "scope:shared",
+                "onlyDependOnLibsWithTags": ["*"]
+              },
+              {
+                "sourceTag": "type:e2e",
                 "onlyDependOnLibsWithTags": ["*"]
               }
             ]
