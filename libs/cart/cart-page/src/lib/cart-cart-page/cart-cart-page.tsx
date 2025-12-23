@@ -4,6 +4,17 @@ import styled from '@emotion/styled';
 
 import '@nx-example/shared/product/ui';
 
+/**
+ * Should throw linting error:
+ *
+ * Projects should use relative imports to import from other files within the same project.
+ * Use "./path/to/file" instead of import from "@nx-example/cart-cart-page/src/lib/utils/checkout"  @nx/enforce-module-boundaries
+ *
+ */
+import { checkoutUtils } from '@nx-example/cart-cart-page/src/lib/utils/checkout';
+
+console.log('Checkout Utils:', checkoutUtils());
+
 import {
   CartItem,
   cartReducer,
