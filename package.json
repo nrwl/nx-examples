@@ -129,5 +129,8 @@
     "webpack-cli": "^5.1.4",
     "webpack-merge": "^5.8.0"
   },
-  "packageManager": "yarn@4.2.2"
+  "packageManager": "yarn@4.2.2",
+  "nx": {
+    "nxCloudImplicitDependencies": ["62d013ea0852fe0a2df74438:nx"]
+  }
 }
