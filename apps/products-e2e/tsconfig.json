@@ -2,10 +2,16 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "sourceMap": false,
-    "outDir": "../../dist/out-tsc",
+    "outDir": "out-tsc/e2e",
     "allowJs": true,
-    "rootDir": "../..",
+    "typeRoots": ["../../node_modules/@types", "../../node_modules"],
     "types": ["cypress", "node"]
   },
-  "include": ["src/**/*.ts", "src/**/*.js", "cypress.config.ts"]
+  "include": ["src/**/*.ts", "src/**/*.js", "cypress.config.ts"],
+  "exclude": ["out-tsc"],
+  "references": [
+    {
+      "path": "../../libs/shared/e2e-utils"
+    }
+  ]
 }

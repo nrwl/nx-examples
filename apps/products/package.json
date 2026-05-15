@@ -1,0 +1,12 @@
+{
+  "name": "@nx-example/products",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "@nx-example/products-home-page": "workspace:*",
+    "@nx-example/products-product-detail-page": "workspace:*",
+    "@nx-example/shared-assets": "workspace:*",
+    "@nx-example/shared-header": "workspace:*",
+    "@nx-example/shared-styles": "workspace:*"
+  }
+}

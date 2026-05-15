@@ -1,4 +1,4 @@
-import { Product } from '@nx-example/shared/product/types';
+import { Product } from '@nx-example/shared-product-types';
 
 export const products: Product[] = [
   {

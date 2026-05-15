@@ -1,5 +1,5 @@
-import { mockProducts } from '@nx-example/shared/product/data/testing';
-import { ProductsState } from '@nx-example/shared/product/state';
+import { mockProducts } from '@nx-example/shared-product-data/testing';
+import { ProductsState } from '@nx-example/shared-product-state';
 
 import { CartState } from './cart.reducer';
 import { getItemCost, getTotalCost } from './cart.selectors';

@@ -1,17 +1,32 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
-    "types": [],
+    "outDir": "out-tsc/app",
+    "rootDir": "src",
     "target": "ES2022",
     "useDefineForClassFields": false,
-    "moduleResolution": "bundler"
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "lib": ["dom", "es2022"],
+    "types": []
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
-  "include": [
-    "**/*.d.ts",
-    "../../libs/products/home-page/src/index.ts",
-    "../../libs/products/product-detail-page/src/index.ts"
+  "include": ["src/**/*.ts", "src/**/*.d.ts"],
+  "exclude": [
+    "jest.config.ts",
+    "src/test-setup.ts",
+    "**/*.spec.ts",
+    "**/*.test.ts"
   ],
-  "exclude": ["jest.config.ts"]
+  "references": [
+    {
+      "path": "../../libs/shared/header/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/products/product-detail-page/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/products/home-page/tsconfig.lib.json"
+    }
+  ]
 }
