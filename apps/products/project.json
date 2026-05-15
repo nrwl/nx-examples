@@ -71,7 +71,7 @@
           ]
         }
       },
-      "outputs": ["{options.outputPath}"]
+      "outputs": ["{options.outputPath.base}"]
     },
     "serve": {
       "executor": "@angular/build:dev-server",
