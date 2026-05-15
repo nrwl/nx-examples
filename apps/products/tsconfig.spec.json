@@ -9,7 +9,6 @@
     "types": ["jest", "node"],
     "tsBuildInfoFile": "out-tsc/spec/tsconfig.spec.tsbuildinfo"
   },
-  "files": ["src/test-setup.ts"],
   "include": ["**/*.spec.ts", "**/*.test.ts", "**/*.d.ts", "jest.config.ts"],
   "exclude": ["out-tsc"],
   "references": [
