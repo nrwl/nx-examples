@@ -14,6 +14,9 @@
   "targets": {
     "build": {
       "executor": "@nx/angular:application",
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"],
       "options": {
         "outputPath": {
           "base": "dist/apps/products",

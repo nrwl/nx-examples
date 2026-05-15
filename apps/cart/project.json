@@ -5,6 +5,9 @@
   "projectType": "application",
   "generators": {},
   "targets": {
+    "build": {
+      "outputs": ["{workspaceRoot}/dist/apps/cart"]
+    },
     "deploy": {
       "dependsOn": ["build"],
       "executor": "nx:run-commands",
