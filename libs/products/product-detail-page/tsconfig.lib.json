@@ -27,13 +27,10 @@
   "include": ["src/**/*.ts"],
   "references": [
     {
-      "path": "../../shared/product/state/tsconfig.lib.json"
-    },
-    {
-      "path": "../../shared/product/types/tsconfig.lib.json"
-    },
-    {
       "path": "../../shared/product/ui/tsconfig.lib.json"
+    },
+    {
+      "path": "../../shared/product/state/tsconfig.lib.json"
     }
   ]
 }
