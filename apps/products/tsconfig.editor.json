@@ -2,9 +2,14 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "out-tsc/editor",
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "tsBuildInfoFile": "out-tsc/editor/tsconfig.editor.tsbuildinfo"
   },
   "include": ["src/**/*.ts"],
   "exclude": ["jest.config.ts", "out-tsc"],
-  "references": [{ "path": "./tsconfig.app.json" }]
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
 }

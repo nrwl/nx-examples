@@ -3,7 +3,8 @@
   "compilerOptions": {
     "outDir": "out-tsc/lib",
     "rootDir": "src",
-    "types": []
+    "types": [],
+    "tsBuildInfoFile": "out-tsc/lib/tsconfig.lib.tsbuildinfo"
   },
   "exclude": ["**/*.spec.ts"],
   "include": ["src/**/*.ts"]

@@ -5,7 +5,8 @@
     "outDir": "out-tsc/e2e",
     "allowJs": true,
     "typeRoots": ["../../node_modules/@types", "../../node_modules"],
-    "types": ["cypress", "node"]
+    "types": ["cypress", "node"],
+    "tsBuildInfoFile": "out-tsc/e2e/tsconfig.tsbuildinfo"
   },
   "include": ["src/**/*.ts", "src/**/*.js", "cypress.config.ts"],
   "exclude": ["out-tsc"],

@@ -8,7 +8,8 @@
     "module": "preserve",
     "moduleResolution": "bundler",
     "lib": ["dom", "es2022"],
-    "types": []
+    "types": [],
+    "tsBuildInfoFile": "out-tsc/app/tsconfig.app.tsbuildinfo"
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
   "include": ["src/**/*.ts", "src/**/*.d.ts"],

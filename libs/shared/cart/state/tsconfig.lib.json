@@ -8,7 +8,8 @@
     "moduleResolution": "bundler",
     "lib": ["dom", "es2022"],
     "inlineSources": true,
-    "types": []
+    "types": [],
+    "tsBuildInfoFile": "out-tsc/lib/tsconfig.lib.tsbuildinfo"
   },
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
