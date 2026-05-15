@@ -15,14 +15,14 @@ import { AppComponent } from './app.component';
           path: '',
           pathMatch: 'full',
           loadChildren: () =>
-            import('@nx-example/products/home-page').then(
+            import('@nx-example/products-home-page').then(
               (module) => module.ProductsHomePageModule
             ),
         },
         {
           path: 'product',
           loadChildren: () =>
-            import('@nx-example/products/product-detail-page').then(
+            import('@nx-example/products-product-detail-page').then(
               (module) => module.ProductsProductDetailPageModule
             ),
         },

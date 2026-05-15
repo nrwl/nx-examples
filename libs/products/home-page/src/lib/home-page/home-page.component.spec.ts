@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { StoreModule } from '@ngrx/store';
 
-import { SharedProductStateModule } from '@nx-example/shared/product/state';
+import { SharedProductStateModule } from '@nx-example/shared-product-state';
 
 import { HomePageComponent } from './home-page.component';
 

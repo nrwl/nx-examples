@@ -1,4 +1,4 @@
-import { JSXify } from '@nx-example/shared/jsxify';
+import { JSXify } from '@nx-example/shared-jsxify';
 
 enum ProductPriceElementAttribute {
   Value = 'value',

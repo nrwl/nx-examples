@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { of } from 'rxjs';
 
-import { SharedProductStateModule } from '@nx-example/shared/product/state';
+import { SharedProductStateModule } from '@nx-example/shared-product-state';
 
 import { ProductDetailPageComponent } from './product-detail-page.component';
 

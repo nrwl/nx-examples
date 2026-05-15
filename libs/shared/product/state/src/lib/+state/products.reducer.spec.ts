@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { mockProducts } from '@nx-example/shared/product/data/testing';
+import { mockProducts } from '@nx-example/shared-product-data/testing';
 
 import { productsReducer, ProductsState } from './products.reducer';
 

@@ -1,0 +1,11 @@
+{
+  "name": "@nx-example/cart",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "@nx-example/cart-cart-page": "workspace:*",
+    "@nx-example/shared-assets": "workspace:*",
+    "@nx-example/shared-header": "workspace:*",
+    "@nx-example/shared-styles": "workspace:*"
+  }
+}

@@ -4299,6 +4299,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jest/create-cache-key-function@npm:^30.0.0":
+  version: 30.4.1
+  resolution: "@jest/create-cache-key-function@npm:30.4.1"
+  dependencies:
+    "@jest/types": "npm:30.4.1"
+  checksum: 10c0/2cdf2479e020e022626da6543a95d2fbf7edccac7550c0e88dad13737b7fb5c97e172a0d62a9817c1ceca0fb5c24e220c28c6054a384d0101397ad3aa99174b2
+  languageName: node
+  linkType: hard
+
 "@jest/diff-sequences@npm:30.0.1":
   version: 30.0.1
   resolution: "@jest/diff-sequences@npm:30.0.1"
@@ -4507,6 +4516,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jest/pattern@npm:30.4.0":
+  version: 30.4.0
+  resolution: "@jest/pattern@npm:30.4.0"
+  dependencies:
+    "@types/node": "npm:*"
+    jest-regex-util: "npm:30.4.0"
+  checksum: 10c0/05bc0799f84f3750bbbff0f9a546979efd0dbcee86c1be98b9e2811a68885809ec7b5cca39b8dda1497cb7cf17b7be936019fba8dfbcd9c53b181e03e67f4f82
+  languageName: node
+  linkType: hard
+
 "@jest/reporters@npm:30.3.0":
   version: 30.3.0
   resolution: "@jest/reporters@npm:30.3.0"
@@ -4594,6 +4613,15 @@ __metadata:
   dependencies:
     "@sinclair/typebox": "npm:^0.34.0"
   checksum: 10c0/449dcd7ec5c6505e9ac3169d1143937e67044ae3e66a729ce4baf31812dfd30535f2b3b2934393c97cfdf5984ff581120e6b38f62b8560c8b5b7cc07f4175f65
+  languageName: node
+  linkType: hard
+
+"@jest/schemas@npm:30.4.1":
+  version: 30.4.1
+  resolution: "@jest/schemas@npm:30.4.1"
+  dependencies:
+    "@sinclair/typebox": "npm:^0.34.0"
+  checksum: 10c0/96f388ebfc1974457fcbde2ad36c40a0b549cba3f624fe8d9d6e5903a152dc75e4043f4ac9ac7668622f2ecb0f9a4dcb9a38edf3bc0d52b82045b2bb2b69b72a
   languageName: node
   linkType: hard
 
@@ -4776,6 +4804,21 @@ __metadata:
     "@types/yargs": "npm:^17.0.33"
     chalk: "npm:^4.1.2"
   checksum: 10c0/c3e3f4de0b77a7ced345f47d3687b1094c1b6c1521529a7ca66a76f9a80194f79179a1dbc32d6761a5b67914a8f78be1e65d1408107efcb1f252c4a63b5ddd92
+  languageName: node
+  linkType: hard
+
+"@jest/types@npm:30.4.1":
+  version: 30.4.1
+  resolution: "@jest/types@npm:30.4.1"
+  dependencies:
+    "@jest/pattern": "npm:30.4.0"
+    "@jest/schemas": "npm:30.4.1"
+    "@types/istanbul-lib-coverage": "npm:^2.0.6"
+    "@types/istanbul-reports": "npm:^3.0.4"
+    "@types/node": "npm:*"
+    "@types/yargs": "npm:^17.0.33"
+    chalk: "npm:^4.1.2"
+  checksum: 10c0/4c79f6dbdb1c7eaab5da255fc696c7cae744759d4020e42da8aa63b37fe55ce594be73075fe1ee5407dd59d7e47975be9f674bfc81e91bae2c89c62d27ba55a1
   languageName: node
   linkType: hard
 
@@ -6352,6 +6395,146 @@ __metadata:
   checksum: 10c0/227483417d1f36011d35d1b868cd7a9c615553f195a86a282ca3c273e89f38f172fc1fcbb8f1635d419c861679570887874a37f9f21350e0b6fc813930224358
   languageName: node
   linkType: hard
+
+"@nx-example/cart-cart-page@workspace:*, @nx-example/cart-cart-page@workspace:libs/cart/cart-page":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/cart-cart-page@workspace:libs/cart/cart-page"
+  dependencies:
+    "@nx-example/shared-cart-state": "workspace:*"
+    "@nx-example/shared-product-state": "workspace:*"
+    "@nx-example/shared-product-ui": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
+"@nx-example/cart-e2e@workspace:apps/cart-e2e":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/cart-e2e@workspace:apps/cart-e2e"
+  dependencies:
+    "@nx-example/shared-e2e-utils": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
+"@nx-example/cart@workspace:apps/cart":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/cart@workspace:apps/cart"
+  dependencies:
+    "@nx-example/cart-cart-page": "workspace:*"
+    "@nx-example/shared-assets": "workspace:*"
+    "@nx-example/shared-header": "workspace:*"
+    "@nx-example/shared-styles": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
+"@nx-example/products-e2e@workspace:apps/products-e2e":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/products-e2e@workspace:apps/products-e2e"
+  dependencies:
+    "@nx-example/shared-e2e-utils": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
+"@nx-example/products-home-page@workspace:*, @nx-example/products-home-page@workspace:libs/products/home-page":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/products-home-page@workspace:libs/products/home-page"
+  dependencies:
+    "@nx-example/shared-product-state": "workspace:*"
+    "@nx-example/shared-product-types": "workspace:*"
+    "@nx-example/shared-product-ui": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
+"@nx-example/products-product-detail-page@workspace:*, @nx-example/products-product-detail-page@workspace:libs/products/product-detail-page":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/products-product-detail-page@workspace:libs/products/product-detail-page"
+  dependencies:
+    "@nx-example/shared-product-state": "workspace:*"
+    "@nx-example/shared-product-ui": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
+"@nx-example/products@workspace:apps/products":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/products@workspace:apps/products"
+  dependencies:
+    "@nx-example/products-home-page": "workspace:*"
+    "@nx-example/products-product-detail-page": "workspace:*"
+    "@nx-example/shared-assets": "workspace:*"
+    "@nx-example/shared-header": "workspace:*"
+    "@nx-example/shared-styles": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
+"@nx-example/shared-assets@workspace:*, @nx-example/shared-assets@workspace:libs/shared/assets":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/shared-assets@workspace:libs/shared/assets"
+  languageName: unknown
+  linkType: soft
+
+"@nx-example/shared-cart-state@workspace:*, @nx-example/shared-cart-state@workspace:libs/shared/cart/state":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/shared-cart-state@workspace:libs/shared/cart/state"
+  dependencies:
+    "@nx-example/shared-product-data": "workspace:*"
+    "@nx-example/shared-product-state": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
+"@nx-example/shared-e2e-utils@workspace:*, @nx-example/shared-e2e-utils@workspace:libs/shared/e2e-utils":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/shared-e2e-utils@workspace:libs/shared/e2e-utils"
+  languageName: unknown
+  linkType: soft
+
+"@nx-example/shared-header@workspace:*, @nx-example/shared-header@workspace:libs/shared/header":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/shared-header@workspace:libs/shared/header"
+  dependencies:
+    "@nx-example/shared-jsxify": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
+"@nx-example/shared-jsxify@workspace:*, @nx-example/shared-jsxify@workspace:libs/shared/jsxify":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/shared-jsxify@workspace:libs/shared/jsxify"
+  languageName: unknown
+  linkType: soft
+
+"@nx-example/shared-product-data@workspace:*, @nx-example/shared-product-data@workspace:libs/shared/product/data":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/shared-product-data@workspace:libs/shared/product/data"
+  dependencies:
+    "@nx-example/shared-product-types": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
+"@nx-example/shared-product-state@workspace:*, @nx-example/shared-product-state@workspace:libs/shared/product/state":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/shared-product-state@workspace:libs/shared/product/state"
+  dependencies:
+    "@nx-example/shared-product-data": "workspace:*"
+    "@nx-example/shared-product-types": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
+"@nx-example/shared-product-types@workspace:*, @nx-example/shared-product-types@workspace:libs/shared/product/types":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/shared-product-types@workspace:libs/shared/product/types"
+  languageName: unknown
+  linkType: soft
+
+"@nx-example/shared-product-ui@workspace:*, @nx-example/shared-product-ui@workspace:libs/shared/product/ui":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/shared-product-ui@workspace:libs/shared/product/ui"
+  dependencies:
+    "@nx-example/shared-jsxify": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
+"@nx-example/shared-styles@workspace:*, @nx-example/shared-styles@workspace:libs/shared/styles":
+  version: 0.0.0-use.local
+  resolution: "@nx-example/shared-styles@workspace:libs/shared/styles"
+  languageName: unknown
+  linkType: soft
 
 "@nx/angular@npm:23.0.0-beta.18":
   version: 23.0.0-beta.18
@@ -8532,6 +8715,19 @@ __metadata:
   dependencies:
     tslib: "npm:^2.8.0"
   checksum: 10c0/fe1f33ebb968558c5a0c595e54f2e479e4609bff844f9ca9a2d1ffd8dd8504c26f862a11b031f48f75c95b0381c2966c3dd156e25942f90089badd24341e7dbb
+  languageName: node
+  linkType: hard
+
+"@swc/jest@npm:^0.2.39":
+  version: 0.2.39
+  resolution: "@swc/jest@npm:0.2.39"
+  dependencies:
+    "@jest/create-cache-key-function": "npm:^30.0.0"
+    "@swc/counter": "npm:^0.1.3"
+    jsonc-parser: "npm:^3.2.0"
+  peerDependencies:
+    "@swc/core": "*"
+  checksum: 10c0/2df5f215bb7a3f31e1db606e3ac01c4e67900e8db004b38dbfaa09f87bcc2b054070211086e095eddcd174ee561b696fcf679ea38263fa6daf69fee37dacbdc9
   languageName: node
   linkType: hard
 
@@ -17565,6 +17761,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jest-regex-util@npm:30.4.0":
+  version: 30.4.0
+  resolution: "jest-regex-util@npm:30.4.0"
+  checksum: 10c0/fe7426f67b54d38bed8e9d6e6a099d63d72f41f5bf65b922d9d03fedcb55c614b45657207632f6ee22d0a59d8d11327891f258d23f68a58912fcdb0f7db48435
+  languageName: node
+  linkType: hard
+
 "jest-resolve-dependencies@npm:30.3.0":
   version: 30.3.0
   resolution: "jest-resolve-dependencies@npm:30.3.0"
@@ -20041,6 +20244,7 @@ __metadata:
     "@swc/cli": "npm:0.8.1"
     "@swc/core": "npm:1.15.8"
     "@swc/helpers": "npm:0.5.18"
+    "@swc/jest": "npm:^0.2.39"
     "@testing-library/react": "npm:15.0.6"
     "@types/jest": "npm:30.0.0"
     "@types/node": "npm:^18.16.9"

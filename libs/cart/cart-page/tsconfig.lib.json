@@ -1,15 +1,32 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "../../../dist/out-tsc",
-    "types": []
+    "outDir": "out-tsc/lib",
+    "rootDir": "src",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["node"]
   },
   "exclude": [
     "**/*.spec.ts",
     "**/*.test.ts",
     "**/*.spec.tsx",
     "**/*.test.tsx",
-    "jest.config.ts"
+    "jest.config.ts",
+    "src/test-setup.ts"
   ],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "references": [
+    {
+      "path": "../../shared/product/ui/tsconfig.lib.json"
+    },
+    {
+      "path": "../../shared/product/state/tsconfig.lib.json"
+    },
+    {
+      "path": "../../shared/cart/state/tsconfig.lib.json"
+    }
+  ]
 }

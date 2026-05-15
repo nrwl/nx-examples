@@ -2,6 +2,12 @@
   "name": "nx-example",
   "version": "0.0.0",
   "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "libs/*",
+    "libs/*/*",
+    "libs/*/*/*"
+  ],
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
@@ -86,6 +92,7 @@
     "@swc/cli": "0.8.1",
     "@swc/core": "1.15.8",
     "@swc/helpers": "0.5.18",
+    "@swc/jest": "^0.2.39",
     "@testing-library/react": "15.0.6",
     "@types/jest": "30.0.0",
     "@types/node": "^18.16.9",

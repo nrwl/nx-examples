@@ -1,0 +1,51 @@
+{
+  "extends": "./tsconfig.base.json",
+  "files": [],
+  "references": [
+    {
+      "path": "./apps/cart"
+    },
+    {
+      "path": "./apps/cart-e2e"
+    },
+    {
+      "path": "./apps/products"
+    },
+    {
+      "path": "./apps/products-e2e"
+    },
+    {
+      "path": "./libs/cart/cart-page"
+    },
+    {
+      "path": "./libs/products/home-page"
+    },
+    {
+      "path": "./libs/products/product-detail-page"
+    },
+    {
+      "path": "./libs/shared/cart/state"
+    },
+    {
+      "path": "./libs/shared/e2e-utils"
+    },
+    {
+      "path": "./libs/shared/header"
+    },
+    {
+      "path": "./libs/shared/jsxify"
+    },
+    {
+      "path": "./libs/shared/product/data"
+    },
+    {
+      "path": "./libs/shared/product/state"
+    },
+    {
+      "path": "./libs/shared/product/types"
+    },
+    {
+      "path": "./libs/shared/product/ui"
+    }
+  ]
+}

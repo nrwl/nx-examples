@@ -1,12 +1,14 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../../../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "../../../../dist/out-tsc",
-    "target": "es2015",
-    "declaration": true,
+    "outDir": "out-tsc/lib",
+    "rootDir": "src",
+    "target": "es2020",
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "lib": ["dom", "es2022"],
     "inlineSources": true,
-    "types": [],
-    "lib": ["dom", "es2022"]
+    "types": []
   },
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
@@ -22,5 +24,13 @@
     "**/*.test.ts",
     "jest.config.ts"
   ],
-  "include": ["**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "references": [
+    {
+      "path": "../../product/state/tsconfig.lib.json"
+    },
+    {
+      "path": "../../product/data/tsconfig.lib.json"
+    }
+  ]
 }
