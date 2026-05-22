@@ -1,0 +1,9 @@
+{
+  "executors": {
+    "echo": {
+      "implementation": "./impl",
+      "schema": "./schema.json",
+      "description": "Runs `echo` (to test executors out)."
+    }
+  }
+}
