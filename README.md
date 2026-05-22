@@ -83,7 +83,7 @@ Run `nx dep-graph` to see a diagram of the dependencies of your projects.
 
 ## Further help
 
-Visit the [Nx Documentation](https://nx.dev) to learn more.
+Visit the [Nx Documentation](https://nx.dev/getting-started/intro) to learn more.
 
 ## ☁ Nx Cloud
 
@@ -99,4 +99,4 @@ Teams using Nx gain the advantage of building full-stack applications with their
 
 [Computation Caching Fundamentals](https://blog.nrwl.io/computation-caching-the-fundamentals-behind-nxs-lightning-fast-execution-dc761fe41eb8)
 
-[Computation Caching with NX](https://nx.dev/latest/core-concepts/computation-caching)
+[Computation Caching with NX](https://nx.dev/concepts/mental-model#computation-hashing-and-caching)
