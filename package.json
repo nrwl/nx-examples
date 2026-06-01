@@ -129,5 +129,31 @@
     "webpack-cli": "^5.1.4",
     "webpack-merge": "^5.8.0"
   },
-  "packageManager": "yarn@4.2.2"
+  "dependenciesMeta": {
+    "@parcel/watcher": {
+      "built": true
+    },
+    "@swc/core": {
+      "built": true
+    },
+    "cypress": {
+      "built": true
+    },
+    "esbuild": {
+      "built": true
+    },
+    "lmdb": {
+      "built": true
+    },
+    "msgpackr-extract": {
+      "built": true
+    },
+    "nx": {
+      "built": true
+    },
+    "unrs-resolver": {
+      "built": true
+    }
+  },
+  "packageManager": "yarn@4.15.0"
 }
