@@ -13,13 +13,18 @@
   },
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nx/angular:application",
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"],
       "options": {
-        "aot": true,
-        "outputPath": "dist/apps/products",
+        "outputPath": {
+          "base": "dist/apps/products",
+          "browser": ""
+        },
         "index": "apps/products/src/index.html",
-        "main": "apps/products/src/main.ts",
-        "polyfills": "apps/products/src/polyfills.ts",
+        "browser": "apps/products/src/main.ts",
+        "polyfills": ["apps/products/src/polyfills.ts"],
         "tsConfig": "apps/products/tsconfig.app.json",
         "assets": [
           "apps/products/src/_redirects",
@@ -52,11 +57,7 @@
           "optimization": true,
           "outputHashing": "all",
           "sourceMap": false,
-          "namedChunks": false,
-          "aot": true,
           "extractLicenses": true,
-          "vendorChunk": false,
-          "buildOptimizer": true,
           "budgets": [
             {
               "type": "initial",
@@ -70,10 +71,10 @@
           ]
         }
       },
-      "outputs": ["{options.outputPath}"]
+      "outputs": ["{options.outputPath.base}"]
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@angular/build:dev-server",
       "options": {
         "buildTarget": "products:build"
       },
@@ -85,7 +86,7 @@
       "continuous": true
     },
     "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "executor": "@angular/build:extract-i18n",
       "options": {
         "buildTarget": "products:build"
       }

@@ -1,8 +1,15 @@
 {
-  "extends": "./tsconfig.json",
-  "include": ["**/*.ts"],
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "types": ["jest", "node"]
+    "outDir": "out-tsc/editor",
+    "types": ["jest", "node"],
+    "tsBuildInfoFile": "out-tsc/editor/tsconfig.editor.tsbuildinfo"
   },
-  "exclude": ["jest.config.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["jest.config.ts", "out-tsc"],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
 }

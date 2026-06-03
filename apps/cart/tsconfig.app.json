@@ -1,11 +1,14 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
-    "types": [
-      "@nx/react/typings/cssmodule.d.ts",
-      "@nx/react/typings/image.d.ts"
-    ]
+    "outDir": "out-tsc/app",
+    "rootDir": "src",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["node"],
+    "tsBuildInfoFile": "out-tsc/app/tsconfig.app.tsbuildinfo"
   },
   "exclude": [
     "**/*.spec.ts",
@@ -15,9 +18,17 @@
     "jest.config.ts",
     "src/test-setup.ts"
   ],
-  "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "files": [
     "../../node_modules/@nx/react/typings/cssmodule.d.ts",
     "../../node_modules/@nx/react/typings/image.d.ts"
+  ],
+  "references": [
+    {
+      "path": "../../libs/shared/header/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/cart/cart-page/tsconfig.lib.json"
+    }
   ]
 }

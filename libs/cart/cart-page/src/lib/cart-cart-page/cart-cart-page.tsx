@@ -2,7 +2,7 @@ import { useReducer } from 'react';
 
 import styled from '@emotion/styled';
 
-import '@nx-example/shared/product/ui';
+import '@nx-example/shared-product-ui';
 
 import {
   CartItem,
@@ -10,12 +10,12 @@ import {
   getItemCost,
   getTotalCost,
   SetQuantity,
-} from '@nx-example/shared/cart/state/react';
+} from '@nx-example/shared-cart-state/react';
 import {
   getProduct,
   initialState,
   productsReducer,
-} from '@nx-example/shared/product/state/react';
+} from '@nx-example/shared-product-state/react';
 
 const StyledUl = styled.ul`
   display: flex;

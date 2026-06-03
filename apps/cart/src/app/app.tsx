@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 
-import '@nx-example/shared/header';
+import '@nx-example/shared-header';
 
-import { CartCartPage } from '@nx-example/cart/cart-page';
+import { CartCartPage } from '@nx-example/cart-cart-page';
 
 export const App = () => {
   return (

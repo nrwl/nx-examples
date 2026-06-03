@@ -1,7 +1,7 @@
 import {
   getProduct,
   ProductsState,
-} from '@nx-example/shared/product/state/react';
+} from '@nx-example/shared-product-state/react';
 import { CartItem, CartState } from './cart.reducer';
 
 // Lookup the 'Cart' feature state managed by NgRx

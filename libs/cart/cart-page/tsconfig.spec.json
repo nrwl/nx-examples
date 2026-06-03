@@ -1,9 +1,13 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "../../../dist/out-tsc",
-    "module": "commonjs",
-    "types": ["jest", "node"]
+    "outDir": "out-tsc/spec",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["jest", "node"],
+    "tsBuildInfoFile": "out-tsc/spec/tsconfig.spec.tsbuildinfo"
   },
   "include": [
     "**/*.spec.ts",
@@ -16,5 +20,11 @@
     "**/*.test.jsx",
     "**/*.d.ts",
     "jest.config.ts"
-  ]
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ],
+  "exclude": ["out-tsc"]
 }

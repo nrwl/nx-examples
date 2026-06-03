@@ -6,87 +6,10 @@
   "generators": {},
   "targets": {
     "build": {
-      "executor": "@nx/webpack:webpack",
-      "options": {
-        "outputPath": "dist/apps/cart",
-        "webpackConfig": "apps/cart/webpack.config.js",
-        "index": "apps/cart/src/index.html",
-        "main": "apps/cart/src/main.tsx",
-        "polyfills": "apps/cart/src/polyfills.ts",
-        "tsConfig": "apps/cart/tsconfig.app.json",
-        "assets": [
-          "apps/cart/src/_redirects",
-          {
-            "input": "libs/shared/assets/src/assets",
-            "glob": "**/*",
-            "output": "assets"
-          },
-          {
-            "input": "libs/shared/assets/src",
-            "glob": "favicon.ico",
-            "output": ""
-          }
-        ],
-        "maxWorkers": 8,
-        "styles": [
-          "libs/shared/styles/src/index.scss",
-          "libs/shared/header/index.scss",
-          "node_modules/normalize.css/normalize.css"
-        ],
-        "scripts": [],
-        "buildLibsFromSource": true,
-        "isolatedConfig": true
-      },
-      "configurations": {
-        "production": {
-          "fileReplacements": [
-            {
-              "replace": "apps/cart/src/environments/environment.ts",
-              "with": "apps/cart/src/environments/environment.prod.ts"
-            }
-          ],
-          "optimization": true,
-          "outputHashing": "all",
-          "sourceMap": false,
-          "extractCss": true,
-          "namedChunks": false,
-          "extractLicenses": true,
-          "vendorChunk": false,
-          "budgets": [
-            {
-              "type": "initial",
-              "maximumWarning": "2mb",
-              "maximumError": "5mb"
-            }
-          ]
-        },
-        "development": {
-          "extractLicenses": false,
-          "optimization": false,
-          "sourceMap": true,
-          "vendorChunk": true
-        }
-      },
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production"
-    },
-    "serve": {
-      "executor": "@nx/webpack:dev-server",
-      "options": {
-        "buildTarget": "cart:build",
-        "port": 4201
-      },
-      "configurations": {
-        "production": {
-          "buildTarget": "cart:build:production"
-        },
-        "development": {
-          "buildTarget": "cart:build:development"
-        }
-      },
-      "defaultConfiguration": "development"
+      "outputs": ["{workspaceRoot}/dist/apps/cart"]
     },
     "deploy": {
+      "dependsOn": ["build"],
       "executor": "nx:run-commands",
       "options": {
         "commands": [

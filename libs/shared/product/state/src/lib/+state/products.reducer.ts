@@ -1,5 +1,5 @@
-import { products } from '@nx-example/shared/product/data';
-import { Product } from '@nx-example/shared/product/types';
+import { products } from '@nx-example/shared-product-data';
+import { Product } from '@nx-example/shared-product-types';
 
 import { ProductsAction } from './products.actions';
 

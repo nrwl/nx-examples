@@ -1,7 +1,15 @@
 /* eslint-disable */
 module.exports = {
   transform: {
-    '^.+\\.[tj]sx?$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
+    '^.+\\.[tj]sx?$': [
+      '@swc/jest',
+      {
+        jsc: {
+          parser: { syntax: 'typescript', tsx: true },
+          transform: { react: { runtime: 'automatic' } },
+        },
+      },
+    ],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
   coverageDirectory: '../../../../coverage/libs/shared/product/ui',

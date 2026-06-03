@@ -8,8 +8,8 @@ import {
   getProduct,
   getProductsState,
   ProductsPartialState,
-} from '@nx-example/shared/product/state';
-import '@nx-example/shared/product/ui';
+} from '@nx-example/shared-product-state';
+import '@nx-example/shared-product-ui';
 
 @Component({
   selector: 'nx-example-product-detail-page',
