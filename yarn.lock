@@ -6911,6 +6911,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nx/rsbuild@npm:23.0.0-beta.22":
+  version: 23.0.0-beta.22
+  resolution: "@nx/rsbuild@npm:23.0.0-beta.22"
+  dependencies:
+    "@nx/devkit": "npm:23.0.0-beta.22"
+    "@nx/js": "npm:23.0.0-beta.22"
+    "@phenomnomnominal/tsquery": "npm:~6.2.0"
+    minimatch: "npm:10.2.5"
+    semver: "npm:^7.6.3"
+    tslib: "npm:^2.3.0"
+  peerDependencies:
+    "@rsbuild/core": ^1.0.0
+  peerDependenciesMeta:
+    "@rsbuild/core":
+      optional: true
+  checksum: 10c0/2ec361a29f05e7e38b865c76603a8e31a1b6a87ecf79cbfb4f79b2398e2e022b5e80c772733226e2fabf7e448eb26ce40af302d04f8d2f28d0ec3e2182e6e002
+  languageName: node
+  linkType: hard
+
 "@nx/rspack@npm:23.0.0-beta.22":
   version: 23.0.0-beta.22
   resolution: "@nx/rspack@npm:23.0.0-beta.22"
@@ -20482,6 +20501,7 @@ __metadata:
     "@nx/jest": "npm:23.0.0-beta.22"
     "@nx/js": "npm:23.0.0-beta.22"
     "@nx/react": "npm:23.0.0-beta.22"
+    "@nx/rsbuild": "npm:23.0.0-beta.22"
     "@nx/web": "npm:23.0.0-beta.22"
     "@nx/webpack": "npm:23.0.0-beta.22"
     "@nx/workspace": "npm:23.0.0-beta.22"
