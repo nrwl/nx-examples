@@ -15,11 +15,7 @@ export default [
     ...baseConfig,
     ...nx.configs["flat/angular"],
     ...compat.config({
-        extends: [
-            "plugin:@angular-eslint/template/process-inline-templates"
-        ],
         plugins: [
-            "@angular-eslint/eslint-plugin",
             "@typescript-eslint"
         ]
     }).map(config => ({
@@ -56,6 +52,22 @@ export default [
         }
     })),
     ...nx.configs["flat/angular-template"],
+    {
+        files: [
+            "**/*.ts"
+        ],
+        rules: {
+            "@angular-eslint/prefer-on-push-component-change-detection": "off"
+        }
+    },
+    {
+        files: [
+            "**/*.html"
+        ],
+        rules: {
+            "@angular-eslint/template/alt-text": "off"
+        }
+    },
     {
         ignores: [
             "out-tsc",

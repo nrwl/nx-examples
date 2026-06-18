@@ -15,12 +15,8 @@ export default [
     ...baseConfig,
     ...nx.configs["flat/angular"],
     ...compat.config({
-        extends: [
-            "plugin:@angular-eslint/template/process-inline-templates"
-        ],
         plugins: [
             "eslint-plugin-import",
-            "@angular-eslint/eslint-plugin",
             "@typescript-eslint"
         ]
     }).map(config => ({
@@ -46,7 +42,6 @@ export default [
                     style: "kebab-case"
                 }
             ],
-            "@angular-eslint/no-conflicting-lifecycle": "error",
             "@angular-eslint/no-input-rename": "error",
             "@angular-eslint/no-inputs-metadata-property": "error",
             "@angular-eslint/no-output-native": "error",
@@ -148,22 +143,16 @@ export default [
         }
     })),
     ...nx.configs["flat/angular-template"],
-    ...compat.config({
-        plugins: [
-            "@angular-eslint/eslint-plugin-template"
-        ]
-    }).map(config => ({
-        ...config,
+    {
         files: [
             "**/*.html"
         ],
         rules: {
-            ...config.rules,
             "@angular-eslint/template/banana-in-box": "error",
             "@angular-eslint/template/no-negated-async": "error",
             "@angular-eslint/template/eqeqeq": "error"
         }
-    })),
+    },
     {
         ignores: [
             "out-tsc",

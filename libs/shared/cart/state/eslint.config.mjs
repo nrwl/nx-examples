@@ -15,11 +15,7 @@ export default [
     ...baseConfig,
     ...nx.configs["flat/angular"],
     ...compat.config({
-        extends: [
-            "plugin:@angular-eslint/template/process-inline-templates"
-        ],
         plugins: [
-            "@angular-eslint/eslint-plugin",
             "@typescript-eslint"
         ]
     }).map(config => ({
