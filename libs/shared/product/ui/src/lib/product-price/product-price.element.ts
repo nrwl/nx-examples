@@ -6,9 +6,12 @@ enum ProductPriceElementAttribute {
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace JSX {
-    interface IntrinsicElements {
-      'nx-example-product-price': JSXify<ProductPriceElement>;
+  namespace React {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace JSX {
+      interface IntrinsicElements {
+        'nx-example-product-price': JSXify<ProductPriceElement>;
+      }
     }
   }
 }
