@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -16,6 +16,7 @@ import '@nx-example/shared-product-ui';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class HomePageComponent {
   private store = inject<Store<ProductsPartialState>>(Store);

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import '@nx-example/shared-header';
 
@@ -7,5 +7,6 @@ import '@nx-example/shared-header';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AppComponent {}

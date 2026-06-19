@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { select, Store } from '@ngrx/store';
@@ -16,6 +16,7 @@ import '@nx-example/shared-product-ui';
   templateUrl: './product-detail-page.component.html',
   styleUrls: ['./product-detail-page.component.scss'],
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ProductDetailPageComponent {
   private store = inject<Store<ProductsPartialState>>(Store);
