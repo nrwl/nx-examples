@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { select, Store } from '@ngrx/store';
@@ -15,6 +15,7 @@ import '@nx-example/shared-product-ui';
   selector: 'nx-example-product-detail-page',
   templateUrl: './product-detail-page.component.html',
   styleUrls: ['./product-detail-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class ProductDetailPageComponent {

@@ -47,5 +47,13 @@
     {
       "path": "./libs/shared/product/ui"
     }
-  ]
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs",
+      "moduleResolution": "node10",
+      "ignoreDeprecations": "6.0",
+      "types": ["node"]
+    }
+  }
 }
