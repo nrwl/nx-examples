@@ -13888,14 +13888,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-cypress@npm:2.14.0":
-  version: 2.14.0
-  resolution: "eslint-plugin-cypress@npm:2.14.0"
+"eslint-plugin-cypress@npm:6.4.2":
+  version: 6.4.2
+  resolution: "eslint-plugin-cypress@npm:6.4.2"
   dependencies:
-    globals: "npm:^13.20.0"
+    globals: "npm:^17.7.0"
   peerDependencies:
-    eslint: ">= 3.2.1"
-  checksum: 10c0/8a1f2b1ec0d3960b8431cd4a55493d19b8ed9cfd89075324429a5b04d90b7361cdbeff8ab4562ca80b416ebb2c1bc23e38a7a8530c2a3649b62365155d9e5a92
+    "@typescript-eslint/parser": ">=8"
+    eslint: ">=9"
+  peerDependenciesMeta:
+    "@typescript-eslint/parser":
+      optional: true
+  checksum: 10c0/0b886c66ba251949508abefedfee09e0d186d6be0960b5737d6c70abbf54d3ba7e0d07b907643524c2f223d09082bf6e516f1b40182a43546390acdd758875b7
   languageName: node
   linkType: hard
 
@@ -15445,15 +15449,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globals@npm:^13.20.0":
-  version: 13.24.0
-  resolution: "globals@npm:13.24.0"
-  dependencies:
-    type-fest: "npm:^0.20.2"
-  checksum: 10c0/d3c11aeea898eb83d5ec7a99508600fbe8f83d2cf00cbb77f873dbf2bcb39428eff1b538e4915c993d8a3b3473fa71eeebfe22c9bb3a3003d1e26b1f2c8a42cd
-  languageName: node
-  linkType: hard
-
 "globals@npm:^14.0.0":
   version: 14.0.0
   resolution: "globals@npm:14.0.0"
@@ -15465,6 +15460,13 @@ __metadata:
   version: 17.5.0
   resolution: "globals@npm:17.5.0"
   checksum: 10c0/92828102ed2f5637907725f0478038bed02fc83e9fc89300bb753639ba7c022b6c02576fc772117302b431b204591db1f2fa909d26f3f0a9852cc856a941df3f
+  languageName: node
+  linkType: hard
+
+"globals@npm:^17.7.0":
+  version: 17.7.0
+  resolution: "globals@npm:17.7.0"
+  checksum: 10c0/e83f791acf537b85fa1632ac48a45432a1999a61acd9f955b5c2145f66d6b5000a7945029874b6184fa2dfac8d33af03885a5a7ffa457866f1bcf0b40d0c1291
   languageName: node
   linkType: hard
 
@@ -19909,7 +19911,7 @@ __metadata:
     dotenv: "npm:10.0.0"
     eslint: "npm:9.9.1"
     eslint-config-prettier: "npm:10.1.8"
-    eslint-plugin-cypress: "npm:2.14.0"
+    eslint-plugin-cypress: "npm:6.4.2"
     eslint-plugin-import: "npm:2.31.0"
     eslint-plugin-jsx-a11y: "npm:6.10.1"
     eslint-plugin-react: "npm:7.37.5"
@@ -25315,13 +25317,6 @@ __metadata:
   version: 4.0.8
   resolution: "type-detect@npm:4.0.8"
   checksum: 10c0/8fb9a51d3f365a7de84ab7f73b653534b61b622aa6800aecdb0f1095a4a646d3f5eb295322127b6573db7982afcd40ab492d038cf825a42093a58b1e1353e0bd
-  languageName: node
-  linkType: hard
-
-"type-fest@npm:^0.20.2":
-  version: 0.20.2
-  resolution: "type-fest@npm:0.20.2"
-  checksum: 10c0/dea9df45ea1f0aaa4e2d3bed3f9a0bfe9e5b2592bddb92eb1bf06e50bcf98dbb78189668cd8bc31a0511d3fc25539b4cd5c704497e53e93e2d40ca764b10bfc3
   languageName: node
   linkType: hard
 

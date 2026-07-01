@@ -1,52 +1,40 @@
-import { FlatCompat } from '@eslint/eslintrc';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import js from '@eslint/js';
+import angular from 'angular-eslint';
 import baseConfig from '../../eslint.config.mjs';
 import nx from '@nx/eslint-plugin';
-
-const compat = new FlatCompat({
-  baseDirectory: dirname(fileURLToPath(import.meta.url)),
-  recommendedConfig: js.configs.recommended,
-});
 
 export default [
   ...baseConfig,
   ...nx.configs['flat/angular'],
-  ...compat
-    .config({
-      extends: ['plugin:@angular-eslint/template/process-inline-templates'],
-      plugins: ['@angular-eslint/eslint-plugin', '@typescript-eslint'],
-    })
-    .map((config) => ({
-      ...config,
-      files: ['**/*.ts'],
-      rules: {
-        ...config.rules,
-        '@angular-eslint/directive-selector': [
-          'error',
-          {
-            type: 'attribute',
-            prefix: 'nxExample',
-            style: 'camelCase',
-          },
-        ],
-        '@angular-eslint/component-selector': [
-          'error',
-          {
-            type: 'element',
-            prefix: 'nx-example',
-            style: 'kebab-case',
-          },
-        ],
-        '@angular-eslint/prefer-standalone': 'off',
-      },
-      languageOptions: {
-        parserOptions: {
-          project: ['apps/products/tsconfig.*?.json'],
+  {
+    files: ['**/*.ts'],
+    processor: angular.processInlineTemplates,
+    rules: {
+      '@angular-eslint/directive-selector': [
+        'error',
+        {
+          type: 'attribute',
+          prefix: 'nxExample',
+          style: 'camelCase',
         },
+      ],
+      '@angular-eslint/component-selector': [
+        'error',
+        {
+          type: 'element',
+          prefix: 'nx-example',
+          style: 'kebab-case',
+        },
+      ],
+      '@angular-eslint/prefer-standalone': 'off',
+      // Newly enabled by the angular-eslint v22 preset; components here were not on OnPush before the upgrade.
+      '@angular-eslint/prefer-on-push-component-change-detection': 'off',
+    },
+    languageOptions: {
+      parserOptions: {
+        project: ['apps/products/tsconfig.*?.json'],
       },
-    })),
+    },
+  },
   ...nx.configs['flat/angular-template'],
   {
     ignores: ['out-tsc', 'src/test-setup.ts'],
