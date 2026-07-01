@@ -1,10 +1,13 @@
+/// <reference types="react" />
 import { JSXify } from '@nx-example/shared-jsxify';
 
 enum ProductPriceElementAttribute {
   Value = 'value',
 }
 
-declare global {
+// React 19's @types/react moved the JSX namespace from the global scope to
+// React.JSX, so custom elements must augment `react` rather than global `JSX`.
+declare module 'react' {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
     interface IntrinsicElements {
