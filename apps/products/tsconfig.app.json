@@ -31,12 +31,9 @@
     }
   ],
   "angularCompilerOptions": {
-    "extendedDiagnostics": {
-      "checks": {
-        "nullishCoalescingNotNullable": "suppress",
-        "optionalChainNotNullable": "suppress"
-      }
-    },
+    // extendedDiagnostics only run when strictTemplates is enabled; Angular v22
+    // (NG4003) rejects configuring them alongside strictTemplates: false, so the
+    // redundant block was removed while preserving the existing strictTemplates: false.
     "strictTemplates": false
   }
 }
