@@ -1,10 +1,11 @@
 import { JSXify } from '@nx-example/shared-jsxify';
+import type {} from 'react';
 
 enum HeaderElementAttribute {
   Title = 'title',
 }
 
-declare global {
+declare module 'react' {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
     interface IntrinsicElements {
