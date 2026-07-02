@@ -3,6 +3,10 @@
   "compilerOptions": {
     "sourceMap": false,
     "outDir": "out-tsc/e2e",
+    // TS 6 requires an explicit rootDir when the compiled program includes
+    // files outside the inferred common source directory. The cypress specs
+    // import from libs/shared/e2e-utils, so span the workspace root.
+    "rootDir": "../..",
     "allowJs": true,
     "typeRoots": ["../../node_modules/@types", "../../node_modules"],
     "types": ["cypress", "node"],
