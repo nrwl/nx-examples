@@ -76,7 +76,8 @@
     "serve": {
       "executor": "@angular/build:dev-server",
       "options": {
-        "buildTarget": "products:build"
+        "buildTarget": "products:build",
+        "proxyConfig": "apps/products/proxy.conf.json"
       },
       "configurations": {
         "production": {
@@ -84,6 +85,9 @@
         }
       },
       "continuous": true
+    },
+    "serve-with-deps": {
+      "dependsOn": ["serve", "cart:serve"]
     },
     "extract-i18n": {
       "executor": "@angular/build:extract-i18n",

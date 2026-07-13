@@ -8,6 +8,9 @@
     "build": {
       "outputs": ["{workspaceRoot}/dist/apps/cart"]
     },
+    "serve-with-deps": {
+      "dependsOn": ["serve", "products:serve"]
+    },
     "deploy": {
       "dependsOn": ["build"],
       "executor": "nx:run-commands",
