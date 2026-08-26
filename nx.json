@@ -94,6 +94,12 @@
           "transitive": true
         }
       ]
+    },
+    "build": {
+      "dependsOn": ["...", "^codegen"]
+    },
+    "serve": {
+      "dependsOn": ["...", "^codegen"]
     }
   },
   "namedInputs": {

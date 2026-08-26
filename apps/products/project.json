@@ -15,7 +15,7 @@
     "build": {
       "executor": "@nx/angular:application",
       "cache": true,
-      "dependsOn": ["...", "^build", "shared-product-types:codegen"],
+      "dependsOn": ["...", "^build"],
       "inputs": [
         "...",
         "production",
@@ -91,7 +91,7 @@
         }
       },
       "continuous": true,
-      "dependsOn": ["...", "shared-product-types:codegen"]
+      "dependsOn": ["..."]
     },
     "extract-i18n": {
       "executor": "@angular/build:extract-i18n",

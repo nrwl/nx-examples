@@ -7,7 +7,7 @@
   "targets": {
     "build": {
       "outputs": ["{workspaceRoot}/dist/apps/cart"],
-      "dependsOn": ["...", "shared-product-types:codegen"],
+      "dependsOn": ["..."],
       "inputs": [
         "...",
         {
@@ -27,7 +27,7 @@
       }
     },
     "serve": {
-      "dependsOn": ["...", "shared-product-types:codegen"]
+      "dependsOn": ["..."]
     }
   },
   "tags": ["type:app", "scope:cart"],
