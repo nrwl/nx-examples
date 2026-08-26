@@ -1,0 +1,14 @@
+task-exclusions:
+  # The Nx Cypress preset starts the app with `ciWebServerCommand`, which nests
+  # an `nx run <app>:serve` inside the e2e task. That nested run executes the
+  # serve's whole dependency chain (codegen, and through it ProductsApi:restore and
+  # ProductsApi:build) in this task's sandbox, so the .NET project's files and the mise
+  # toolchain file are read here and attributed to the e2e task rather than to
+  # the tasks that actually declare them.
+  - project: products-e2e
+    exclude-reads: &nested-serve-reads
+      - 'apps/products-api/**'
+      - 'mise.toml'
+      - 'libs/shared/product/types/src/generated/**'
+  - project: cart-e2e
+    exclude-reads: *nested-serve-reads

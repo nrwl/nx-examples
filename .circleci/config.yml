@@ -16,7 +16,7 @@ jobs:
 
       # Connect your workspace on nx.app and uncomment this to enable task distribution.
       # The "--stop-agents-after" is optional, but allows idle agents to shut down once the "e2e-ci" targets have been requested
-      - run: npx nx-cloud start-ci-run --distribute-on="5 linux-medium-js" --stop-agents-after="e2e-ci"
+      - run: npx nx-cloud start-ci-run --distribute-on="5 linux-medium-js-dotnet" --stop-agents-after="e2e-ci"
 
       - run:
           name: Enable Corepack
@@ -24,6 +24,14 @@ jobs:
 
       - node/install-packages:
           pkg-manager: yarn
+      - run:
+          name: Install .NET SDK
+          command: |
+            curl -sSL https://dot.net/v1/dotnet-install.sh \
+              | bash /dev/stdin --channel 9.0 --install-dir "$HOME/.dotnet"
+            echo 'export DOTNET_ROOT="$HOME/.dotnet"' >> "$BASH_ENV"
+            echo 'export PATH="$HOME/.dotnet:$PATH"' >> "$BASH_ENV"
+
       - nx/set-shas:
           main-branch-name: 'master'
       - restore_cache:
