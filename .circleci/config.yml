@@ -22,8 +22,6 @@ jobs:
           name: Enable Corepack
           command: sudo corepack enable
 
-      - node/install-packages:
-          pkg-manager: yarn
       - run:
           name: Install .NET SDK
           command: |
@@ -32,6 +30,8 @@ jobs:
             echo 'export DOTNET_ROOT="$HOME/.dotnet"' >> "$BASH_ENV"
             echo 'export PATH="$HOME/.dotnet:$PATH"' >> "$BASH_ENV"
 
+      - node/install-packages:
+          pkg-manager: yarn
       - nx/set-shas:
           main-branch-name: 'master'
       - restore_cache:
