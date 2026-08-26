@@ -6,7 +6,14 @@
   "generators": {},
   "targets": {
     "build": {
-      "outputs": ["{workspaceRoot}/dist/apps/cart"]
+      "outputs": ["{workspaceRoot}/dist/apps/cart"],
+      "dependsOn": ["...", "shared-product-types:codegen"],
+      "inputs": [
+        "...",
+        {
+          "dependentTasksOutputFiles": "**/*"
+        }
+      ]
     },
     "deploy": {
       "dependsOn": ["build"],
@@ -18,6 +25,9 @@
           }
         ]
       }
+    },
+    "serve": {
+      "dependsOn": ["...", "shared-product-types:codegen"]
     }
   },
   "tags": ["type:app", "scope:cart"],

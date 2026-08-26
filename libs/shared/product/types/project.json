@@ -4,6 +4,19 @@
   "sourceRoot": "libs/shared/product/types/src",
   "projectType": "library",
   "generators": {},
-  "targets": {},
-  "tags": ["type:types", "scope:shared"]
+  "targets": {
+    "codegen": {
+      "command": "openapi-ts -i apps/products-api/obj/ProductsApi.json -o {projectRoot}/src/generated -p @hey-api/typescript",
+      "dependsOn": ["^build"],
+      "inputs": [
+        {
+          "dependentTasksOutputFiles": "**/obj/ProductsApi.json"
+        }
+      ],
+      "outputs": ["{projectRoot}/src/generated"],
+      "cache": true
+    }
+  },
+  "tags": ["type:types", "scope:shared"],
+  "implicitDependencies": ["ProductsApi"]
 }

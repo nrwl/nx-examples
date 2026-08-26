@@ -15,8 +15,15 @@
     "build": {
       "executor": "@nx/angular:application",
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"],
+      "dependsOn": ["...", "^build", "shared-product-types:codegen"],
+      "inputs": [
+        "...",
+        "production",
+        "^production",
+        {
+          "dependentTasksOutputFiles": "**/*"
+        }
+      ],
       "options": {
         "outputPath": {
           "base": "dist/apps/products",
@@ -83,7 +90,8 @@
           "buildTarget": "products:build:production"
         }
       },
-      "continuous": true
+      "continuous": true,
+      "dependsOn": ["...", "shared-product-types:codegen"]
     },
     "extract-i18n": {
       "executor": "@angular/build:extract-i18n",
