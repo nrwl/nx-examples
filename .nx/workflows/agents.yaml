@@ -7,7 +7,7 @@
 launch-templates:
   linux-medium-js-dotnet:
     resource-class: 'docker_linux_amd64/medium'
-    image: 'ubuntu22.04-node20.19-v2'
+    image: 'ubuntu22.04-node24.14-v1'
     env:
       # Cypress starts its own Xvfb only when DISPLAY is unset, and it always
       # picks :99. Two e2e tasks scheduled onto the same agent therefore race
