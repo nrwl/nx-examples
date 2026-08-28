@@ -39,6 +39,15 @@ jobs:
 
       - run: yarn nx-cloud record -- nx format:check --base=$NX_BASE --head=$NX_HEAD
       - run: yarn nx affected --base=$NX_BASE --head=$NX_HEAD -t lint,test,build,typecheck,e2e-ci --parallel 4
+      # `deploy` runs with `--no-agents`, so `ProductsApi:build` executes here
+      # rather than on an agent. The preceding step downloads that task's
+      # cached outputs from the agent that ran it, and `obj` is one of them, so
+      # the agent's `project.assets.json` lands here pointing at NuGet paths
+      # that only exist on the agent. Restore after that download, not before,
+      # or `dotnet build --no-restore` fails with NETSDK1064.
+      - run:
+          name: Restore .NET projects
+          command: dotnet restore apps/products-api/ProductsApi.csproj
       - run: yarn nx affected --base=$NX_BASE --head=$NX_HEAD -t deploy --no-agents
       - run: git rev-parse HEAD > dist/last-deploy.txt
       - save_cache:
