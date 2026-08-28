@@ -11,7 +11,8 @@
       "inputs": [
         {
           "dependentTasksOutputFiles": "**/obj/ProductsApi.json"
-        }
+        },
+        "sharedGlobals"
       ],
       "outputs": ["{projectRoot}/src/generated"],
       "cache": true
