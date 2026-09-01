@@ -6258,6 +6258,8 @@ __metadata:
 "@nx-example/shared-product-types@workspace:*, @nx-example/shared-product-types@workspace:libs/shared/product/types":
   version: 0.0.0-use.local
   resolution: "@nx-example/shared-product-types@workspace:libs/shared/product/types"
+  dependencies:
+    "@hey-api/openapi-ts": "npm:0.99.0"
   languageName: unknown
   linkType: soft
 
@@ -19303,7 +19305,6 @@ __metadata:
     "@angular/router": "npm:21.2.0"
     "@emotion/react": "npm:11.14.0"
     "@emotion/styled": "npm:11.14.1"
-    "@hey-api/openapi-ts": "npm:0.99.0"
     "@ngrx/component-store": "npm:21.0.0"
     "@ngrx/effects": "npm:21.0.0"
     "@ngrx/entity": "npm:21.0.0"
