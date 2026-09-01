@@ -30,6 +30,20 @@ export default defineConfig({
   },
   server: {
     port: 4201,
+    // Mirror the Netlify `_redirects` rules in `src/_redirects` during
+    // development: anything the cart app doesn't own is served by the
+    // products dev server (`nx serve products`, port 4200).
+    proxy: [
+      {
+        context: (pathname: string) =>
+          pathname !== '/rsbuild-hmr' &&
+          !pathname.startsWith('/cart') &&
+          !pathname.startsWith('/static') &&
+          !pathname.startsWith('/assets') &&
+          !pathname.startsWith('/favicon.ico'),
+        target: 'http://localhost:4200',
+      },
+    ],
   },
   tools: {
     cssLoader: {
