@@ -84,10 +84,30 @@
   },
   "defaultProject": "products",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "targetDefaults": {},
+  "targetDefaults": {
+    "typecheck": {
+      "dependsOn": ["...", "codegen"],
+      "inputs": [
+        "...",
+        {
+          "dependentTasksOutputFiles": "**/*.ts",
+          "transitive": true
+        }
+      ]
+    },
+    "build": {
+      "dependsOn": ["...", "^codegen"]
+    },
+    "serve": {
+      "dependsOn": ["...", "^codegen"]
+    }
+  },
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "sharedGlobals": ["{workspaceRoot}/tsconfig.json"],
+    "sharedGlobals": [
+      "{workspaceRoot}/tsconfig.json",
+      "{workspaceRoot}/mise.toml"
+    ],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -128,7 +148,9 @@
     {
       "plugin": "@nx/js/typescript",
       "options": {
-        "typecheck": { "targetName": "typecheck" },
+        "typecheck": {
+          "targetName": "typecheck"
+        },
         "build": {
           "targetName": "build",
           "configName": "tsconfig.lib.json",
@@ -146,7 +168,8 @@
         "inspectTargetName": "inspect",
         "typecheckTargetName": "rsbuild:typecheck"
       }
-    }
+    },
+    "@nx/dotnet"
   ],
   "defaultBase": "master",
   "analytics": true,

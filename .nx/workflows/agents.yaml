@@ -1,0 +1,72 @@
+# The default `linux-medium-js` template has no .NET SDK, so `ProductsApi:build` and the
+# `codegen` that depends on it fail when Nx Cloud distributes them to an agent.
+# This is the same template plus a .NET toolchain: the JS init steps are copied
+# from nrwl/nx-cloud-workflows' linux.yaml (`common-js-init-steps`), and the SDK
+# is installed with the same `install-mise` step its `common-dotnet-init-steps`
+# uses. Point `--distribute-on` at this template in .circleci/config.yml.
+launch-templates:
+  linux-medium-js-dotnet:
+    resource-class: 'docker_linux_amd64/medium'
+    image: 'ubuntu22.04-node24.14-v1'
+    env:
+      # Cypress starts its own Xvfb only when DISPLAY is unset, and it always
+      # picks :99. Two e2e tasks scheduled onto the same agent therefore race
+      # for that display and the loser dies with "Display :99 is already in
+      # use". Pointing both at one shared server avoids the spawn entirely.
+      # `parallelism: false` is not an option here: the atomized e2e tasks
+      # depend on a continuous `serve` task, which Nx refuses to combine with
+      # a non-parallel task.
+      DISPLAY: ':99'
+    init-steps:
+      - name: Checkout
+        uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/checkout/main.yaml'
+
+      - name: Restore Node Modules Cache
+        uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/cache/main.yaml'
+        inputs:
+          key: 'yarn.lock|.yarn/patches/**'
+          paths: 'node_modules'
+          base-branch: 'master'
+
+      - name: Restore Browser Binary Cache
+        uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/cache/main.yaml'
+        inputs:
+          key: 'yarn.lock|"browsers"'
+          paths: |
+            '../.cache/Cypress'
+          base-branch: 'master'
+
+      - name: Install Node
+        uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/install-node/main.yaml'
+
+      - name: Install Node Modules
+        uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/install-node-modules/main.yaml'
+
+      - name: Install Browsers (if needed)
+        uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/install-browsers/main.yaml'
+
+      # Installs what mise.toml pins, so the SDK version lives in one place
+      # rather than being duplicated here.
+      - name: Install .NET SDK
+        uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/install-mise/main.yaml'
+
+      # Warm the .NET toolchain before any task runs, the way nrwl/nx does with
+      # `dotnet restore nx.sln`. The first `dotnet` call makes the mise shim
+      # resolve its config, and running it here keeps that probe out of a
+      # sandboxed task, where it shows up as an undeclared read of mise.toml.
+      # It also primes the NuGet cache for the agent.
+      - name: Restore .NET projects
+        script: |
+          dotnet restore apps/products-api/ProductsApi.csproj
+
+      - name: Start a shared Xvfb
+        script: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb x11-utils
+          nohup Xvfb :99 -screen 0 1280x1024x24 >/tmp/xvfb.log 2>&1 &
+          for _ in $(seq 1 30); do
+            xdpyinfo -display :99 >/dev/null 2>&1 && break
+            sleep 1
+          done
+          xdpyinfo -display :99 >/dev/null 2>&1 || { echo 'Xvfb did not come up'; cat /tmp/xvfb.log; exit 1; }
+          echo "Xvfb ready on :99"

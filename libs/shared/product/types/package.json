@@ -9,5 +9,39 @@
       "import": "./src/index.ts",
       "default": "./src/index.ts"
     }
+  },
+  "scripts": {
+    "codegen": "openapi-ts -i ../../../../apps/products-api/obj/ProductsApi.json -o src/generated -p @hey-api/typescript"
+  },
+  "devDependencies": {
+    "@hey-api/openapi-ts": "0.99.0"
+  },
+  "nx": {
+    "name": "shared-product-types",
+    "tags": [
+      "type:types",
+      "scope:shared"
+    ],
+    "implicitDependencies": [
+      "ProductsApi"
+    ],
+    "targets": {
+      "codegen": {
+        "dependsOn": [
+          "^build"
+        ],
+        "inputs": [
+          {
+            "dependentTasksOutputFiles": "**/obj/ProductsApi.json"
+          },
+          "{projectRoot}/package.json",
+          "sharedGlobals"
+        ],
+        "outputs": [
+          "{projectRoot}/src/generated"
+        ],
+        "cache": true
+      }
+    }
   }
 }

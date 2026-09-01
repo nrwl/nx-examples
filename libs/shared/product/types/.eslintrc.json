@@ -1,6 +1,6 @@
 {
   "extends": ["../../../../.eslintrc.json"],
-  "ignorePatterns": ["!**/*", "out-tsc", "src/test-setup.ts"],
+  "ignorePatterns": ["!**/*", "out-tsc", "src/test-setup.ts", "src/generated"],
   "overrides": [
     {
       "files": ["*.ts"],

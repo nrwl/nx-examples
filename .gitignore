@@ -52,3 +52,12 @@ Thumbs.db
 
 .nx/self-healing
 .nx/migrate-runs
+# MSBuild output for apps/products-api.
+bin/
+obj/
+
+# The generated TypeScript client is a build artifact, not a source.
+# `nx codegen shared-product-types` writes it from the OpenAPI document that
+# `nx build ProductsApi` emits into obj/, and the Nx Cloud agents have a .NET
+# SDK (see .nx/workflows/agents.yaml) so CI regenerates both.
+libs/shared/product/types/src/generated/
