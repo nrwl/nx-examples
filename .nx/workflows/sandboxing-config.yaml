@@ -13,3 +13,18 @@ task-exclusions:
       - 'libs/shared/product/types/src/generated/**'
   - project: cart-e2e
     exclude-reads: *nested-serve-reads
+
+  # codegen is a package.json script, so Nx runs it through yarn, and yarn
+  # checks its own state before running anything. These are the package
+  # manager's bookkeeping rather than inputs to the generator. The declared
+  # version of the generator is covered instead by the project's package.json,
+  # which the task lists as an input.
+  #
+  # install-state.gz in particular must not become an input: it is rewritten on
+  # every install and differs between machines, so hashing it would never
+  # settle.
+  - project: shared-product-types
+    exclude-reads:
+      - '.yarnrc.yml'
+      - 'yarn.lock'
+      - '.yarn/**'
