@@ -11,6 +11,11 @@ jobs:
   main:
     docker:
       - image: cimg/node:lts-browsers
+    environment:
+      # TEMPORARY: reproducing the v4 worker's bare `require('nx/...')` failing
+      # when nx 23.2 moves the Cloud bundle to ~/.nx/<workspaceId>/cache/cloud.
+      NX_CLOUD_CONTINUOUS_ASSIGNMENT: 'true'
+      NX_VERBOSE_LOGGING: 'true'
     steps:
       - checkout
 
