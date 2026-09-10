@@ -15,6 +15,9 @@
         }
       ]
     },
+    "serve-with-deps": {
+      "dependsOn": ["serve", "products:serve"]
+    },
     "deploy": {
       "dependsOn": ["build"],
       "executor": "nx:run-commands",
