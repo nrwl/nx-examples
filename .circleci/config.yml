@@ -11,6 +11,9 @@ jobs:
   main:
     docker:
       - image: cimg/node:lts-browsers
+    environment:
+      # Select affected tasks instead of whole projects.
+      NX_LEGACY_AFFECTED: 'false'
     steps:
       - checkout
 
