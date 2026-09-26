@@ -17,6 +17,8 @@ launch-templates:
       # depend on a continuous `serve` task, which Nx refuses to combine with
       # a non-parallel task.
       DISPLAY: ':99'
+      # Record and hash tasks with Nx Cloud I/O snapshots (ultracache).
+      NX_CLOUD_USE_IO_SNAPSHOTS: 'true'
     init-steps:
       - name: Checkout
         uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/checkout/main.yaml'
