@@ -41,7 +41,7 @@ jobs:
           <<: *deploy_cache
 
       - run: yarn nx-cloud record -- nx format:check --base=$NX_BASE --head=$NX_HEAD
-      - run: yarn nx affected --base=$NX_BASE --head=$NX_HEAD -t lint,test,build,typecheck,e2e-ci --parallel 4
+      - run: yarn nx affected --base=$NX_BASE --head=$NX_HEAD -t lint,test,build,typecheck,e2e-ci --parallel 4 --verbose
       # `deploy` runs with `--no-agents`, so `ProductsApi:build` executes here
       # rather than on an agent. The preceding step downloads that task's
       # cached outputs from the agent that ran it, and `obj` is one of them, so
