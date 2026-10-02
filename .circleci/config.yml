@@ -13,7 +13,7 @@ jobs:
       - image: cimg/node:lts-browsers
     environment:
       # Record and hash tasks with Nx Cloud I/O snapshots (ultracache).
-      NX_CLOUD_USE_IO_SNAPSHOTS: 'true'
+      NX_CLOUD_USE_ULTRACACHE: 'true'
     steps:
       - checkout
 
