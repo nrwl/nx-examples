@@ -79,7 +79,7 @@ const StyledTotalLi = styled.li`
 `;
 
 const optionsArray = new Array(5).fill(null);
-
+// comment
 export const CartCartPage = () => {
   const [productsState] = useReducer(productsReducer, initialState);
   const { products } = productsState;
