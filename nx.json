@@ -100,7 +100,25 @@
     },
     "serve": {
       "dependsOn": ["...", "^codegen"]
-    }
+    },
+    "e2e": [
+      {
+        "filter": { "plugin": "@nx/cypress/plugin" },
+        "dependsOn": [
+          "...",
+          { "target": "serve", "dependencies": true, "waitFor": "ready" }
+        ]
+      }
+    ],
+    "e2e-ci--**/**": [
+      {
+        "filter": { "plugin": "@nx/cypress/plugin" },
+        "dependsOn": [
+          "...",
+          { "target": "serve", "dependencies": true, "waitFor": "ready" }
+        ]
+      }
+    ]
   },
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],

@@ -91,6 +91,10 @@
         }
       },
       "continuous": true,
+      "readyWhen": {
+        "url": "http://localhost:{options.port}",
+        "timeout": 45000
+      },
       "dependsOn": ["..."]
     },
     "extract-i18n": {

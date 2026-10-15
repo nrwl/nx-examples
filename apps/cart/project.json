@@ -27,6 +27,10 @@
       }
     },
     "serve": {
+      "readyWhen": {
+        "url": "http://localhost:4201",
+        "timeout": 30000
+      },
       "dependsOn": ["..."]
     }
   },
