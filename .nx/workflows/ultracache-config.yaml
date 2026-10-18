@@ -8,11 +8,11 @@ task-exclusions:
   #
   # mise.toml needs no entry: it is in sharedGlobals, so every task declares it.
   - project: products-e2e
-    exclude-reads: &nested-serve-reads
+    ignore-reads: &nested-serve-reads
       - 'apps/products-api/**'
       - 'libs/shared/product/types/src/generated/**'
   - project: cart-e2e
-    exclude-reads: *nested-serve-reads
+    ignore-reads: *nested-serve-reads
 
   # codegen is a package.json script, so Nx runs it through yarn, and yarn
   # checks its own state before running anything. These are the package
@@ -24,7 +24,7 @@ task-exclusions:
   # every install and differs between machines, so hashing it would never
   # settle.
   - project: shared-product-types
-    exclude-reads:
+    ignore-reads:
       - '.yarnrc.yml'
       - 'yarn.lock'
       - '.yarn/**'
