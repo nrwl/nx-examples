@@ -61,3 +61,10 @@ obj/
 # `nx build ProductsApi` emits into obj/, and the Nx Cloud agents have a .NET
 # SDK (see .nx/workflows/agents.yaml) so CI regenerates both.
 libs/shared/product/types/src/generated/
+
+vite.config.*.timestamp*
+test-output
+
+# Build output and caches of the readiness rig
+apps/readiness/*/dist/
+apps/readiness/*/node_modules/

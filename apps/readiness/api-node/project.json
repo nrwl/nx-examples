@@ -1,0 +1,15 @@
+{
+  "name": "readiness-api-node",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/readiness/api-node/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "continuous": true,
+      "readyWhen": {
+        "url": "http://localhost:3333/api/node"
+      }
+    }
+  },
+  "tags": ["scope:readiness"]
+}
