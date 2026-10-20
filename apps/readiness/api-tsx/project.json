@@ -1,0 +1,15 @@
+{
+  "name": "readiness-api-tsx",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/readiness/api-tsx/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "continuous": true,
+      "readyWhen": {
+        "command": "node -e \"fetch('http://localhost:3334/api/tsx').then((r) => process.exit(r.ok ? 0 : 1), () => process.exit(1))\""
+      }
+    }
+  },
+  "tags": ["scope:readiness"]
+}
