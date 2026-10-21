@@ -215,7 +215,8 @@
     {
       "plugin": "@nx/playwright/plugin",
       "options": {
-        "targetName": "e2e"
+        "targetName": "e2e",
+        "waitForWebServer": false
       }
     },
     {
@@ -242,7 +243,7 @@
     }
   ],
   "defaultBase": "master",
-  "bump": 1,
+  "bump": 2,
   "analytics": true,
   "sync": {
     "applyChanges": true
