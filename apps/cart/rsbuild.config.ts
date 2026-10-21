@@ -1,3 +1,4 @@
+import { pluginNxReadySignal } from '@nx/rsbuild/ready-signal';
 import { join } from 'node:path';
 
 import { defineConfig } from '@rsbuild/core';
@@ -11,7 +12,7 @@ const fromRoot = (...segments: string[]) =>
   join(__dirname, '..', '..', ...segments);
 
 export default defineConfig({
-  plugins: [pluginReact(), pluginSass()],
+  plugins: [pluginReact(), pluginSass(), pluginNxReadySignal()],
   source: {
     // Global stylesheets are prepended to the entry, mirroring the
     // `styles` array of the previous `@nx/webpack:webpack` build.
