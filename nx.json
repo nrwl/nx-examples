@@ -20,12 +20,6 @@
       "service": {
         "type": "service"
       },
-      "scam": {
-        "type": "component"
-      },
-      "scam-directive": {
-        "type": "directive"
-      },
       "guard": {
         "typeSeparator": "."
       },
@@ -136,8 +130,7 @@
       "options": {
         "targetName": "e2e",
         "ciTargetName": "e2e-ci",
-        "componentTestingTargetName": "component-test",
-        "waitForServerReady": false
+        "componentTestingTargetName": "component-test"
       }
     },
     {
