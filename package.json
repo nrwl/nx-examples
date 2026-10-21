@@ -180,5 +180,8 @@
       "built": true
     }
   },
-  "packageManager": "yarn@4.15.0"
+  "packageManager": "yarn@4.15.0",
+  "resolutions": {
+    "nx@npm:24.0.0-beta.4": "patch:nx@npm%3A24.0.0-beta.4#~/.yarn/patches/nx-npm-24.0.0-beta.4-1a99ad8c0b.patch"
+  }
 }

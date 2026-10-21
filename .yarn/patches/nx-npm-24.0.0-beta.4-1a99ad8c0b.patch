@@ -1,0 +1,54 @@
+diff --git a/dist/src/tasks-runner/init-tasks-runner.js b/dist/src/tasks-runner/init-tasks-runner.js
+index 76021552c951d0b2a3f72f0b4e1fe2cb58980b1c..9e8fea975c61d18bc142e7df4fa488b340b52100 100644
+--- a/dist/src/tasks-runner/init-tasks-runner.js
++++ b/dist/src/tasks-runner/init-tasks-runner.js
+@@ -50,7 +50,6 @@ async function createOrchestrator(tasks, projectGraph, fullTaskGraph, nxJson, li
+     // `outputStyle` does not reach them; it merges under its own name.
+     nxArgs.specifiedOutputStyle, nxArgs.resolvedOutputStyle ?? 'static-failures-only', fullTaskGraph);
+     await orchestrator.init();
+-    orchestrator.processAllScheduledTasks();
+     return orchestrator;
+ }
+ // A client bundle built before edges became objects hands plain task ids
+@@ -89,6 +88,8 @@ ultracacheConfigurations) {
+         nextBatch = orchestrator.nextBatch();
+     }
+     const discreteTasks = tasks.filter((task) => !batchTasks.has(task.id));
++    // Every task here starts directly, but the schedule hashes only the tasks it admits
++    orchestrator.processTasks(discreteTasks.map((task) => task.id));
+     // Bulk-resolve every discrete task's cache state in one shot —
+     // single SQL call plus parallel remote retrievals. Batches kicked
+     // off above continue running concurrently while we await this.
+@@ -115,6 +116,7 @@ async function runContinuousTasks(tasks, projectGraph, fullTaskGraph, nxJson, li
+ /** The set to hash from, e.g. from `importUltracacheConfigurations`; omitted hashes natively. */
+ ultracacheConfigurations) {
+     const orchestrator = await createOrchestrator(tasks, projectGraph, fullTaskGraph, nxJson, lifeCycle, ultracacheConfigurations);
++    orchestrator.processTasks(tasks.map((task) => task.id));
+     const runningTasks = tasks.reduce((current, task, index) => {
+         current[task.id] = orchestrator.startContinuousTask(task, index);
+         return current;
+diff --git a/dist/src/tasks-runner/task-orchestrator.js b/dist/src/tasks-runner/task-orchestrator.js
+index 8e3853f9c811b8b85616e9f9c72f879c62f33141..38439e21da0834720d191acf7e8f756f3294fc48 100644
+--- a/dist/src/tasks-runner/task-orchestrator.js
++++ b/dist/src/tasks-runner/task-orchestrator.js
+@@ -382,7 +382,10 @@ class TaskOrchestrator {
+     }
+     processAllScheduledTasks() {
+         const { scheduledTasks } = this.tasksSchedule.getAllScheduledTasks();
+-        for (const taskId of scheduledTasks) {
++        this.processTasks(scheduledTasks);
++    }
++    processTasks(taskIds) {
++        for (const taskId of taskIds) {
+             // Task is already handled or being handled
+             if (!this.processedTasks.has(taskId)) {
+                 this.processedTasks.set(taskId, this.processTask(taskId));
+@@ -1307,6 +1310,8 @@ class TaskOrchestrator {
+     async startContinuousTask(task, groupId) {
+         if (this.runningTasksService &&
+             this.runningTasksService.getRunningTasks([task.id]).length) {
++            // This branch never reads the hash, so a failure to compute it is dropped
++            void this.processedTasks.get(task.id)?.catch(() => { });
+             let readyWhen;
+             let uncheckedReason;
+             try {
