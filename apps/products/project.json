@@ -24,6 +24,7 @@
           "dependentTasksOutputFiles": "**/*"
         }
       ],
+      "outputs": ["{options.outputPath.base}"],
       "options": {
         "outputPath": {
           "base": "dist/apps/products",
@@ -77,11 +78,12 @@
             }
           ]
         }
-      },
-      "outputs": ["{options.outputPath.base}"]
+      }
     },
     "serve": {
       "executor": "@angular/build:dev-server",
+      "continuous": true,
+      "dependsOn": ["..."],
       "options": {
         "buildTarget": "products:build"
       },
@@ -90,8 +92,9 @@
           "buildTarget": "products:build:production"
         }
       },
-      "continuous": true,
-      "dependsOn": ["..."]
+      "readyWhen": {
+        "signal": true
+      }
     },
     "extract-i18n": {
       "executor": "@angular/build:extract-i18n",
