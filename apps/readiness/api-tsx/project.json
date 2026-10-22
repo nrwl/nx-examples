@@ -1,0 +1,23 @@
+{
+  "name": "readiness-api-tsx",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/readiness/api-tsx/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "continuous": true,
+      "readyWhen": {
+        "signal": true
+      },
+      "dependsOn": [
+        "...",
+        {
+          "projects": ["readiness-queue"],
+          "target": "serve",
+          "waitFor": "ready"
+        }
+      ]
+    }
+  },
+  "tags": ["scope:readiness"]
+}

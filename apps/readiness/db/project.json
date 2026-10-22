@@ -1,0 +1,15 @@
+{
+  "name": "readiness-db",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/readiness/db/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "continuous": true,
+      "readyWhen": {
+        "port": 3335
+      }
+    }
+  },
+  "tags": ["scope:readiness"]
+}

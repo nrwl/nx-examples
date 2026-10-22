@@ -1,0 +1,28 @@
+{
+  "name": "readiness-api-node",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/readiness/api-node/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "continuous": true,
+      "options": {
+        "env": {
+          "PORT": "3333"
+        }
+      },
+      "readyWhen": {
+        "url": "http://localhost:{env.PORT}/api/node"
+      },
+      "dependsOn": [
+        "...",
+        {
+          "projects": ["readiness-db"],
+          "target": "serve",
+          "waitFor": "ready"
+        }
+      ]
+    }
+  },
+  "tags": ["scope:readiness"]
+}

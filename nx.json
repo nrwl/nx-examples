@@ -162,7 +162,68 @@
         "inspectTargetName": "inspect"
       }
     },
-    "@nx/dotnet"
+    "@nx/dotnet",
+    {
+      "plugin": "@nx/js/node",
+      "include": [
+        "apps/readiness/api-node/{package.json,project.json,src/main.ts}",
+        "apps/readiness/db/{package.json,project.json,src/main.ts}",
+        "apps/readiness/queue/{package.json,project.json,src/main.ts}"
+      ],
+      "options": {
+        "watch": true
+      }
+    },
+    {
+      "plugin": "@nx/js/tsx",
+      "include": [
+        "apps/readiness/api-tsx/{package.json,project.json,src/main.ts}"
+      ],
+      "options": {
+        "watch": true
+      }
+    },
+    {
+      "plugin": "@nx/vite/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "devTargetName": "dev",
+        "previewTargetName": "preview",
+        "serveStaticTargetName": "serve-static",
+        "typecheckTargetName": "typecheck",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
+    },
+    {
+      "plugin": "@nx/playwright/plugin",
+      "options": {
+        "targetName": "e2e"
+      }
+    },
+    {
+      "plugin": "@nx/webpack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps",
+        "serveStaticTargetName": "serve-static"
+      }
+    },
+    {
+      "plugin": "@nx/rspack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "serveStaticTargetName": "serve-static",
+        "previewTargetName": "preview",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
+    }
   ],
   "defaultBase": "master",
   "analytics": true,

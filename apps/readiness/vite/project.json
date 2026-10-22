@@ -1,0 +1,23 @@
+{
+  "name": "readiness-vite",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/readiness/vite/src",
+  "projectType": "application",
+  "tags": ["scope:readiness"],
+  "targets": {
+    "serve": {
+      "readyWhen": {
+        "...": true,
+        "timeout": 1200000
+      },
+      "dependsOn": [
+        "...",
+        {
+          "projects": ["readiness-api-node", "readiness-api-tsx"],
+          "target": "serve",
+          "waitFor": "ready"
+        }
+      ]
+    }
+  }
+}
