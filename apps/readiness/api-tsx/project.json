@@ -7,8 +7,16 @@
     "serve": {
       "continuous": true,
       "readyWhen": {
-        "command": "node -e \"fetch('http://localhost:3334/api/tsx').then((r) => process.exit(r.ok ? 0 : 1), () => process.exit(1))\""
-      }
+        "signal": true
+      },
+      "dependsOn": [
+        "...",
+        {
+          "projects": ["readiness-queue"],
+          "target": "serve",
+          "waitFor": "ready"
+        }
+      ]
     }
   },
   "tags": ["scope:readiness"]

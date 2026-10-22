@@ -1,0 +1,15 @@
+{
+  "name": "readiness-queue",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/readiness/queue/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "continuous": true,
+      "readyWhen": {
+        "command": "node -e \"require('node:net').connect(3336, 'localhost').on('connect', () => process.exit(0)).on('error', () => process.exit(1))\""
+      }
+    }
+  },
+  "tags": ["scope:readiness"]
+}

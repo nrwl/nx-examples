@@ -166,7 +166,9 @@
     {
       "plugin": "@nx/js/node",
       "include": [
-        "apps/readiness/api-node/{package.json,project.json,src/main.ts}"
+        "apps/readiness/api-node/{package.json,project.json,src/main.ts}",
+        "apps/readiness/db/{package.json,project.json,src/main.ts}",
+        "apps/readiness/queue/{package.json,project.json,src/main.ts}"
       ],
       "options": {
         "watch": true

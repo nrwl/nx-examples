@@ -6,9 +6,22 @@
   "targets": {
     "serve": {
       "continuous": true,
+      "options": {
+        "env": {
+          "PORT": "3333"
+        }
+      },
       "readyWhen": {
-        "url": "http://localhost:3333/api/node"
-      }
+        "url": "http://localhost:{env.PORT}/api/node"
+      },
+      "dependsOn": [
+        "...",
+        {
+          "projects": ["readiness-db"],
+          "target": "serve",
+          "waitFor": "ready"
+        }
+      ]
     }
   },
   "tags": ["scope:readiness"]
