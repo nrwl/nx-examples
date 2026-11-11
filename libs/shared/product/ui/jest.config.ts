@@ -1,4 +1,3 @@
-/* eslint-disable */
 module.exports = {
   transform: {
     '^.+\\.[tj]sx?$': [

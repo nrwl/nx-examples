@@ -1,7 +1,6 @@
 import type { Action } from '@ngrx/store';
 
 export enum CartActionTypes {
-  /* eslint-disable @typescript-eslint/no-shadow */
   SetQuantity = '[Cart] Set Quantity',
 }
 

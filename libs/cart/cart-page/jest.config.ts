@@ -1,6 +1,6 @@
-/* eslint-disable */
 module.exports = {
   transform: {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     '^.+\\.[tj]sx?$': [
       '@swc/jest',
       {
