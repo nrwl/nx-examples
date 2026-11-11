@@ -1,0 +1,80 @@
+import baseConfig from '../../../eslint.config.mjs';
+import nx from '@nx/eslint-plugin';
+import importPlugin from 'eslint-plugin-import';
+
+export default [
+  ...nx.configs['flat/angular'],
+  ...nx.configs['flat/angular-template'],
+  ...baseConfig,
+  {
+    files: ['**/*.ts'],
+    plugins: { import: importPlugin },
+    rules: {
+      '@angular-eslint/directive-selector': [
+        'error',
+        { type: 'attribute', prefix: 'app', style: 'camelCase' },
+      ],
+      '@angular-eslint/component-selector': [
+        'error',
+        { type: 'element', prefix: 'app', style: 'kebab-case' },
+      ],
+      '@angular-eslint/use-lifecycle-interface': 'error',
+      '@typescript-eslint/consistent-type-definitions': 'error',
+      '@typescript-eslint/member-ordering': 'error',
+      '@typescript-eslint/naming-convention': 'error',
+      '@typescript-eslint/no-empty-function': 'off',
+      '@typescript-eslint/no-inferrable-types': [
+        'error',
+        { ignoreParameters: true },
+      ],
+      '@typescript-eslint/no-non-null-assertion': 'error',
+      '@typescript-eslint/no-shadow': ['error', { hoist: 'all' }],
+      '@typescript-eslint/prefer-function-type': 'error',
+      '@typescript-eslint/unified-signatures': 'error',
+      'arrow-body-style': 'error',
+      'constructor-super': 'error',
+      eqeqeq: ['error', 'smart'],
+      'guard-for-in': 'error',
+      'import/no-deprecated': 'warn',
+      'import/order': 'error',
+      'no-bitwise': 'error',
+      'no-caller': 'error',
+      'no-console': [
+        'error',
+        {
+          allow: [
+            'log',
+            'warn',
+            'dir',
+            'timeLog',
+            'assert',
+            'clear',
+            'count',
+            'countReset',
+            'group',
+            'groupEnd',
+            'table',
+            'dirxml',
+            'error',
+            'groupCollapsed',
+            'Console',
+            'profile',
+            'profileEnd',
+            'timeStamp',
+            'context',
+          ],
+        },
+      ],
+      'no-empty': 'off',
+      'no-eval': 'error',
+      'no-new-wrappers': 'error',
+      'no-restricted-imports': ['error', 'rxjs/Rx'],
+      'no-throw-literal': 'error',
+      'no-undef-init': 'error',
+      radix: 'error',
+    },
+  },
+  {
+    ignores: ['src/test-setup.ts'],
+  },
+];

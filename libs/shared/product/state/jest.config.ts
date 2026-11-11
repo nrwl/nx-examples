@@ -1,4 +1,3 @@
-/* eslint-disable */
 module.exports = {
   coverageDirectory: '../../../../coverage/libs/shared/product/state',
 
