@@ -100,7 +100,8 @@
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "sharedGlobals": [
       "{workspaceRoot}/tsconfig.json",
-      "{workspaceRoot}/mise.toml"
+      "{workspaceRoot}/mise.toml",
+      "{workspaceRoot}/.node-version"
     ],
     "production": [
       "default",

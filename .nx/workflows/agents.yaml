@@ -1,9 +1,10 @@
 # The default `linux-medium-js` template has no .NET SDK, so `ProductsApi:build` and the
 # `codegen` that depends on it fail when Nx Cloud distributes them to an agent.
-# This is the same template plus a .NET toolchain: the JS init steps are copied
-# from nrwl/nx-cloud-workflows' linux.yaml (`common-js-init-steps`), and the SDK
-# is installed with the same `install-mise` step its `common-dotnet-init-steps`
-# uses. Point `--distribute-on` at this template in .circleci/config.yml.
+# This template starts from the JS init steps in nrwl/nx-cloud-workflows'
+# linux.yaml (`common-js-init-steps`). It replaces `install-node` with
+# `install-mise`, which installs Node, Corepack and the .NET SDK from mise.toml,
+# so the agents run the same toolchain as the CircleCI main job. Point
+# `--distribute-on` at this template in .circleci/config.yml.
 launch-templates:
   linux-medium-js-dotnet:
     resource-class: 'docker_linux_amd64/medium'
@@ -38,19 +39,23 @@ launch-templates:
             '../.cache/Cypress'
           base-branch: 'master'
 
-      - name: Install Node
-        uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/install-node/main.yaml'
+      # Installs Node, Corepack and the .NET SDK with mise. The dependency install
+      # below needs that Node and Corepack. Keep `mise-version` in sync with
+      # MISE_VERSION in .circleci/config.yml.
+      - name: Install toolchain
+        uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/install-mise/main.yaml'
+        inputs:
+          mise-version: 'v2025.12.2'
+
+      - name: Enable Corepack
+        script: |
+          corepack enable
 
       - name: Install Node Modules
         uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/install-node-modules/main.yaml'
 
       - name: Install Browsers (if needed)
         uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/install-browsers/main.yaml'
-
-      # Installs what mise.toml pins, so the SDK version lives in one place
-      # rather than being duplicated here.
-      - name: Install .NET SDK
-        uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/install-mise/main.yaml'
 
       # Warm the .NET toolchain before any task runs, the way nrwl/nx does with
       # `dotnet restore nx.sln`. The first `dotnet` call makes the mise shim

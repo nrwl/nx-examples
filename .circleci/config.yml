@@ -21,17 +21,17 @@ jobs:
       # The "--stop-agents-after" is optional, but allows idle agents to shut down once the "e2e-ci" targets have been requested
       - run: npx nx-cloud start-ci-run --distribute-on="5 linux-medium-js-dotnet" --stop-agents-after="e2e-ci"
 
+      # Keep MISE_VERSION in sync with the `mise-version` input in .nx/workflows/agents.yaml.
       - run:
-          name: Enable Corepack
-          command: sudo corepack enable
+          name: Install toolchain
+          command: |
+            curl -fsSL https://mise.run | MISE_VERSION=v2025.12.2 sh
+            echo 'export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"' >> "$BASH_ENV"
+            "$HOME/.local/bin/mise" install
 
       - run:
-          name: Install .NET SDK
-          command: |
-            curl -sSL https://dot.net/v1/dotnet-install.sh \
-              | bash /dev/stdin --channel 10.0 --install-dir "$HOME/.dotnet"
-            echo 'export DOTNET_ROOT="$HOME/.dotnet"' >> "$BASH_ENV"
-            echo 'export PATH="$HOME/.dotnet:$PATH"' >> "$BASH_ENV"
+          name: Enable Corepack
+          command: corepack enable
 
       - node/install-packages:
           pkg-manager: yarn

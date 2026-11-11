@@ -1,4 +1,11 @@
-# Toolchain for apps/products-api. The Nx Cloud agents install from this file (see
-# .nx/workflows/agents.yaml), so CI and local development get the same SDK.
+# Toolchain for local development and CI. The CircleCI main job (.circleci/config.yml)
+# and the Nx Cloud agents (.nx/workflows/agents.yaml) both install from this file.
+[settings]
+# Take Node's version from .node-version, which Netlify deploy previews also read.
+idiomatic_version_file_enable_tools = ["node"]
+
 [tools]
 dotnet = "10"
+# Node 25+ no longer ships Corepack. Its `yarn` runs the version that
+# package.json's `packageManager` field pins.
+"npm:corepack" = "latest"
