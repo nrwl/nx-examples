@@ -54,6 +54,14 @@ export class HeaderElement extends HTMLElement {
   }
 
   private createRightSide() {
+    const cartLink = document.createElement('a');
+    const cartIcon = document.createElement('span');
+
+    cartLink.href = '/cart';
+    cartLink.setAttribute('aria-label', 'Cart');
+    cartIcon.classList.add('icon', 'icon-cart');
+    cartLink.appendChild(cartIcon);
+
     const githubLink = document.createElement('a');
     const icon = document.createElement('span');
 
@@ -62,6 +70,7 @@ export class HeaderElement extends HTMLElement {
     githubLink.appendChild(icon);
 
     const rightSide = document.createElement('div');
+    rightSide.appendChild(cartLink);
     rightSide.appendChild(githubLink);
     return rightSide;
   }
