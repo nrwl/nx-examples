@@ -1,6 +1,6 @@
 import baseConfig from '../../../eslint.config.mjs';
 import nx from '@nx/eslint-plugin';
-import importPlugin from 'eslint-plugin-import';
+import importX from 'eslint-plugin-import-x';
 
 export default [
   ...nx.configs['flat/angular'],
@@ -8,7 +8,7 @@ export default [
   ...baseConfig,
   {
     files: ['**/*.ts'],
-    plugins: { import: importPlugin },
+    plugins: { 'import-x': importX },
     rules: {
       '@angular-eslint/directive-selector': [
         'error',
@@ -35,8 +35,8 @@ export default [
       'constructor-super': 'error',
       eqeqeq: ['error', 'smart'],
       'guard-for-in': 'error',
-      'import/no-deprecated': 'warn',
-      'import/order': 'error',
+      'import-x/no-deprecated': 'warn',
+      'import-x/order': 'error',
       'no-bitwise': 'error',
       'no-caller': 'error',
       'no-console': [
